@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="external_layout_standard_inherit" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[3]" position="replace">
+            <t t-if="o._name != 'hr.payslip'">
+                <div class="row">
+                    <div class="col-6" name="company_address">
+                        <div t-field="company.partner_id"
+                            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                        />
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id='l10n_mx_edi_report_payslip_other'>
+        <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <t t-set="o" t-value="o.with_context(lang=o.employee_id.address_home_id.lang or o.env.lang)"/>
+                <div class="page">
+                    <div class="row" style="background-color: rgb(211, 211, 211); border: 2px solid black; padding: 10px;">
+                        <div class="col-9">
+                            <p class="m-0">
+                                <strong><span class="text-uppercase" t-esc="o.company_id.name"/></strong>
+                            </p>
+                            <p class="m-0">
+                                <strong>RFC:</strong>
+                                <span t-field="o.company_id.vat"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Reg Pat:</strong>
+                                <span t-field="o.company_id.l10n_mx_edi_employer_registration_id.name"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Reg Fiscal:</strong>
+                                <span t-field="o.company_id.l10n_mx_edi_fiscal_regime"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Expedition place:</strong>
+                                <span t-field="o.company_id.zip"/> <span t-field="o.company_id.state_id.name"/>
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <p class="m-0">
+                                <br/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Date:</strong>
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%B/%Y')"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Hour:</strong>
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M:%S')"/>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-6" style="border: 2px solid black;">
+                            <p class="m-0">
+                                <strong><span t-field="o.number"/> -  <span t-field="o.employee_id"/></strong>
+                            </p>
+                            <p class="m-0">
+                                <strong>RFC:</strong>
+                                <span t-field="o.employee_id.l10n_mx_edi_rfc"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>CURP:</strong>
+                                <span t-field="o.employee_id.l10n_mx_edi_curp"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Start date Labor Relationship:</strong>
+                                <span t-field="o.contract_id.date_start"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Working day:</strong>
+                                <span t-field="o.employee_id.category_ids"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>NSS:</strong>
+                                <span t-field="o.employee_id.ssnid"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Type of Salary:</strong>
+                                <span t-field="o.contract_id.type_salary"/>
+                            </p>
+
+                        </div>
+                        <div class="col-6" style="border: 2px solid black;">
+                            <p class="m-0">
+                                <strong>Exercise: <span t-esc="o.l10n_mx_payment_date.year"/></strong>
+                            </p>
+                            <p class="m-0">
+                                <strong>Period:</strong>
+                                <span t-field="o.contract_id.structure_type_id.default_schedule_pay"/>
+                                <span t-field="o.date_from"/>-<span t-field="o.date_to"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Pay days:</strong>
+                                <span t-esc="sum(o.worked_days_line_ids.mapped('number_of_days'))"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Payment date:</strong>
+                                <span t-field="o.l10n_mx_payment_date"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Job:</strong>
+                                <span t-field="o.contract_id.job_id"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Dpto:</strong>
+                                <span t-field="o.contract_id.department_id"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>SCB:</strong>
+                                <span t-field="o.contract_id.wage" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                            </p>
+                        </div>
+                    </div>
+
+<!--                    <div class="row" style="background-color: rgb(211, 211, 211); margin-top:10px;">-->
+<!--                        <div class="col-6 text-center" style="border: 2px solid black;">-->
+<!--                            <strong>Perceptions</strong>-->
+<!--                        </div>-->
+<!--                        <div class="col-6 text-center" style="border: 2px solid black;">-->
+<!--                            <strong>Deductions</strong>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-6" style="border: 2px solid black;">
+                            <table class="table table-sm" style="margin-top:3px;">
+                                <thead>
+                                    <tr style="background-color: rgb(211, 211, 211);">
+                                        <th colspan="3" class="text-center">Perceptions</th>
+                                    </tr>
+                                    <tr style="background-color: rgb(211, 211, 211);">
+                                        <th  style="width: 30%;">Concept</th>
+                                        <th  style="width: 55%;">Description</th>
+                                        <th  class="text-right" style="width: 15%;">Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="total_perception" t-value="0.00"/>
+                                    <t t-foreach="o.get_cfdi_perceptions_data()['perceptions']" t-as="perception">
+                                        <tr>
+                                            <td><span t-esc="perception.code"/></td>
+                                            <td><span t-esc="perception.name"/></td>
+                                            <td class="text-right">
+                                                <span t-esc="perception.total if perception.category_id == o.get_cfdi_perceptions_data()['category_taxed'] else 0.0"/>
+                                                <t t-set="total_perception" t-value="total_perception + perception.total if perception.category_id == o.get_cfdi_perceptions_data()['category_taxed'] else 0.0"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr>
+                                        <td colspan="2" class="text-center"><strong>Total Perceptions</strong></td>
+                                        <td class="text-right"><span t-esc="total_perception"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6" style="border: 2px solid black;">
+                            <table class="table table-sm" style="margin-top:3px;">
+                                <thead>
+                                    <tr style="background-color: rgb(211, 211, 211);">
+                                        <th colspan="3" class="text-center">Deductions</th>
+                                    </tr>
+                                    <tr style="background-color: rgb(211, 211, 211);">
+                                       <th  style="width: 30%;">Concept</th>
+                                        <th  style="width: 55%;">Description</th>
+                                        <th  class="text-right" style="width: 15%;">Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="total_deductions" t-value="0.00"/>
+                                    <t t-foreach="o.get_cfdi_deductions_data()['deductions']" t-as="deduction">
+                                        <tr>
+                                            <td><span t-esc="deduction.code"/></td>
+                                            <td><span t-esc="deduction.name"/></td>
+                                            <td class="text-right">
+                                                <span t-esc="'%.2f' % abs(deduction.total)"/>
+                                                <t t-set="total_deductions" t-value="total_deductions + float('%.2f' % abs(deduction.total))"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr>
+                                        <td colspan="2" class="text-center"><strong>Total Deductions</strong></td>
+                                        <td class="text-right"><span t-esc="'%.2f' % abs(total_deductions)"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-6" style="border: 2px solid black;">
+                            <p class="m-0">
+                                <strong>Total Perceptions plus other payments:</strong>
+                                <t t-set="subtotal" t-value="float(o.get_cfdi_perceptions_data()['total_perceptions'] + o.get_cfdi_other_payments_data()['total_other'])"/>
+                                <span t-esc="subtotal"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Way to pay:</strong>
+                                <span>99-Por Definir</span>
+                            </p>
+                            <p class="m-0">
+                                <strong>Payment method:</strong>
+                                <span t-field="o.employee_id.l10n_mx_payment_method"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Issued from:</strong>
+                                <span/>
+                            </p>
+                        </div>
+                        <div class="col-6 text-right" style="border: 2px solid black;">
+                            <p class="m-0">
+                                <strong>Subtotal $</strong>
+                                <span t-esc="subtotal"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Discounts $</strong>
+                                <t t-set="discount" t-value="o.get_cfdi_deductions_data()['total_other_deductions'] if o.get_cfdi_deductions_data()['total_other_deductions'] else 0.00"/>
+                                <span t-esc="discount"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Retentions $</strong>
+                                <t t-set="retention" t-value="o.get_cfdi_deductions_data()['total_taxes_withheld'] if o.get_cfdi_deductions_data()['total_taxes_withheld'] else 0.00"/>
+                                <span t-esc="retention"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Total $</strong>
+                                <t t-set="total" t-value="subtotal - float(discount)  - float(retention)"/>
+                                <span t-esc="'%.2f' % total"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Net of Receipt $</strong>
+                                <span t-esc="'%.2f' % total"/>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-12" style="border: 2px solid black;">
+                            <p class="m-0">
+                                <strong>Amount with letters:</strong>
+                                <span t-esc="o.amount_to_text(total)"/>
+                           </p>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:5px;">
+                        <div class="col-8" style="border: 2px solid black;">
+                            <p class="m-0">
+                                <span>The corresponding XML file was made available to me and I received from the
+                                    aforementioned company the net amount to which this document refers, being in
+                                    accordance with the earnings and deductions specified in it.</span>
+                           </p>
+
+                        </div>
+                        <div class="col-4" style="border: 2px solid black;">
+                            <p class="m-0">
+                                <strong>Employee's signature:</strong>
+                                <span></span>
+                            </p>
+                        </div>
+                    </div>
+                    <t t-if="o.l10n_mx_cfdi_uuid">
+                        <div class="row" id='complement' style="margin-top:5px;">
+                            <div class="barcode col-3">
+                                <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
+                                <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=180&amp;height=180' % quote_plus(
+                                    'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(
+                                        re=o.l10n_mx_cfdi_supplier_rfc, rr=o.l10n_mx_cfdi_customer_rfc,
+                                        tt=0, id=o.l10n_mx_cfdi_uuid)
+                                        + '&amp;fe=%s' % quote_plus(
+                                            sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
+                            </div>
+                            <div class="complement-details col-9">
+                                <div class="digital-stamp">
+                                    <span>Digital stamp of the emitter</span>
+                                </div>
+                                <div class="digital-stamp-content">
+                                    <span t-esc="xml.get('Sello', 'No identificado')"/>
+                                </div>
+                                <div class="digital-stamp">
+                                    <span>Digital stamp SAT</span>
+                                </div>
+                                <div class="digital-stamp-content">
+                                    <span t-esc="tfd.get('SelloSAT', 'No identificado')"/>
+                                </div>
+                                <div class="digital-stamp">
+                                    <span>Original chain complement of digital certification SAT</span>
+                                </div>
+                                <div class="digital-stamp-content">
+                                    <span class="nowrap" t-esc="tfd_original_string"/>
+                                </div>
+                                <div t-if="xml.Emisor.xpath('cfdi:ExpedidoEn', namespaces=xml.nsmap)" class="digital-stamp-content">
+                                    <span t-esc="xml.get('LugarExpedicion', 'No identificado')"/>
+                                </div>
+                                <div class="digital-stamp">
+                                    <span>Extra Info</span>
+                                </div>
+                                <div class="digital-stamp-content">
+                                    <span>Emitter certificate:</span> <span t-esc="xml.get('NoCertificado')"/>
+                                    <span> | Fiscal Regime:</span> <span t-esc="xml.Emisor.get('RegimenFiscal', '')"/>
+                                    <span> | Certification Date:</span> <span t-esc="tfd.get('FechaTimbrado', '').replace('T', ' ')"/>
+                                    <span> | Fiscal Folio:</span> <span t-esc="tfd.get('UUID', '')"/>
+                                </div>
+                                <div class="digital-stamp-content text-center">
+                                    <strong>This document is a printed representation of a CFDI</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </t>
+    </template>
+
+    <template id="report_payslip_other_lang">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other" t-lang="o.employee_id.sudo().address_home_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

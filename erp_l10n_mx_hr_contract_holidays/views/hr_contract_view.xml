@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_hr_contract_form_inherit_l10n_mx">
+        <field name="name">view.hr.contract.form.inherit.l10n_mx</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="before">
+                <group string="">
+                    <group>
+                        <label for="l10n_mx_holidays"/>
+                        <div class="o_row">
+                            <field name="l10n_mx_holidays"/>
+                            <button name="action_update_l10n_mx_holidays" type="object" string="Update" class="oe_link"/>
+                        </div>
+                        <field name="l10n_mx_vacation_bonus"/>
+                    </group>
+                    <group>
+                        <field name="l10n_mx_christmas_bonus"/>
+                    </group>
+                </group>
+            </xpath>
+            <field name="name" position="before">
+                <field name="l10n_mx_automatic_sequence_contracts" invisible="1"/>
+                <field name="l10n_mx_number" attrs="{'invisible': [('l10n_mx_automatic_sequence_contracts', '=', False)]}" readonly="1"/>
+            </field>
+            <field name="name" position="attributes">
+                <attribute name="attrs">{'invisible': [('l10n_mx_automatic_sequence_contracts', '=', True)], 'required': [('l10n_mx_automatic_sequence_contracts', '=', False)]}</attribute>
+			</field>
+            <field name="date_end" position="before">
+                <field name="l10n_mx_antiquity"/>
+            </field>
+        </field>
+    </record>
+</odoo>

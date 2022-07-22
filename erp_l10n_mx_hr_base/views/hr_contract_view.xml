@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_hr_payroll_contract_form_inherit_l10n_mx">
+        <field name="name">view.hr.contract.form.inherit.l10n_mx</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+<!--            <xpath expr="//field[@name='job_id']" position="after">-->
+
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='hr_responsible_id']" position="after">-->
+
+<!--            </xpath>-->
+            <xpath expr="//notebook" position="before">
+                <group string="Informacion Fiscal" name="mx_info">
+                    <group>
+                        <field name="l10n_mx_payroll_contract_type_id"/>
+                        <field name="l10n_mx_payroll_schedule_pay"/>
+                        <label for="l10n_mx_payroll_integrated_salary" class="oe_inline"/>
+                        <div class="o_row">
+                            <field name="l10n_mx_payroll_integrated_salary"/>
+                        </div>
+                        <field name="l10n_mx_payroll_infonavit_type"/>
+                        <field name='l10n_mx_payroll_infonavit_rate' attrs="{'invisible':[('l10n_mx_payroll_infonavit_type', '=', False)]}"/>
+                    </group>
+                    <group>
+                        <label for="l10n_mx_payroll_sdi_variable" class="oe_inline"/>
+                        <div class="o_row">
+                            <field name="l10n_mx_payroll_sdi_variable"/>
+                        </div>
+                        <field name="l10n_mx_payroll_food_voucher"/>
+                        <field name="l10n_mx_payroll_punctuality_bonus"/>
+                        <field name="l10n_mx_payroll_attendance_bonus"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <record id="l10n_mx_payroll_job_risk_form_view" model="ir.ui.view">
+        <field name="name">l10n_mx_payroll.job.risk.form.view</field>
+        <field name="model">l10n_mx_edi.job.risk</field>
+        <field name="arch" type="xml">
+            <form string="Job Risk">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="percentage"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

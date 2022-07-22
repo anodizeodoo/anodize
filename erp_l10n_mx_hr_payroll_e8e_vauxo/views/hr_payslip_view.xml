@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_hr_payslip_form_l10n_mx_e8e_vauxo">
+        <field name="name">view.hr.payslip.form.l10n_mx</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='credit_note']" position="after">
+<!--                <label for="l10n_mx_edi_pac_status" states="verify,done,cancel"/>-->
+<!--                <div class="o_row">-->
+<!--                    <field name="l10n_mx_edi_pac_status" states="verify,done,cancel"/>-->
+<!--                    <button name="l10n_mx_edi_update_pac_status" string="Retry" class="oe_link" type="object" groups="hr_payroll.group_hr_payroll_user" attrs="{'invisible':['|', ('l10n_mx_edi_pac_status', 'in', ['signed', False]), ('state', 'not in', ['verify', 'done', 'cancel'])]}"/>-->
+<!--                </div>-->
+<!--                <label for="l10n_mx_edi_sat_status" states="verify,done,cancel"/>-->
+<!--                <div class="o_row">-->
+<!--                    <field name="l10n_mx_edi_sat_status" states="verify,done,cancel"/>-->
+<!--                    <button name="l10n_mx_edi_update_sat_status" string="Retry" class="oe_link" type="object" groups="hr_payroll.group_hr_payroll_user" attrs="{'invisible':['|', ('l10n_mx_edi_pac_status', 'in', ['retry', 'to_sign', 'to_cancel', False]), ('state', 'not in', ['verify', 'done', 'cancel'])]}"/>-->
+<!--                </div>-->
+<!--                <label for="l10n_mx_edi_cfdi_uuid" states="verify,done,cancel"/>-->
+<!--                <div class="o_row">-->
+<!--                    <field name="l10n_mx_edi_cfdi_uuid" states="verify,done,cancel"/>-->
+<!--                </div>-->
+<!--                <field name="l10n_mx_edi_origin"/>-->
+            </xpath>
+            <xpath expr="//button[@name='action_payslip_cancel']" position="after">
+                <field name="sent" invisible="1"/>
+                <button name="action_payroll_sent" type="object" string="Send by Email" attrs="{'invisible': ['|', ('sent', '=', True), ('state', '!=', 'done')]}" class="oe_highlight" groups="base.group_user"/>
+                <button name="action_payroll_sent" type="object" string="Send by Email" attrs="{'invisible': ['|', ('sent', '=', False), ('state', '!=', 'done')]}" groups="base.group_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_hr_payslip_form_l10n_mx_base_e8e_vauxo">
+        <field name="name">view.hr.payslip.form.base.l10n_mx</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_form_l10n_mx"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='l10n_mx_pac_status']" position="after">
+                    <button name="l10n_mx_edi_update_pac_status" string="Retry" class="oe_link" type="object"
+                            groups="hr_payroll.group_hr_payroll_user"
+                            attrs="{'invisible':['|', ('l10n_mx_pac_status', 'in', ['signed', False]), ('state', 'not in', ['verify', 'done', 'cancel'])]}"/>
+            </xpath>
+            <xpath expr="//field[@name='l10n_mx_sat_status']" position="after">
+                    <button name="l10n_mx_edi_update_sat_status" string="Retry" class="oe_link" type="object"
+                            groups="hr_payroll.group_hr_payroll_user"
+                            attrs="{'invisible':['|', ('l10n_mx_sat_status', 'in', ['retry', 'to_sign', 'to_cancel', False]), ('state', 'not in', ['verify', 'done', 'cancel'])]}"/>
+            </xpath>
+            <xpath expr="//field[@name='credit_note']" position="after">
+<!--                <label for="l10n_mx_edi_pac_status" states="verify,done,cancel"/>-->
+<!--                <div class="o_row">-->
+<!--                    <field name="l10n_mx_edi_pac_status" states="verify,done,cancel"/>-->
+<!--                    <button name="l10n_mx_edi_update_pac_status" string="Retry" class="oe_link" type="object" groups="hr_payroll.group_hr_payroll_user" attrs="{'invisible':['|', ('l10n_mx_edi_pac_status', 'in', ['signed', False]), ('state', 'not in', ['verify', 'done', 'cancel'])]}"/>-->
+<!--                </div>-->
+<!--                <label for="l10n_mx_edi_sat_status" states="verify,done,cancel"/>-->
+<!--                <div class="o_row">-->
+<!--                    <field name="l10n_mx_edi_sat_status" states="verify,done,cancel"/>-->
+<!--                    <button name="l10n_mx_edi_update_sat_status" string="Retry" class="oe_link" type="object" groups="hr_payroll.group_hr_payroll_user" attrs="{'invisible':['|', ('l10n_mx_edi_pac_status', 'in', ['retry', 'to_sign', 'to_cancel', False]), ('state', 'not in', ['verify', 'done', 'cancel'])]}"/>-->
+<!--                </div>-->
+<!--                <label for="l10n_mx_edi_cfdi_uuid" states="verify,done,cancel"/>-->
+<!--                <div class="o_row">-->
+<!--                    <field name="l10n_mx_edi_cfdi_uuid" states="verify,done,cancel"/>-->
+<!--                </div>-->
+<!--                <field name="l10n_mx_edi_origin"/>-->
+            </xpath>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="view_hr_payslip_run_form_inherit_l10n_mx_e8e_vauxo">
+        <field name="name">view.hr.payslip.run.form.inherit.l10n_mx</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_draft']" position="after">
+                <button name="action_payslips_done" type="object" states="close" string="Confirm payslips" class="oe_highlight"/>
+                <button name="action_payroll_sent" type="object" string="Send by Email" states="close" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
