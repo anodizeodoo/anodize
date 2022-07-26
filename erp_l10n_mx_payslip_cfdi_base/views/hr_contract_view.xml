@@ -5,7 +5,7 @@
         <field name="model">hr.contract</field>
         <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='l10n_mx_payroll_food_voucher']" position="before">
+            <xpath expr="//field[@name='l10n_mx_payroll_sdi_variable']" position="after">
                 <field name="l10n_mx_sdi_total"/>
             </xpath>
         </field>

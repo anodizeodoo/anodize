@@ -18,12 +18,15 @@
     "data": [
         "security/ir.model.access.csv",
         "data/3.3/payroll12.xml",
+        "data/4.0/payroll12.xml",
         "data/table_isr_data.xml",
+        "data/sat_keys_data.xml",
         "views/res_config_settings_views.xml",
         "views/hr_salary_rule_views.xml",
         "views/hr_contract_view.xml",
         "views/hr_payslip_view.xml",
         "views/table_isr_views.xml",
+        "views/sat_keys_views.xml",
     ],
     "installable": True,
 }

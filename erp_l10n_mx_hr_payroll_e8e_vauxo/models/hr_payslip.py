@@ -33,6 +33,9 @@ except ImportError:
 PAYSLIP_TEMPLATE = 'erp_l10n_mx_payslip_cfdi_base.payroll12'
 CFDI_XSLT_CADENA = 'l10n_mx_edi/data/3.3/cadenaoriginal.xslt'
 
+PAYSLIP_TEMPLATE_4 = 'erp_l10n_mx_payslip_cfdi_base.payroll12_40'
+CFDI_XSLT_CADENA_4 = 'l10n_mx_edi_40/data/4.0/cadenaoriginal_4_0.xslt'
+
 
 def create_list_html(array):
     """Convert an array of string to a html list.
@@ -212,7 +215,7 @@ class HrPayslip(models.Model):
     def _get_l10n_mx_edi_cadena(self):
         self.ensure_one()
         # get the xslt path
-        xslt_path = CFDI_XSLT_CADENA
+        xslt_path = CFDI_XSLT_CADENA if self.company_id.l10n_mx_stamped_version == 'version_3' else CFDI_XSLT_CADENA_4
         # get the cfdi as eTree
         cfdi = self.l10n_mx_edi_get_xml_etree()
         # return the cadena
@@ -592,6 +595,7 @@ class HrPayslip(models.Model):
         for record in self.filtered(lambda r: r.l10n_mx_edi_is_required()):
             company = record.company_id or record.contract_id.company_id
             partner = company.partner_id.commercial_partner_id
+            version = company.l10n_mx_stamped_version
             tz = self.env['account.move']._l10n_mx_edi_get_cfdi_partner_timezone(partner)
             date_mx = fields.datetime.now(tz)
             if not record.l10n_mx_expedition_date:
@@ -599,8 +603,9 @@ class HrPayslip(models.Model):
             if not record.l10n_mx_time_payslip:
                 record.l10n_mx_time_payslip = date_mx.strftime(
                     DEFAULT_SERVER_TIME_FORMAT)
-            record.l10n_mx_cfdi_name = ('%s-MX-Payroll-3-3.xml' % (
-                record.number)).replace('/', '')
+            name = 'MX-Payroll-3-3.xml' if version == 'version_3' else 'MX-Payroll-4-0.xml'
+            record.l10n_mx_cfdi_name = ('%s-%s' % (
+                record.number, name)).replace('/', '')
             record._l10n_mx_edi_retry()
             record.employee_id.loan_ids.filtered(
                 lambda loan: loan.payslips_count < loan.payment_term).write({
@@ -637,8 +642,9 @@ class HrPayslip(models.Model):
 
             ctx = self.env.context.copy()
             ctx.pop('default_type', False)
+            name = 'MX-Payroll-3-3.xml' if record.company_id.l10n_mx_stamped_version == 'version_3' else 'MX-Payroll-4-0.xml'
             filename = (
-                '%s-MX-Payroll-3-3.xml' % (record.number)).replace('/', '')
+                '%s-%s' % (record.number, name)).replace('/', '')
             record.l10n_mx_cfdi_name = filename
             attach_id = self.env['ir.attachment'].with_context(ctx).create({
                 'name': filename,
@@ -917,18 +923,21 @@ class HrPayslip(models.Model):
         values['certificate'] = certificate_id.sudo().get_data()[0]
 
         # -Compute cfdi
-        cfdi = qweb._render(PAYSLIP_TEMPLATE, values=values)
+        payslip_template = PAYSLIP_TEMPLATE if company_id.l10n_mx_stamped_version == 'version_3' else PAYSLIP_TEMPLATE_4
+        cfdi = qweb._render(payslip_template, values=values)
 
         # -Compute cadena etree.tostring(cfdi_node, pretty_print=True, xml_declaration=True, encoding='UTF-8')
         tree = self.l10n_mx_edi_get_xml_etree(cfdi)
-        cadena = self.l10n_mx_edi_generate_cadena(CFDI_XSLT_CADENA, tree)
+        cfdi_xslt_cadena = CFDI_XSLT_CADENA if company_id.l10n_mx_stamped_version == 'version_3' else CFDI_XSLT_CADENA_4
+        cadena = self.l10n_mx_edi_generate_cadena(cfdi_xslt_cadena, tree)
 
         # Post append cadena
         tree.attrib['Sello'] = certificate_id.sudo().get_encrypted_cadena(
             cadena)
 
         # Check with xsd
-        attachment = self.env.ref('l10n_mx_edi.xsd_cached_cfdv33_xsd', False)
+        ref = 'l10n_mx_edi.xsd_cached_cfdv33_xsd' if company_id.l10n_mx_stamped_version == 'version_3' else 'l10n_mx_edi.xsd_cached_cfdv40_xsd'
+        attachment = self.env.ref(ref, False)
         xsd_datas = base64.b64decode(attachment.datas) if attachment else b''
         if xsd_datas:
             try:

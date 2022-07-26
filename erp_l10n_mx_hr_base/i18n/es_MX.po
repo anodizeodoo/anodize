@@ -196,6 +196,11 @@ msgid "Daily"
 msgstr "Diario"
 
 #. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_daily_salary
+msgid "Daily Salary"
+msgstr "Salario Diario"
+
+#. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_base.selection__hr_contract__l10n_mx_payroll_schedule_pay__10
 msgid "Decennial"
 msgstr "Decenal"

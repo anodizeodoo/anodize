@@ -18,3 +18,4 @@ class ResConfigSettings(models.TransientModel):
     l10n_mx_umi = fields.Float(
         related='company_id.l10n_mx_umi',
         string='Mexican UMI', readonly=False, help='Indicates the current UMI in Mexico')
+    l10n_mx_stamped_version = fields.Selection(related='company_id.l10n_mx_stamped_version', string='Stamped version', readonly=False)

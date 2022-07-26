@@ -16,23 +16,25 @@
                     <group>
                         <field name="l10n_mx_payroll_contract_type_id"/>
                         <field name="l10n_mx_payroll_schedule_pay"/>
-                        <label for="l10n_mx_payroll_integrated_salary" class="oe_inline"/>
-                        <div class="o_row">
-                            <field name="l10n_mx_payroll_integrated_salary"/>
-                        </div>
-                        <field name="l10n_mx_payroll_infonavit_type"/>
-                        <field name='l10n_mx_payroll_infonavit_rate' attrs="{'invisible':[('l10n_mx_payroll_infonavit_type', '=', False)]}"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='information']/group[@name='main_info']" position="after">
+                <group>
+                    <group>
+                        <field name="l10n_mx_payroll_daily_salary"/>
+                        <field name="l10n_mx_payroll_integrated_salary"/>
+                        <field name="l10n_mx_payroll_sdi_variable"/>
                     </group>
                     <group>
-                        <label for="l10n_mx_payroll_sdi_variable" class="oe_inline"/>
-                        <div class="o_row">
-                            <field name="l10n_mx_payroll_sdi_variable"/>
-                        </div>
+                        <field name="l10n_mx_payroll_infonavit_type"/>
+                        <field name='l10n_mx_payroll_infonavit_rate' attrs="{'invisible':[('l10n_mx_payroll_infonavit_type', '=', False)]}"/>
                         <field name="l10n_mx_payroll_food_voucher"/>
                         <field name="l10n_mx_payroll_punctuality_bonus"/>
                         <field name="l10n_mx_payroll_attendance_bonus"/>
                     </group>
-                </group>
+            </group>
+
             </xpath>
         </field>
     </record>

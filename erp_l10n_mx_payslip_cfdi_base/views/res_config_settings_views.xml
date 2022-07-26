@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="hr_payroll.res_config_settings_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//div[@id='hr_payroll_localization']" position="inside">
-                <div class="col-xs-12 o_setting_box" title="The parameters to configure the Mexican Payroll.">
+                <div class="col-12 col-lg-6 o_setting_box" title="The parameters to configure the Mexican Payroll.">
                     <div class="o_setting_left_pane"/>
                     <div class="o_setting_right_pane">
                         <span class="o_form_label">Mexican Payroll</span>
@@ -25,6 +25,21 @@
                             <div class="row">
                                 <label for="l10n_mx_umi" class="col-md-3 o_light_label"/>
                                 <field name="l10n_mx_umi" class="oe_inline"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 o_setting_box" title="The parameters to configure the Payroll Stamped version.">
+                    <div class="o_setting_left_pane"/>
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Stamped Settings</span>
+                        <div class="text-muted">
+                            Enable Version Annex 20
+                        </div>
+                        <div class="content-group">
+                            <div class="row" style="margin-left:10px;">
+                                <field name="l10n_mx_stamped_version" widget="radio"/>
                             </div>
                         </div>
                     </div>

@@ -11,6 +11,7 @@
         "hr_holidays",
         "hr_work_entry",
         "hr_work_entry_contract",
+        "erp_l10n_mx_hr_base",
     ],
     "data": [
         "security/ir.model.access.csv",

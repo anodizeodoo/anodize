@@ -21,6 +21,8 @@ class HrContract(models.Model):
         'kind and any other quantity or benefit that is delivered to the '
         'worker by his work, Pursuant to Article 84 of the Federal Labor '
         'Law. (Used to calculate compensation).')
+    l10n_mx_payroll_daily_salary = fields.Float(
+        'Daily Salary', tracking=True)
     l10n_mx_payroll_sdi_variable = fields.Float(
         'Variable SDI', default=0, tracking=True,
         help='Used when the salary type is mixed or variable. This value is '

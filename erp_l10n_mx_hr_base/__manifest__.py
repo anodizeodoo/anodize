@@ -11,6 +11,7 @@
         "hr_contract",
         "hr_employee_lastnames",
         "l10n_mx_edi_extended",
+        "l10n_mx_edi_extended_40",
     ],
     "demo": [
         "demo/employee_demo.xml",

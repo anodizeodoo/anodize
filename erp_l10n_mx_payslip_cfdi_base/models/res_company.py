@@ -15,3 +15,7 @@ class ResCompany(models.Model):
         'Mexican UMA', help='Indicates the current UMA in Mexico')
     l10n_mx_umi = fields.Float(
         'Mexican UMI', help='Indicates the current UMI in Mexico')
+
+    l10n_mx_stamped_version = fields.Selection(
+        [('version_3', 'Version 3.3'), ('version_4', 'Version 4.0')], string='Stamped version',
+        default='version_3')
