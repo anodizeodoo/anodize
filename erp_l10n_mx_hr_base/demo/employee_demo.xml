@@ -34,7 +34,7 @@
     <record id="hr_payroll.hr_contract_gilles_gravie" model="hr.contract">
         <field name='l10n_mx_payroll_contract_type_id' ref="contract_type_01"/>
         <field name='structure_type_id' ref="payroll_structure_type_payroll"/>
-        <field name='l10n_mx_payroll_schedule_pay'>04</field>
+        <field name='l10n_mx_payroll_schedule_pay_id' ref="schedule_pay_04"/>
         <field name='wage'>22000</field>
         <field name='l10n_mx_payroll_infonavit_type'>fixed_amount</field>
         <field name='l10n_mx_payroll_infonavit_rate'>2000</field>

@@ -14,28 +14,56 @@
             <xpath expr="//notebook" position="before">
                 <group string="Informacion Fiscal" name="mx_info">
                     <group>
-                        <field name="l10n_mx_payroll_contract_type_id"/>
-                        <field name="l10n_mx_payroll_schedule_pay"/>
+                        <field name="l10n_mx_payroll_contract_type_id" required="1"/>
+                        <field name="l10n_mx_payroll_schedule_pay_id" required="1"/>
                     </group>
                 </group>
             </xpath>
             <xpath expr="//page[@name='information']/group[@name='main_info']" position="after">
                 <group>
                     <group>
+                        <field name="l10n_mx_type_benefit_id" required="1"/>
                         <field name="l10n_mx_payroll_daily_salary"/>
                         <field name="l10n_mx_payroll_integrated_salary"/>
                         <field name="l10n_mx_payroll_sdi_variable"/>
                     </group>
                     <group>
-                        <field name="l10n_mx_payroll_infonavit_type"/>
-                        <field name='l10n_mx_payroll_infonavit_rate' attrs="{'invisible':[('l10n_mx_payroll_infonavit_type', '=', False)]}"/>
-                        <field name="l10n_mx_payroll_food_voucher"/>
-                        <field name="l10n_mx_payroll_punctuality_bonus"/>
-                        <field name="l10n_mx_payroll_attendance_bonus"/>
-                    </group>
-            </group>
 
+                    </group>
+                </group>
             </xpath>
+            <xpath expr="//page[last()]" position="after">
+                <page string="Concepts">
+                    <group string="Concepts related to Salary Rules">
+                        <group>
+                            <field name="l10n_mx_payroll_punctuality_bonus"/>
+                            <field name="l10n_mx_payroll_attendance_bonus"/>
+                            <field name="l10n_mx_payroll_food_voucher"/>
+                            <field name="l10n_mx_payroll_gasoline_voucher"/>
+                            <field name="l10n_mx_payroll_restaurant_voucher"/>
+                            <field name="l10n_mx_payroll_school_support_bonus"/>
+                            <field name="l10n_mx_payroll_transportation_bonus"/>
+                            <field name="l10n_mx_payroll_funeral_expenses_bonus"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Infonavit">
+                    <group string="Information credits Infonavit">
+                        <group>
+                            <field name="l10n_mx_payroll_infonavit_active" widget="boolean_toggle"/>
+                            <field name="l10n_mx_payroll_infonavit_credit_number" attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_description" attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_date_start" attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_date_register" attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_type" attrs="{'required': [('l10n_mx_payroll_infonavit_active', '=', True)], 'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name='l10n_mx_payroll_infonavit_rate' attrs="{'invisible':[('l10n_mx_payroll_infonavit_type', '=', False)], 'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <field name="wage" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
         </field>
     </record>
     <record id="l10n_mx_payroll_job_risk_form_view" model="ir.ui.view">

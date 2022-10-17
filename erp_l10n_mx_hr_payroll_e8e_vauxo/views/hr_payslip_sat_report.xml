@@ -132,7 +132,7 @@
                     </p>
                     <p class="m-0">
                         <strong>Periocidad de pago:</strong>
-                        <span t-esc="dict(o.contract_id._fields['l10n_mx_payroll_schedule_pay'].selection)[o.contract_id.l10n_mx_payroll_schedule_pay]"> </span>
+                        <span t-esc="o.contract_id.l10n_mx_payroll_schedule_pay_id.name"> </span>
                     </p>
                     <p class="m-0">
                         <strong>Salario diario:</strong>

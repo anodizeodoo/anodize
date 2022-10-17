@@ -33,7 +33,7 @@ msgstr ""
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__hr_contract__type_salary__mixed
 msgid "03-Mixed"
-msgstr "03-Variable"
+msgstr "03-Mixto"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.res_config_settings_view_form_inherit
@@ -118,8 +118,8 @@ msgid ""
 "                                    accordance with the earnings and deductions specified in it.</span>"
 msgstr ""
 "<span>Se puso a mi disposición el archivo XML correspondiente y recibi de\n"
-"                                    la empresa arriba mencionadala cantidad neta a que este docuemento se refiere estando\n"
-"                                    conforme con las percepciones y deduccionesque en el aparecen especificadas.</span>"
+"                                    la empresa arriba mencionadala cantidad neta a que este documento se refiere estando\n"
+"                                    conforme con las percepciones y deducciones que en el aparecen especificadas.</span>"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
@@ -519,6 +519,7 @@ msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "Code"
 msgstr "Código"
 
@@ -942,6 +943,16 @@ msgstr "El número de identificación fiscal del proveedor."
 #, python-format
 msgid "The xsd file to validate the XML structure was not found"
 msgstr "El archivo XSD que valida la estructura del XML no fue encontrado"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
+#, python-format
+msgid ""
+"There are conflicts in the work entry for this employee in the selected "
+"period."
+msgstr ""
+"Hay conflictos en la entrada de trabajo para este empleado en el "
+"período seleccionado."
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip

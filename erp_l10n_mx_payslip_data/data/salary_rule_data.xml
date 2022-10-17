@@ -14,19 +14,19 @@ if not employee.l10n_mx_edi_is_assimilated:
     # In case commission or raised price
     payment_daily = (contract.wage / 30)
     holidays = worked_days.dict.get('LEAVE120') and worked_days.LEAVE120.number_of_days or 0.0
-    if contract.l10n_mx_payroll_schedule_pay ==  '01':
+    if contract.l10n_mx_payroll_schedule_pay_id.code ==  '01':
         result = payment_daily - holidays
-    elif contract.l10n_mx_payroll_schedule_pay ==  '02':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code ==  '02':
         result = payment_daily * (7 - holidays)
-    elif contract.l10n_mx_payroll_schedule_pay == '03':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '03':
         result = payment_daily * (14 - holidays)
-    elif contract.l10n_mx_payroll_schedule_pay == '04':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '04':
         result = payment_daily * (15 - holidays)
-    elif contract.l10n_mx_payroll_schedule_pay == '05':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '05':
         result = payment_daily * (30 - holidays)
-    elif contract.l10n_mx_payroll_schedule_pay == '06':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '06':
         result = payment_daily * (60 - holidays)
-    elif contract.l10n_mx_payroll_schedule_pay == '10':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '10':
         result = payment_daily * (10 - holidays)
         </field>
     </record>
@@ -814,19 +814,19 @@ if employee.l10n_mx_edi_is_assimilated:
     # In case commission or raised price
     payment_daily = (contract.wage / 30)
     holidays = worked_days.dict.get('HOLIDAYS') and worked_days.HOLIDAYS.number_of_days or 0.0
-    if contract.l10n_mx_payroll_schedule_pay ==  '01':
+    if contract.l10n_mx_payroll_schedule_pay_id.code ==  '01':
         result = payment_daily - holidays
-    elif contract.l10n_mx_payroll_schedule_pay ==  '02':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code ==  '02':
         result = payment_daily * (7 - holidays)
-    elif contract.l10n_mx_payroll_schedule_pay == '03':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '03':
         result = payment_daily * (14 - holidays)
-    elif contract.l10n_mx_payroll_schedule_pay == '04':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '04':
         result = payment_daily * (15 - holidays)
-    elif contract.l10n_mx_payroll_schedule_pay == '05':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '05':
         result = payment_daily * (30 - holidays)
-    elif contract.l10n_mx_payroll_schedule_pay == '06':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '06':
         result = payment_daily * (60 - holidays)
-    elif contract.l10n_mx_payroll_schedule_pay == '10':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '10':
         result = payment_daily * (10 - holidays)
         </field>
     </record>
@@ -1046,7 +1046,7 @@ table = {'05': [(0.01, 578.52, 0.00, 0.0192), (578.53, 4910.18, 11.11, 0.0640),
          (23976.21, 31968.20, 5781.50, 0.3200), (31968.21, 95904.60, 8338.90, 0.3400),
          (95904.61, 99999999, 30077.30, 0.3500)]}
 result = 0
-table_isr = table.get(contract.l10n_mx_payroll_schedule_pay, [])
+table_isr = table.get(contract.l10n_mx_payroll_schedule_pay_id.code, [])
 if table_isr:
     for value in table_isr:
         if income_period >=value[0] and value[1] >= income_period:
@@ -1106,7 +1106,7 @@ if not employee.l10n_mx_edi_is_assimilated:
             (3510.16, 3642.60, 107.40),
             (3642.61, 99999999.00, 0)],
     }
-    table = table.get(contract.l10n_mx_payroll_schedule_pay, [])
+    table = table.get(contract.l10n_mx_payroll_schedule_pay_id.code, [])
     if table:
         for value in table:
             if income_period >=value[0] and value[1] >= income_period:
@@ -1267,19 +1267,19 @@ result = result * -1</field>
 result = 0
 for loan in employee.loan_ids.filtered(lambda l: l.loan_type == 'fonacot' and l.payslips_count &lt; l.payment_term):
     payment_daily = (loan.monthly_withhold / 30)
-    if contract.l10n_mx_payroll_schedule_pay ==  '01':
+    if contract.l10n_mx_payroll_schedule_pay_id.code ==  '01':
         result += payment_daily
-    elif contract.l10n_mx_payroll_schedule_pay ==  '02':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code ==  '02':
         result += payment_daily * 7
-    elif contract.l10n_mx_payroll_schedule_pay == '03':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '03':
         result += payment_daily * 14
-    elif contract.l10n_mx_payroll_schedule_pay == '04':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '04':
         result += payment_daily * 15
-    elif contract.l10n_mx_payroll_schedule_pay == '05':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '05':
         result += contract.wage
-    elif contract.l10n_mx_payroll_schedule_pay == '06':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '06':
         result += contract.wage * 2
-    elif contract.l10n_mx_payroll_schedule_pay == '10':
+    elif contract.l10n_mx_payroll_schedule_pay_id.code == '10':
         result += contract.wage * 10
 result = -result
         </field>
@@ -2098,7 +2098,7 @@ table = [(0.01, 1768.96, 407.02), (1768.97, 2653.38, 406.83),
          (7382.34, 99999999.00, 0)]
 days_schedule = {'01': 1, '02': 7, '03': 14, '04': 15, '05': 30}
 result = -0.01
-days_work = days_schedule.get(contract.l10n_mx_payroll_schedule_pay, 0)
+days_work = days_schedule.get(contract.l10n_mx_payroll_schedule_pay_id.code, 0)
 if days_work:
     income_period = (income_period / days_work) * 30
     for value in table:

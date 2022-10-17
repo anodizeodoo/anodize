@@ -11,19 +11,19 @@
 result = inputs.pg_001 and inputs.pg_001.amount
 payment_daily = (contract.wage / 30)
 holidays = worked_days.dict.get('LEAVE90') and worked_days.LEAVE90.number_of_days or 0.0
-if contract.l10n_mx_payroll_schedule_pay ==  '01':
+if contract.l10n_mx_payroll_schedule_pay_id.code ==  '01':
     result = payment_daily - holidays
-elif contract.l10n_mx_payroll_schedule_pay ==  '02':
+elif contract.l10n_mx_payroll_schedule_pay_id.code ==  '02':
     result = payment_daily * (7 - holidays)
-elif contract.l10n_mx_payroll_schedule_pay == '03':
+elif contract.l10n_mx_payroll_schedule_pay_id.code == '03':
     result = payment_daily * (14 - holidays)
-elif contract.l10n_mx_payroll_schedule_pay == '04':
+elif contract.l10n_mx_payroll_schedule_pay_id.code == '04':
     result = payment_daily * (15 - holidays)
-elif contract.l10n_mx_payroll_schedule_pay == '05':
+elif contract.l10n_mx_payroll_schedule_pay_id.code == '05':
     result = payment_daily * (30 - holidays)
-elif contract.l10n_mx_payroll_schedule_pay == '06':
+elif contract.l10n_mx_payroll_schedule_pay_id.code == '06':
     result = payment_daily * (60 - holidays)
-elif contract.l10n_mx_payroll_schedule_pay == '10':
+elif contract.l10n_mx_payroll_schedule_pay_id.code == '10':
     result = payment_daily * (10 - holidays)
         </field>
     </record>

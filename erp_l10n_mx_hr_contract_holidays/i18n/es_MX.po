@@ -30,8 +30,8 @@ msgstr "Antigüedad"
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_christmas_bonus
-msgid "Christmas bonus (days)"
-msgstr "Bono de navidad (días)"
+msgid "Bonus Days"
+msgstr "Días de Aguinaldo"
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_hr_contract
@@ -125,8 +125,8 @@ msgstr "Actualizar"
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_vacation_bonus
-msgid "Vacation bonus (%)"
-msgstr "Bono de vacaciones (%)"
+msgid "Vacation cousin (%)"
+msgstr "Prima Vacacional (%)"
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays__l10n_mx_year

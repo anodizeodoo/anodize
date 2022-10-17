@@ -115,7 +115,7 @@
                                 <span t-field="o.contract_id.department_id"/>
                             </p>
                             <p class="m-0">
-                                <strong>SCB:</strong>
+                                <strong>SBC:</strong>
                                 <span t-field="o.contract_id.wage" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                             </p>
                         </div>
@@ -135,10 +135,11 @@
                             <table class="table table-sm" style="margin-top:3px;">
                                 <thead>
                                     <tr style="background-color: rgb(211, 211, 211);">
-                                        <th colspan="3" class="text-center">Perceptions</th>
+                                        <th colspan="4" class="text-center">Perceptions</th>
                                     </tr>
                                     <tr style="background-color: rgb(211, 211, 211);">
-                                        <th  style="width: 30%;">Concept</th>
+                                        <th  style="width: 15%;">Concept</th>
+                                        <th  style="width: 15%;">Code</th>
                                         <th  style="width: 55%;">Description</th>
                                         <th  class="text-right" style="width: 15%;">Value</th>
                                     </tr>
@@ -148,15 +149,16 @@
                                     <t t-foreach="o.get_cfdi_perceptions_data()['perceptions']" t-as="perception">
                                         <tr>
                                             <td><span t-esc="perception.code"/></td>
+                                            <td><span t-esc="perception.salary_rule_id.l10n_mx_sat_key_id.l10n_mx_sat_code"/></td>
                                             <td><span t-esc="perception.name"/></td>
                                             <td class="text-right">
-                                                <span t-esc="perception.total if perception.category_id == o.get_cfdi_perceptions_data()['category_taxed'] else 0.0"/>
-                                                <t t-set="total_perception" t-value="total_perception + perception.total if perception.category_id == o.get_cfdi_perceptions_data()['category_taxed'] else 0.0"/>
+                                                <span t-esc="perception.total"/>
+                                                <t t-set="total_perception" t-value="total_perception + perception.total"/>
                                             </td>
                                         </tr>
                                     </t>
                                     <tr>
-                                        <td colspan="2" class="text-center"><strong>Total Perceptions</strong></td>
+                                        <td colspan="3" class="text-center"><strong>Total Perceptions</strong></td>
                                         <td class="text-right"><span t-esc="total_perception"/></td>
                                     </tr>
                                 </tbody>
@@ -166,10 +168,11 @@
                             <table class="table table-sm" style="margin-top:3px;">
                                 <thead>
                                     <tr style="background-color: rgb(211, 211, 211);">
-                                        <th colspan="3" class="text-center">Deductions</th>
+                                        <th colspan="4" class="text-center">Deductions</th>
                                     </tr>
                                     <tr style="background-color: rgb(211, 211, 211);">
-                                       <th  style="width: 30%;">Concept</th>
+                                       <th  style="width: 15%;">Concept</th>
+                                        <th  style="width: 15%;">Code</th>
                                         <th  style="width: 55%;">Description</th>
                                         <th  class="text-right" style="width: 15%;">Value</th>
                                     </tr>
@@ -179,6 +182,7 @@
                                     <t t-foreach="o.get_cfdi_deductions_data()['deductions']" t-as="deduction">
                                         <tr>
                                             <td><span t-esc="deduction.code"/></td>
+                                            <td><span t-esc="deduction.salary_rule_id.l10n_mx_sat_key_id.l10n_mx_sat_code"/></td>
                                             <td><span t-esc="deduction.name"/></td>
                                             <td class="text-right">
                                                 <span t-esc="'%.2f' % abs(deduction.total)"/>
@@ -187,7 +191,7 @@
                                         </tr>
                                     </t>
                                     <tr>
-                                        <td colspan="2" class="text-center"><strong>Total Deductions</strong></td>
+                                        <td colspan="3" class="text-center"><strong>Total Deductions</strong></td>
                                         <td class="text-right"><span t-esc="'%.2f' % abs(total_deductions)"/></td>
                                     </tr>
                                 </tbody>

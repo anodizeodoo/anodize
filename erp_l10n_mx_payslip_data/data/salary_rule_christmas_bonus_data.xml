@@ -96,7 +96,7 @@ table = {'05': [(0.01, 578.52, 0.00, 0.0192), (578.53, 4910.18, 11.11, 0.0640),
          (23976.21, 31968.20, 5781.50, 0.3200), (31968.21, 95904.60, 8338.90, 0.3400),
          (95904.61, 99999999, 30077.30, 0.3500)]}
 result = 0
-table_isr = table.get(contract.l10n_mx_payroll_schedule_pay, [])
+table_isr = table.get(contract.l10n_mx_payroll_schedule_pay_id.code, [])
 if table_isr:
     for value in table_isr:
         if income_period >=value[0] and value[1] >= income_period:
@@ -155,7 +155,7 @@ table = {
         (3642.61, 99999999.00, 0)],
 }
 result = 0.00
-table = table.get(contract.l10n_mx_payroll_schedule_pay, [])
+table = table.get(contract.l10n_mx_payroll_schedule_pay_id.code, [])
 if table:
     for value in table:
         if income_period >=value[0] and value[1] >= income_period:
@@ -206,7 +206,7 @@ table = [(0.01, 1768.96, 407.02), (1768.97, 2653.38, 406.83),
          (7382.34, 99999999.00, 0)]
 days_schedule = {'01': 1, '02': 7, '03': 14, '04': 15, '05': 30}
 result = -0.01
-days_work = days_schedule.get(contract.l10n_mx_payroll_schedule_pay, 0)
+days_work = days_schedule.get(contract.l10n_mx_payroll_schedule_pay_id.code, 0)
 if days_work:
     income_period = (income_period / days_work) * 30
     for value in table:

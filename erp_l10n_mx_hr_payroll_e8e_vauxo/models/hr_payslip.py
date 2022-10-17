@@ -31,9 +31,11 @@ except ImportError:
 
 
 PAYSLIP_TEMPLATE = 'erp_l10n_mx_payslip_cfdi_base.payroll12'
+PAYSLIP_TEMPLATE_NOT_CURP = 'erp_l10n_mx_payslip_cfdi_base.payroll12_not_curp'
 CFDI_XSLT_CADENA = 'l10n_mx_edi/data/3.3/cadenaoriginal.xslt'
 
 PAYSLIP_TEMPLATE_4 = 'erp_l10n_mx_payslip_cfdi_base.payroll12_40'
+PAYSLIP_TEMPLATE_4_NOT_CURP = 'erp_l10n_mx_payslip_cfdi_base.payroll12_40_not_curp'
 CFDI_XSLT_CADENA_4 = 'l10n_mx_edi_40/data/4.0/cadenaoriginal_4_0.xslt'
 
 
@@ -607,7 +609,7 @@ class HrPayslip(models.Model):
             record.l10n_mx_cfdi_name = ('%s-%s' % (
                 record.number, name)).replace('/', '')
             record._l10n_mx_edi_retry()
-            record.employee_id.loan_ids.filtered(
+            record.contract_id.loan_ids.filtered(
                 lambda loan: loan.payslips_count < loan.payment_term).write({
                     'payslip_ids': [(4, record.id)],
                 })
@@ -750,7 +752,7 @@ class HrPayslip(models.Model):
             'record': self,
             'company': self.company_id or self.contract_id.company_id,
             'employee': self.employee_id,
-            'payslip_type': 'O',
+            'payslip_type': self.l10n_mx_payslip_type,
             'number_of_days': int(sum(self.worked_days_line_ids.mapped(
                 'number_of_days'))),
             'date_start': self.contract_id.date_start,
@@ -768,7 +770,7 @@ class HrPayslip(models.Model):
         categ_e = self.env.ref(
             'erp_l10n_mx_payslip_data.hr_salary_rule_category_perception_mx_exempt')
         perceptions = self.line_ids.filtered(
-            lambda r: r.category_id in [categ_g, categ_e] and r.total)
+            lambda r: r.category_id in [categ_g, categ_e] and r.total and r.salary_rule_id.appears_on_payslip)
         total_taxed = round(sum(perceptions.filtered(
             lambda r: r.category_id == categ_g).mapped('total')), 2)
         total_exempt = round(sum(perceptions.filtered(
@@ -798,7 +800,7 @@ class HrPayslip(models.Model):
         if (perceptions.filtered(lambda r: r.code[-3:] in ['002', '023']) and
                 not perceptions.filtered(lambda r: r.code[-3:] in ['001'])):
             values.update({
-                'payslip_type': 'E',
+                'payslip_type': self.l10n_mx_payslip_type,
             })
         return values
 
@@ -806,7 +808,7 @@ class HrPayslip(models.Model):
         categ = self.env.ref(
             'erp_l10n_mx_payslip_data.hr_salary_rule_category_deduction_mx')
         deductions = self.line_ids.filtered(
-            lambda r: r.category_id == categ and r.amount)
+            lambda r: r.category_id == categ and r.amount and r.salary_rule_id.appears_on_payslip)
         total = sum(deductions.mapped('total'))
         total_other = sum(deductions.filtered(
             lambda r: r.code[-3:] != '002').mapped('total'))
@@ -841,13 +843,14 @@ class HrPayslip(models.Model):
             msgs.append(_("• El ZIP en el Partner de la compañia es requerido."))
         if not values['customer'].vat:
             msgs.append(_("• El RFC del empleado es requerido."))
-        if not values['company'].partner_id.l10n_mx_edi_curp:
-            msgs.append(_("• El CURP del Partner de la compañia es requerido."))
-        if values['company'].partner_id.l10n_mx_edi_curp:
-            if len(values['company'].partner_id.l10n_mx_edi_curp) < 18:
-                msgs.append(_("• El CURP del Partner de la compañia no debe tener menos de 18 caracteres."))
-            if not self.__pattern.match(values['company'].partner_id.l10n_mx_edi_curp):
-                msgs.append(_("• El CURP del Partner de la compañia no es válido."))
+        if values['company'].l10n_mx_edi_fiscal_regime != '601':
+            if not values['company'].partner_id.l10n_mx_edi_curp:
+                msgs.append(_("• El CURP del Partner de la compañia es requerido."))
+            if values['company'].partner_id.l10n_mx_edi_curp:
+                if len(values['company'].partner_id.l10n_mx_edi_curp) < 18:
+                    msgs.append(_("• El CURP del Partner de la compañia no debe tener menos de 18 caracteres."))
+                if not self.__pattern.match(values['company'].partner_id.l10n_mx_edi_curp):
+                    msgs.append(_("• El CURP del Partner de la compañia no es válido."))
         if not values['customer'].l10n_mx_edi_curp:
             msgs.append(_("• El CURP del empleado es requerido."))
         if values['customer'].l10n_mx_edi_curp:
@@ -869,6 +872,20 @@ class HrPayslip(models.Model):
             msgs.append(_("• El Código en el Cálculo de Salario no es válido para %s." % error_perceptions))
         if msgs:
             raise ValidationError('\n'.join(msgs))
+
+    def _get_payslip_template(self, company_id):
+        if company_id.l10n_mx_stamped_version == 'version_3':
+            if company_id.l10n_mx_edi_fiscal_regime != '601':
+                payslip_template = PAYSLIP_TEMPLATE
+            else:
+                payslip_template = PAYSLIP_TEMPLATE_NOT_CURP
+        else:
+            if company_id.l10n_mx_edi_fiscal_regime != '601':
+                payslip_template = PAYSLIP_TEMPLATE_4
+            else:
+                payslip_template = PAYSLIP_TEMPLATE_4_NOT_CURP
+        return payslip_template
+
 
     def _l10n_mx_edi_create_cfdi(self):
         """Creates and returns a dictionary containing 'cfdi' if the cfdi is
@@ -923,7 +940,9 @@ class HrPayslip(models.Model):
         values['certificate'] = certificate_id.sudo().get_data()[0]
 
         # -Compute cfdi
-        payslip_template = PAYSLIP_TEMPLATE if company_id.l10n_mx_stamped_version == 'version_3' else PAYSLIP_TEMPLATE_4
+
+        # payslip_template = PAYSLIP_TEMPLATE if company_id.l10n_mx_stamped_version == 'version_3' else PAYSLIP_TEMPLATE_4
+        payslip_template = self._get_payslip_template(company_id)
         cfdi = qweb._render(payslip_template, values=values)
 
         # -Compute cadena etree.tostring(cfdi_node, pretty_print=True, xml_declaration=True, encoding='UTF-8')
@@ -1079,6 +1098,17 @@ class HrPayslip(models.Model):
             report_name = "erp_l10n_mx_hr_payroll_e8e_vauxo.action_report_payslip_other"
         return self.env.ref(report_name).report_action(self, config=False)
 
+    @api.onchange('employee_id', 'struct_id', 'contract_id', 'date_from', 'date_to')
+    def _onchange_employee(self):
+        work_entries = self.env['hr.work.entry'].search([
+            ('date_start', '<=', self.date_to),
+            ('date_stop', '>=', self.date_from),
+            ('employee_id', '=', self.employee_id.id),
+        ])
+        if not work_entries.action_validate():
+            raise ValidationError(_('There are conflicts in the work entry for this employee in the selected period.'))
+        super(HrPayslip, self). _onchange_employee()
+
 
 class HrPayslipRun(models.Model):
     _inherit = 'hr.payslip.run'
@@ -1118,4 +1148,4 @@ class HrPayslipRun(models.Model):
             res.onchange_template_id_wrapper()
             mail_composition |= res
         # send all
-        mail_composition.action_send_mail()
+

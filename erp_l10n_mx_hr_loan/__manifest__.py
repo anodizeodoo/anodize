@@ -8,11 +8,11 @@
     "category": "Localization",
     "website": "https://www.soltein.net",
     "depends": [
-        "hr",
+        "hr_contract",
     ],
     "data": [
         "security/ir.model.access.csv",
-        "views/hr_employee_views.xml",
+        "views/hr_contract_views.xml",
     ],
     "installable": True,
 }

@@ -9,3 +9,7 @@ from . import res_company
 from . import res_config_settings
 from . import table_isr
 from . import sat_keys
+from . import table_minimum_wage
+from . import table_umas
+from . import table_umi
+from . import schedule_pay

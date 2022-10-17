@@ -51,16 +51,11 @@
             </field>
         </record>
 
-        <menuitem id="menu_hr_payroll_catalogs"
-                  name="Catalogs"
-                  parent="hr_work_entry_contract.menu_hr_payroll_root"
-                  sequence="75"/>
-
         <menuitem id="menu_action_sat_keys"
                   action="sat_keys_action"
                   name="SAT grouping code"
-                  parent="menu_hr_payroll_catalogs"
-                  sequence="10"/>
+                  parent="erp_l10n_mx_hr_base.menu_hr_payroll_catalogs"
+                  sequence="5"/>
 
     </data>
 </odoo>

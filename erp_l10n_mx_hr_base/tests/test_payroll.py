@@ -44,7 +44,7 @@ class HRPayroll(TransactionCase):
     def test_001_xml_structure(self):
         """Use XML expected to verify that is equal to generated. And SAT
         status"""
-        self.contract.l10n_mx_payroll_schedule_pay = '04'
+        self.contract.l10n_mx_payroll_schedule_pay = self.env.ref('schedule_pay_04')
         self.employee.contract_id = self.contract
         payroll = self.create_payroll()
         payroll.compute_sheet()
@@ -126,7 +126,7 @@ class HRPayroll(TransactionCase):
     def test_004_other_payment_002(self):
         """When other payment have the code 002, this must have node
         SubsidioAlEmpleo."""
-        self.contract.l10n_mx_payroll_schedule_pay = '04'
+        self.contract.l10n_mx_payroll_schedule_pay = self.env.ref('schedule_pay_04')
         payroll = self.create_payroll()
         # Contract with a low salary that requires subsidy
         self.contract.wage = 5000

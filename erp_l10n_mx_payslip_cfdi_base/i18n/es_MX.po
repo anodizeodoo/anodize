@@ -572,6 +572,11 @@ msgid "Ausencia (Ausentismo)"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_salary_rule__l10n_mx_automatic_isr
+msgid "Automatic calculation"
+msgstr "Cálculo automático"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_16
 msgid "Averías"
 msgstr ""
@@ -696,6 +701,11 @@ msgid "Config Settings"
 msgstr "Opciones de configuración"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.hr_salary_rule_view_form_inh_l10n_mx
+msgid "Configuration for ISR/IMSS calculation"
+msgstr "Configuración para cálculo de ISR/IMSS"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.res_config_settings_view_form_inherit_l10n_mx_payslip
 msgid "Configure data to Mexican payroll."
 msgstr "Configuración para la nómina Mexicana"
@@ -753,6 +763,22 @@ msgid "Cuotas sindicales"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__l10n_mx_table_isr__l10n_mx_isr_type__daily
+msgid "DAILY"
+msgstr "DIARIA"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__l10n_mx_table_isr__l10n_mx_isr_type__decennial
+msgid "DECENNIAL"
+msgstr "DECENAL"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umas__date_start
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umi__date_start
+msgid "Date Start"
+msgstr "Fecha de inicio"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__l10n_mx_sat_keys__l10n_mx_sat_classification__deduction
 msgid "Deduction"
 msgstr "Deducción"
@@ -781,9 +807,20 @@ msgid "Display Name"
 msgstr "Nombre en pantalla"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure__l10n_mx_payslip_type__e
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payslip__l10n_mx_payslip_type__e
+msgid "E-Extraordinary"
+msgstr "E-Extraordinaria"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_hr_employee
 msgid "Employee"
 msgstr "Empleado"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_minimum_wage__date_effective
+msgid "Effective date"
+msgstr "Fecha Vigencia"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_hr_contract
@@ -1192,6 +1229,13 @@ msgid "Mexican minimum salary"
 msgstr "Salario mínimo mexicano"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.actions.act_window,name:erp_l10n_mx_payslip_cfdi_base.table_minimum_wage_action
+#: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_l10n_mx_table_minimum_wage
+#: model:ir.ui.menu,name:erp_l10n_mx_payslip_cfdi_base.menu_action_table_minimum_wage
+msgid "Minimum wage"
+msgstr "Salarios Minimos"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payslip__l10n_mx_source_resource__im
 msgid "Mixed income"
 msgstr "Ingresos mixtos"
@@ -1262,6 +1306,12 @@ msgstr "Número de mensajes sin leer"
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__l10n_mx_sat_keys__l10n_mx_sat_classification__other
 msgid "Other payments"
 msgstr "Otros Pagos"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure__l10n_mx_payslip_type__o
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payslip__l10n_mx_payslip_type__o
+msgid "O-Ordinary Payroll"
+msgstr "O-Nómina Ordinaria"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_4
@@ -1542,6 +1592,7 @@ msgstr "Código Agrupador SAT"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_l10n_mx_sat_keys
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_salary_rule__l10n_mx_sat_key_id
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.sat_keys_view_form
 msgid "SAT keys"
 msgstr "Código Agrupador SAT"
@@ -1645,6 +1696,13 @@ msgid "State not defined"
 msgstr "Estado no definido"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_minimum_wage__status
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umas__status
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umi__status
+msgid "Status"
+msgstr "Estatus"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_other_8
 msgid ""
 "Subsidio efectivamente entregado que no correspondía (Aplica sólo cuando "
@@ -1711,6 +1769,12 @@ msgid "The parameters to configure the Payroll Stamped version."
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: code:addons/erp_l10n_mx_payslip_cfdi_base/models/hr_payslip.py:0
+#, python-format
+msgid "The payment period in the contract %s must have to which ISR belongs."
+msgstr "El periodo de pago en el contrato %s debe tener a que ISR pertenece."
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_time_payslip
 msgid "Time payslip"
 msgstr "Horario de pago"
@@ -1729,6 +1793,12 @@ msgstr "Para firmar"
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr__l10n_mx_isr_type
 msgid "Type"
 msgstr "Tipo"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure__l10n_mx_payslip_type
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payslip_type
+msgid "Type of payroll"
+msgstr "Tipo de Nómina"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__message_unread
@@ -1812,6 +1882,16 @@ msgid "Valid"
 msgstr "Validar"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umas__value_uma
+msgid "Value UMA"
+msgstr "Valor de UMA"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umi__value_umi
+msgid "Value UMI"
+msgstr "Valor UMI"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__res_company__l10n_mx_stamped_version__version_3
 msgid "Version 3.3"
 msgstr "Versión 3.3"
@@ -1881,3 +1961,23 @@ msgstr "Año"
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr__l10n_mx_isr_year
 msgid "Years"
 msgstr "Año"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr__l10n_mx_isr_year
+msgid "Years"
+msgstr "Año"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_minimum_wage__zone_a
+msgid "Zone A"
+msgstr "Zona A"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_minimum_wage__zone_b
+msgid "Zone B"
+msgstr "Zona B"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_minimum_wage__zone_c
+msgid "Zone C"
+msgstr "Zona C"

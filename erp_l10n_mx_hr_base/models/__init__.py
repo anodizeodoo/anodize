@@ -8,3 +8,5 @@ from . import hr_contract_type
 from . import contract_regime_type
 from . import res_company
 from . import res_config_settings
+from . import type_benefit
+from . import schedule_pay

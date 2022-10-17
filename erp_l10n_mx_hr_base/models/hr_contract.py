@@ -14,7 +14,7 @@ class HrContract(models.Model):
 
 
     l10n_mx_payroll_integrated_salary = fields.Float(
-        'Integrated Salary', tracking=True,
+        'Integrated Salary', tracking=True, compute='_compute_l10n_mx_payroll_integrated_salary', readonly=False,
         help='Used in the CFDI to express the salary '
         'that is integrated with the payments made in cash by daily quota, '
         'gratuities, perceptions, room, premiums, commissions, benefits in '
@@ -22,7 +22,7 @@ class HrContract(models.Model):
         'worker by his work, Pursuant to Article 84 of the Federal Labor '
         'Law. (Used to calculate compensation).')
     l10n_mx_payroll_daily_salary = fields.Float(
-        'Daily Salary', tracking=True)
+        'Daily Salary', tracking=True, compute='_compute_l10n_mx_payroll_daily_salary')
     l10n_mx_payroll_sdi_variable = fields.Float(
         'Variable SDI', default=0, tracking=True,
         help='Used when the salary type is mixed or variable. This value is '
@@ -31,36 +31,11 @@ class HrContract(models.Model):
         'integrated salary value.')
 
     # Overwrite options & default
-    l10n_mx_payroll_schedule_pay = fields.Selection([
-        ('01', 'Daily'),
-        ('02', 'Weekly'),
-        ('03', 'Biweekly'),
-        ('04', 'Fortnightly'),
-        ('05', 'Monthly'),
-        ('06', 'Bimonthly'),
-        ('07', 'Unit work'),
-        ('08', 'Commission'),
-        ('09', 'Raised price'),
-        ('10', 'Decennial'),
-        ('99', 'Other')], default='02', string=' Schedule Pay')
+    l10n_mx_payroll_schedule_pay_id = fields.Many2one('l10n.mx.payroll.schedule.pay', string='Schedule Pay')
 
     l10n_mx_payroll_contract_type_id = fields.Many2one('l10n.mx.payroll.contract.type', string='Contract type')
+    l10n_mx_type_benefit_id = fields.Many2one('l10n.mx.type.benefit', string='Types of Benefits')
 
-    l10n_mx_payroll_infonavit_type = fields.Selection(
-        [('percentage', _('Percentage')),
-         ('vsm', _('Number of minimum wages')),
-         ('fixed_amount', _('Fixed amount')), ],
-        string='INFONAVIT discount', help="INFONAVIT discount type that "
-        "is calculated in the employee's payslip")
-    l10n_mx_payroll_infonavit_rate = fields.Float(
-        string='Infonavit rate', help="Value to be deducted in the employee's"
-        " payment for the INFONAVIT concept.This depends on the INFONAVIT "
-        "discount type as follows: \n- If the type is percentage, then the "
-        "value of this field can be 1 - 100 \n- If the type is number of "
-        "minimum wages, the value of this field may be 1 - 25, since it is "
-        "\n- If the type is a fixed story, the value of this field must be "
-        "greater than zero. In addition, the amount of this deduction must "
-        "correspond to the payment period.")
     l10n_mx_payroll_food_voucher = fields.Float(
         'Food Voucher Amount',
         help='Amount to be paid in food voucher each payment period.')
@@ -70,6 +45,32 @@ class HrContract(models.Model):
     l10n_mx_payroll_attendance_bonus = fields.Float(
         'Attendance bonus', tracking=True,
         help='If the company offers attendance bonus, indicate the bonus amount by payment period.')
+    l10n_mx_payroll_gasoline_voucher = fields.Float('Gasoline Vouchers', tracking=True)
+    l10n_mx_payroll_restaurant_voucher = fields.Float('Restaurant Vouchers', tracking=True)
+    l10n_mx_payroll_school_support_bonus = fields.Float('School support', tracking=True)
+    l10n_mx_payroll_transportation_bonus = fields.Float('Transportation', tracking=True)
+    l10n_mx_payroll_funeral_expenses_bonus = fields.Float('Funeral expenses', tracking=True)
+
+    l10n_mx_payroll_infonavit_type = fields.Selection(
+        [('percentage', _('Percentage')),
+         ('vsm', _('Number of minimum wages')),
+         ('fixed_amount', _('Fixed amount')), ],
+        string='INFONAVIT discount', help="INFONAVIT discount type that "
+                                          "is calculated in the employee's payslip")
+    l10n_mx_payroll_infonavit_rate = fields.Float(
+        string='Infonavit rate', help="Value to be deducted in the employee's"
+                                      " payment for the INFONAVIT concept.This depends on the INFONAVIT "
+                                      "discount type as follows: \n- If the type is percentage, then the "
+                                      "value of this field can be 1 - 100 \n- If the type is number of "
+                                      "minimum wages, the value of this field may be 1 - 25, since it is "
+                                      "\n- If the type is a fixed story, the value of this field must be "
+                                      "greater than zero. In addition, the amount of this deduction must "
+                                      "correspond to the payment period.")
+    l10n_mx_payroll_infonavit_credit_number = fields.Integer(string='Credit number')
+    l10n_mx_payroll_infonavit_active = fields.Boolean(string='Active')
+    l10n_mx_payroll_infonavit_description = fields.Char(string='Description')
+    l10n_mx_payroll_infonavit_date_start = fields.Date(string='Date Start Aplication')
+    l10n_mx_payroll_infonavit_date_register = fields.Date(string='Date Register')
 
     def get_seniority(self, date_from=False, date_to=False, method='r'):
         """Return seniority between contract's date_start and date_to or today
@@ -120,3 +121,31 @@ class HrContract(models.Model):
             date_start = fields.date(
                 date.year - 1, contract_date.month, contract_date.day)
         return (date - date_start).days + 1
+
+    @api.depends('wage', 'l10n_mx_type_benefit_id.day_month')
+    def _compute_l10n_mx_payroll_daily_salary(self):
+        for record in self:
+            if record.wage and record.l10n_mx_type_benefit_id.day_month:
+                record.l10n_mx_payroll_daily_salary = record.wage / record.l10n_mx_type_benefit_id.day_month
+            else:
+                record.l10n_mx_payroll_daily_salary = False
+
+    @api.onchange('l10n_mx_type_benefit_id', 'date_start', 'l10n_mx_payroll_daily_salary')
+    def _onchange_l10n_mx_type_benefit_id(self):
+        if self.l10n_mx_type_benefit_id and self.date_start:
+            antiquity = relativedelta(fields.Date.today(), self.date_start).years
+            type_benefit_line_id = self.l10n_mx_type_benefit_id.find_rule_by_antiquity(antiquity)
+            self.l10n_mx_holidays = type_benefit_line_id.holidays
+            self.l10n_mx_payroll_integrated_salary = self.l10n_mx_payroll_daily_salary * type_benefit_line_id.integration_factor
+
+    @api.depends('l10n_mx_type_benefit_id', 'l10n_mx_payroll_daily_salary', 'date_start')
+    def _compute_l10n_mx_payroll_integrated_salary(self):
+        for record in self:
+            precision_digits = self.env['decimal.precision'].precision_get(record.sudo().currency_id.name)
+            if record.l10n_mx_type_benefit_id and record.l10n_mx_payroll_daily_salary and record.date_start:
+                antiquity = relativedelta(fields.Date.today(), record.date_start).years
+                type_benefit_line_id = record.l10n_mx_type_benefit_id.find_rule_by_antiquity(antiquity)
+                l10n_mx_payroll_integrated_salary = record.l10n_mx_payroll_daily_salary * type_benefit_line_id.integration_factor
+                record.l10n_mx_payroll_integrated_salary = float('%0.*f' % (precision_digits, l10n_mx_payroll_integrated_salary))
+            else:
+                record.l10n_mx_payroll_integrated_salary = False

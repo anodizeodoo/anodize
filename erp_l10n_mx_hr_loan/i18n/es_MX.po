@@ -18,6 +18,11 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 
 #. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__accumulated_amount_withheld
+msgid "Accumulated amount withheld"
+msgstr "Monto Acumulado retenido"
+
+#. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__active
 msgid "Active"
 msgstr "Activo"
@@ -41,6 +46,21 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__create_date
 msgid "Created on"
 msgstr "Creado el"
+
+#. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__credit_amount
+msgid "Credit Amount"
+msgstr "Importe del Crédito"
+
+#. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__date_end
+msgid "Date End"
+msgstr "Fecha Final"
+
+#. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__date_start
+msgid "Date Start"
+msgstr "Fecha de Inicio"
 
 #. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee__display_name
@@ -101,6 +121,11 @@ msgid "Indicates the payment term for this loan."
 msgstr "Indica el plazo de pago de este préstamo."
 
 #. module: erp_l10n_mx_hr_loan
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_loan.view_hr_employee_form_inherit_l10n_mx
+msgid "Information FONACOT"
+msgstr "Información FONACOT"
+
+#. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan____last_update
 msgid "Last Modified on"
@@ -124,9 +149,9 @@ msgid "Loan"
 msgstr "Préstamo"
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee__loan_ids
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_contract__loan_ids
 #: model:ir.ui.menu,name:erp_l10n_mx_hr_loan.l10n_mx_loan
-#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_loan.view_hr_employee_form_inherit_l10n_mx
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_loan.view_hr_payroll_contract_form_inherit
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_loan.view_l10n_mx_loan_form
 msgid "Loans"
 msgstr "Préstamos"
@@ -142,9 +167,9 @@ msgid "Number"
 msgstr "Número"
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__number_fonacot
-msgid "Number Fonacot"
-msgstr "Número Fonacot"
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee__number_fonacot
+msgid "Number FONACOT"
+msgstr "Número FONACOT"
 
 #. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,help:erp_l10n_mx_hr_loan.field_hr_employee_loan__name
@@ -157,6 +182,21 @@ msgid "Payment Term"
 msgstr "Plazo de Pago"
 
 #. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__payments_other_employers
+msgid "Payments by other employers"
+msgstr "Pagos por otros patrones"
+
+#. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__residue
+msgid "Residue"
+msgstr "Saldo"
+
+#. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__loan_type
 msgid "Type"
 msgstr "Tipo"
+
+#. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee__work_fonacot
+msgid "Workplace FONACOT"
+msgstr "Centro de trabajo FONACOT"

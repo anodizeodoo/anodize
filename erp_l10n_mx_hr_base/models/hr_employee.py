@@ -10,7 +10,8 @@ from io import BytesIO
 from itertools import groupby
 from calendar import monthrange
 import requests
-
+from dateutil.relativedelta import relativedelta
+from unicodedata import normalize
 from lxml import etree, objectify
 from werkzeug import url_encode
 from zeep import Client
@@ -70,3 +71,57 @@ class HrEmployee(models.Model):
     l10n_mx_payment_method = fields.Selection([('PUE', '(PUE) Pago en una sola exhibición'),
                                                ('PPD', '(PPD) Pago en parcialidades o diferido')],
                                                default='PUE', string="Payment method")
+
+    zip = fields.Char(string='C.P', related='address_home_id.zip')
+    age = fields.Char('Age', compute="_compute_age")
+    bank_id = fields.Many2one('res.bank', string='Bank', tracking=True)
+    l10n_mx_edi_clabe = fields.Char("CLABE")
+    filtered_banks = fields.One2many(comodel_name='res.bank', compute='_filter_banks')
+
+    @api.depends('birthday')
+    def _compute_age(self):
+        for record in self:
+            record.age = relativedelta(fields.Date.today(), record.birthday).years
+
+    @api.depends('address_home_id')
+    def _filter_banks(self):
+        for bank in self:
+            bank.filtered_banks = bank.address_home_id.bank_ids.mapped('bank_id')
+
+    @api.onchange('bank_id', 'address_home_id', 'bank_account_id')
+    def _onchange_bank_id(self):
+        if self.address_home_id and self.bank_id and self.bank_account_id:
+            bank_ids = self.address_home_id.bank_ids.filtered(lambda b: b.bank_id == self.bank_id and b.acc_number == self.bank_account_id.acc_number)
+            if bank_ids:
+                self.l10n_mx_edi_clabe = bank_ids[0].l10n_mx_edi_clabe
+
+    def _get_return_without_accent(self, word):
+        word = re.sub(r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1", normalize("NFD", word), 0, re.I)
+        word = normalize('NFC', word)
+        return word
+
+    @api.model
+    def create(self, vals):
+        if vals.get('firstname'):
+            vals.update({'firstname': self._get_return_without_accent(vals.get('firstname')).upper()})
+        if vals.get('lastname'):
+            vals.update({'lastname': self._get_return_without_accent(vals.get('lastname')).upper()})
+        if vals.get('lastname2'):
+            vals.update({'lastname2': self._get_return_without_accent(vals.get('lastname2')).upper()})
+        return super(HrEmployee, self).create(vals)
+
+    def write(self, vals):
+        if vals.get('firstname'):
+            vals.update({'firstname': self._get_return_without_accent(vals.get('firstname')).upper()})
+        if vals.get('lastname'):
+            vals.update({'lastname': self._get_return_without_accent(vals.get('lastname')).upper()})
+        if vals.get('lastname2'):
+            vals.update({'lastname2': self._get_return_without_accent(vals.get('lastname2')).upper()})
+        return super(HrEmployee, self).write(vals)
+
+    def action_update_employee_name(self):
+        for record in self:
+            record.firstname = self._get_return_without_accent(record.firstname).upper()
+            record.lastname = self._get_return_without_accent(record.lastname).upper()
+            record.lastname2 = self._get_return_without_accent(record.lastname2).upper()
+

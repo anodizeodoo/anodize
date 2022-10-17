@@ -34,8 +34,30 @@
             <xpath expr="//page[@name='personal_information']//div[@name='div_km_home_work']" position="after">
                 <field name="l10n_mx_edi_rfc" required="1" force_save="1"/>
                 <field name="l10n_mx_edi_curp" required="1" force_save="1"/>
-                <field name="l10n_mx_edi_family_medical_unit"/>
                 <field name="l10n_mx_edi_afore_number"/>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']//field[@name='address_home_id']" position="after">
+                <field name="zip"/>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']//field[@name='birthday']" position="after">
+                <field name="age"/>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']//field[@name='marital']" position="before">
+                <field name="gender" position="move"/>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']//group//group[3]" position="before">
+                <group string="Bank data">
+                    <field name="filtered_banks" invisible="1"/>
+                    <field name="bank_id" domain="[('id', 'in', filtered_banks)]"/>
+                    <field name="bank_account_id" position="move"/>
+                    <field name="l10n_mx_edi_clabe"/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']//field[@name='emergency_phone']" position="after">
+                <field name="l10n_mx_edi_family_medical_unit"/>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']//group//group//field[@name='bank_account_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
             <field name="department_id" position="after">
                 <field name="job_id" position="move"/>
@@ -120,6 +142,17 @@
             </tree>
         </field>
     </record>
+
+    <record id="action_update_employee_name" model="ir.actions.server">
+            <field name="name">Update employee name</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="binding_model_id" ref="hr.model_hr_employee"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+                action = records.action_update_employee_name()
+            </field>
+        </record>
 
     <record id="action_employer_registration" model="ir.actions.act_window">
         <field name="name">Employer Registration</field>

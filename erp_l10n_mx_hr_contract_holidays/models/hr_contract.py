@@ -23,12 +23,12 @@ class HrContract(models.Model):
         help="Initial number of days for holidays. The minimum is 6 days.")
 
     l10n_mx_vacation_bonus = fields.Integer(
-        string="Vacation bonus (%)", default=25, tracking=True,
+        string="Vacation cousin (%)", tracking=True, compute='_compute_l10n_mx_vacation_christmas_bonus',
         help="Percentage of vacation bonus. The minimum is 25 %.")
     l10n_mx_christmas_bonus = fields.Integer(
-        string="Christmas bonus (days)", default=15, help="Number of day for "
+        string="Bonus Days", help="Number of day for "
                                                           "the Christmas bonus. The minimum is 15 days' pay",
-        tracking=True)
+        compute='_compute_l10n_mx_vacation_christmas_bonus', tracking=True)
     l10n_mx_antiquity = fields.Char('Antiquity', compute="_compute_l10n_mx_antiquity")
 
     l10n_mx_number = fields.Char(default=lambda self: self._default_l10n_mx_number(), string='No. Contract')
@@ -110,9 +110,23 @@ class HrContract(models.Model):
             record.l10n_mx_antiquity = _('{} Year(s) {} Month(s) {} Day(s)').format(years, months, days)
 
     def action_update_l10n_mx_holidays(self):
-        table_holidays_obj = self.env['l10n.mx.table.holidays']
-        month = (relativedelta(fields.Date.today(), self.date_start).years * 12) + relativedelta(fields.Date.today(), self.date_start).months
-        tabulator_id = table_holidays_obj.find_rule_by_month(month)
-        self.l10n_mx_holidays = tabulator_id.l10n_mx_days
+        # table_holidays_obj = self.env['l10n.mx.table.holidays']
+        # month = (relativedelta(fields.Date.today(), self.date_start).years * 12) + relativedelta(fields.Date.today(), self.date_start).months
+        # tabulator_id = table_holidays_obj.find_rule_by_month(month)
+        # self.l10n_mx_holidays = tabulator_id.l10n_mx_days
+        if self.l10n_mx_type_benefit_id and self.date_start:
+            antiquity = relativedelta(fields.Date.today(), self.date_start).years
+            type_benefit_line_id = self.l10n_mx_type_benefit_id.find_rule_by_antiquity(antiquity)
+            self.l10n_mx_holidays = type_benefit_line_id.holidays
 
-
+    @api.depends('l10n_mx_type_benefit_id', 'date_start')
+    def _compute_l10n_mx_vacation_christmas_bonus(self):
+        for record in self:
+            if record.l10n_mx_type_benefit_id and record.date_start:
+                antiquity = relativedelta(fields.Date.today(), record.date_start).years
+                type_benefit_line_id = record.l10n_mx_type_benefit_id.find_rule_by_antiquity(antiquity)
+                record.l10n_mx_vacation_bonus = type_benefit_line_id.vacation_cousin
+                record.l10n_mx_christmas_bonus = type_benefit_line_id.bonus_days
+            else:
+                record.l10n_mx_vacation_bonus = False
+                record.l10n_mx_christmas_bonus = False

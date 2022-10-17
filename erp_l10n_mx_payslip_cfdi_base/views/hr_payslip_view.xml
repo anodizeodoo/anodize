@@ -75,6 +75,9 @@
                 <attribute name="states">draft,hr_check,confirm,verify,done</attribute>
             </xpath>
 
+            <field name="struct_id" position="after">
+                <field name="l10n_mx_payslip_type"/>
+            </field>
 
         </field>
     </record>
