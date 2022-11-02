@@ -8,6 +8,11 @@
             <field name="name" position="before">
                 <field name="registration_number"/>
             </field>
+            <field name="name" position="after">
+                <field name="l10n_mx_edi_rfc"/>
+                <field name="l10n_mx_edi_curp"/>
+                <field name="zip"/>
+            </field>
         </field>
     </record>
 
