@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="table_minimum_wage_view_tree" model="ir.ui.view">
+            <field name="name">table.minimum.wage.view.tree</field>
+            <field name="model">l10n.mx.table.minimum.wage</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date_effective"/>
+                    <field name="zone_a"/>
+                    <field name="zone_b"/>
+                    <field name="zone_c"/>
+                    <field name="status" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="table_minimum_wage_view_form" model="ir.ui.view">
+            <field name="name">table.minimum.wage.view.form</field>
+            <field name="model">l10n.mx.table.minimum.wage</field>
+            <field name="arch" type="xml">
+                <form string="Table minimum wage">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date_effective"/>
+                                <field name="status" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <field name="zone_a"/>
+                                <field name="zone_b"/>
+                                <field name="zone_c"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="table_minimum_wage_action" model="ir.actions.act_window">
+            <field name="name">Minimum wage</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.mx.table.minimum.wage</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                   No records found.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+            id="menu_action_table_minimum_wage"
+            action="table_minimum_wage_action"
+            name="Minimum wage"
+            parent="erp_l10n_mx_hr_contract_holidays.menu_table_configuration"
+            sequence="25"/>
+
+    </data>
+</odoo>

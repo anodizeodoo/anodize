@@ -1,0 +1,1291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--START Deductions-->
+        <record id="l10n_mx_sat_keys_deductions_1" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">001</field>
+            <field name="l10n_mx_sat_name">Seguridad social</field>
+            <field name="l10n_mx_sat_classification">deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_2" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">002</field>
+            <field name="l10n_mx_sat_name">ISR</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_3" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">003</field>
+            <field name="l10n_mx_sat_name">Aportaciones a retiro, cesantía en edad avanzada y vejez.</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_4" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">004</field>
+            <field name="l10n_mx_sat_name">Otros</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_5" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">005</field>
+            <field name="l10n_mx_sat_name">Aportaciones a Fondo de vivienda</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_6" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">006</field>
+            <field name="l10n_mx_sat_name">Descuento por incapacidad</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_7" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">007</field>
+            <field name="l10n_mx_sat_name">Pensión alimenticia</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_8" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">008</field>
+            <field name="l10n_mx_sat_name">Renta</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_9" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">009</field>
+            <field name="l10n_mx_sat_name">Préstamos provenientes del Fondo Nacional de la Vivienda para los Trabajadores</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_10" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">010</field>
+            <field name="l10n_mx_sat_name">Pago por crédito de vivienda</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_11" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">011</field>
+            <field name="l10n_mx_sat_name">Pago de abonos INFONACOT</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_12" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">012</field>
+            <field name="l10n_mx_sat_name">Anticipo de salarios</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_13" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">013</field>
+            <field name="l10n_mx_sat_name">Pagos hechos con exceso al trabajador</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_14" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">014</field>
+            <field name="l10n_mx_sat_name">Errores</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_15" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">015</field>
+            <field name="l10n_mx_sat_name">Pérdidas</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_16" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">016</field>
+            <field name="l10n_mx_sat_name">Averías</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_17" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">017</field>
+            <field name="l10n_mx_sat_name">Adquisición de artículos producidos por la empresa o establecimiento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_18" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">018</field>
+            <field name="l10n_mx_sat_name">Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_19" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">019</field>
+            <field name="l10n_mx_sat_name">Cuotas sindicales</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_20" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">020</field>
+            <field name="l10n_mx_sat_name">Ausencia (Ausentismo)</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_21" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">021</field>
+            <field name="l10n_mx_sat_name">Cuotas obrero patronales</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_22" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">022</field>
+            <field name="l10n_mx_sat_name">Impuestos Locales</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_23" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">023</field>
+            <field name="l10n_mx_sat_name">Aportaciones voluntarias</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2016-11-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_24" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">024</field>
+            <field name="l10n_mx_sat_name">Ajuste en Gratificación Anual (Aguinaldo) Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_25" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">025</field>
+            <field name="l10n_mx_sat_name">Ajuste en Gratificación Anual (Aguinaldo) Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_26" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">026</field>
+            <field name="l10n_mx_sat_name">Ajuste en Participación de los Trabajadores en las Utilidades PTU Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_27" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">027</field>
+            <field name="l10n_mx_sat_name">Ajuste en Participación de los Trabajadores en las Utilidades PTU Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_28" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">028</field>
+            <field name="l10n_mx_sat_name">Ajuste en Reembolso de Gastos Médicos Dentales y Hospitalarios Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_29" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">029</field>
+            <field name="l10n_mx_sat_name">Ajuste en Fondo de ahorro Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_30" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">030</field>
+            <field name="l10n_mx_sat_name">Ajuste en Caja de ahorro Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_31" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">031</field>
+            <field name="l10n_mx_sat_name">Ajuste en Contribuciones a Cargo del Trabajador Pagadas por el Patrón Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_32" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">032</field>
+            <field name="l10n_mx_sat_name">Ajuste en Premios por puntualidad Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_33" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">033</field>
+            <field name="l10n_mx_sat_name">Ajuste en Prima de Seguro de vida Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_34" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">034</field>
+            <field name="l10n_mx_sat_name">Ajuste en Seguro de Gastos Médicos Mayores Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_35" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">035</field>
+            <field name="l10n_mx_sat_name">Ajuste en Cuotas Sindicales Pagadas por el Patrón Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_36" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">036</field>
+            <field name="l10n_mx_sat_name">Ajuste en Subsidios por incapacidad Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_37" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">037</field>
+            <field name="l10n_mx_sat_name">Ajuste en Becas para trabajadores y/o hijos Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_38" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">038</field>
+            <field name="l10n_mx_sat_name">Ajuste en Horas extra Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_39" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">039</field>
+            <field name="l10n_mx_sat_name">Ajuste en Horas extra Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_40" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">040</field>
+            <field name="l10n_mx_sat_name">Ajuste en Prima dominical Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_41" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">041</field>
+            <field name="l10n_mx_sat_name">Ajuste en Prima dominical Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_42" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">042</field>
+            <field name="l10n_mx_sat_name">Ajuste en Prima vacacional Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_43" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">043</field>
+            <field name="l10n_mx_sat_name">Ajuste en Prima vacacional Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_44" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">044</field>
+            <field name="l10n_mx_sat_name">Ajuste en Prima por antigüedad Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_45" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">045</field>
+            <field name="l10n_mx_sat_name">Ajuste en Prima por antigüedad Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_46" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">046</field>
+            <field name="l10n_mx_sat_name">Ajuste en Pagos por separación Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_47" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">047</field>
+            <field name="l10n_mx_sat_name">Ajuste en Pagos por separación Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_48" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">048</field>
+            <field name="l10n_mx_sat_name">Ajuste en Seguro de retiro Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_49" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">049</field>
+            <field name="l10n_mx_sat_name">Ajuste en Indemnizaciones Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_50" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">050</field>
+            <field name="l10n_mx_sat_name">Ajuste en Indemnizaciones Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_51" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">051</field>
+            <field name="l10n_mx_sat_name">Ajuste en Reembolso por funeral Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_52" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">052</field>
+            <field name="l10n_mx_sat_name">Ajuste en Cuotas de seguridad social pagadas por el patrón Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_53" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">053</field>
+            <field name="l10n_mx_sat_name">Ajuste en Comisiones Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_54" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">054</field>
+            <field name="l10n_mx_sat_name">Ajuste en Vales de despensa Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_55" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">055</field>
+            <field name="l10n_mx_sat_name">Ajuste en Vales de restaurante Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_56" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">056</field>
+            <field name="l10n_mx_sat_name">Ajuste en Vales de gasolina Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_57" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">057</field>
+            <field name="l10n_mx_sat_name">Ajuste en Vales de ropa Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_58" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">058</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ayuda para renta Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_59" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">059</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ayuda para artículos escolares Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_60" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">060</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ayuda para anteojos Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_61" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">061</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ayuda para transporte Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_62" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">062</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ayuda para gastos de funeral Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_63" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">063</field>
+            <field name="l10n_mx_sat_name">Ajuste en Otros ingresos por salarios Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_64" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">064</field>
+            <field name="l10n_mx_sat_name">Ajuste en Otros ingresos por salarios Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_65" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">065</field>
+            <field name="l10n_mx_sat_name">Ajuste en Jubilaciones, pensiones o haberes de retiro en una sola exhibición Exento </field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_66" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">066</field>
+            <field name="l10n_mx_sat_name">Ajuste en Jubilaciones, pensiones o haberes de retiro en una sola exhibición Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_67" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">067</field>
+            <field name="l10n_mx_sat_name">Ajuste en Pagos por separación Acumulable</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_68" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">068</field>
+            <field name="l10n_mx_sat_name">Ajuste en Pagos por separación No acumulable</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_69" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">069</field>
+            <field name="l10n_mx_sat_name">Ajuste en Jubilaciones, pensiones o haberes de retiro en parcialidades Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_70" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">070</field>
+            <field name="l10n_mx_sat_name">Ajuste en Jubilaciones, pensiones o haberes de retiro en parcialidades Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_71" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">071</field>
+            <field name="l10n_mx_sat_name">Ajuste en Subsidio para el empleo (efectivamente entregado al trabajador)</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_72" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">072</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ingresos en acciones o títulos valor que representan bienes Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="l10n_mx_sat_date_end">2018-10-14</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_73" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">073</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ingresos en acciones o títulos valor que representan bienes Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_74" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">074</field>
+            <field name="l10n_mx_sat_name">Ajuste en Alimentación Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_75" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">075</field>
+            <field name="l10n_mx_sat_name">Ajuste en Alimentación Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_76" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">076</field>
+            <field name="l10n_mx_sat_name">Ajuste en Habitación Exento</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_77" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">077</field>
+            <field name="l10n_mx_sat_name">Ajuste en Habitación Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_78" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">078</field>
+            <field name="l10n_mx_sat_name">Ajuste en Premios por asistencia</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_79" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">079</field>
+            <field name="l10n_mx_sat_name">Ajuste en Pagos distintos a los listados y que no deben considerarse como ingreso por sueldos, salarios o ingresos asimilados.</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_80" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">080</field>
+            <field name="l10n_mx_sat_name">Ajuste en Viáticos gravados</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_81" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">081</field>
+            <field name="l10n_mx_sat_name">Ajuste en Viáticos (entregados al trabajador)</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_82" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">082</field>
+            <field name="l10n_mx_sat_name">Ajuste en Fondo de ahorro Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_83" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">083</field>
+            <field name="l10n_mx_sat_name">Ajuste en Caja de ahorro Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_84" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">084</field>
+            <field name="l10n_mx_sat_name">Ajuste en Prima de Seguro de vida Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_85" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">085</field>
+            <field name="l10n_mx_sat_name">Ajuste en Seguro de Gastos Médicos Mayores Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_86" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">086</field>
+            <field name="l10n_mx_sat_name">Ajuste en Subsidios por incapacidad Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_87" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">087</field>
+            <field name="l10n_mx_sat_name">Ajuste en Becas para trabajadores y/o hijos Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_88" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">088</field>
+            <field name="l10n_mx_sat_name">Ajuste en Seguro de retiro Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_89" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">089</field>
+            <field name="l10n_mx_sat_name">Ajuste en Vales de despensa Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_90" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">090</field>
+            <field name="l10n_mx_sat_name">Ajuste en Vales de restaurante Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_91" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">091</field>
+            <field name="l10n_mx_sat_name">Ajuste en Vales de gasolina Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_92" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">092</field>
+            <field name="l10n_mx_sat_name">Ajuste en Vales de ropa Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_93" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">093</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ayuda para renta Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_94" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">094</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ayuda para artículos escolares Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_95" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">095</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ayuda para anteojos Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_96" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">096</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ayuda para transporte Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_97" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">097</field>
+            <field name="l10n_mx_sat_name">Ajuste en Ayuda para gastos de funeral Gravado</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_98" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">098</field>
+            <field name="l10n_mx_sat_name">Ajuste a ingresos asimilados a salarios gravados</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_100" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">100</field>
+            <field name="l10n_mx_sat_name">Ajuste en Viáticos exentos</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_101" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">101</field>
+            <field name="l10n_mx_sat_name">ISR Retenido de ejercicio anterior</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2017-12-05</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_102" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">102</field>
+            <field name="l10n_mx_sat_name">Ajuste a pagos por gratificaciones, primas, compensaciones, recompensas u otros a extrabajadores derivados de jubilación en parcialidades, gravados</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_103" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">103</field>
+            <field name="l10n_mx_sat_name">Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación en parcialidades derivados de la ejecución de una resolución judicial o de un laudo gravados</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_104" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">104</field>
+            <field name="l10n_mx_sat_name">Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación en parcialidades derivados de la ejecución de una resolución judicial o de un laudo exentos</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_105" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">105</field>
+            <field name="l10n_mx_sat_name">Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación en una sola exhibición derivados de la ejecución de una resolución judicial o de un laudo gravados</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_106" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">106</field>
+            <field name="l10n_mx_sat_name">Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación en una sola exhibición derivados de la ejecución de una resolución judicial o de un laudo exentos</field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_deductions_107" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">107</field>
+            <field name="l10n_mx_sat_name">Ajuste al Subsidio Causado </field>
+            <field name="l10n_mx_sat_classification" >deduction</field>
+            <field name="l10n_mx_sat_date_start">2020-01-01</field>
+            <field name="active">True</field>
+        </record>
+         <!--END Deductions-->
+
+         <!--START Other Payment-->
+        <record id="l10n_mx_sat_keys_other_1" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">001</field>
+            <field name="l10n_mx_sat_name">Reintegro de ISR pagado en exceso (siempre que no haya sido enterado al SAT)</field>
+            <field name="l10n_mx_sat_classification">other</field>
+            <field name="l10n_mx_sat_date_start">2017-01-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_other_2" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">002</field>
+            <field name="l10n_mx_sat_name">Subsidio para el empleo (efectivamente entregado al trabajador)</field>
+            <field name="l10n_mx_sat_classification">other</field>
+            <field name="l10n_mx_sat_date_start">2017-01-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_other_3" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">003</field>
+            <field name="l10n_mx_sat_name">Viáticos (entregados al trabajador)</field>
+            <field name="l10n_mx_sat_classification">other</field>
+            <field name="l10n_mx_sat_date_start">2017-01-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_other_4" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">004</field>
+            <field name="l10n_mx_sat_name">Aplicación de saldo a favor por compensación anual</field>
+            <field name="l10n_mx_sat_classification">other</field>
+            <field name="l10n_mx_sat_date_start">2017-01-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_other_5" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">004</field>
+            <field name="l10n_mx_sat_name">Reintegro de ISR retenido en exceso de ejercicio anterior (siempre que no haya sido enterado al SAT)</field>
+            <field name="l10n_mx_sat_classification">other</field>
+            <field name="l10n_mx_sat_date_start">2017-12-05</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_other_6" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">006</field>
+            <field name="l10n_mx_sat_name">Alimentos en bienes (Servicios de comedor y comida) Art 94 último párrafo LISR</field>
+            <field name="l10n_mx_sat_classification">other</field>
+            <field name="l10n_mx_sat_date_start">2020-01-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_other_7" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">007</field>
+            <field name="l10n_mx_sat_name">ISR ajustado por subsidio</field>
+            <field name="l10n_mx_sat_classification">other</field>
+            <field name="l10n_mx_sat_date_start">2020-01-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_other_8" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">008</field>
+            <field name="l10n_mx_sat_name">Subsidio efectivamente entregado que no correspondía (Aplica sólo cuando haya ajuste al cierre de mes en relación con el Apéndice 7 de la guía de llenado de nómina)</field>
+            <field name="l10n_mx_sat_classification">other</field>
+            <field name="l10n_mx_sat_date_start">2020-01-01</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_other_9" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">009</field>
+            <field name="l10n_mx_sat_name">Reembolso de descuentos efectuados para el crédito de vivienda</field>
+            <field name="l10n_mx_sat_classification">other</field>
+            <field name="l10n_mx_sat_date_start">2020-04-20</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_other_10" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">999</field>
+            <field name="l10n_mx_sat_name">Pagos distintos a los listados y que no deben considerarse como ingreso por sueldos, salarios o ingresos asimilados</field>
+            <field name="l10n_mx_sat_classification">other</field>
+            <field name="l10n_mx_sat_date_start">2017-01-01</field>
+            <field name="active">True</field>
+        </record>
+        <!--END Other Payment-->
+
+        <!--START Perceptions Payment-->
+        <record id="l10n_mx_sat_keys_perception_1" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">001</field>
+            <field name="l10n_mx_sat_name">Sueldos, Salarios  Rayas y Jornales</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_2" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">002</field>
+            <field name="l10n_mx_sat_name">Gratificación Anual (Aguinaldo)</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_3" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">003</field>
+            <field name="l10n_mx_sat_name">Participación de los Trabajadores en las Utilidades PTU</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_4" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">004</field>
+            <field name="l10n_mx_sat_name">Reembolso de Gastos Médicos Dentales y Hospitalarios</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_5" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">005</field>
+            <field name="l10n_mx_sat_name">Fondo de Ahorro</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_6" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">006</field>
+            <field name="l10n_mx_sat_name">Caja de ahorro</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_9" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">009</field>
+            <field name="l10n_mx_sat_name">Contribuciones a Cargo del Trabajador Pagadas por el Patrón</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+         <record id="l10n_mx_sat_keys_perception_10" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">010</field>
+            <field name="l10n_mx_sat_name">Premios por puntualidad</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_11" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">011</field>
+            <field name="l10n_mx_sat_name">Prima de Seguro de vida</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_12" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">012</field>
+            <field name="l10n_mx_sat_name">Seguro de Gastos Médicos Mayores</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_13" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">013</field>
+            <field name="l10n_mx_sat_name">Cuotas Sindicales Pagadas por el Patrón</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_14" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">014</field>
+            <field name="l10n_mx_sat_name">Subsidios por incapacidad</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_15" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">015</field>
+            <field name="l10n_mx_sat_name">Becas para trabajadores y/o hijos</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_19" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">019</field>
+            <field name="l10n_mx_sat_name">Horas extra</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_20" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">020</field>
+            <field name="l10n_mx_sat_name">Prima dominical</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_21" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">021</field>
+            <field name="l10n_mx_sat_name">Prima vacacional</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_22" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">022</field>
+            <field name="l10n_mx_sat_name">Prima por antigüedad</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+         <record id="l10n_mx_sat_keys_perception_23" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">023</field>
+            <field name="l10n_mx_sat_name">Pagos por separación</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_24" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">024</field>
+            <field name="l10n_mx_sat_name">Seguro de retiro</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_25" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">025</field>
+            <field name="l10n_mx_sat_name">Indemnizaciones</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_26" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">026</field>
+            <field name="l10n_mx_sat_name">Reembolso por funeral</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_27" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">027</field>
+            <field name="l10n_mx_sat_name">Cuotas de seguridad social pagadas por el patrón</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_28" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">028</field>
+            <field name="l10n_mx_sat_name">Comisiones</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_29" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">029</field>
+            <field name="l10n_mx_sat_name">Vales de despensa</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_30" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">030</field>
+            <field name="l10n_mx_sat_name">Vales de restaurante</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_31" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">031</field>
+            <field name="l10n_mx_sat_name">Vales de gasolina</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_32" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">032</field>
+            <field name="l10n_mx_sat_name">Vales de ropa</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_33" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">033</field>
+            <field name="l10n_mx_sat_name">Ayuda para renta</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_34" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">034</field>
+            <field name="l10n_mx_sat_name">Ayuda para artículos escolares</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_35" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">035</field>
+            <field name="l10n_mx_sat_name">Ayuda para anteojos</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_36" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">036</field>
+            <field name="l10n_mx_sat_name">Ayuda para transporte</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_37" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">037</field>
+            <field name="l10n_mx_sat_name">Ayuda para gastos de funeral</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_38" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">038</field>
+            <field name="l10n_mx_sat_name">Otros ingresos por salarios</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_39" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">039</field>
+            <field name="l10n_mx_sat_name">Jubilaciones, pensiones o haberes de retiro</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_44" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">044</field>
+            <field name="l10n_mx_sat_name">Jubilaciones, pensiones o haberes de retiro en parcialidades</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_45" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">045</field>
+            <field name="l10n_mx_sat_name">Ingresos en acciones o títulos valor que representan bienes</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_46" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">046</field>
+            <field name="l10n_mx_sat_name">Ingresos asimilados a salarios</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_47" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">047</field>
+            <field name="l10n_mx_sat_name">Alimentación diferentes a los establecidos en el Art 94 último párrafo LISR</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_48" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">048</field>
+            <field name="l10n_mx_sat_name">Habitación</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_49" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">049</field>
+            <field name="l10n_mx_sat_name">Premios por asistencia</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2016-01-11</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_50" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">050</field>
+            <field name="l10n_mx_sat_name">Viáticos</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2017-01-06</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_51" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">051</field>
+            <field name="l10n_mx_sat_name">Pagos por gratificaciones, primas, compensaciones, recompensas u otros a extrabajadores derivados de jubilación en parcialidades</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_52" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">052</field>
+            <field name="l10n_mx_sat_name">Pagos que se realicen a extrabajadores que obtengan una jubilación en parcialidades derivados de la ejecución de resoluciones judicial o de un laudo</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+        <record id="l10n_mx_sat_keys_perception_53" model="l10n.mx.sat.keys">
+            <field name="l10n_mx_sat_code">053</field>
+            <field name="l10n_mx_sat_name">Pagos que se realicen a extrabajadores que obtengan una jubilación en una sola exhibición derivados de la ejecución de resoluciones judicial o de un laudo</field>
+            <field name="l10n_mx_sat_classification">perception</field>
+            <field name="l10n_mx_sat_date_start">2018-10-15</field>
+            <field name="active">True</field>
+        </record>
+
+    </data>
+</odoo>

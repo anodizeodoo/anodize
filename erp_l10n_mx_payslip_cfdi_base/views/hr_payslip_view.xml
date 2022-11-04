@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_hr_payslip_form_l10n_mx">
+        <field name="name">view.hr.payslip.form.l10n_mx</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="before">
+                <group string="Informacion Fiscal" name="mx_info">
+                    <group>
+                        <label for="l10n_mx_pac_status" states="verify,done,cancel"/>
+                        <div class="o_row">
+                            <field name="l10n_mx_pac_status" states="verify,done,cancel"/>
+                        </div>
+                        <label for="l10n_mx_sat_status" states="verify,done,cancel"/>
+                        <div class="o_row" name="sat_status">
+                            <field name="l10n_mx_sat_status" states="verify,done,cancel"/>
+                        </div>
+                    </group>
+                    <group>
+                        <field name="l10n_mx_origin"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='contract_id']" position="before">
+                <field name="l10n_mx_payment_date"/>
+            </xpath>
+
+            <xpath expr='//notebook' position="inside">
+                <page string="CFDI Information" name="cfdi">
+                    <group string="Retirement / Indemnity">
+                        <field name="l10n_mx_extra_node_ids" nolabel="1">
+                            <tree string="Retirement / Indemnity" editable="bottom">
+                                <field name="node"/>
+                                <field name="amount_total"/>
+                                <field name="amount_daily" attrs="{'readonly': [('node', '!=', 'retirement')]}"/>
+                                <field name="service_years" attrs="{'readonly': [('node', '!=', 'separation')]}"/>
+                                <field name="last_salary" attrs="{'readonly': [('node', '!=', 'separation')]}"/>
+                                <field name="accumulable_income"/>
+                                <field name="non_accumulable_income"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Actions or Titles">
+                        <group>
+                            <field name="l10n_mx_action_title_ids" nolabel="1">
+                                <tree string="Actions or Titles" editable="bottom">
+                                    <field name="category_id"/>
+                                    <field name="market_value"/>
+                                    <field name="price_granted"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                    <group string="Extra Other Payments">
+                        <group string="Compensation Balances in favor">
+                            <group>
+                                <field name="l10n_mx_balance_favor"/>
+                                <field name="l10n_mx_comp_year"/>
+                                <field name="l10n_mx_remaining"/>
+                            </group>
+                        </group>
+                    </group>
+                    <group string="SNCF Entity">
+                        <group>
+                            <field name="l10n_mx_source_resource"/>
+                            <field name="l10n_mx_amount_sncf"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//button[@name='action_payslip_cancel']" position="attributes">
+                <attribute name="states">draft,hr_check,confirm,verify,done</attribute>
+            </xpath>
+
+            <field name="struct_id" position="after">
+                <field name="l10n_mx_payslip_type"/>
+            </field>
+
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="view_hr_payslip_mx_tree_inherit">
+        <field name="name">view.hr.mx.payslip.tree.inherit</field>
+        <field name="model">hr.payslip</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="/tree/field[@name='state']" position="after">
+                <field name="l10n_mx_pac_status"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_hr_payslip_run_form_inherit_l10n_mx">
+        <field name="name">view.hr.payslip.run.form.inherit.l10n_mx</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='credit_note']" position="before">
+                <field name="l10n_mx_payment_date"/>
+                <field name="l10n_mx_productivity_bonus"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+<!--                <field name="name" position="before">-->
+<!--                    <field name="registration_number" readonly="1" class="mr-2 border pl-1 pr-1 border border-primary" attrs="{'invisible':[('registration_number', '=', False)]}"/>-->
+<!--                </field>-->
+                <field name="parent_id" position="after">
+                    <field name="job_id" position="move"/>
+                </field>
+                <field name="certificate" position="replace">
+                    <field name="level_studies_id" options="{'no_open': 1, 'no_create': 1}"/>
+                </field>
+            </field>
+        </record>
+
+<!--        <record id="view_employee_tree" model="ir.ui.view">-->
+<!--            <field name="name">hr.employee.tree</field>-->
+<!--            <field name="model">hr.employee</field>-->
+<!--            <field name="inherit_id" ref="hr.view_employee_tree"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <field name="name" position="before">-->
+<!--                    <field name="number" readonly="1"/>-->
+<!--                </field>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="hr_kanban_view_employees" model="ir.ui.view">-->
+<!--           <field name="name">hr.employee.kanban</field>-->
+<!--           <field name="model">hr.employee</field>-->
+<!--           <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>-->
+<!--           <field name="arch" type="xml">-->
+<!--                <field name="name" position="before">-->
+<!--                    <field name="number"/>-->
+<!--                </field>-->
+<!--           </field>-->
+<!--        </record>-->
+
+        <record id="view_employee_firstname_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_employee_firstname.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="firstname" position="attributes">
+                    <attribute name="required">1</attribute>
+                </field>
+                <field name="lastname" position="attributes">
+                    <attribute name="required">1</attribute>
+                </field>
+                <field name="mobile_phone" position="before">
+                    <field name="firstname" position="move"/>
+                    <field name="lastname" position="move"/>
+                    <field name="lastname2" position="move"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.firstname.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_employee_lastnames.view_employee_form_inherit"/>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='lastname2']" position="attributes">
+                        <attribute name="required">1</attribute>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_employee_level_studies_view_search" model="ir.ui.view">
+            <field name="name">hr.employee.level.studies.view.search</field>
+            <field name="model">hr.employee.level.studies</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <separator/>
+                    <filter string="Archived" name="archived" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="employee_level_studies_view_tree" model="ir.ui.view">
+            <field name="name">hr.employee.level.studies.view.tree</field>
+            <field name="model">hr.employee.level.studies</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_employee_level_studies_form" model="ir.ui.view">
+            <field name="name">hr.employee.level.studies.form</field>
+            <field name="model">hr.employee.level.studies</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <group>
+                            <field name="name" required="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_employee_level_studies_action" model="ir.actions.act_window">
+            <field name="name">Level of schooling</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee.level.studies</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                   No records found.
+                </p>
+            </field>
+        </record>
+
+         <menuitem id="menu_view_employee_level_studies_form"
+                  name="Level of schooling"
+                  action="hr_employee_level_studies_action"
+                  parent="hr.menu_human_resources_configuration_employee"
+                  sequence="20"/>
+
+    </data>
+</odoo>

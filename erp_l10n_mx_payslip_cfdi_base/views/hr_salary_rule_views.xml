@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="hr_salary_rule_view_form_inh_l10n_mx">
+        <field name="name">hr.salary.rule.form.inh.l10n_mx</field>
+        <field name="model">hr.salary.rule</field>
+        <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='code']" position="after">
+                <field name="l10n_mx_sat_key_id"/>
+                <field name="l10n_mx_code"  invisible="1"/>
+            </xpath>
+            <group name="main_details" position="after">
+                <group>
+                    <group string="Configuration for ISR/IMSS calculation">
+                        <field name="l10n_mx_isr"/>
+                        <field name="l10n_mx_imss"/>
+                    </group>
+                    <group></group>
+                </group>
+            </group>
+            <field name="struct_id" position="after">
+                <field name="l10n_mx_visibility_automatic_isr" invisible="1"/>
+                <field name="l10n_mx_automatic_isr" attrs="{'invisible': [('l10n_mx_visibility_automatic_isr', '=', False)]}"/>
+            </field>
+            <field name="code" position="attributes">
+                <attribute name="attrs">{'readonly': [('l10n_mx_visibility_automatic_isr', '=', True)]}</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_salary_rule_list_inh">
+        <field name="name">hr.salary.rule.list.inh</field>
+        <field name="model">hr.salary.rule</field>
+        <field name="inherit_id" ref="hr_payroll.hr_salary_rule_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='code']" position="after">
+                <field name="l10n_mx_sat_key_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_hr_employee_grade_form_inh_l10n_mx">
+        <field name="name">hr.employee.grade.form.inh.l10n_mx</field>
+        <field name="model">hr.payroll.structure</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_employee_grade_form"/>
+        <field name="arch" type="xml">
+            <field name="country_id" position="after">
+                <field name="l10n_mx_payslip_type"/>
+            </field>
+        </field>
+    </record>
+</odoo>

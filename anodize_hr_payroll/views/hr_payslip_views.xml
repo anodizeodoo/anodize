@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_print_banking_dispersion_banregio" model="ir.actions.server">
+        <field name="name">Descargar TXT</field>
+        <field name="model_id" ref="anodize_hr_payroll.model_hr_payslip_run"/>
+        <field name="binding_model_id" ref="anodize_hr_payroll.model_hr_payslip_run"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.print_banking_dispersion_banregio()
+        </field>
+    </record>
+
+    <record id="pivot_payslip_lines" model="ir.ui.view">
+        <field name="name">Payroll Report Pivot View</field>
+        <field name="model">hr.payslip.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Monthly Payslips">
+                <field name="employee_id" string="Payslip" type="row" />
+                <field name="name" string="Payslip Line Name" type="col" />
+                <field name="total" type="measure" widget="monetary" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_allpaysliplines" model="ir.actions.act_window">
+        <field name="name">Full Payroll Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.payslip.line</field>
+        <field name="view_mode">pivot</field>
+    </record>
+
+	<menuitem
+        id="menu_allpaysliplines"
+        action="action_allpaysliplines"
+        parent="hr_payroll.menu_hr_payroll_report"
+        sequence="40"
+    />
+
+</odoo>

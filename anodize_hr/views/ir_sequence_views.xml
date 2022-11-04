@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="anodize_hr_view_ir_sequence_form" model="ir.actions.act_window">
+            <field name="name">Sequence</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ir.sequence</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('code', '=', 'hr.employee.number')]</field>
+            <field name="filter" eval="True"/>
+        </record>
+
+        <menuitem id="anodize_hr_ir_sequence_menu"
+                  sequence="25" name="Sequence"
+                  parent="hr.menu_human_resources_configuration_employee"
+                  action="anodize_hr.anodize_hr_view_ir_sequence_form"/>
+
+    </data>
+</odoo>
