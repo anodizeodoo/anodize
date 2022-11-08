@@ -23,19 +23,26 @@ class TableIsr(models.Model):
     @api.depends('l10n_mx_isr_type')
     def _compute_l10n_mx_isr_name(self):
         for isr in self:
-            if isr.l10n_mx_isr_type:
-                isr.l10n_mx_isr_name = 'ISR {}'.format(isr.l10n_mx_isr_type)
+            if isr.sudo().l10n_mx_isr_type:
+                isr.l10n_mx_isr_name = 'ISR {}'.format(isr.sudo().l10n_mx_isr_type)
             else:
                 isr.l10n_mx_isr_name = 'ISR'
 
     def find_rule_by_rate(self, value):
-        domain = [('l10n_mx_isr_rate_lower_limit', '<=', value), ('l10n_mx_isr_rate_upper_limit', '>=', value)]
-        rule = self.l10n_mx_isr_rate_ids.search(domain, limit=1)
+        domain = [('l10n_mx_isr_rate_lower_limit', '<=', value),
+                  ('l10n_mx_isr_rate_upper_limit', '>=', value),
+                  ('l10n_mx_table_isr_id', '=', self.sudo().id)]
+        # rule = self.l10n_mx_isr_rate_ids.sudo().search(domain, limit=1)
+        rule = self.env['l10n.mx.table.isr.rate'].sudo().search(domain, limit=1)
         return rule
 
     def find_rule_by_subsidy(self, value):
-        domain = [('l10n_mx_isr_subsidy_income_from', '<=', value), ('l10n_mx_isr_subsidy_income_of', '>=', value)]
-        rule = self.l10n_mx_isr_subsidy_rate_ids.search(domain, limit=1)
+        domain = [('l10n_mx_isr_subsidy_income_from', '<=', value),
+                  ('l10n_mx_isr_subsidy_income_of', '>=', value),
+                  ('l10n_mx_table_isr_id', '=', self.sudo().id)]
+        # rule = self.l10n_mx_isr_subsidy_rate_ids.search(domain, limit=1)
+        rule = self.env['l10n.mx.table.isr.subsidy.rate'].sudo().search(domain, limit=1)
+
         return rule
 
 

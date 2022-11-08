@@ -19,21 +19,30 @@ class HrContract(models.Model):
         return False
 
     l10n_mx_holidays = fields.Integer(
-        string="Days of holidays", default=6, tracking=True,
+        string="Days of holidays",
+        default=6,
+        tracking=True,
         help="Initial number of days for holidays. The minimum is 6 days.")
 
     l10n_mx_vacation_bonus = fields.Integer(
-        string="Vacation cousin (%)", tracking=True, compute='_compute_l10n_mx_vacation_christmas_bonus',
+        string="Vacation cousin (%)",
+        tracking=True,
+        compute='_compute_l10n_mx_vacation_christmas_bonus',
+        compute_sudo=True,
         help="Percentage of vacation bonus. The minimum is 25 %.")
     l10n_mx_christmas_bonus = fields.Integer(
         string="Bonus Days", help="Number of day for "
                                                           "the Christmas bonus. The minimum is 15 days' pay",
-        compute='_compute_l10n_mx_vacation_christmas_bonus', tracking=True)
+        compute='_compute_l10n_mx_vacation_christmas_bonus',
+        tracking=True,
+        compute_sudo=True)
     l10n_mx_antiquity = fields.Char('Antiquity', compute="_compute_l10n_mx_antiquity")
 
-    l10n_mx_number = fields.Char(default=lambda self: self._default_l10n_mx_number(), string='No. Contract')
-    l10n_mx_automatic_sequence_contracts = fields.Boolean(related='company_id.l10n_mx_automatic_sequence_contracts')
-    name = fields.Char(required=False)
+    l10n_mx_number = fields.Char(default=lambda self: self._default_l10n_mx_number(),
+                                 string='No. Contract', tracking=True)
+    l10n_mx_automatic_sequence_contracts = fields.Boolean(related='company_id.l10n_mx_automatic_sequence_contracts',
+                                                          compute_sudo=True)
+    name = fields.Char(required=False, tracking=True)
 
     def _get_static_SDI(self):
         """Get the integrated salary for the static perceptions like:

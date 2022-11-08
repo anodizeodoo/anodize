@@ -38,6 +38,16 @@ msgid "Company"
 msgstr "Compañía"
 
 #. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__company_currency_id
+msgid "Company Currency"
+msgstr "Moneda"
+
+#. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__contract_id
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__create_uid
 msgid "Created by"
 msgstr "Creado por"
@@ -63,21 +73,20 @@ msgid "Date Start"
 msgstr "Fecha de Inicio"
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_contract__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__display_name
 msgid "Display Name"
 msgstr "Nombre en pantalla"
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model,name:erp_l10n_mx_hr_loan.model_hr_employee
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__employee_id
-msgid "Employee"
-msgstr "Empleado"
+#: model:ir.model,name:erp_l10n_mx_hr_loan.model_hr_contract
+msgid "Employee Contract"
+msgstr "Contrato del empleado"
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model.fields,help:erp_l10n_mx_hr_loan.field_hr_employee_loan__employee_id
+#: model:ir.model.fields,help:erp_l10n_mx_hr_loan.field_hr_employee_loan__contract_id
 msgid "Employee for this loan"
-msgstr "Empleado para este préstamo"
+msgstr "Empleado de préstamo"
 
 #. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_loan.selection__hr_employee_loan__loan_type__fonacot
@@ -85,15 +94,15 @@ msgid "Fonacot"
 msgstr "Fonacot"
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_contract__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__id
 msgid "ID"
 msgstr "ID"
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model.fields,help:erp_l10n_mx_hr_loan.field_hr_employee_loan__number_fonacot
+#: model:ir.model.fields,help:erp_l10n_mx_hr_loan.field_hr_contract__number_fonacot
 msgid "If comes from Fonacot, indicate the number."
-msgstr "Si viene de Fonacot, indica el número."
+msgstr "Si proviene de Fonacot, indicar el número."
 
 #. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,help:erp_l10n_mx_hr_loan.field_hr_employee_loan__active
@@ -101,9 +110,9 @@ msgid "If the loan was paid the record will be deactivated."
 msgstr "Si el préstamo es pagado este registro será desactivado."
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model.fields,help:erp_l10n_mx_hr_loan.field_hr_employee__loan_ids
+#: model:ir.model.fields,help:erp_l10n_mx_hr_loan.field_hr_contract__loan_ids
 msgid "Indicate the loans for the employee. Will be considered on the payslips."
-msgstr "Indica los préstamos para el empleado. Serán considerados en las nóminas."
+msgstr "Indique los préstamos para el empleado. Se considerará en las nóminas."
 
 #. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,help:erp_l10n_mx_hr_loan.field_hr_employee_loan__monthly_withhold
@@ -121,12 +130,12 @@ msgid "Indicates the payment term for this loan."
 msgstr "Indica el plazo de pago de este préstamo."
 
 #. module: erp_l10n_mx_hr_loan
-#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_loan.view_hr_employee_form_inherit_l10n_mx
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_loan.view_hr_payroll_contract_form_inherit
 msgid "Information FONACOT"
 msgstr "Información FONACOT"
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_contract____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
@@ -167,7 +176,7 @@ msgid "Number"
 msgstr "Número"
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee__number_fonacot
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_contract__number_fonacot
 msgid "Number FONACOT"
 msgstr "Número FONACOT"
 
@@ -197,6 +206,6 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: erp_l10n_mx_hr_loan
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee__work_fonacot
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_contract__work_fonacot
 msgid "Workplace FONACOT"
 msgstr "Centro de trabajo FONACOT"

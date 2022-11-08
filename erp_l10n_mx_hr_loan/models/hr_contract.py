@@ -30,8 +30,10 @@ class HrContract(models.Model):
         'hr.employee.loan', 'contract_id', 'Loans', context={'active_test': False},
         help='Indicate the loans for the employee. Will be considered on the '
              'payslips.')
-    work_fonacot = fields.Char(string="Workplace FONACOT")
+    work_fonacot = fields.Char(string="Workplace FONACOT",
+                               tracking=True)
     number_fonacot = fields.Char(string="Number FONACOT",
+        tracking=True,
         help='If comes from Fonacot, indicate the number.')
 
 class HrEmployeeLoan(models.Model):

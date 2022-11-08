@@ -51,7 +51,7 @@ class HrEmployeeLoan(models.Model):
     payslip_ids = fields.Many2many(
         'hr.payslip', help='Payslips where this loan is collected.')
     payslips_count = fields.Integer(
-        'Number of Payslips', compute='_compute_payslips_count')
+        'Number of Payslips', compute='_compute_payslips_count', compute_sudo=True)
 
     def _compute_payslips_count(self):
         for loan in self:

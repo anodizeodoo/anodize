@@ -31,7 +31,7 @@ class L10nMxPayrollEmployerRegistration(models.Model):
     _inherit = ['mail.thread']
 
     name = fields.Char(
-        help='Value to set in the "RegistroPatronal" attribute.')
+        help='Value to set in the "RegistroPatronal" attribute.', tracking=True)
     job_risk_id = fields.Many2one(
         'l10n_mx_edi.job.risk', 'Job Risk',
         help='Used in the XML to express the key according to the Class in '
@@ -39,7 +39,7 @@ class L10nMxPayrollEmployerRegistration(models.Model):
         'carried out by their workers, as provided in article 196 of the '
         'Regulation on Affiliation Classification of Companies, Collection '
         'and Inspection, or in accordance with the regulations Of the Social '
-        'Security Institute of the worker.', required=True)
+        'Security Institute of the worker.', required=True, tracking=True)
 
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
@@ -47,7 +47,7 @@ class HrEmployee(models.Model):
     l10n_mx_edi_syndicated = fields.Boolean(
         'Syndicated', help='Used in the XML to indicate if the worker is '
         'associated with a union. If it is omitted, it is assumed that it is '
-        'not associated with any union.')
+        'not associated with any union.', tracking=True)
     l10n_mx_edi_risk_rank = fields.Many2one(
         'l10n_mx_edi.job.risk', 'Job Risk',
         help='Used in the XML to express the key according to the Class in '
@@ -55,27 +55,41 @@ class HrEmployee(models.Model):
         'carried out by their workers, as provided in article 196 of the '
         'Regulation on Affiliation Classification of Companies, Collection '
         'and Inspection, or in accordance with the regulations Of the Social '
-        'Security Institute of the worker.')
-    l10n_mx_edi_contract_regime_type_id = fields.Many2one('l10n.mx.edi.contract.regime.type', string='Regime Type')
+        'Security Institute of the worker.', tracking=True)
+    l10n_mx_edi_contract_regime_type_id = fields.Many2one('l10n.mx.edi.contract.regime.type',
+                                                          tracking=True,
+                                                          string='Regime Type')
     l10n_mx_edi_is_assimilated = fields.Boolean(
-        'Is assimilated?', help='If this employee is assimilated, must be '
+        'Is assimilated?',
+        tracking=True,
+        help='If this employee is assimilated, must be '
         'used this option, to get the correct rules on their payslips')
     l10n_mx_edi_employer_registration_id = fields.Many2one(
         'l10n_mx_payroll.employer.registration', 'Employer Registration',
+        tracking=True,
         help='If the company has multiple employer registration, define the '
         'correct for this employee.')
-    l10n_mx_edi_rfc = fields.Char(related='address_home_id.vat', string='RFC', readonly=False, store=True)
-    l10n_mx_edi_curp = fields.Char(related='address_home_id.l10n_mx_edi_curp', string='CURP', readonly=False, store=True)
-    l10n_mx_edi_family_medical_unit = fields.Char(string='Family Medical Unit')
-    l10n_mx_edi_afore_number = fields.Char(string='Afore Number')
+    l10n_mx_edi_rfc = fields.Char(related='address_home_id.vat',
+                                  string='RFC',
+                                  readonly=False,
+                                  store=True,
+                                  compute_sudo=True)
+    l10n_mx_edi_curp = fields.Char(related='address_home_id.l10n_mx_edi_curp',
+                                   string='CURP',
+                                   readonly=False,
+                                   store=True,
+                                   compute_sudo=True)
+    l10n_mx_edi_family_medical_unit = fields.Char(string='Family Medical Unit', tracking=True)
+    l10n_mx_edi_afore_number = fields.Char(string='Afore Number', tracking=True)
     l10n_mx_payment_method = fields.Selection([('PUE', '(PUE) Pago en una sola exhibición'),
                                                ('PPD', '(PPD) Pago en parcialidades o diferido')],
+                                              tracking=True,
                                                default='PUE', string="Payment method")
 
-    zip = fields.Char(string='C.P', related='address_home_id.zip')
+    zip = fields.Char(string='C.P', related='address_home_id.zip', compute_sudo=True)
     age = fields.Char('Age', compute="_compute_age")
     bank_id = fields.Many2one('res.bank', string='Bank', tracking=True)
-    l10n_mx_edi_clabe = fields.Char("CLABE")
+    l10n_mx_edi_clabe = fields.Char("CLABE", tracking=True)
     filtered_banks = fields.One2many(comodel_name='res.bank', compute='_filter_banks')
 
     @api.depends('birthday')

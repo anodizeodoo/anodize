@@ -13,6 +13,7 @@ class HrContract(models.Model):
     _inherit = 'hr.contract'
 
     l10n_mx_sdi_total = fields.Float(compute='_compute_sdi_total', string='SDI total',
+                                         tracking=True,
                                          help='Get the sum of Variable SDI + Integrated Salary')
 
     @api.depends()

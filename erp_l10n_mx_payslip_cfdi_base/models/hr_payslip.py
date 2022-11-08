@@ -141,15 +141,15 @@ class HrPayslip(models.Model):
         self.ensure_one()
         if not self.date_to:
             return False
-        if self.date_to.day == monthrange(
-                self.date_to.year, self.date_to.month)[1]:
+        if self.sudo().date_to.day == monthrange(
+                self.sudo().date_to.year, self.sudo().date_to.month)[1]:
             return True
         return False
 
     @api.onchange('struct_id')
     def _onchange_struct_id(self):
         if self.struct_id:
-            self.l10n_mx_payslip_type = self.struct_id.l10n_mx_payslip_type
+            self.l10n_mx_payslip_type = self.sudo().struct_id.l10n_mx_payslip_type
 
     def _set_isr_negative(self, isr):
         if isr > 0:
@@ -159,28 +159,40 @@ class HrPayslip(models.Model):
     def compute_sheet(self):
         super(HrPayslip, self).compute_sheet()
         for record in self:
-            if not record.contract_id.l10n_mx_payroll_schedule_pay_id.l10n_mx_table_isr_id:
-                raise ValidationError(_('The payment period in the contract %s must have to which ISR belongs.' %(record.contract_id.name)))
-            total_rules_graba_isr = sum(record.line_ids.filtered(lambda r: r.salary_rule_id.l10n_mx_isr is True).mapped('amount'))
-            period_taxable = (record.contract_id.l10n_mx_payroll_schedule_pay_id.day_payment * record.contract_id.l10n_mx_payroll_daily_salary) + total_rules_graba_isr
-            l10n_mx_table_isr_rate_id = record.contract_id.l10n_mx_payroll_schedule_pay_id.l10n_mx_table_isr_id.find_rule_by_rate(period_taxable)
+            if not record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.l10n_mx_table_isr_id:
+                raise ValidationError(_('The payment period in the contract %s must have to which ISR belongs.'
+                                        % (record.sudo().contract_id.name)))
+            total_rules_graba_isr = sum(record.sudo().line_ids.filtered(lambda r:
+                                                                 r.salary_rule_id.l10n_mx_isr is True).mapped('amount'))
+            print("Total Gravable ISR", total_rules_graba_isr)
+            period_taxable = (record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.day_payment
+                              * record.sudo().contract_id.l10n_mx_payroll_daily_salary) + total_rules_graba_isr
+            l10n_mx_table_isr_rate_id = record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.\
+                l10n_mx_table_isr_id.find_rule_by_rate(period_taxable)
+            print("Period Taxable", period_taxable, l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_lower_limit,
+                  l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_upper_limit, record.contract_id.l10n_mx_payroll_schedule_pay_id.name)
             exceed_lower_limit = period_taxable - l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_lower_limit
+            print("Rate percentage", l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_percentage)
             rate_percentage = l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_percentage
             marginal_tax = (exceed_lower_limit * rate_percentage)/100
+            print("Marginal tax", marginal_tax)
             rate_fixed_fee = l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_fixed_fee
+            print("Rate fixed fee", rate_fixed_fee)
             isr = marginal_tax + rate_fixed_fee
-            l10n_mx_table_isr_subsidy_rate_id = record.contract_id.l10n_mx_payroll_schedule_pay_id.l10n_mx_table_isr_id.find_rule_by_subsidy(period_taxable)
+            l10n_mx_table_isr_subsidy_rate_id = record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.\
+                l10n_mx_table_isr_id.find_rule_by_subsidy(period_taxable)
             isr_total = isr - l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity
-            line_isr_id = record.line_ids.filtered(lambda r: r.salary_rule_id.code == '002')
+            print("ISR Subsidy Quantity", l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity)
+            line_isr_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == '002')
             if line_isr_id.salary_rule_id.l10n_mx_automatic_isr:
                 line_isr_id.write({'amount': self._set_isr_negative(isr_total), 'quantity': 1.0})
                 # line_isr_id._compute_total()
-            line_aux_isr_id = record.line_ids.filtered(lambda r: r.salary_rule_id.code == 'AUX_ISR')
-            if line_aux_isr_id.salary_rule_id.l10n_mx_automatic_isr:
+            line_aux_isr_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'AUX_ISR')
+            if line_aux_isr_id.sudo().salary_rule_id.l10n_mx_automatic_isr:
                 line_aux_isr_id.write({'amount': self._set_isr_negative(isr), 'quantity': 1.0})
                 # line_aux_isr_id._compute_total()
-            line_aux_op002_id = record.line_ids.filtered(lambda r: r.salary_rule_id.code == 'AUX_OP002')
-            if line_aux_op002_id.salary_rule_id.l10n_mx_automatic_isr:
+            line_aux_op002_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'AUX_OP002')
+            if line_aux_op002_id.sudo().salary_rule_id.l10n_mx_automatic_isr:
                 line_aux_op002_id.write({'amount': self._set_isr_negative(l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity), 'quantity': 1.0})
                 # line_aux_op002_id._compute_total()
         return True
