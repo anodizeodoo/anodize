@@ -531,6 +531,10 @@ class HrPayslip(models.Model):
         self.ensure_one()
         template = self.env.ref(
             'erp_l10n_mx_payslip_data.email_template_edi_payroll', False)
+        if template:
+            template = template.id
+        else:
+            template = False
         compose_form = self.env.ref(
             'mail.email_compose_message_wizard_form', False)
         ctx = self._context.copy()
@@ -538,7 +542,7 @@ class HrPayslip(models.Model):
         ctx['default_model'] = 'hr.payslip'
         ctx['default_res_id'] = self.id
         ctx['default_use_template'] = bool(template)
-        ctx['default_template_id'] = template.id or False
+        ctx['default_template_id'] = template or False
         ctx['default_composition_mode'] = 'comment'
         return {
             'name': _('Compose Email'),

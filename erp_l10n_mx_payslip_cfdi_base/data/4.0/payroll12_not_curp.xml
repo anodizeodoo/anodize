@@ -90,8 +90,8 @@
                         t-att-PeriodicidadPago="record.contract_id.l10n_mx_payroll_schedule_pay_id.code if payslip_type != 'E' else 99"
                         t-att-Banco="employee.bank_account_id.bank_id.l10n_mx_edi_code"
                         t-att-CuentaBancaria="employee.bank_account_id.acc_number"
-                        t-att-SalarioBaseCotApor="employee.contract_id.l10n_mx_payroll_integrated_salary"
-                        t-att-SalarioDiarioIntegrado="employee.contract_id.l10n_mx_payroll_daily_salary"
+                        t-att-SalarioBaseCotApor="'%.2f' % (employee.contract_id.l10n_mx_payroll_integrated_salary)"
+                        t-att-SalarioDiarioIntegrado="'%.2f' % (employee.contract_id.l10n_mx_payroll_daily_salary)"
                         t-att-ClaveEntFed="employee.address_id.state_id.code">
                         <t t-foreach="outsourcing" t-as="out">
                             <nomina12:SubContratacion
