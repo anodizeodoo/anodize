@@ -77,6 +77,10 @@ class HrPayslip(models.Model):
                                        compute_sudo=True)
     l10n_mx_cfdi_certificate_id = fields.Many2one('l10n_mx_edi.certificate', string='Certificado (SAT)')
 
+    l10n_mx_stamped_version = fields.Selection(
+        [('version_3', 'Version 3.3'), ('version_4', 'Version 4.0')], string='Stamped version',
+        default='version_3', related='company_id.l10n_mx_stamped_version', compute_sudo=True)
+
     # -------------------------------------------------------------------------
     # HELPERS
     # -------------------------------------------------------------------------
@@ -219,7 +223,8 @@ class HrPayslip(models.Model):
     def _get_l10n_mx_edi_cadena(self):
         self.ensure_one()
         # get the xslt path
-        xslt_path = CFDI_XSLT_CADENA if self.company_id.l10n_mx_stamped_version == 'version_3' else CFDI_XSLT_CADENA_4
+        xslt_path = CFDI_XSLT_CADENA if self.company_id.l10n_mx_stamped_version == 'version_3' \
+            else CFDI_XSLT_CADENA_4
         # get the cfdi as eTree
         cfdi = self.l10n_mx_edi_get_xml_etree()
         # return the cadena
@@ -445,9 +450,15 @@ class HrPayslip(models.Model):
             post_msg.extend([_('Code: ') + str(code)])
         if msg:
             post_msg.extend([_('Message: ') + msg])
+        if code and not xml_signed:
+            self.l10n_mx_edi_error = post_msg[-1]
+        else:
+            self.l10n_mx_edi_error = False
+
         self.message_post(
             body=body_msg + create_list_html(post_msg)
             )
+        self.env.cr.commit()
 
     def _l10n_mx_edi_sign(self):
         """Call the sign service with records that can be signed.
@@ -605,10 +616,34 @@ class HrPayslip(models.Model):
         """Generates the cfdi attachments for mexican companies when validated.
         """
         result = super(HrPayslip, self).action_payslip_done()
+        # for record in self.filtered(lambda r: r.l10n_mx_edi_is_required()):
+        #     company = record.company_id or record.contract_id.company_id
+        #     partner = company.partner_id.commercial_partner_id
+        #     version = company.l10n_mx_stamped_version
+        #     tz = self.env['account.move']._l10n_mx_edi_get_cfdi_partner_timezone(partner)
+        #     date_mx = fields.datetime.now(tz)
+        #     if not record.l10n_mx_expedition_date:
+        #         record.l10n_mx_expedition_date = date_mx.date()
+        #     if not record.l10n_mx_time_payslip:
+        #         record.l10n_mx_time_payslip = date_mx.strftime(
+        #             DEFAULT_SERVER_TIME_FORMAT)
+        #     name = 'MX-Payroll-3-3.xml' if version == 'version_3' else 'MX-Payroll-4-0.xml'
+        #     record.l10n_mx_cfdi_name = ('%s-%s' % (
+        #         record.number, name)).replace('/', '')
+        #     record._l10n_mx_edi_retry()
+        #     record.contract_id.loan_ids.filtered(
+        #         lambda loan: loan.payslips_count < loan.payment_term).write({
+        #             'payslip_ids': [(4, record.id)],
+        #         })
+        return result
+
+    def l10n_mx_edi_action_send_cfdi(self):
+        """Generates the cfdi attachments for mexican companies when validated.
+        """
         for record in self.filtered(lambda r: r.l10n_mx_edi_is_required()):
-            company = record.company_id or record.contract_id.company_id
-            partner = company.partner_id.commercial_partner_id
-            version = company.l10n_mx_stamped_version
+            company = record.sudo().company_id or record.sudo().contract_id.company_id
+            partner = company.sudo().partner_id.commercial_partner_id
+            version = company.sudo().l10n_mx_stamped_version
             tz = self.env['account.move']._l10n_mx_edi_get_cfdi_partner_timezone(partner)
             date_mx = fields.datetime.now(tz)
             if not record.l10n_mx_expedition_date:
@@ -624,7 +659,7 @@ class HrPayslip(models.Model):
                 lambda loan: loan.payslips_count < loan.payment_term).write({
                     'payslip_ids': [(4, record.id)],
                 })
-        return result
+        return True
 
     def compute_sheet(self):
         if (self.filtered(lambda r: r.l10n_mx_edi_is_required()) and
@@ -655,11 +690,12 @@ class HrPayslip(models.Model):
 
             ctx = self.env.context.copy()
             ctx.pop('default_type', False)
-            name = 'MX-Payroll-3-3.xml' if record.company_id.l10n_mx_stamped_version == 'version_3' else 'MX-Payroll-4-0.xml'
+            name = 'MX-Payroll-3-3.xml' if record.company_id.l10n_mx_stamped_version == 'version_3' \
+                else 'MX-Payroll-4-0.xml'
             filename = (
                 '%s-%s' % (record.number, name)).replace('/', '')
             record.l10n_mx_cfdi_name = filename
-            print("XML ", cfdi)
+            #print("XML ", cfdi)
             encoding = 'utf-8'
             data_xml = base64.encodebytes(cfdi)
 
@@ -881,9 +917,22 @@ class HrPayslip(models.Model):
             msgs.append(_("• El Estado en la dirección de la compañia es requerido."))
         if not values['working_day']:
             msgs.append(_("• La Categoría del empleado es requerida."))
-        if values['working_day'] and values['working_day'] not in ('01', '02', '03', '04', '05', '06', '07', '08', '99'):
+        if values['working_day'] and values['working_day'] not in ('01', '02', '03', '04', '05', '06',
+                                                                   '07', '08', '99'):
             msgs.append(_("• La Categoría del empleado no es válida. Ejemplo: 01-Diurna, 02-Nocturna, 03-Mixta."))
-        perceptions = values['perceptions'].filtered(lambda p: p.code[-3:] not in ['001', '002', '003', '004', '005', '006', '009', '010', '011', '012', '013', '014', '015', '019', '020', '021', '022', '023', '024', '025', '026', '027', '028', '029', '030', '031', '032', '033', '034', '035', '036', '037', '038', '039', '044', '045', '046', '047', '048', '049', '050', '051', '052', '053'])
+        perceptions = values['perceptions'].filtered(lambda p: p.code[-3:] not in ['001', '002', '003',
+                                                                                   '004', '005', '006',
+                                                                                   '009', '010', '011', '012',
+                                                                                   '013', '014', '015', '019',
+                                                                                   '020', '021', '022', '023',
+                                                                                   '024', '025', '026', '027',
+                                                                                   '028', '029', '030',
+                                                                                   '031', '032', '033',
+                                                                                   '034', '035', '036',
+                                                                                   '037', '038', '039',
+                                                                                   '044', '045', '046',
+                                                                                   '047', '048', '049',
+                                                                                   '050', '051', '052', '053'])
         if perceptions:
             error_perceptions = ','.join(perceptions.mapped('name'))
             msgs.append(_("• El Código en el Cálculo de Salario no es válido para %s." % error_perceptions))
@@ -972,7 +1021,8 @@ class HrPayslip(models.Model):
             cadena)
 
         # Check with xsd
-        ref = 'l10n_mx_edi.xsd_cached_cfdv33_xsd' if company_id.l10n_mx_stamped_version == 'version_3' else 'l10n_mx_edi.xsd_cached_cfdv40_xsd'
+        ref = 'l10n_mx_edi.xsd_cached_cfdv33_xsd' if company_id.l10n_mx_stamped_version == 'version_3' \
+            else 'l10n_mx_edi.xsd_cached_cfdv40_xsd'
         attachment = self.env.ref(ref, False)
         xsd_datas = base64.b64decode(attachment.datas) if attachment else b''
         if xsd_datas:
@@ -1130,6 +1180,10 @@ class HrPayslip(models.Model):
 class HrPayslipRun(models.Model):
     _inherit = 'hr.payslip.run'
 
+    l10n_mx_stamped_version = fields.Selection(
+        [('version_3', 'Version 3.3'), ('version_4', 'Version 4.0')], string='Stamped version',
+        default='version_3', related='company_id.l10n_mx_stamped_version', compute_sudo=True)
+
     def action_payslips_done(self):
         self.ensure_one()
         # using search instead of filtered to keep performance in batch with many payslips  # noqa
@@ -1166,3 +1220,15 @@ class HrPayslipRun(models.Model):
             mail_composition |= res
         # send all
 
+    @api.model
+    def _cron_process_documents_sat_web_services(self):
+        edi_documents = self.env['hr.payslip'].search([('l10n_mx_sat_status', 'in',
+                                                        ('retry', 'to_sign', False, 'undefined')),
+                                                        ('state', 'in', ['verify', 'done']),
+                                                        ('l10n_mx_edi_error', '=', False)], limit=100)
+        if edi_documents:
+            for edi_doc in edi_documents:
+                try:
+                    edi_doc.l10n_mx_edi_action_send_cfdi()
+                except:
+                    pass

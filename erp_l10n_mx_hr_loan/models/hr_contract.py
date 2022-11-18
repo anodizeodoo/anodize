@@ -58,19 +58,30 @@ class HrEmployeeLoan(models.Model):
         default=True)
     date_start = fields.Date(string="Date Start")
     date_end = fields.Date(string="Date End")
-    company_currency_id = fields.Many2one('res.currency', related='contract_id.company_id.currency_id', string="Company Currency",
+    company_currency_id = fields.Many2one('res.currency',
+                                          related='contract_id.company_id.currency_id',
+                                          string="Company Currency",
                                           readonly=True)
     credit_amount = fields.Monetary(string="Credit Amount", currency_field='company_currency_id')
-    payments_other_employers = fields.Monetary(string="Payments by other employers", currency_field='company_currency_id')
-    accumulated_amount_withheld = fields.Monetary(string="Accumulated amount withheld", currency_field='company_currency_id',
-                                                  compute='_compute_accumulated_amount_withheld')
-    residue = fields.Monetary(string="Residue", currency_field='company_currency_id', compute='_compute_residue')
+    payments_other_employers = fields.Monetary(string="Payments by other employers",
+                                               currency_field='company_currency_id')
+    accumulated_amount_withheld = fields.Monetary(string="Accumulated amount withheld",
+                                                  currency_field='company_currency_id',
+                                                  compute='_compute_accumulated_amount_withheld',
+                                                  compute_sudo=True)
+    residue = fields.Monetary(string="Residue",
+                              currency_field='company_currency_id',
+                              compute='_compute_residue',
+                              compute_sudo=True)
 
     @api.depends('credit_amount', 'payments_other_employers', 'accumulated_amount_withheld')
     def _compute_residue(self):
         for record in self:
-            payments_other_employers = record.payments_other_employers if record.payments_other_employers else 0
-            record.residue = record.credit_amount - payments_other_employers - record.accumulated_amount_withheld
+            payments_other_employers = record.payments_other_employers \
+                if record.payments_other_employers else 0
+            record.residue = record.credit_amount - \
+                             payments_other_employers - \
+                             record.accumulated_amount_withheld
 
     def _compute_accumulated_amount_withheld(self):
         for record in self:

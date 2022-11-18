@@ -21,6 +21,11 @@ msgid "'Payslip - %s' % (object.employee_id.name)"
 msgstr "'Recibo de nómina - %s' % (object.employee_id.name)"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_form_l10n_mx_e8e_vauxo
+msgid ") or"
+msgstr ") ó"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__hr_contract__type_salary__fixed
 msgid "01-Fixed"
 msgstr "01-Fijo"
@@ -28,7 +33,7 @@ msgstr "01-Fijo"
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__hr_contract__type_salary__variable
 msgid "02-Variable"
-msgstr ""
+msgstr "02-Variable"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__hr_contract__type_salary__mixed
@@ -47,6 +52,7 @@ msgstr "<span> | Banco:</span>"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "<span> | Certification Date:</span>"
 msgstr "<span> | Fecha de Certificación:</span>"
 
@@ -67,11 +73,13 @@ msgstr "<span> | Lugar de expedición:</span>"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "<span> | Fiscal Folio:</span>"
 msgstr "<span> | Folio Fiscal:</span>"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "<span> | Fiscal Regime:</span>"
 msgstr "<span> | Régimen Fiscal:</span>"
 
@@ -89,6 +97,7 @@ msgstr "<span>Sello digital del emisor</span>"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "<span>Emitter certificate:</span>"
 msgstr "<span>Certificado del emisor:</span>"
 
@@ -107,8 +116,7 @@ msgstr "<span>Emitido en</span>"
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "<span>Original chain complement of digital certification SAT</span>"
-msgstr ""
-"<span>Cadena original del complemento del certificado digital del SAT</span>"
+msgstr "<span>Cadena original del complemento del certificado digital del SAT</span>"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
@@ -118,7 +126,8 @@ msgid ""
 "                                    accordance with the earnings and deductions specified in it.</span>"
 msgstr ""
 "<span>Se puso a mi disposición el archivo XML correspondiente y recibi de\n"
-"                                    la empresa arriba mencionadala cantidad neta a que este documento se refiere estando\n"
+"                                    la empresa arriba mencionadala cantidad neta a que este documento se refiere "
+"estando\n"
 "                                    conforme con las percepciones y deducciones que en el aparecen especificadas.</span>"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
@@ -369,7 +378,7 @@ msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
-msgid "<strong>SCB:</strong>"
+msgid "<strong>SBC:</strong>"
 msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
@@ -396,8 +405,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "<strong>This document is a printed representation of a CFDI</strong>"
-msgstr ""
-"<strong>Este documento es una representación impresa de un CFDI</strong>"
+msgstr "<strong>Este documento es una representación impresa de un CFDI</strong>"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
@@ -487,12 +495,12 @@ msgstr "Número de archivos adjuntos"
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "Barcode"
-msgstr ""
+msgstr "Código de Barra"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi
 msgid "CFDI content"
-msgstr ""
+msgstr "Contenido CFDI"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
@@ -502,10 +510,9 @@ msgstr "Documento de CFDI generado (puede no estar firmado)"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
-#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
 msgid "Cancelling got an error"
-msgstr ""
+msgstr "Cancelando recibió un error"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi_certificate_id
@@ -524,7 +531,6 @@ msgid "Code"
 msgstr "Código"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
-#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
 msgid "Code: "
@@ -594,12 +600,20 @@ msgstr "Descripción"
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_contract__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_employees__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_run__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_mail_template__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_res_company__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "Nombre en pantalla"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.actions.server,name:erp_l10n_mx_hr_payroll_e8e_vauxo.ir_cron_edi_payslip_network_ir_actions_server
+#: model:ir.cron,cron_name:erp_l10n_mx_hr_payroll_e8e_vauxo.ir_cron_edi_payslip_network
+#: model:ir.cron,name:erp_l10n_mx_hr_payroll_e8e_vauxo.ir_cron_edi_payslip_network
+msgid "EDI Payslip: Perform web services operations"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model,name:erp_l10n_mx_hr_payroll_e8e_vauxo.model_mail_template
@@ -624,7 +638,6 @@ msgstr "El empleado no tiene un contrato y se requiere"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
-#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
 msgid "Error during the process: %s"
 msgstr "Error durante el proceso: %s"
@@ -642,8 +655,7 @@ msgstr "Folio Fiscal"
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,help:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi_uuid
 msgid "Folio in electronic payroll, is returned by SAT when send to stamp."
-msgstr ""
-"Folio en nómina electrónica, es devuelto por SAT cuando envía a el sello."
+msgstr "Folio en nómina electrónica, es devuelto por SAT cuando envía a el sello."
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_follower_ids
@@ -661,8 +673,14 @@ msgid "Followers (Partners)"
 msgstr "Seguidores (Partners)"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model,name:erp_l10n_mx_hr_payroll_e8e_vauxo.model_hr_payslip_employees
+msgid "Generate payslips for all selected employees"
+msgstr "Generar los recibos de nómina para todos los empleados seleccionados"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_contract__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_employees__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_run__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_mail_template__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_res_company__id
@@ -674,8 +692,7 @@ msgstr ""
 #: model:ir.model.fields,help:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_needaction
 #: model:ir.model.fields,help:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_unread
 msgid "If checked, new messages require your attention."
-msgstr ""
-"Si se encuentra seleccionado, hay nuevos mensajes que requieren tu atención."
+msgstr "Si se encuentra seleccionado, hay nuevos mensajes que requieren tu atención."
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,help:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_has_error
@@ -706,11 +723,12 @@ msgstr "Es un seguidor"
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi_amount
 msgid "L10N Mx Cfdi Amount"
-msgstr ""
+msgstr "Importe CFDI"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_contract____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_employees____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_run____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_mail_template____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_res_company____last_update
@@ -729,7 +747,6 @@ msgid "Message Delivery error"
 msgstr "Error de envío de mensaje"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
-#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
 msgid "Message: "
@@ -827,12 +844,8 @@ msgstr "Compruebe su configuración: "
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
-msgid ""
-"Please, you set the minimum wage in Mexico to that you can calculate the "
-"payroll"
-msgstr ""
-"Por favor, establezca el salario mínimo en México para que pueda calcular la"
-" nómina"
+msgid "Please, you set the minimum wage in Mexico to that you can calculate the payroll"
+msgstr "Por favor, establezca el salario mínimo en México para que pueda calcular la nómina"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
@@ -852,6 +865,7 @@ msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_form_l10n_mx_base_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_form_l10n_mx_e8e_vauxo
 msgid "Retry"
 msgstr "Reintentar"
 
@@ -871,10 +885,27 @@ msgid "Select Payslip"
 msgstr "Seleccionar recibo de nómina"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_mx_vauxo_tree_inherit
+msgid "Send CFDI"
+msgstr "Enviar CFDI"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_form_l10n_mx_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_run_form_inherit_l10n_mx_e8e_vauxo
 msgid "Send by Email"
 msgstr "Enviar por correo electrónico"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/wizard/hr_payroll_payslips_by_employees.py:0
+#, python-format
+msgid "Some work entries could not be validated."
+msgstr "Algunas entradas de trabajo no se pudieron validar."
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_stamped_version
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_run__l10n_mx_stamped_version
+msgid "Stamped version"
+msgstr "Versión de Timbrado"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi_supplier_rfc
@@ -882,7 +913,6 @@ msgid "Supplier RFC"
 msgstr "RFC del Proveedor"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
-#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
 msgid "The cancel service has been called with success"
@@ -917,9 +947,24 @@ msgid "The customer tax identification number."
 msgstr "El número de identificación fiscal del cliente."
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_run_form_inherit_l10n_mx_e8e_vauxo
+msgid "The lot has"
+msgstr "El lote tiene"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.res_config_settings_view_form_inherit
 msgid "The parameters to configure the Payroll Receipt Format."
 msgstr "Los parámetros para configurar el Formato de Recibo de Nómina."
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_form_l10n_mx_e8e_vauxo
+msgid "The payslip will be sent asynchronously to service: CFDI ("
+msgstr "La nómina se enviará de forma asíncrona al servicio: CFDI ("
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_run_form_inherit_l10n_mx_e8e_vauxo
+msgid "The payslips will be sent asynchronously to service: CFDI ("
+msgstr "Las nóminas se enviará de forma asíncrona al servicio: CFDI ("
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
@@ -947,12 +992,14 @@ msgstr "El archivo XSD que valida la estructura del XML no fue encontrado"
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
-msgid ""
-"There are conflicts in the work entry for this employee in the selected "
-"period."
-msgstr ""
-"Hay conflictos en la entrada de trabajo para este empleado en el "
-"período seleccionado."
+msgid "There are conflicts in the work entry for this employee in the selected period."
+msgstr "Hay conflictos en la entrada de trabajo para este empleado en el período seleccionado."
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/wizard/hr_payroll_payslips_by_employees.py:0
+#, python-format
+msgid "Time intervals to look for:%s"
+msgstr "Intervalos de tiempo a buscar:%s"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
@@ -963,6 +1010,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
 msgid "Tipo de percepción"
 msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_run_form_inherit_l10n_mx_e8e_vauxo
+msgid "To See click here...."
+msgstr "Para revisarle, click aquí…."
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
@@ -1045,6 +1097,11 @@ msgid "Value"
 msgstr "Total"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_mx_vauxo_tree_inherit
+msgid "View Error"
+msgstr "Ver Error"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__website_message_ids
 msgid "Website Messages"
 msgstr "Mensajes del sitio web"
@@ -1057,11 +1114,19 @@ msgstr "Historial de comunicaciones del sitio web"
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
-msgid ""
-"You have perceptions with code 039 and 044. You can only have one of them."
-msgstr ""
-"Tienes percepciones con los códigos 039 y 044. Solo puedes tener uno de "
-"ellos."
+msgid "You have perceptions with code 039 and 044. You can only have one of them."
+msgstr "Tienes percepciones con los códigos 039 y 044. Solo puedes tener uno de ellos."
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/wizard/hr_payroll_payslips_by_employees.py:0
+#, python-format
+msgid "You must select employee(s) to generate payslip(s)."
+msgstr "Debe seleccionar empleado(s) para generar nómina(s)."
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_run_form_inherit_l10n_mx_e8e_vauxo
+msgid "errors sending cfdi,"
+msgstr "errores al tratar de enviar los cfdi,"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
@@ -1084,8 +1149,7 @@ msgstr ""
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
-msgid ""
-"• El CURP del Partner de la compañia no debe tener menos de 18 caracteres."
+msgid "• El CURP del Partner de la compañia no debe tener menos de 18 caracteres."
 msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
@@ -1151,7 +1215,10 @@ msgstr ""
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
-msgid ""
-"• La Categoría del empleado no es válida. Ejemplo: 01-Diurna, 02-Nocturna, "
-"03-Mixta."
+msgid "• La Categoría del empleado no es válida. Ejemplo: 01-Diurna, 02-Nocturna, 03-Mixta."
 msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_form_l10n_mx_e8e_vauxo
+msgid "⇒ Send now"
+msgstr "⇒ Enviar ahora"

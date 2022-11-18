@@ -13,6 +13,7 @@
     ],
     "data": [
         # "security/ir.model.access.csv",
+        "data/cron.xml",
         "views/hr_payslip_view.xml",
         "views/hr_payslip_sat_report.xml",
         "views/hr_payroll_reports.xml",

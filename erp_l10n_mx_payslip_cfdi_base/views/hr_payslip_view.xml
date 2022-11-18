@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="before">
-                <group string="Informacion Fiscal" name="mx_info">
+                <group string="Informacion Fiscal" name="mx_info" states="verify,done,cancel">
                     <group>
                         <label for="l10n_mx_pac_status" states="verify,done,cancel"/>
                         <div class="o_row">
@@ -17,7 +17,7 @@
                             <field name="l10n_mx_sat_status" states="verify,done,cancel"/>
                         </div>
                     </group>
-                    <group>
+                    <group states="verify,done,cancel">
                         <field name="l10n_mx_origin"/>
                     </group>
                 </group>
@@ -95,6 +95,36 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="view_hr_payslip_mx_filter_base_inherit">
+        <field name="name">view.hr.mx.payslip.filter.base.inherit</field>
+        <field name="model">hr.payslip</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payslip_run_id']" position="after">
+                <separator/>
+                <filter string="PAC: To sign" name="to_sign" domain="[('l10n_mx_pac_status', '=', 'to_sign')]"/>
+                <filter string="PAC: Retry" name="retry" domain="[('l10n_mx_pac_status', '=', 'retry')]"/>
+                <filter string="PAC: Signed" name="signed" domain="[('l10n_mx_pac_status', '=', 'signed')]"/>
+                <filter string="With CFDI Errors" name="w_mx_errors" domain="[('l10n_mx_edi_error', '!=', False), ('l10n_mx_pac_status', '!=', 'signed')]"/>
+                <separator/>
+                <filter string="PAC: To cancel" name="to_cancel" domain="[('l10n_mx_pac_status', '=', 'to_cancel')]"/>
+                <filter string="PAC: Cancelled" name="cancelled" domain="[('l10n_mx_pac_status', '=', 'cancelled')]"/>
+                <separator/>
+                <filter string="SAT: State not defined" name="none" domain="[('l10n_mx_sat_status', '=', 'none')]"/>
+                <filter string="SAT: Not Synced Yet" name="undefined" domain="[('l10n_mx_sat_status', '=', 'undefined')]"/>
+                <filter string="SAT: Not Found" name="not_found" domain="[('l10n_mx_sat_status', '=', 'not_found')]"/>
+                <filter string="SAT: Cancelled" name="cancelled" domain="[('l10n_mx_sat_status', '=', 'cancelled')]"/>
+                <filter string="SAT: Valid" name="valid" domain="[('l10n_mx_sat_status', '=', 'valid')]"/>
+                <separator/>
+            </xpath>
+            <xpath expr="//filter[@name='company_id']" position="after">
+                <filter string="PAC status" name="g_l10n_mx_pac_status" context="{'group_by': 'l10n_mx_pac_status'}"/>
+                <filter string="SAT status" name="g_l10n_mx_sat_status" context="{'group_by': 'l10n_mx_sat_status'}"/>
+            </xpath>
+        </field>
+    </record>
+
     <record model="ir.ui.view" id="view_hr_payslip_run_form_inherit_l10n_mx">
         <field name="name">view.hr.payslip.run.form.inherit.l10n_mx</field>
         <field name="model">hr.payslip.run</field>
@@ -103,6 +133,39 @@
             <xpath expr="//field[@name='credit_note']" position="before">
                 <field name="l10n_mx_payment_date"/>
                 <field name="l10n_mx_productivity_bonus"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mx_hr_payslip_run_filter_cfdi" model="ir.ui.view">
+        <field name="name">mx.cfdi.hr.payslip.run.search</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payslip_run_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='done_filter']" position="after">
+                <separator/>
+                <filter string="With CFDI Errors" name="w_mx_errors"
+                        domain="[('slip_ids.l10n_mx_edi_error', '!=', False), ('slip_ids.l10n_mx_pac_status', '!=', 'signed')]"/>
+                <separator/>
+            </xpath>
+        </field>
+    </record>
+
+   <record id="mx_base_hr_payslip_run_tree" model="ir.ui.view">
+        <field name="name">hr.payslip.run.tree</field>
+        <field name="model">hr.payslip.run</field>
+       <field name="inherit_id" ref="hr_payroll.hr_payslip_run_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="l10n_mx_edi_error_count" invisible="1"/>
+                <field name="payslip_count" invisible="1"/>
+                <button type="object" name="action_open_payslips"
+                        class="text-info"
+                        string="See payslips" icon="fa-book" attrs="{'invisible': [('payslip_count', '=', 0)]}"/>
+                <button type="object" string="CFDI Errors" name="l10n_mx_edi_action_see_errors"
+                        class="text-warning"
+                        attrs="{'column_invisible': [('l10n_mx_edi_error_count', '=', 0)], 'invisible': [('l10n_mx_edi_error_count', '=', 0)]}"
+                        icon="fa-bug"/>
             </xpath>
         </field>
     </record>

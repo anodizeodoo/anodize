@@ -133,6 +133,8 @@ class HrPayslip(models.Model):
     l10n_mx_payslip_type = fields.Selection([('O', 'O-Ordinary Payroll'), ('E', 'E-Extraordinary')],
                                             string='Type of payroll')
 
+    l10n_mx_edi_error = fields.Char(string="EDI Error", copy=False)
+
     def l10n_mx_is_last_payslip(self):
         """Check if the date to in the payslip is the last of the current month
         and return True in that case, to know that is the last payslip"""
@@ -197,6 +199,16 @@ class HrPayslip(models.Model):
                 # line_aux_op002_id._compute_total()
         return True
 
+    def action_view_error_payslip(self):
+        self.ensure_one()
+        return {
+            'name': self.display_name,
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'hr.payslip',
+            'res_id': self.id,
+        }
 
 class HrPayslipActionTitles(models.Model):
     _name = 'hr.payslip.action.titles'
@@ -262,3 +274,30 @@ class HrPayslipRun(models.Model):
         'will be added on all payslip created with this batch.')
     l10n_mx_productivity_bonus = fields.Float(
         'Productivity Bonus', help='The amount to distribute to the employees in the payslips.')
+
+    l10n_mx_edi_error_count = fields.Integer(string="EDI Errors",
+        compute='_compute_edi_error_count',
+        help='How many EDIs are in error for this move ?', compute_sudo=True)
+
+    @api.depends('slip_ids.l10n_mx_edi_error')
+    def _compute_edi_error_count(self):
+        for h_run in self:
+            h_run.l10n_mx_edi_error_count = len(h_run.sudo().slip_ids.filtered(lambda d: d.l10n_mx_edi_error))
+
+    def l10n_mx_edi_action_see_errors(self):
+        self.ensure_one()
+        return {
+            "name": _("Payslips with errors"),
+            "type": "ir.actions.act_window",
+            "res_model": "hr.payslip",
+            "views": [[False, "tree"], [False, "form"]],
+            "context": {'create': 0, 'from_see_error_run': 1},
+            "domain": [['id', 'in', self.sudo().slip_ids.filtered(lambda d: d.l10n_mx_edi_error
+                                                                            and d.l10n_mx_pac_status != 'signed').ids]],
+        }
+
+    def action_open_payslips(self):
+        res = super(HrPayslipRun, self).action_open_payslips()
+        if res:
+            res.update({'name': _("Payslips")})
+        return res
