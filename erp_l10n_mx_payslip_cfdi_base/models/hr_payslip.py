@@ -12,7 +12,7 @@ from calendar import monthrange
 import requests
 
 from lxml import etree, objectify
-from werkzeug import url_encode
+
 from zeep import Client
 from zeep.transports import Transport
 
@@ -134,6 +134,16 @@ class HrPayslip(models.Model):
                                             string='Type of payroll')
 
     l10n_mx_edi_error = fields.Char(string="EDI Error", copy=False)
+
+    l10n_mx_cancel_reason = fields.Selection(
+        selection=[('01', ('Comprobante emitido con errores con relación')),
+                   ('02', ('Comprobante emitido con errores sin relación')),
+                   ('03', ('No se llevó a cabo la operación')),
+                   ('04', ('Operación nominativa relacionada en la factura global'))],
+        string=('Cancellation reason'), tracking=True, copy=False)
+
+    l10n_mx_foliosustitucion_cancel = fields.Char(string="Folio Substitution",
+                                                  tracking=True, copy=False)
 
     def l10n_mx_is_last_payslip(self):
         """Check if the date to in the payslip is the last of the current month

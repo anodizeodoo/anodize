@@ -12,7 +12,6 @@ from calendar import monthrange
 import requests
 
 from lxml import etree, objectify
-from werkzeug import url_encode
 from zeep import Client
 from zeep.transports import Transport
 

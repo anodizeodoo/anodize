@@ -13,7 +13,7 @@ import requests
 from dateutil.relativedelta import relativedelta
 from unicodedata import normalize
 from lxml import etree, objectify
-from werkzeug import url_encode
+
 from zeep import Client
 from zeep.transports import Transport
 

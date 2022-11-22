@@ -12,7 +12,7 @@
         "l10n_mx_edi_extended",
     ],
     "data": [
-        # "security/ir.model.access.csv",
+        "security/ir.model.access.csv",
         "data/cron.xml",
         "views/hr_payslip_view.xml",
         "views/hr_payslip_sat_report.xml",
@@ -20,6 +20,7 @@
         "views/hr_payslip_other_report.xml",
         "views/res_config_settings_views.xml",
         "views/hr_contract_view.xml",
+        "wizard/reason_cancelation_sat_view.xml",
     ],
     "installable": True,
 }

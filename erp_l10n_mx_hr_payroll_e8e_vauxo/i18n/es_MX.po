@@ -33,7 +33,7 @@ msgstr "01-Fijo"
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__hr_contract__type_salary__variable
 msgid "02-Variable"
-msgstr "02-Variable"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__hr_contract__type_salary__mixed
@@ -498,6 +498,11 @@ msgid "Barcode"
 msgstr "Código de Barra"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model,name:erp_l10n_mx_hr_payroll_e8e_vauxo.model_cfdi_reason_payslip_cancelation
+msgid "CFDI Reason Cancelation"
+msgstr "CFDI Motivo de cancelación"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi
 msgid "CFDI content"
 msgstr "Contenido CFDI"
@@ -509,10 +514,20 @@ msgid "CFDI document generated (may be not signed)"
 msgstr "Documento de CFDI generado (puede no estar firmado)"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.cfdi_reason_cancelation_sat_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_cfdi_reason_payslip_cancelation__l10n_mx_cancel_reason
+msgid "Cancellation reason"
+msgstr "Motivo de cancelación"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
 msgid "Cancelling got an error"
-msgstr "Cancelando recibió un error"
+msgstr "Cancelando se obtubo un error"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi_certificate_id
@@ -529,6 +544,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "Code"
 msgstr "Código"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
+#, python-format
+msgid "Code : %s"
+msgstr "Código: %s"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
@@ -551,6 +572,16 @@ msgstr ""
 #, python-format
 msgid "Compose Email"
 msgstr "Componer correo electrónico"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__cfdi_reason_payslip_cancelation__l10n_mx_cancel_reason__01
+msgid "Comprobante emitido con errores con relación"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__cfdi_reason_payslip_cancelation__l10n_mx_cancel_reason__02
+msgid "Comprobante emitido con errores sin relación"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
@@ -578,6 +609,21 @@ msgid "Confirm payslips"
 msgstr "Confirmar Nóminas"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.cfdi_reason_cancelation_sat_form
+msgid "Confirmar"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_cfdi_reason_payslip_cancelation__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_cfdi_reason_payslip_cancelation__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi_customer_rfc
 msgid "Customer RFC"
 msgstr "RFC del cliente"
@@ -598,6 +644,7 @@ msgid "Description"
 msgstr "Descripción"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_cfdi_reason_payslip_cancelation__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_contract__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_employees__display_name
@@ -613,7 +660,7 @@ msgstr "Nombre en pantalla"
 #: model:ir.cron,cron_name:erp_l10n_mx_hr_payroll_e8e_vauxo.ir_cron_edi_payslip_network
 #: model:ir.cron,name:erp_l10n_mx_hr_payroll_e8e_vauxo.ir_cron_edi_payslip_network
 msgid "EDI Payslip: Perform web services operations"
-msgstr ""
+msgstr "EDI Nóminas: Realizar operaciones de servicios web"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model,name:erp_l10n_mx_hr_payroll_e8e_vauxo.model_mail_template
@@ -653,6 +700,11 @@ msgid "Fiscal Folio"
 msgstr "Folio Fiscal"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_cfdi_reason_payslip_cancelation__l10n_mx_foliosustitucion_cancel
+msgid "Folio Substitution"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,help:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi_uuid
 msgid "Folio in electronic payroll, is returned by SAT when send to stamp."
 msgstr "Folio en nómina electrónica, es devuelto por SAT cuando envía a el sello."
@@ -678,6 +730,7 @@ msgid "Generate payslips for all selected employees"
 msgstr "Generar los recibos de nómina para todos los empleados seleccionados"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_cfdi_reason_payslip_cancelation__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_contract__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_employees__id
@@ -726,6 +779,7 @@ msgid "L10N Mx Cfdi Amount"
 msgstr "Importe CFDI"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_cfdi_reason_payslip_cancelation____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_contract____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_employees____last_update
@@ -737,9 +791,25 @@ msgid "Last Modified on"
 msgstr "Última modificación el"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_cfdi_reason_payslip_cancelation__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_cfdi_reason_payslip_cancelation__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_main_attachment_id
 msgid "Main Attachment"
 msgstr "Archivos adjuntos principales"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
+#, python-format
+msgid "Message : %s"
+msgstr "Mensaje: %s"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_has_error
@@ -758,6 +828,16 @@ msgid "Messages"
 msgstr "Mensajes"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_payroll_e8e_vauxo.cfdi_reason_cancelation_sat_wizard
+msgid "Motivo de cancelacion SAT"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.cfdi_reason_cancelation_sat_form
+msgid "Motivo de cancelación"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
 msgid "Name"
 msgstr "Nombre"
@@ -773,6 +853,11 @@ msgstr "No se especificaron credenciales de PAC."
 #, python-format
 msgid "No PAC specified."
 msgstr "PAC no especificado"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__cfdi_reason_payslip_cancelation__l10n_mx_cancel_reason__03
+msgid "No se llevó a cabo la operación"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
@@ -804,6 +889,11 @@ msgstr "Número de mensajes con error de envío"
 #: model:ir.model.fields,help:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_unread_counter
 msgid "Number of unread messages"
 msgstr "Número de mensajes sin leer"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__cfdi_reason_payslip_cancelation__l10n_mx_cancel_reason__04
+msgid "Operación nominativa relacionada en la factura global"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_e8e_vauxo.selection__res_company__l10n_mx_payroll_receipt_format__other_receipt
@@ -1014,7 +1104,13 @@ msgstr ""
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_run_form_inherit_l10n_mx_e8e_vauxo
 msgid "To See click here...."
-msgstr "Para revisarle, click aquí…."
+msgstr "Para verle, click aquí…."
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
+#, python-format
+msgid "Token could not be obtained %s"
+msgstr "No se pudo obtener el token %s"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
@@ -1126,7 +1222,7 @@ msgstr "Debe seleccionar empleado(s) para generar nómina(s)."
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payslip_run_form_inherit_l10n_mx_e8e_vauxo
 msgid "errors sending cfdi,"
-msgstr "errores al tratar de enviar los cfdi,"
+msgstr "errores enviando los cfdi,"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0

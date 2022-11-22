@@ -5,6 +5,18 @@
         <field name="model">hr.payslip</field>
         <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
         <field name="arch" type="xml">
+            <field name="employee_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="contract_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="struct_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="payslip_run_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
             <xpath expr="//notebook" position="before">
                 <group string="Informacion Fiscal" name="mx_info" states="verify,done,cancel">
                     <group>
@@ -19,6 +31,10 @@
                     </group>
                     <group states="verify,done,cancel">
                         <field name="l10n_mx_origin"/>
+                        <field name="l10n_mx_cancel_reason" readonly="1"
+                               attrs="{'invisible': [('l10n_mx_cancel_reason', '=', False)]}"/>
+                        <field name="l10n_mx_foliosustitucion_cancel" readonly="1"
+                               attrs="{'invisible': [('l10n_mx_foliosustitucion_cancel', '=', False)]}"/>
                     </group>
                 </group>
             </xpath>
@@ -46,7 +62,8 @@
                         <group>
                             <field name="l10n_mx_action_title_ids" nolabel="1">
                                 <tree string="Actions or Titles" editable="bottom">
-                                    <field name="category_id"/>
+                                    <field name="category_id"
+                                           options="{'no_create': True, 'no_create_edit': True}"/>
                                     <field name="market_value"/>
                                     <field name="price_granted"/>
                                 </tree>
@@ -121,6 +138,7 @@
             <xpath expr="//filter[@name='company_id']" position="after">
                 <filter string="PAC status" name="g_l10n_mx_pac_status" context="{'group_by': 'l10n_mx_pac_status'}"/>
                 <filter string="SAT status" name="g_l10n_mx_sat_status" context="{'group_by': 'l10n_mx_sat_status'}"/>
+                <filter string="SAT Cancellation Reason" name="g_l10n_mx_cancel_reason" context="{'group_by': 'l10n_mx_cancel_reason'}"/>
             </xpath>
         </field>
     </record>

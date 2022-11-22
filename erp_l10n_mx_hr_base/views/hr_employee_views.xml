@@ -26,12 +26,16 @@
                     <group>
                         <field name="ssnid" required="1"/>
                         <field name="l10n_mx_edi_is_assimilated"/>
-                        <field name="l10n_mx_edi_contract_regime_type_id" options="{'no_open': 1, 'no_create': 1}" required="1"/>
+                        <field name="l10n_mx_edi_contract_regime_type_id"
+                               options="{'no_create_edit': True, 'no_open': 1, 'no_create': 1}" required="1"/>
                         <field name="l10n_mx_payment_method"/>
                     </group>
                     <group>
-                        <field name="l10n_mx_edi_employer_registration_id" required="1"/>
-                        <field name="l10n_mx_edi_risk_rank"/>
+                        <field name="l10n_mx_edi_employer_registration_id"
+                               options="{'no_create_edit': True, 'no_create': 1}"
+                               required="1"/>
+                        <field name="l10n_mx_edi_risk_rank"
+                        options="{'no_create_edit': True, 'no_create': 1}"/>
                         <field name="l10n_mx_edi_syndicated"/>
                     </group>
                 </group>
@@ -53,8 +57,12 @@
             <xpath expr="//page[@name='personal_information']//group//group[3]" position="before">
                 <group string="Bank data">
                     <field name="filtered_banks" invisible="1"/>
-                    <field name="bank_id" domain="[('id', 'in', filtered_banks)]"/>
-                    <field name="bank_account_id" position="move"/>
+                    <field name="bank_id"
+                           options="{'no_create_edit': True, 'no_create': 1}"
+                           domain="[('id', 'in', filtered_banks)]"/>
+                    <field name="bank_account_id"
+                           options="{'no_create_edit': True, 'no_create': 1}"
+                           position="move"/>
                     <field name="l10n_mx_edi_clabe"/>
                 </group>
             </xpath>
@@ -67,11 +75,37 @@
             <field name="department_id" position="after">
                 <field name="job_id" position="move"/>
             </field>
+            <field name="parent_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="coach_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="address_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="address_home_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="country_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="resource_calendar_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="country_of_birth" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="user_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
             <field name="department_id" position="attributes">
                 <attribute name="required">1</attribute>
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
             </field>
             <field name="job_id" position="attributes">
                 <attribute name="required">1</attribute>
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
             </field>
 <!--            <xpath expr="//div[@id='o_work_employee_main']/group[4]" position="after">-->
 <!--                <group string="CFDI">-->
@@ -125,7 +159,8 @@
                             <field name="name"/>
                         </group>
                         <group>
-                            <field name="job_risk_id"/>
+                            <field name="job_risk_id"
+                                   options="{'no_create_edit': True, 'no_create': 1}"/>
                         </group>
                     </group>
                 </sheet>

@@ -8,7 +8,8 @@
             <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_schedule_pay_form"/>
             <field name="arch" type="xml">
                 <field name="name" position="after">
-                    <field name="l10n_mx_table_isr_id"/>
+                    <field name="l10n_mx_table_isr_id"
+                           options="{'no_create_edit': True, 'no_create': 1}"/>
                 </field>
             </field>
         </record>
