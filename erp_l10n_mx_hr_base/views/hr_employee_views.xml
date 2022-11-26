@@ -106,6 +106,7 @@
             <field name="job_id" position="attributes">
                 <attribute name="required">1</attribute>
                 <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+                <attribute name="domain">[('department_id', 'child_of', department_id)]</attribute>
             </field>
 <!--            <xpath expr="//div[@id='o_work_employee_main']/group[4]" position="after">-->
 <!--                <group string="CFDI">-->
@@ -156,11 +157,39 @@
                 <sheet string="Employer Registration">
                     <group>
                         <group>
+                            <field name="date_start" required="1"/>
                             <field name="name"/>
-                        </group>
-                        <group>
                             <field name="job_risk_id"
                                    options="{'no_create_edit': True, 'no_create': 1}"/>
+                            <field name="date_end"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street" invisible="1"/>
+                                <field name="street_name" placeholder="Street Name..."/>
+                                <div class="o_row">
+                                    <label for="street_number" class="oe_edit_only"/>
+                                    <span> </span>
+                                    <field name="street_number"/>
+                                    <label for="street_number2" class="oe_edit_only"/>
+                                    <field name="street_number2"/>
+                                </div>
+                                <field name="street2" attrs="{'invisible': [('street2', '=', False)] }"/>
+                                <div>
+                                    <div class="o_row">
+                                        <field name="l10n_mx_edi_colony" placeholder="Colony..."/>
+                                        <field name="l10n_mx_edi_colony_code" placeholder="Colony Code..."/>
+                                    </div>
+                                </div>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id" class="o_address_state"
+                                       placeholder="State" options='{"no_open": True, "no_create_edit": True, "no_create": 1}'/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                <field name="country_id" placeholder="Country"
+                                       class="o_address_country" options='{"no_open": True, "no_create": True, "no_create_edit": True}'/>
+                            </div>
                         </group>
                     </group>
                 </sheet>

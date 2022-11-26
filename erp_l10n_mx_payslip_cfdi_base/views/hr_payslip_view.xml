@@ -125,7 +125,7 @@
                 <filter string="PAC: Signed" name="signed" domain="[('l10n_mx_pac_status', '=', 'signed')]"/>
                 <filter string="With CFDI Errors" name="w_mx_errors" domain="[('l10n_mx_edi_error', '!=', False), ('l10n_mx_pac_status', '!=', 'signed')]"/>
                 <separator/>
-                <filter string="PAC: To cancel" name="to_cancel" domain="[('l10n_mx_pac_status', '=', 'to_cancel')]"/>
+                <filter string="PAC: To cancel" name="to_cancel" domain="['|',('l10n_mx_pac_status', '=', 'to_cancel'), ('l10_mx_cancel_pending', '=', True)]"/>
                 <filter string="PAC: Cancelled" name="cancelled" domain="[('l10n_mx_pac_status', '=', 'cancelled')]"/>
                 <separator/>
                 <filter string="SAT: State not defined" name="none" domain="[('l10n_mx_sat_status', '=', 'none')]"/>
@@ -134,6 +134,9 @@
                 <filter string="SAT: Cancelled" name="cancelled" domain="[('l10n_mx_sat_status', '=', 'cancelled')]"/>
                 <filter string="SAT: Valid" name="valid" domain="[('l10n_mx_sat_status', '=', 'valid')]"/>
                 <separator/>
+            </xpath>
+            <xpath expr="//filter[@name='done']" position="after">
+                <filter string="Cancel" name="cancel" domain="[('state', '=', 'cancel')]" help="Cancelled Slips"/>
             </xpath>
             <xpath expr="//filter[@name='company_id']" position="after">
                 <filter string="PAC status" name="g_l10n_mx_pac_status" context="{'group_by': 'l10n_mx_pac_status'}"/>
@@ -185,6 +188,45 @@
                         attrs="{'column_invisible': [('l10n_mx_edi_error_count', '=', 0)], 'invisible': [('l10n_mx_edi_error_count', '=', 0)]}"
                         icon="fa-bug"/>
             </xpath>
+        </field>
+    </record>
+
+    <record id="payslip_cancel_02_reason_action_server" model="ir.actions.server">
+        <field name="name">Cancel: Comprobante emitido con errores sin relación</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                 records.cancel_02_reason()
+        </field>
+    </record>
+
+    <record id="payslip_cancel_03_reason_action_server" model="ir.actions.server">
+        <field name="name">Cancel: No se llevó a cabo la operación</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                 records.cancel_03_reason()
+        </field>
+    </record>
+
+    <record id="payslip_cancel_04_reason_action_server" model="ir.actions.server">
+        <field name="name">Cancel: Operación nominativa relacionada en la factura global</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                 records.cancel_04_reason()
         </field>
     </record>
 

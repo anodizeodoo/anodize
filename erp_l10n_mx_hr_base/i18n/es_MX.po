@@ -36,6 +36,11 @@ msgid "Action Needed"
 msgstr "Acción Necesaria"
 
 #. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "Address"
+msgstr "Dirección"
+
+#. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_afore_number
 msgid "Afore Number"
 msgstr "Número de Afore"
@@ -98,22 +103,38 @@ msgstr "Días de Aguinaldo"
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__zip
 msgid "C.P"
-msgstr "C.P"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_clabe
 msgid "CLABE"
-msgstr "CLABE"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_curp
 msgid "CURP"
-msgstr "CURP"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.ui.menu,name:erp_l10n_mx_hr_base.menu_hr_payroll_catalogs
 msgid "Catalogs"
 msgstr "Catálogos"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__country_enforce_cities
+msgid "Check this box to ensure every address created in that country has a 'City' chosen in the list of the country's cities."
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__city
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "City"
+msgstr "Ciudad"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__city_id
+msgid "City of Address"
+msgstr "Dirección"
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__code
@@ -130,6 +151,26 @@ msgid "Code assigned by the SAT for this job risk."
 msgstr "Código definido por el SAT para este riesgo de trabajo."
 
 #. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__l10n_mx_edi_colony_code
+msgid "Colony Code"
+msgstr "Código de Colonia"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "Colony Code..."
+msgstr "Código de Colonia…"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__l10n_mx_edi_colony
+msgid "Colony Name"
+msgstr "Colonia"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "Colony..."
+msgstr "Colonia…"
+
+#. module: erp_l10n_mx_hr_base
 #: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_08
 msgid "Commission"
 msgstr "Comisión"
@@ -137,7 +178,7 @@ msgstr "Comisión"
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model,name:erp_l10n_mx_hr_base.model_res_company
 msgid "Companies"
-msgstr "Empresa"
+msgstr "Empresas"
 
 #. module: erp_l10n_mx_hr_base
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx
@@ -175,6 +216,12 @@ msgstr "Tipo de Contrato"
 #: model:ir.ui.menu,name:erp_l10n_mx_hr_base.erp_l10n_mx_hr_contract_type_menu
 msgid "Contract type"
 msgstr "Tipo de Contrato"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__country_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "Country"
+msgstr "País"
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__create_uid
@@ -215,9 +262,19 @@ msgid "Daily Salary"
 msgstr "Salario Diario"
 
 #. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__date_end
+msgid "Date End"
+msgstr "Fecha de baja"
+
+#. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_date_register
 msgid "Date Register"
 msgstr "Fecha de registro"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__date_start
+msgid "Date Start"
+msgstr "Fecha de alta"
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_date_start
@@ -265,6 +322,11 @@ msgid "Display Name"
 msgstr "Nombre en pantalla"
 
 #. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__street_number2
+msgid "Door"
+msgstr "Puerta"
+
+#. module: erp_l10n_mx_hr_base
 #: model:ir.model,name:erp_l10n_mx_hr_base.model_hr_employee
 msgid "Employee"
 msgstr "Empleado"
@@ -272,7 +334,12 @@ msgstr "Empleado"
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model,name:erp_l10n_mx_hr_base.model_hr_contract
 msgid "Employee Contract"
-msgstr "Contrato de empleado"
+msgstr "Contrato del empleado"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__name
+msgid "Employer Register"
+msgstr "Registro patronal"
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.actions.act_window,name:erp_l10n_mx_hr_base.action_employer_registration
@@ -283,6 +350,11 @@ msgstr "Contrato de empleado"
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_tree
 msgid "Employer Registration"
 msgstr "Registro Patronal"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__country_enforce_cities
+msgid "Enforce Cities"
+msgstr "Aplicar ciudades"
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_family_medical_unit
@@ -348,6 +420,11 @@ msgid "Holidays"
 msgstr "Días de Vacaciones"
 
 #. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__street_number
+msgid "House"
+msgstr "Casa"
+
+#. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__id
@@ -360,7 +437,7 @@ msgstr "Días de Vacaciones"
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_res_company__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_res_config_settings__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_type
@@ -416,7 +493,7 @@ msgstr ""
 #. module: erp_l10n_mx_hr_base
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx
 msgid "Infonavit"
-msgstr "Infonavit"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_active
@@ -436,7 +513,7 @@ msgstr "Información Fiscal"
 #. module: erp_l10n_mx_hr_base
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_employee_form_inherit_l10n_mx
 msgid "Información Fiscal"
-msgstr "Información Fiscal"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_base
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx
@@ -537,7 +614,6 @@ msgstr "Mensual"
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type__name
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay__name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__name
 msgid "Name"
@@ -549,6 +625,13 @@ msgstr "Nombre"
 #: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_base.type_benefit_action
 msgid "No records found."
 msgstr "Registros no encontrados"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__l10n_mx_edi_colony_code
+msgid ""
+"Note: Only use this field if this partner is the company address or if it is a branch office.\n"
+"Colony code that will be used in the CFDI with the external trade as Emitter colony. It must be a code from the SAT catalog."
+msgstr ""
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_needaction_counter
@@ -613,7 +696,7 @@ msgstr "Bono de Puntualidad"
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_rfc
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.res_partner_view_form_private
 msgid "RFC"
-msgstr "RFC"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_base
 #: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_09
@@ -651,6 +734,37 @@ msgstr "Periodo de Pago"
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_school_support_bonus
 msgid "School support"
 msgstr "Apoyo Escolar"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__state_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "State"
+msgstr "Estado"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__active
+msgid "Status"
+msgstr "Estatus"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__street
+msgid "Street"
+msgstr "Calle"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__street_name
+msgid "Street Name"
+msgstr "Calle"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "Street Name..."
+msgstr "Calle"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__street2
+msgid "Street2"
+msgstr "Entre Calle"
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_syndicated
@@ -704,6 +818,12 @@ msgstr "Mensajes por leer"
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr "Cantidad de mensajes sin leer"
+
+#. module: erp_l10n_mx_hr_base
+#: code:addons/erp_l10n_mx_hr_base/models/hr_employee.py:0
+#, python-format
+msgid "Unrecognized field %s in street format."
+msgstr "Campo %s no reconocido en formato de calle."
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.actions.server,name:erp_l10n_mx_hr_base.action_update_employee_name
@@ -796,3 +916,13 @@ msgstr "Historial de comunicación del sitio web"
 #: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_02
 msgid "Weekly"
 msgstr "Semanalmente"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "ZIP"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__zip
+msgid "Zip"
+msgstr ""

@@ -88,6 +88,20 @@ class HrPayslip(models.Model):
         [('version_3', 'Version 3.3'), ('version_4', 'Version 4.0')], string='Stamped version',
         default='version_3', related='company_id.l10n_mx_stamped_version', compute_sudo=True)
 
+    #  Payments
+    l10n_mx_edi_payment_method_id = fields.Many2one(
+        comodel_name='l10n_mx_edi.payment.method',
+        string="Payment Way",
+        copy=True,
+        tracking=True,
+        help="Indicates the way the payment was/will be received, where the options could be: "
+             "Cash, Nominal Check, Credit Card, etc.")
+
+    l10n_mx_payment_method = fields.Selection([('PUE', '(PUE) Pago en una sola exhibición'),
+                                               ('PPD', '(PPD) Pago en parcialidades o diferido')],
+                                              tracking=True,
+                                              default='PUE', string="Payment method")
+
     # -------------------------------------------------------------------------
     # HELPERS
     # -------------------------------------------------------------------------
@@ -1385,6 +1399,9 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             ('date_stop', '>=', self.date_from),
             ('employee_id', '=', self.employee_id.id),
         ])
+        if self.sudo().employee_id:
+            if self.sudo().employee_id.l10n_mx_edi_payment_method_id:
+                self.l10n_mx_edi_payment_method_id = self.sudo().employee_id.l10n_mx_edi_payment_method_id.id
         if not work_entries.action_validate():
             raise ValidationError(_('There are conflicts in the work entry for this employee in the selected period.'))
         super(HrPayslip, self). _onchange_employee()
@@ -1437,7 +1454,7 @@ class HrPayslipRun(models.Model):
     def _cron_process_documents_sat_web_services(self):
         edi_documents = self.env['hr.payslip'].search([('l10n_mx_sat_status', 'in',
                                                         ('retry', 'to_sign', False, 'undefined')),
-                                                        ('state', 'in', ['verify', 'done']),
+                                                        ('state', 'in', ('verify', 'done')),
                                                         ('l10n_mx_edi_error', '=', False)], limit=100)
         if edi_documents:
             for edi_doc in edi_documents:
@@ -1445,3 +1462,10 @@ class HrPayslipRun(models.Model):
                     edi_doc.l10n_mx_edi_action_send_cfdi()
                 except:
                     pass
+
+        edi_cancel_documents = self.env['hr.payslip'].search([('l10_mx_cancel_pending', '=',True),
+                                                       ('l10n_mx_cancel_reason', 'in', ('02', '03', '04')),
+                                                       ('l10n_mx_edi_error', '=', False)], limit=50)
+        if edi_cancel_documents:
+            edi_cancel_documents.action_payslip_cancel()
+            edi_cancel_documents.write({'l10_mx_cancel_pending': False})

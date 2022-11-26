@@ -28,10 +28,11 @@ _logger = logging.getLogger(__name__)
 class L10nMxPayrollEmployerRegistration(models.Model):
     _name = 'l10n_mx_payroll.employer.registration'
     _description = 'Allow define all the employer registration from the company'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread', 'format.address.mixin']
 
-    name = fields.Char(
-        help='Value to set in the "RegistroPatronal" attribute.', tracking=True)
+    name = fields.Char(string="Employer Register",
+        help='Value to set in the "RegistroPatronal" attribute.',
+        tracking=True)
     job_risk_id = fields.Many2one(
         'l10n_mx_edi.job.risk', 'Job Risk',
         help='Used in the XML to express the key according to the Class in '
@@ -39,7 +40,194 @@ class L10nMxPayrollEmployerRegistration(models.Model):
         'carried out by their workers, as provided in article 196 of the '
         'Regulation on Affiliation Classification of Companies, Collection '
         'and Inspection, or in accordance with the regulations Of the Social '
-        'Security Institute of the worker.', required=True, tracking=True)
+        'Security Institute of the worker.',
+        required=True,
+        tracking=True)
+    date_start = fields.Date(string='Date Start', tracking=True)
+    date_end = fields.Date(string='Date End', tracking=True)
+    active = fields.Boolean('Status', default=True, tracking=True)
+
+    # Address fields
+    street_name = fields.Char(
+        'Street Name', compute='_compute_street_data',
+        inverse='_inverse_street_data',
+        store=True, tracking=True)
+    street = fields.Char(tracking=True)
+    street2 = fields.Char(tracking=True)
+    zip = fields.Char(change_default=True, tracking=True)
+    city = fields.Char(tracking=True)
+    state_id = fields.Many2one("res.country.state",
+                               string='State',
+                               ondelete='restrict',
+                               domain="[('country_id', '=?', country_id)]",
+                               tracking=True)
+    country_id = fields.Many2one('res.country',
+                                 string='Country',
+                                 ondelete='restrict',
+                                 tracking=True)
+    street_number = fields.Char(
+        'House', compute='_compute_street_data', inverse='_inverse_street_data', store=True)
+    street_number2 = fields.Char(
+        'Door', compute='_compute_street_data', inverse='_inverse_street_data', store=True)
+    country_enforce_cities = fields.Boolean(related='country_id.enforce_cities', readonly=True)
+    city_id = fields.Many2one('res.city', string='City of Address', tracking=True)
+
+    l10n_mx_edi_colony = fields.Char(
+        string="Colony Name", tracking=True)
+    l10n_mx_edi_colony_code = fields.Char(
+        string="Colony Code",
+        tracking = True,
+        help="Note: Only use this field if this partner is the company address or if it is a branch office.\n"
+             "Colony code that will be used in the CFDI with the external trade as Emitter colony. It must be a code "
+             "from the SAT catalog.")
+
+
+    @api.onchange('country_id')
+    def _onchange_country_id(self):
+        if self.country_id and self.country_id != self.state_id.country_id:
+            self.state_id = False
+
+    @api.onchange('state_id')
+    def _onchange_state(self):
+        if self.state_id.country_id:
+            self.country_id = self.state_id.country_id
+
+    def _inverse_street_data(self):
+        """Updates the street field.
+        Writes the `street` field on the regpats when one of the sub-fields in STREET_FIELDS
+        has been touched"""
+        street_fields = self._get_street_fields()
+        for regpat in self:
+            street_format = (regpat.country_id.street_format or
+                '%(street_number)s/%(street_number2)s %(street_name)s')
+            previous_field = None
+            previous_pos = 0
+            street_value = ""
+            separator = ""
+            # iter on fields in street_format, detected as '%(<field_name>)s'
+            for re_match in re.finditer(r'%\(\w+\)s', street_format):
+                # [2:-2] is used to remove the extra chars '%(' and ')s'
+                field_name = re_match.group()[2:-2]
+                field_pos = re_match.start()
+                if field_name not in street_fields:
+                    raise UserError(_("Unrecognized field %s in street format.", field_name))
+                if not previous_field:
+                    # first iteration: add heading chars in street_format
+                    if regpat[field_name]:
+                        street_value += street_format[0:field_pos] + regpat[field_name]
+                else:
+                    # get the substring between 2 fields, to be used as separator
+                    separator = street_format[previous_pos:field_pos]
+                    if street_value and regpat[field_name]:
+                        street_value += separator
+                    if regpat[field_name]:
+                        street_value += regpat[field_name]
+                previous_field = field_name
+                previous_pos = re_match.end()
+
+            # add trailing chars in street_format
+            street_value += street_format[previous_pos:]
+            regpat.street = street_value
+
+    @api.depends('street')
+    def _compute_street_data(self):
+        """Splits street value into sub-fields.
+        Recomputes the fields of STREET_FIELDS when `street` of a regpat is updated"""
+        street_fields = self._get_street_fields()
+        for regpat in self:
+            if not regpat.street:
+                for field in street_fields:
+                    regpat[field] = None
+                continue
+
+            street_format = (regpat.country_id.street_format or
+                '%(street_number)s/%(street_number2)s %(street_name)s')
+            street_raw = regpat.street
+            vals = self._split_street_with_params(street_raw, street_format)
+            # assign the values to the fields
+            for k, v in vals.items():
+                regpat[k] = v
+            for k in set(street_fields) - set(vals):
+                regpat[k] = None
+
+    def _split_street_with_params(self, street_raw, street_format):
+        street_fields = self._get_street_fields()
+        vals = {}
+        previous_pos = 0
+        field_name = None
+        # iter on fields in street_format, detected as '%(<field_name>)s'
+        for re_match in re.finditer(r'%\(\w+\)s', street_format):
+            field_pos = re_match.start()
+            if not field_name:
+                #first iteration: remove the heading chars
+                street_raw = street_raw[field_pos:]
+
+            # get the substring between 2 fields, to be used as separator
+            separator = street_format[previous_pos:field_pos]
+            field_value = None
+            if separator and field_name:
+                #maxsplit set to 1 to unpack only the first element and let the rest untouched
+                tmp = street_raw.split(separator, 1)
+                if previous_greedy in vals:
+                    # attach part before space to preceding greedy field
+                    append_previous, sep, tmp[0] = tmp[0].rpartition(' ')
+                    street_raw = separator.join(tmp)
+                    vals[previous_greedy] += sep + append_previous
+                if len(tmp) == 2:
+                    field_value, street_raw = tmp
+                    vals[field_name] = field_value
+            if field_value or not field_name:
+                previous_greedy = None
+                if field_name == 'street_name' and separator == ' ':
+                    previous_greedy = field_name
+                # select next field to find (first pass OR field found)
+                # [2:-2] is used to remove the extra chars '%(' and ')s'
+                field_name = re_match.group()[2:-2]
+            else:
+                # value not found: keep looking for the same field
+                pass
+            if field_name not in street_fields:
+                raise UserError(_("Unrecognized field %s in street format.", field_name))
+            previous_pos = re_match.end()
+
+        # last field value is what remains in street_raw minus trailing chars in street_format
+        trailing_chars = street_format[previous_pos:]
+        if trailing_chars and street_raw.endswith(trailing_chars):
+            vals[field_name] = street_raw[:-len(trailing_chars)]
+        else:
+            vals[field_name] = street_raw
+        return vals
+
+    def write(self, vals):
+        res = super(L10nMxPayrollEmployerRegistration, self).write(vals)
+        if 'country_id' in vals and 'street' not in vals:
+            self._inverse_street_data()
+        return res
+
+    def _formatting_address_fields(self):
+        """Returns the list of address fields usable to format addresses."""
+        return super(Partner, self)._formatting_address_fields() + self._get_street_fields()
+
+    def _get_street_fields(self):
+        """Returns the fields that can be used in a street format.
+        Overwrite this function if you want to add your own fields."""
+        return ['street_name', 'street_number', 'street_number2']
+
+    @api.onchange('city_id')
+    def _onchange_city_id(self):
+        if self.city_id:
+            self.city = self.city_id.name
+            self.zip = self.city_id.zipcode
+            self.state_id = self.city_id.state_id
+        elif self._origin:
+            self.city = False
+            self.zip = False
+            self.state_id = False
+
+    @api.model
+    def _address_fields(self):
+        """Returns the list of address fields that are synced from the parent."""
+        return super(Partner, self)._address_fields() + ['city_id',]
 
 class HrEmployee(models.Model):
     _inherit = "hr.employee"

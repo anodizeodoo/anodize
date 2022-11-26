@@ -602,7 +602,7 @@ msgstr "Errores CFDI"
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_form_l10n_mx
 msgid "CFDI Information"
-msgstr "CFDI Information"
+msgstr "Información CFDI"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_origin
@@ -625,6 +625,26 @@ msgid "Caja de ahorro"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_mx_filter_base_inherit
+msgid "Cancel"
+msgstr "Cancelado"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.actions.server,name:erp_l10n_mx_payslip_cfdi_base.payslip_cancel_02_reason_action_server
+msgid "Cancel: Comprobante emitido con errores sin relación"
+msgstr "Cancelar: Comprobante emitido con errores sin relación"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.actions.server,name:erp_l10n_mx_payslip_cfdi_base.payslip_cancel_03_reason_action_server
+msgid "Cancel: No se llevó a cabo la operación"
+msgstr "Cancelar: No se llevó a cabo la operación"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.actions.server,name:erp_l10n_mx_payslip_cfdi_base.payslip_cancel_04_reason_action_server
+msgid "Cancel: Operación nominativa relacionada en la factura global"
+msgstr "Cancelar: Operación nominativa relacionada en la factura global"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_cancel_reason
 msgid "Cancellation reason"
 msgstr "Motivo de cancelación"
@@ -634,6 +654,11 @@ msgstr "Motivo de cancelación"
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payslip__l10n_mx_sat_status__cancelled
 msgid "Cancelled"
 msgstr "Cancelado"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_mx_filter_base_inherit
+msgid "Cancelled Slips"
+msgstr "Nóminas canceladas"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_action_titles__category_id
@@ -1149,6 +1174,11 @@ msgid "It indicates that the payslip has been sent."
 msgstr "Indica que la nómina ha sido enviada"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10_mx_cancel_pending
+msgid "It indicates that the payslip its pending to cancel cfdi."
+msgstr ""
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payslip_extra_perception__node__retirement
 msgid "JubilacionPensionRetiro"
 msgstr ""
@@ -1172,6 +1202,11 @@ msgstr "Dejar en blanco para utilizar la hora actual de México central"
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_expedition_date
 msgid "Keep empty to use the current date"
 msgstr "Dejarlo vacío para utilizar la fecha actual."
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10_mx_cancel_pending
+msgid "L10 Mx Cancel Pending"
+msgstr "Pendiente de cancelación"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_salary_rule__l10n_mx_visibility_automatic_isr

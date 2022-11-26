@@ -145,6 +145,9 @@ class HrPayslip(models.Model):
     l10n_mx_foliosustitucion_cancel = fields.Char(string="Folio Substitution",
                                                   tracking=True, copy=False)
 
+    l10_mx_cancel_pending = fields.Boolean(readonly=True, default=False, copy=False,
+                          help="It indicates that the payslip its pending to cancel cfdi.")
+
     def l10n_mx_is_last_payslip(self):
         """Check if the date to in the payslip is the last of the current month
         and return True in that case, to know that is the last payslip"""
@@ -168,6 +171,14 @@ class HrPayslip(models.Model):
             isr = isr * -1
         return isr
 
+    def get_worked_days_for_pay(self):
+        days_pay = self.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.day_payment
+        if len(self.sudo().worked_days_line_ids) > 1:
+            # get WORK100 total time
+            days_pay = self.sudo().worked_days_line_ids.filtered(lambda r:
+                                                                 r.code == 'WORK100').number_of_days
+        return days_pay
+
     def compute_sheet(self):
         super(HrPayslip, self).compute_sheet()
         for record in self:
@@ -177,6 +188,7 @@ class HrPayslip(models.Model):
             total_rules_graba_isr = sum(record.sudo().line_ids.filtered(lambda r:
                                                                  r.salary_rule_id.l10n_mx_isr is True).mapped('amount'))
             print("Total Gravable ISR", total_rules_graba_isr)
+            day_payment = self.get_worked_days_for_pay()
             period_taxable = (record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.day_payment
                               * record.sudo().contract_id.l10n_mx_payroll_daily_salary) + total_rules_graba_isr
             l10n_mx_table_isr_rate_id = record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.\
@@ -219,6 +231,54 @@ class HrPayslip(models.Model):
             'res_model': 'hr.payslip',
             'res_id': self.id,
         }
+
+    def cancel_02_reason(self):
+        to_cancel = self.sudo().with_context(prefetch_fields=False).filtered(lambda r:
+                                                                             r.state in ('verify', 'done'))
+        if to_cancel:
+            data_write = {
+                'l10n_mx_cancel_reason': '02',
+            }
+
+            if len(to_cancel) > 20:
+                data_write.update(dict(l10_mx_cancel_pending=True))
+            to_cancel.write(data_write)
+            self.refresh()
+            if len(to_cancel) <= 20:
+                ctx = {'l10n_mx_cancel_reason': '02',
+                       'l10n_mx_foliosustitucion_cancel': False}
+                to_cancel.with_context(ctx).action_payslip_cancel()
+
+
+    def cancel_03_reason(self):
+        to_cancel = self.sudo().with_context(prefetch_fields=False).filtered(lambda r:
+                                                                             r.state in ('verify', 'done'))
+        if to_cancel:
+            data_write = {
+                'l10n_mx_cancel_reason': '03'
+            }
+            if len(self.sudo()) > 20:
+                data_write.update(dict(l10_mx_cancel_pending=True))
+            self.write(data_write)
+            if len(self.sudo()) <= 20:
+                ctx = {'l10n_mx_cancel_reason': '03',
+                       'l10n_mx_foliosustitucion_cancel': False}
+                to_cancel.with_context(ctx).action_payslip_cancel()
+
+    def cancel_04_reason(self):
+        to_cancel = self.sudo().with_context(prefetch_fields=False).filtered(lambda r:
+                                                                             r.state in ('verify', 'done'))
+        if to_cancel:
+            data_write = {
+                'l10n_mx_cancel_reason': '04'
+            }
+            if len(self.sudo()) > 20:
+                data_write.update(dict(l10_mx_cancel_pending=True))
+            self.write(data_write)
+            if len(self.sudo()) <= 20:
+                ctx = {'l10n_mx_cancel_reason': '04',
+                       'l10n_mx_foliosustitucion_cancel': False}
+                to_cancel.with_context(ctx).action_payslip_cancel()
 
 class HrPayslipActionTitles(models.Model):
     _name = 'hr.payslip.action.titles'
