@@ -188,7 +188,7 @@ class HrPayslip(models.Model):
             total_rules_graba_isr = sum(record.sudo().line_ids.filtered(lambda r:
                                                                  r.salary_rule_id.l10n_mx_isr is True).mapped('amount'))
             print("Total Gravable ISR", total_rules_graba_isr)
-            day_payment = self.get_worked_days_for_pay()
+            day_payment = record.get_worked_days_for_pay()
             period_taxable = (record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.day_payment
                               * record.sudo().contract_id.l10n_mx_payroll_daily_salary) + total_rules_graba_isr
             l10n_mx_table_isr_rate_id = record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.\

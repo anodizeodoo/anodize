@@ -873,8 +873,8 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             version = company.sudo().l10n_mx_stamped_version
             tz = self.env['account.move']._l10n_mx_edi_get_cfdi_partner_timezone(partner)
             date_mx = fields.datetime.now(tz)
-            if not record.l10n_mx_expedition_date:
-                record.l10n_mx_expedition_date = date_mx.date()
+            # if not record.l10n_mx_expedition_date:
+            record.l10n_mx_expedition_date = date_mx.date()
             if not record.l10n_mx_time_payslip:
                 record.l10n_mx_time_payslip = date_mx.strftime(
                     DEFAULT_SERVER_TIME_FORMAT)
