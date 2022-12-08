@@ -21,6 +21,13 @@ from odoo.exceptions import ValidationError, UserError
 from odoo.tools import DEFAULT_SERVER_TIME_FORMAT
 from odoo.tools.xml_utils import _check_with_xsd
 
+import base64
+import json
+import random
+import string
+
+import requests
+
 _logger = logging.getLogger(__name__)
 
 try:
@@ -59,21 +66,41 @@ class HrPayslip(models.Model):
     l10n_mx_cfdi_uuid = fields.Char(
         'Fiscal Folio', copy=False, readonly=True,
         help='Folio in electronic payroll, is returned by SAT when send to '
-             'stamp.', compute='_compute_cfdi_values')
+             'stamp.', compute='_compute_cfdi_values', compute_sudo=True)
 
     l10n_mx_cfdi = fields.Binary(
         'CFDI content', copy=False, readonly=True,
         help='The cfdi xml content encoded in base64.',
-        compute='_compute_cfdi_values')
+        compute='_compute_cfdi_values', compute_sudo=True)
 
     l10n_mx_cfdi_supplier_rfc = fields.Char(string='Supplier RFC', copy=False, readonly=True,
                                                 help='The supplier tax identification number.',
-                                                compute='_compute_cfdi_values')
+                                                compute='_compute_cfdi_values', compute_sudo=True)
     l10n_mx_cfdi_customer_rfc = fields.Char(string='Customer RFC', copy=False, readonly=True,
                                                 help='The customer tax identification number.',
-                                                compute='_compute_cfdi_values')
-    l10n_mx_cfdi_amount = fields.Float(compute='_compute_cfdi_values', store=True)
+                                                compute='_compute_cfdi_values', compute_sudo=True)
+    l10n_mx_cfdi_amount = fields.Float(compute='_compute_cfdi_values',
+                                       store=True,
+                                       compute_sudo=True)
     l10n_mx_cfdi_certificate_id = fields.Many2one('l10n_mx_edi.certificate', string='Certificado (SAT)')
+
+    l10n_mx_stamped_version = fields.Selection(
+        [('version_3', 'Version 3.3'), ('version_4', 'Version 4.0')], string='Stamped version',
+        default='version_3', related='company_id.l10n_mx_stamped_version', compute_sudo=True)
+
+    #  Payments
+    l10n_mx_edi_payment_method_id = fields.Many2one(
+        comodel_name='l10n_mx_edi.payment.method',
+        string="Payment Way",
+        copy=True,
+        tracking=True,
+        help="Indicates the way the payment was/will be received, where the options could be: "
+             "Cash, Nominal Check, Credit Card, etc.")
+
+    l10n_mx_payment_method = fields.Selection([('PUE', '(PUE) Pago en una sola exhibición'),
+                                               ('PPD', '(PPD) Pago en parcialidades o diferido')],
+                                              tracking=True,
+                                              default='PUE', string="Payment method")
 
     # -------------------------------------------------------------------------
     # HELPERS
@@ -88,7 +115,7 @@ class HrPayslip(models.Model):
         :return: the TimbreFiscalDigital node
         :rtype: etree
         """
-        # TODO - This method is the same that invoice.
+        # TODO - This method is the same that payslip.
         if not hasattr(cfdi, 'Complemento'):
             return None
         attribute = 'tfd:TimbreFiscalDigital[1]'
@@ -181,7 +208,7 @@ class HrPayslip(models.Model):
         :return: A string computed with the payslip data called the cadena
         :rtype: str
         """
-        # TODO - Same method that on invoice
+        # TODO - Same method that on payslip
         self.ensure_one()
         xslt_root = etree.parse(tools.file_open(xslt_path))
         return str(etree.XSLT(xslt_root)(cfdi_as_tree))
@@ -190,7 +217,7 @@ class HrPayslip(models.Model):
         """To node CfdiRelacionados get documents related with each payslip
         from l10n_mx_edi_origin, hope the next structure:
             relation type|UUIDs separated by ,"""
-        # TODO - Same method that on invoice
+        # TODO - Same method that on payslip
         self.ensure_one()
         if not self.l10n_mx_origin:
             return {}
@@ -207,7 +234,7 @@ class HrPayslip(models.Model):
         return company.country_id == self.env.ref('base.mx')
 
     def l10n_mx_edi_log_error(self, message):
-        # TODO - Same method that on invoice
+        # TODO - Same method that on payslip
         self.ensure_one()
         self.message_post(
             body=_('Error during the process: %s') % message,
@@ -217,7 +244,8 @@ class HrPayslip(models.Model):
     def _get_l10n_mx_edi_cadena(self):
         self.ensure_one()
         # get the xslt path
-        xslt_path = CFDI_XSLT_CADENA if self.company_id.l10n_mx_stamped_version == 'version_3' else CFDI_XSLT_CADENA_4
+        xslt_path = CFDI_XSLT_CADENA if self.company_id.l10n_mx_stamped_version == 'version_3' \
+            else CFDI_XSLT_CADENA_4
         # get the cfdi as eTree
         cfdi = self.l10n_mx_edi_get_xml_etree()
         # return the cadena
@@ -266,23 +294,30 @@ class HrPayslip(models.Model):
     def _l10n_mx_edi_solfact_cancel(self, pac_info):
         """CANCEL for Solucion Factible.
         """
-        # TODO - Same method that on invoice
+        # TODO - Same method that on payslip
         url = pac_info['url']
         username = pac_info['username']
         password = pac_info['password']
         for record in self:
-            uuids = [record.l10n_mx_cfdi_uuid]
-            certificate_id = record.sudo().l10n_mx_edi_cfdi_certificate_id
-            cer_pem = base64.encodebytes(certificate_id.get_pem_cer(
-                certificate_id.content))
-            key_pem = base64.encodebytes(certificate_id.get_pem_key(
-                certificate_id.key, certificate_id.password))
-            key_password = certificate_id.password
+            # uuids = [record.l10n_mx_cfdi_uuid]
+            uuid_doc = record.l10n_mx_cfdi_uuid
+            uuid_replace = record.l10n_mx_foliosustitucion_cancel
+            motivo = record.l10n_mx_cancel_reason
+
+            uuid_doc = uuid_doc + "|" + motivo + "|"
+            if uuid_replace:
+                uuid_doc = uuid_doc + uuid_replace
+
+            certificate = record.sudo().l10n_mx_cfdi_certificate_id
+            cer_pem = certificate.get_pem_cer(certificate.content)
+            key_pem = certificate.get_pem_key(certificate.key, certificate.password)
+            key_password = certificate.password
+
             try:
                 transport = Transport(timeout=20)
                 client = Client(url, transport=transport)
                 response = client.service.cancelar(
-                    username, password, uuids, cer_pem, key_pem, key_password)
+                    username, password, uuid_doc, cer_pem, key_pem, key_password)
             except BaseException as e:
                 record.l10n_mx_edi_log_error(str(e))
                 continue
@@ -315,7 +350,7 @@ class HrPayslip(models.Model):
     def _l10n_mx_edi_finkok_sign(self, pac_info):
         """SIGN for Finkok.
         """
-        # TODO - Same method that on invoice
+        # TODO - Same method that on payslip
         url = pac_info['url']
         username = pac_info['username']
         password = pac_info['password']
@@ -349,23 +384,31 @@ class HrPayslip(models.Model):
         password = pac_info['password']
         for record in self:
             uuid = record.l10n_mx_cfdi_uuid
-            certificate_id = record.sudo().l10n_mx_edi_cfdi_certificate_id
-            company_id = self.company_id or self.contract_id.company_id
-            cer_pem = base64.encodebytes(certificate_id.get_pem_cer(
-                certificate_id.content)).decode('UTF-8')
-            key_pem = base64.encodebytes(certificate_id.get_pem_key(
-                certificate_id.key, certificate_id.password)).decode('UTF-8')
+            company = record.company_id or record.contract_id.company_id
+            certificate = company.sudo().l10n_mx_edi_certificate_ids
+            cer_pem = certificate.get_pem_cer(certificate.content)
+            key_pem = certificate.get_pem_key(certificate.key, certificate.password)
+
             cancelled = False
             code = False
             try:
                 transport = Transport(timeout=20)
                 client = Client(url, transport=transport)
-                payslips_list = client.factory.create("UUIDS")
-                uuid_type = client.get_type("ns0:stringArray")
-                payslips_list = uuid_type([uuid])
+                factory = client.type_factory('apps.services.soap.core.views')
+                uuid_type = factory.UUID()
+                uuid_type.UUID = record.l10n_mx_cfdi_uuid
+                uuid_type.Motivo = record.l10n_mx_cancel_reason
+                if uuid_replace:
+                    uuid_type.FolioSustitucion = record.l10n_mx_foliosustitucion_cancel
+                payslips_list = factory.UUIDArray(uuid_type)
+
                 response = client.service.cancel(
-                    payslips_list, username, password,
-                    company_id.vat, cer_pem, key_pem)
+                    payslips_list,
+                    username,
+                    password,
+                    company_id.vat,
+                    cer_pem,
+                    key_pem)
             except BaseException as e:
                 record.l10n_mx_edi_log_error(str(e))
                 continue
@@ -379,6 +422,180 @@ class HrPayslip(models.Model):
                 msg = '' if cancelled else _("Cancelling got an error")
                 code = '' if cancelled else code
             record._l10n_mx_edi_post_cancel_process(cancelled, code, msg)
+
+    def _l10n_mx_edi_sw_info(self, company_id, service_type):
+        test = company_id.l10n_mx_edi_pac_test_env
+        username = company_id.l10n_mx_edi_pac_username
+        password = company_id.l10n_mx_edi_pac_password
+        url = ('http://services.test.sw.com.mx/'
+               if test else 'https://services.sw.com.mx/')
+        url_service = url + ('cfdi33/stamp/v3/b64' if service_type == 'sign'
+                             else 'cfdi33/cancel/csd')
+        url_login = url + 'security/authenticate'
+        return {
+            'url': url_service,
+            'multi': False,  # TODO: implement multi
+            'username': username,
+            'password': password,
+            'login_url': url_login,
+        }
+
+    def _l10n_mx_edi_get_sw_token(self, credentials):
+        if credentials['password'] and not credentials['username']:
+            # token is configured directly instead of user/password
+            return {
+                'token': credentials['password'].strip(),
+            }
+
+        try:
+            headers = {
+                'user': credentials['username'],
+                'password': credentials['password'],
+                'Cache-Control': "no-cache"
+            }
+            response = requests.post(credentials['login_url'], headers=headers)
+            response.raise_for_status()
+            response_json = response.json()
+            return {
+                'token': response_json['data']['token'],
+            }
+        except (requests.exceptions.RequestException, KeyError, TypeError) as req_e:
+            return {
+                'errors': [str(req_e)],
+            }
+
+    def _l10n_mx_edi_sw_call(self, url, headers, payload=None):
+        try:
+            response = requests.request("POST", url,
+                                        headers=headers,
+                                        data=payload,
+                                     verify=True, timeout=20)
+        except requests.exceptions.RequestException as req_e:
+            return {'status': 'error', 'message': str(req_e)}
+        msg = ""
+        try:
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as res_e:
+            msg = str(res_e)
+        try:
+            response_json = response.json()
+        except JSONDecodeError:
+            # If it is not possible get json then
+            # use response exception message
+            return {'status': 'error', 'message': msg}
+        if (response_json['status'] == 'error' and
+                response_json['message'].startswith('307')):
+            # XML signed previously
+            cfdi = base64.encodebytes(
+                response_json['messageDetail'].encode('UTF-8'))
+            cfdi = cfdi.decode('UTF-8')
+            response_json['data'] = {'cfdi': cfdi}
+            # We do not need an error message if XML signed was
+            # retrieved then cleaning them
+            response_json.update({
+                'message': None,
+                'messageDetail': None,
+                'status': 'success',
+            })
+        return response_json
+
+    def _l10n_mx_edi_sw_sign(self, pac_info):
+        token = self._l10n_mx_edi_get_sw_token(pac_info)
+        if not token:
+            body_msg = _("Token could not be obtained %s") % req_e
+            self.write(dict(l10n_mx_edi_error=body_msg))
+            self.message_post(body = body_msg)
+            self.env.cr.commit()
+            return
+
+        payload_text = """--%(boundary)s
+Content-Type: text/xml
+Content-Transfer-Encoding: binary
+Content-Disposition: form-data; name="xml"; filename="xml"
+
+%(cfdi_b64)s
+--%(boundary)s--
+"""
+
+        url = pac_info['url']
+        # boundary = self._l10n_mx_edi_sw_boundary()
+        random_values = [random.choice(string.ascii_letters + string.digits) for n in range(30)]
+        boundary = ''.join(random_values)
+        for record in self:
+            # cfdi_b64 = base64.encodebytes(cfdi).decode('UTF-8')
+            # xml = record.l10n_mx_cfdi.decode('UTF-8')
+            xml = base64.encodebytes(record.l10n_mx_cfdi).decode('UTF-8')
+            payload = payload_text % {'boundary': boundary, 'cfdi_b64': xml}
+            payload = payload.replace('\n', '\r\n').encode('UTF-8')
+
+            headers = {
+                'Authorization': "bearer " + token['token'],
+                'Content-Type': ('multipart/form-data; '
+                                 'boundary="%s"') % boundary,
+            }
+
+            try:
+                response_json = self._l10n_mx_edi_sw_call(url, headers, payload=payload)
+                cfdi_signed = response_json['data']['cfdi']
+            except (KeyError, TypeError):
+                cfdi_signed = None
+            except BaseException as e:
+                record.l10n_mx_edi_log_error(str(e))
+                continue
+
+            if not cfdi_signed:
+                code = response_json.get('message')
+                msg = response_json.get('messageDetail')
+
+            record._l10n_mx_edi_post_sign_process(cfdi_signed, code, msg)
+
+    def _l10n_mx_edi_sw_cancel(self, pac_info):
+        token = self._l10n_mx_edi_get_sw_token(pac_info)
+        if not token:
+            body_msg = _("Token could not be obtained %s") % req_e
+            self.write(dict(l10n_mx_edi_error=body_msg))
+            self.message_post(body=body_msg)
+            self.env.cr.commit()
+            return
+        url = pac_info['url']
+        headers = {
+            'Authorization': "bearer " + token['token'],
+            'Content-Type': "application/json"
+        }
+
+        for rec in self:
+            uuid_doc = rec.l10n_mx_cfdi_uuid
+            uuid_replace = rec.l10n_mx_foliosustitucion_cancel
+            motivo = rec.l10n_mx_cancel_reason
+            company = rec.sudo().company_id
+            certificates = company.l10n_mx_edi_certificate_ids
+            certificate = certificates.get_valid_certificate()
+            payload_dict = {
+                'rfc': company.vat,
+                'b64Cer': certificate.content.decode('UTF-8'),
+                'b64Key': certificate.key.decode('UTF-8'),
+                'password': certificate.password,
+                'uuid': uuid_doc,
+                'motivo': motivo
+            }
+            if uuid_replace and motivo == '01':
+                payload_dict['folioSustitucion'] = uuid_replace
+
+            payload = json.dumps(payload_dict)
+            response_json = self._l10n_mx_edi_sw_call(pac_info['url'], headers,
+                                                      payload=payload.encode('UTF-8'))
+
+            cancelled = response_json['status'] == 'success'
+            code = response_json.get('message')
+            msg = response_json.get('messageDetail')
+            errors = []
+            if code:
+                errors.append(_("Code : %s") % code)
+            if msg:
+                errors.append(_("Message : %s") % msg)
+
+            rec._l10n_mx_edi_post_cancel_process(
+                cancelled, code=code, msg=msg)
 
     def _l10n_mx_edi_call_service(self, service_type):
         """Call the right method according to the pac_name,
@@ -428,11 +645,12 @@ class HrPayslip(models.Model):
             body_msg = _('The sign service has been called with success')
             # Update the pac status
             self.l10n_mx_pac_status = 'signed'
+            self.l10n_mx_edi_error = False
             self.l10n_mx_cfdi = xml_signed
             # Update the content of the attachment
             attachment_id = self.l10n_mx_edi_retrieve_last_attachment()
             attachment_id.write({
-                'datas': xml_signed,
+                'datas': base64.encodestring(xml_signed),
                 'mimetype': 'application/xml'
             })
             post_msg = [_('The content of the attachment has been updated')]
@@ -443,9 +661,15 @@ class HrPayslip(models.Model):
             post_msg.extend([_('Code: ') + str(code)])
         if msg:
             post_msg.extend([_('Message: ') + msg])
+        if code and not xml_signed:
+            self.l10n_mx_edi_error = post_msg[-1]
+        else:
+            self.l10n_mx_edi_error = False
+
         self.message_post(
             body=body_msg + create_list_html(post_msg)
             )
+        self.env.cr.commit()
 
     def _l10n_mx_edi_sign(self):
         """Call the sign service with records that can be signed.
@@ -515,13 +739,29 @@ class HrPayslip(models.Model):
     def action_payslip_cancel(self):
         """Overwrite method when state is done, to allow cancel payslip in done
         """
+
+        if self.sudo().filtered(lambda x_i: not x_i.l10n_mx_cancel_reason and
+                                                 x_i.l10n_mx_edi_is_required() and x_i.l10n_mx_cfdi_uuid):
+            action = self.env.ref('erp_l10n_mx_hr_payroll_e8e_vauxo.cfdi_reason_cancelation_sat_wizard').read()[0]
+            return action
+
         to_cancel = self.filtered(lambda r: r.state == 'done')
         to_cancel.write({'state': 'cancel'})
         self.refresh()
         res = super(HrPayslip, self).action_payslip_cancel()
         mx_payslip = self.filtered(lambda r: r.l10n_mx_edi_is_required())
-        mx_payslip._l10n_mx_edi_cancel()
+        if mx_payslip:
+            mx_payslip.l10n_mx_action_payslip_cancel()
         return res
+
+    def l10n_mx_action_payslip_cancel(self):
+        """Overwrite method when state is done, to allow cancel payslip in done
+        """
+        mx_payslip = self.filtered(lambda r: r.l10n_mx_edi_is_required()
+                                             and r.l10n_mx_cfdi_uuid and r.l10n_mx_cancel_reason)
+        if mx_payslip:
+            mx_payslip._l10n_mx_edi_cancel()
+        return True
 
     def action_payroll_sent(self):
         """Open a window to compose an email, with the edi payslip template
@@ -529,6 +769,10 @@ class HrPayslip(models.Model):
         self.ensure_one()
         template = self.env.ref(
             'erp_l10n_mx_payslip_data.email_template_edi_payroll', False)
+        if template:
+            template = template.id
+        else:
+            template = False
         compose_form = self.env.ref(
             'mail.email_compose_message_wizard_form', False)
         ctx = self._context.copy()
@@ -536,7 +780,7 @@ class HrPayslip(models.Model):
         ctx['default_model'] = 'hr.payslip'
         ctx['default_res_id'] = self.id
         ctx['default_use_template'] = bool(template)
-        ctx['default_template_id'] = template.id or False
+        ctx['default_template_id'] = template or False
         ctx['default_composition_mode'] = 'comment'
         return {
             'name': _('Compose Email'),
@@ -564,22 +808,27 @@ class HrPayslip(models.Model):
             # To avoid this problem, we read the 'datas' directly on the disk.
             datas = attachment_id._file_read(attachment_id.store_fname)
             record.l10n_mx_cfdi = datas
-            tree = record.l10n_mx_edi_get_xml_etree(datas)
-            # if already signed, extract uuid
-            tfd_node = record.l10n_mx_edi_get_tfd_etree(tree)
-            if tfd_node is not None:
-                record.l10n_mx_cfdi_uuid = tfd_node.get('UUID')
-            record.l10n_mx_cfdi_amount = tree.get(
-                'Total', tree.get('total'))
-            record.l10n_mx_cfdi_supplier_rfc = tree.Emisor.get(
-                'Rfc', tree.Emisor.get('rfc'))
-            record.l10n_mx_cfdi_customer_rfc = tree.Receptor.get(
-                'Rfc', tree.Receptor.get('rfc'))
-            record.l10n_mx_cfdi_certificate_id = self.env[
-                'l10n_mx_edi.certificate'].sudo().search([
-                    ('serial_number', '=', tree.get(
-                        'NoCertificado', tree.get('noCertificado')))],
-                    limit=1)
+            cfdi = base64.decodebytes(attachment_id.with_context(bin_size=False).datas).replace(b'xmlns:schemaLocation',
+                                                                                                b'xsi:schemaLocation')
+            try:
+                tree = record.l10n_mx_edi_get_xml_etree(cfdi)
+                # if already signed, extract uuid
+                tfd_node = record.l10n_mx_edi_get_tfd_etree(tree)
+                if tfd_node is not None:
+                    record.l10n_mx_cfdi_uuid = tfd_node.get('UUID')
+                record.l10n_mx_cfdi_amount = tree.get(
+                    'Total', tree.get('total'))
+                record.l10n_mx_cfdi_supplier_rfc = tree.Emisor.get(
+                    'Rfc', tree.Emisor.get('rfc'))
+                record.l10n_mx_cfdi_customer_rfc = tree.Receptor.get(
+                    'Rfc', tree.Receptor.get('rfc'))
+                record.l10n_mx_cfdi_certificate_id = self.env[
+                    'l10n_mx_edi.certificate'].sudo().search([
+                        ('serial_number', '=', tree.get(
+                            'NoCertificado', tree.get('noCertificado')))],
+                        limit=1)
+            except:
+                pass
 
     def action_payslip_draft(self):
         for record in self.filtered('l10n_mx_cfdi_uuid'):
@@ -594,14 +843,38 @@ class HrPayslip(models.Model):
         """Generates the cfdi attachments for mexican companies when validated.
         """
         result = super(HrPayslip, self).action_payslip_done()
+        # for record in self.filtered(lambda r: r.l10n_mx_edi_is_required()):
+        #     company = record.company_id or record.contract_id.company_id
+        #     partner = company.partner_id.commercial_partner_id
+        #     version = company.l10n_mx_stamped_version
+        #     tz = self.env['account.move']._l10n_mx_edi_get_cfdi_partner_timezone(partner)
+        #     date_mx = fields.datetime.now(tz)
+        #     if not record.l10n_mx_expedition_date:
+        #         record.l10n_mx_expedition_date = date_mx.date()
+        #     if not record.l10n_mx_time_payslip:
+        #         record.l10n_mx_time_payslip = date_mx.strftime(
+        #             DEFAULT_SERVER_TIME_FORMAT)
+        #     name = 'MX-Payroll-3-3.xml' if version == 'version_3' else 'MX-Payroll-4-0.xml'
+        #     record.l10n_mx_cfdi_name = ('%s-%s' % (
+        #         record.number, name)).replace('/', '')
+        #     record._l10n_mx_edi_retry()
+        #     record.contract_id.loan_ids.filtered(
+        #         lambda loan: loan.payslips_count < loan.payment_term).write({
+        #             'payslip_ids': [(4, record.id)],
+        #         })
+        return result
+
+    def l10n_mx_edi_action_send_cfdi(self):
+        """Generates the cfdi attachments for mexican companies when validated.
+        """
         for record in self.filtered(lambda r: r.l10n_mx_edi_is_required()):
-            company = record.company_id or record.contract_id.company_id
-            partner = company.partner_id.commercial_partner_id
-            version = company.l10n_mx_stamped_version
+            company = record.sudo().company_id or record.sudo().contract_id.company_id
+            partner = company.sudo().partner_id.commercial_partner_id
+            version = company.sudo().l10n_mx_stamped_version
             tz = self.env['account.move']._l10n_mx_edi_get_cfdi_partner_timezone(partner)
             date_mx = fields.datetime.now(tz)
-            if not record.l10n_mx_expedition_date:
-                record.l10n_mx_expedition_date = date_mx.date()
+            # if not record.l10n_mx_expedition_date:
+            record.l10n_mx_expedition_date = date_mx.date()
             if not record.l10n_mx_time_payslip:
                 record.l10n_mx_time_payslip = date_mx.strftime(
                     DEFAULT_SERVER_TIME_FORMAT)
@@ -613,7 +886,7 @@ class HrPayslip(models.Model):
                 lambda loan: loan.payslips_count < loan.payment_term).write({
                     'payslip_ids': [(4, record.id)],
                 })
-        return result
+        return True
 
     def compute_sheet(self):
         if (self.filtered(lambda r: r.l10n_mx_edi_is_required()) and
@@ -644,17 +917,24 @@ class HrPayslip(models.Model):
 
             ctx = self.env.context.copy()
             ctx.pop('default_type', False)
-            name = 'MX-Payroll-3-3.xml' if record.company_id.l10n_mx_stamped_version == 'version_3' else 'MX-Payroll-4-0.xml'
+            name = 'MX-Payroll-3-3.xml' if record.company_id.l10n_mx_stamped_version == 'version_3' \
+                else 'MX-Payroll-4-0.xml'
             filename = (
                 '%s-%s' % (record.number, name)).replace('/', '')
             record.l10n_mx_cfdi_name = filename
+            #print("XML ", cfdi)
+            encoding = 'utf-8'
+            data_xml = base64.encodebytes(cfdi)
+
             attach_id = self.env['ir.attachment'].with_context(ctx).create({
                 'name': filename,
                 'res_id': record.id,
                 'res_model': record._name,
                 'datas': base64.encodestring(cfdi),
+                # 'mimetype': 'application/xml',
                 'description': 'Mexican payroll',
             })
+
             record.message_post(
                 body=_('CFDI document generated (may be not signed)'),
                 attachment_ids=[attach_id.id])
@@ -695,7 +975,7 @@ class HrPayslip(models.Model):
 
     @staticmethod
     def _l10n_mx_get_serie_and_folio(number):
-        # TODO - Same method on invoice
+        # TODO - Same method on payslip
         values = {'serie': None, 'folio': None}
         number_matchs = [rn for rn in re.finditer(r'\d+', number or '')]
         if number_matchs:
@@ -864,9 +1144,22 @@ class HrPayslip(models.Model):
             msgs.append(_("• El Estado en la dirección de la compañia es requerido."))
         if not values['working_day']:
             msgs.append(_("• La Categoría del empleado es requerida."))
-        if values['working_day'] and values['working_day'] not in ('01', '02', '03', '04', '05', '06', '07', '08', '99'):
+        if values['working_day'] and values['working_day'] not in ('01', '02', '03', '04', '05', '06',
+                                                                   '07', '08', '99'):
             msgs.append(_("• La Categoría del empleado no es válida. Ejemplo: 01-Diurna, 02-Nocturna, 03-Mixta."))
-        perceptions = values['perceptions'].filtered(lambda p: p.code[-3:] not in ['001', '002', '003', '004', '005', '006', '009', '010', '011', '012', '013', '014', '015', '019', '020', '021', '022', '023', '024', '025', '026', '027', '028', '029', '030', '031', '032', '033', '034', '035', '036', '037', '038', '039', '044', '045', '046', '047', '048', '049', '050', '051', '052', '053'])
+        perceptions = values['perceptions'].filtered(lambda p: p.code[-3:] not in ['001', '002', '003',
+                                                                                   '004', '005', '006',
+                                                                                   '009', '010', '011', '012',
+                                                                                   '013', '014', '015', '019',
+                                                                                   '020', '021', '022', '023',
+                                                                                   '024', '025', '026', '027',
+                                                                                   '028', '029', '030',
+                                                                                   '031', '032', '033',
+                                                                                   '034', '035', '036',
+                                                                                   '037', '038', '039',
+                                                                                   '044', '045', '046',
+                                                                                   '047', '048', '049',
+                                                                                   '050', '051', '052', '053'])
         if perceptions:
             error_perceptions = ','.join(perceptions.mapped('name'))
             msgs.append(_("• El Código en el Cálculo de Salario no es válido para %s." % error_perceptions))
@@ -955,7 +1248,8 @@ class HrPayslip(models.Model):
             cadena)
 
         # Check with xsd
-        ref = 'l10n_mx_edi.xsd_cached_cfdv33_xsd' if company_id.l10n_mx_stamped_version == 'version_3' else 'l10n_mx_edi.xsd_cached_cfdv40_xsd'
+        ref = 'l10n_mx_edi.xsd_cached_cfdv33_xsd' if company_id.l10n_mx_stamped_version == 'version_3' \
+            else 'l10n_mx_edi.xsd_cached_cfdv40_xsd'
         attachment = self.env.ref(ref, False)
         xsd_datas = base64.b64decode(attachment.datas) if attachment else b''
         if xsd_datas:
@@ -1009,9 +1303,9 @@ class HrPayslip(models.Model):
         for record in self:
             if record.l10n_mx_pac_status not in ['signed', 'cancelled']:
                 continue
-            supplier_rfc = record.l10n_mx_edi_cfdi_supplier_rfc
-            customer_rfc = record.l10n_mx_edi_cfdi_customer_rfc
-            total = record.l10n_mx_edi_cfdi_amount
+            supplier_rfc = record.l10n_mx_cfdi_supplier_rfc
+            customer_rfc = record.l10n_mx_cfdi_customer_rfc
+            total = record.l10n_mx_cfdi_amount
             uuid = record.l10n_mx_cfdi_uuid
             params = url_encode({
                 're': supplier_rfc,
@@ -1026,7 +1320,7 @@ class HrPayslip(models.Model):
             except BaseException as e:  # pragma: no cover
                 record.l10n_mx_edi_log_error(str(e) or e.reason.__repr__())  # noqa pragma: no cover
                 continue  # pragma: no cover
-            record.l10n_mx_edi_sat_status = cfdi_sat_status.get(
+            record.l10n_mx_sat_status = cfdi_sat_status.get(
                 status[0] if status else False, 'none')
 
     def _get_worked_day_lines(self):
@@ -1105,6 +1399,9 @@ class HrPayslip(models.Model):
             ('date_stop', '>=', self.date_from),
             ('employee_id', '=', self.employee_id.id),
         ])
+        if self.sudo().employee_id:
+            if self.sudo().employee_id.l10n_mx_edi_payment_method_id:
+                self.l10n_mx_edi_payment_method_id = self.sudo().employee_id.l10n_mx_edi_payment_method_id.id
         if not work_entries.action_validate():
             raise ValidationError(_('There are conflicts in the work entry for this employee in the selected period.'))
         super(HrPayslip, self). _onchange_employee()
@@ -1112,6 +1409,10 @@ class HrPayslip(models.Model):
 
 class HrPayslipRun(models.Model):
     _inherit = 'hr.payslip.run'
+
+    l10n_mx_stamped_version = fields.Selection(
+        [('version_3', 'Version 3.3'), ('version_4', 'Version 4.0')], string='Stamped version',
+        default='version_3', related='company_id.l10n_mx_stamped_version', compute_sudo=True)
 
     def action_payslips_done(self):
         self.ensure_one()
@@ -1149,3 +1450,22 @@ class HrPayslipRun(models.Model):
             mail_composition |= res
         # send all
 
+    @api.model
+    def _cron_process_documents_sat_web_services(self):
+        edi_documents = self.env['hr.payslip'].search([('l10n_mx_sat_status', 'in',
+                                                        ('retry', 'to_sign', False, 'undefined')),
+                                                        ('state', 'in', ('verify', 'done')),
+                                                        ('l10n_mx_edi_error', '=', False)], limit=100)
+        if edi_documents:
+            for edi_doc in edi_documents:
+                try:
+                    edi_doc.l10n_mx_edi_action_send_cfdi()
+                except:
+                    pass
+
+        edi_cancel_documents = self.env['hr.payslip'].search([('l10_mx_cancel_pending', '=',True),
+                                                       ('l10n_mx_cancel_reason', 'in', ('02', '03', '04')),
+                                                       ('l10n_mx_edi_error', '=', False)], limit=50)
+        if edi_cancel_documents:
+            edi_cancel_documents.action_payslip_cancel()
+            edi_cancel_documents.write({'l10_mx_cancel_pending': False})

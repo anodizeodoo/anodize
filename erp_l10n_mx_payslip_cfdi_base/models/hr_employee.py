@@ -12,7 +12,6 @@ from calendar import monthrange
 import requests
 
 from lxml import etree, objectify
-from werkzeug import url_encode
 from zeep import Client
 from zeep.transports import Transport
 
@@ -51,7 +50,7 @@ class HrEmployeeLoan(models.Model):
     payslip_ids = fields.Many2many(
         'hr.payslip', help='Payslips where this loan is collected.')
     payslips_count = fields.Integer(
-        'Number of Payslips', compute='_compute_payslips_count')
+        'Number of Payslips', compute='_compute_payslips_count', compute_sudo=True)
 
     def _compute_payslips_count(self):
         for loan in self:

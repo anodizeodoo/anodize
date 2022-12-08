@@ -15,7 +15,8 @@
                         </div>
                         <div class="row mt16">
                             <label for="l10n_mx_edi_employer_registration_id" class="col-lg-3 o_light_label"/>
-                            <field name="l10n_mx_edi_employer_registration_id"/>
+                            <field name="l10n_mx_edi_employer_registration_id"
+                                   options="{'no_create': True, 'no_create_edit': True}"/>
                         </div>
                     </div>
                 </div>

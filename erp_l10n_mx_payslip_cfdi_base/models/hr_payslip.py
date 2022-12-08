@@ -12,7 +12,7 @@ from calendar import monthrange
 import requests
 
 from lxml import etree, objectify
-from werkzeug import url_encode
+
 from zeep import Client
 from zeep.transports import Transport
 
@@ -68,7 +68,7 @@ class HrPayslip(models.Model):
          ('cancelled', 'Cancelled'),
          ('valid', 'Valid')], 'SAT status',
         help='Refers to the status of the payslip inside the SAT system.',
-        readonly=True, copy=False, required=True, track_visibility='onchange',
+        readonly=True, copy=False, required=True, tracking=True,
         default='undefined')
 
     l10n_mx_balance_favor = fields.Float(
@@ -133,6 +133,21 @@ class HrPayslip(models.Model):
     l10n_mx_payslip_type = fields.Selection([('O', 'O-Ordinary Payroll'), ('E', 'E-Extraordinary')],
                                             string='Type of payroll')
 
+    l10n_mx_edi_error = fields.Char(string="EDI Error", copy=False)
+
+    l10n_mx_cancel_reason = fields.Selection(
+        selection=[('01', ('Comprobante emitido con errores con relación')),
+                   ('02', ('Comprobante emitido con errores sin relación')),
+                   ('03', ('No se llevó a cabo la operación')),
+                   ('04', ('Operación nominativa relacionada en la factura global'))],
+        string=('Cancellation reason'), tracking=True, copy=False)
+
+    l10n_mx_foliosustitucion_cancel = fields.Char(string="Folio Substitution",
+                                                  tracking=True, copy=False)
+
+    l10_mx_cancel_pending = fields.Boolean(readonly=True, default=False, copy=False,
+                          help="It indicates that the payslip its pending to cancel cfdi.")
+
     def l10n_mx_is_last_payslip(self):
         """Check if the date to in the payslip is the last of the current month
         and return True in that case, to know that is the last payslip"""
@@ -141,50 +156,129 @@ class HrPayslip(models.Model):
         self.ensure_one()
         if not self.date_to:
             return False
-        if self.date_to.day == monthrange(
-                self.date_to.year, self.date_to.month)[1]:
+        if self.sudo().date_to.day == monthrange(
+                self.sudo().date_to.year, self.sudo().date_to.month)[1]:
             return True
         return False
 
     @api.onchange('struct_id')
     def _onchange_struct_id(self):
         if self.struct_id:
-            self.l10n_mx_payslip_type = self.struct_id.l10n_mx_payslip_type
+            self.l10n_mx_payslip_type = self.sudo().struct_id.l10n_mx_payslip_type
 
     def _set_isr_negative(self, isr):
         if isr > 0:
             isr = isr * -1
         return isr
 
+    def get_worked_days_for_pay(self):
+        days_pay = self.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.day_payment
+        if len(self.sudo().worked_days_line_ids) > 1:
+            # get WORK100 total time
+            days_pay = self.sudo().worked_days_line_ids.filtered(lambda r:
+                                                                 r.code == 'WORK100').number_of_days
+        return days_pay
+
     def compute_sheet(self):
         super(HrPayslip, self).compute_sheet()
         for record in self:
-            if not record.contract_id.l10n_mx_payroll_schedule_pay_id.l10n_mx_table_isr_id:
-                raise ValidationError(_('The payment period in the contract %s must have to which ISR belongs.' %(record.contract_id.name)))
-            total_rules_graba_isr = sum(record.line_ids.filtered(lambda r: r.salary_rule_id.l10n_mx_isr is True).mapped('amount'))
-            period_taxable = (record.contract_id.l10n_mx_payroll_schedule_pay_id.day_payment * record.contract_id.l10n_mx_payroll_daily_salary) + total_rules_graba_isr
-            l10n_mx_table_isr_rate_id = record.contract_id.l10n_mx_payroll_schedule_pay_id.l10n_mx_table_isr_id.find_rule_by_rate(period_taxable)
+            if not record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.l10n_mx_table_isr_id:
+                raise ValidationError(_('The payment period in the contract %s must have to which ISR belongs.'
+                                        % (record.sudo().contract_id.name)))
+            total_rules_graba_isr = sum(record.sudo().line_ids.filtered(lambda r:
+                                                                 r.salary_rule_id.l10n_mx_isr is True).mapped('amount'))
+            print("Total Gravable ISR", total_rules_graba_isr)
+            day_payment = record.get_worked_days_for_pay()
+            period_taxable = (record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.day_payment
+                              * record.sudo().contract_id.l10n_mx_payroll_daily_salary) + total_rules_graba_isr
+            l10n_mx_table_isr_rate_id = record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.\
+                l10n_mx_table_isr_id.find_rule_by_rate(period_taxable)
+            print("Period Taxable", period_taxable, l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_lower_limit,
+                  l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_upper_limit, record.contract_id.l10n_mx_payroll_schedule_pay_id.name)
             exceed_lower_limit = period_taxable - l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_lower_limit
+            print("Rate percentage", l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_percentage)
             rate_percentage = l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_percentage
             marginal_tax = (exceed_lower_limit * rate_percentage)/100
+            print("Marginal tax", marginal_tax)
             rate_fixed_fee = l10n_mx_table_isr_rate_id.l10n_mx_isr_rate_fixed_fee
+            print("Rate fixed fee", rate_fixed_fee)
             isr = marginal_tax + rate_fixed_fee
-            l10n_mx_table_isr_subsidy_rate_id = record.contract_id.l10n_mx_payroll_schedule_pay_id.l10n_mx_table_isr_id.find_rule_by_subsidy(period_taxable)
+            l10n_mx_table_isr_subsidy_rate_id = record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.\
+                l10n_mx_table_isr_id.find_rule_by_subsidy(period_taxable)
             isr_total = isr - l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity
-            line_isr_id = record.line_ids.filtered(lambda r: r.salary_rule_id.code == '002')
+            print("ISR Subsidy Quantity", l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity)
+            line_isr_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == '002')
             if line_isr_id.salary_rule_id.l10n_mx_automatic_isr:
                 line_isr_id.write({'amount': self._set_isr_negative(isr_total), 'quantity': 1.0})
                 # line_isr_id._compute_total()
-            line_aux_isr_id = record.line_ids.filtered(lambda r: r.salary_rule_id.code == 'AUX_ISR')
-            if line_aux_isr_id.salary_rule_id.l10n_mx_automatic_isr:
+            line_aux_isr_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'AUX_ISR')
+            if line_aux_isr_id.sudo().salary_rule_id.l10n_mx_automatic_isr:
                 line_aux_isr_id.write({'amount': self._set_isr_negative(isr), 'quantity': 1.0})
                 # line_aux_isr_id._compute_total()
-            line_aux_op002_id = record.line_ids.filtered(lambda r: r.salary_rule_id.code == 'AUX_OP002')
-            if line_aux_op002_id.salary_rule_id.l10n_mx_automatic_isr:
+            line_aux_op002_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'AUX_OP002')
+            if line_aux_op002_id.sudo().salary_rule_id.l10n_mx_automatic_isr:
                 line_aux_op002_id.write({'amount': self._set_isr_negative(l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity), 'quantity': 1.0})
                 # line_aux_op002_id._compute_total()
         return True
 
+    def action_view_error_payslip(self):
+        self.ensure_one()
+        return {
+            'name': self.display_name,
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'hr.payslip',
+            'res_id': self.id,
+        }
+
+    def cancel_02_reason(self):
+        to_cancel = self.sudo().with_context(prefetch_fields=False).filtered(lambda r:
+                                                                             r.state in ('verify', 'done'))
+        if to_cancel:
+            data_write = {
+                'l10n_mx_cancel_reason': '02',
+            }
+
+            if len(to_cancel) > 20:
+                data_write.update(dict(l10_mx_cancel_pending=True))
+            to_cancel.write(data_write)
+            self.refresh()
+            if len(to_cancel) <= 20:
+                ctx = {'l10n_mx_cancel_reason': '02',
+                       'l10n_mx_foliosustitucion_cancel': False}
+                to_cancel.with_context(ctx).action_payslip_cancel()
+
+
+    def cancel_03_reason(self):
+        to_cancel = self.sudo().with_context(prefetch_fields=False).filtered(lambda r:
+                                                                             r.state in ('verify', 'done'))
+        if to_cancel:
+            data_write = {
+                'l10n_mx_cancel_reason': '03'
+            }
+            if len(self.sudo()) > 20:
+                data_write.update(dict(l10_mx_cancel_pending=True))
+            self.write(data_write)
+            if len(self.sudo()) <= 20:
+                ctx = {'l10n_mx_cancel_reason': '03',
+                       'l10n_mx_foliosustitucion_cancel': False}
+                to_cancel.with_context(ctx).action_payslip_cancel()
+
+    def cancel_04_reason(self):
+        to_cancel = self.sudo().with_context(prefetch_fields=False).filtered(lambda r:
+                                                                             r.state in ('verify', 'done'))
+        if to_cancel:
+            data_write = {
+                'l10n_mx_cancel_reason': '04'
+            }
+            if len(self.sudo()) > 20:
+                data_write.update(dict(l10_mx_cancel_pending=True))
+            self.write(data_write)
+            if len(self.sudo()) <= 20:
+                ctx = {'l10n_mx_cancel_reason': '04',
+                       'l10n_mx_foliosustitucion_cancel': False}
+                to_cancel.with_context(ctx).action_payslip_cancel()
 
 class HrPayslipActionTitles(models.Model):
     _name = 'hr.payslip.action.titles'
@@ -250,3 +344,30 @@ class HrPayslipRun(models.Model):
         'will be added on all payslip created with this batch.')
     l10n_mx_productivity_bonus = fields.Float(
         'Productivity Bonus', help='The amount to distribute to the employees in the payslips.')
+
+    l10n_mx_edi_error_count = fields.Integer(string="EDI Errors",
+        compute='_compute_edi_error_count',
+        help='How many EDIs are in error for this move ?', compute_sudo=True)
+
+    @api.depends('slip_ids.l10n_mx_edi_error')
+    def _compute_edi_error_count(self):
+        for h_run in self:
+            h_run.l10n_mx_edi_error_count = len(h_run.sudo().slip_ids.filtered(lambda d: d.l10n_mx_edi_error))
+
+    def l10n_mx_edi_action_see_errors(self):
+        self.ensure_one()
+        return {
+            "name": _("Payslips with errors"),
+            "type": "ir.actions.act_window",
+            "res_model": "hr.payslip",
+            "views": [[False, "tree"], [False, "form"]],
+            "context": {'create': 0, 'from_see_error_run': 1},
+            "domain": [['id', 'in', self.sudo().slip_ids.filtered(lambda d: d.l10n_mx_edi_error
+                                                                            and d.l10n_mx_pac_status != 'signed').ids]],
+        }
+
+    def action_open_payslips(self):
+        res = super(HrPayslipRun, self).action_open_payslips()
+        if res:
+            res.update({'name': _("Payslips")})
+        return res

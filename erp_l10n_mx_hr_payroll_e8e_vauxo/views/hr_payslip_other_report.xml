@@ -270,9 +270,9 @@
                             </p>
                         </div>
                     </div>
-                    <t t-if="o.l10n_mx_cfdi_uuid">
-                        <div class="row" id='complement' style="margin-top:5px;">
-                            <div class="barcode col-3">
+                    <t t-if="o.l10n_mx_cfdi_uuid and xml">
+                        <div class="row" id='complement' style="margin-top:5px;" t-if="xml">
+                            <div class="barcode col-3" t-if="xml">
                                 <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
                                 <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=180&amp;height=180' % quote_plus(
                                     'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(
@@ -281,7 +281,7 @@
                                         + '&amp;fe=%s' % quote_plus(
                                             sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
                             </div>
-                            <div class="complement-details col-9">
+                            <div class="complement-details col-9" t-if="xml">
                                 <div class="digital-stamp">
                                     <span>Digital stamp of the emitter</span>
                                 </div>

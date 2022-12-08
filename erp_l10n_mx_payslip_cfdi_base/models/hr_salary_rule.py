@@ -28,4 +28,6 @@ class HrSalaryRule(models.Model):
 class HrPayrollStructure(models.Model):
     _inherit = 'hr.payroll.structure'
 
-    l10n_mx_payslip_type = fields.Selection([('O', 'O-Ordinary Payroll'), ('E', 'E-Extraordinary')], string='Type of payroll')
+    l10n_mx_payslip_type = fields.Selection([('O', 'O-Ordinary Payroll'),
+                                             ('E', 'E-Extraordinary')],
+                                            string='Type of payroll')

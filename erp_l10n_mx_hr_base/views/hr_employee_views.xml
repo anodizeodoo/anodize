@@ -6,11 +6,21 @@
         <field name="inherit_id" ref="hr.view_employee_tree"/>
         <field name="arch" type="xml">
             <field name="name" position="before">
-                <field name="registration_number"/>
+                <field name="registration_number" />
+            </field>
+            <xpath expr="//field[@name='work_phone']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <field name="name" position="after">
+                <field name="l10n_mx_edi_rfc"/>
+                <field name="l10n_mx_edi_curp"/>
+                <field name="zip"/>
+                <field name="ssnid" string="NSS" optional="show"/>
+                <field name="private_email" optional="show"/>
             </field>
         </field>
     </record>
-
+    
     <record model="ir.ui.view" id="view_hr_employee_form_inherit_l10n_mx">
         <field name="name">view.hr.employee.form.inherit.l10n_mx</field>
         <field name="model">hr.employee</field>
@@ -21,12 +31,16 @@
                     <group>
                         <field name="ssnid" required="1"/>
                         <field name="l10n_mx_edi_is_assimilated"/>
-                        <field name="l10n_mx_edi_contract_regime_type_id" options="{'no_open': 1, 'no_create': 1}" required="1"/>
+                        <field name="l10n_mx_edi_contract_regime_type_id"
+                               options="{'no_create_edit': True, 'no_open': 1, 'no_create': 1}" required="1"/>
                         <field name="l10n_mx_payment_method"/>
                     </group>
                     <group>
-                        <field name="l10n_mx_edi_employer_registration_id" required="1"/>
-                        <field name="l10n_mx_edi_risk_rank"/>
+                        <field name="l10n_mx_edi_employer_registration_id"
+                               options="{'no_create_edit': True, 'no_create': 1}"
+                               required="1"/>
+                        <field name="l10n_mx_edi_risk_rank"
+                        options="{'no_create_edit': True, 'no_create': 1}"/>
                         <field name="l10n_mx_edi_syndicated"/>
                     </group>
                 </group>
@@ -48,8 +62,12 @@
             <xpath expr="//page[@name='personal_information']//group//group[3]" position="before">
                 <group string="Bank data">
                     <field name="filtered_banks" invisible="1"/>
-                    <field name="bank_id" domain="[('id', 'in', filtered_banks)]"/>
-                    <field name="bank_account_id" position="move"/>
+                    <field name="bank_id"
+                           options="{'no_create_edit': True, 'no_create': 1}"
+                           domain="[('id', 'in', filtered_banks)]"/>
+                    <field name="bank_account_id"
+                           options="{'no_create_edit': True, 'no_create': 1}"
+                           position="move"/>
                     <field name="l10n_mx_edi_clabe"/>
                 </group>
             </xpath>
@@ -62,11 +80,38 @@
             <field name="department_id" position="after">
                 <field name="job_id" position="move"/>
             </field>
+            <field name="parent_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="coach_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="address_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="address_home_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="country_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="resource_calendar_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="country_of_birth" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="user_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
             <field name="department_id" position="attributes">
                 <attribute name="required">1</attribute>
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
             </field>
             <field name="job_id" position="attributes">
                 <attribute name="required">1</attribute>
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+                <attribute name="domain">[('department_id', 'child_of', department_id)]</attribute>
             </field>
 <!--            <xpath expr="//div[@id='o_work_employee_main']/group[4]" position="after">-->
 <!--                <group string="CFDI">-->
@@ -117,10 +162,39 @@
                 <sheet string="Employer Registration">
                     <group>
                         <group>
+                            <field name="date_start" required="1"/>
                             <field name="name"/>
+                            <field name="job_risk_id"
+                                   options="{'no_create_edit': True, 'no_create': 1}"/>
+                            <field name="date_end"/>
+                            <field name="active" widget="boolean_toggle"/>
                         </group>
                         <group>
-                            <field name="job_risk_id"/>
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street" invisible="1"/>
+                                <field name="street_name" placeholder="Street Name..."/>
+                                <div class="o_row">
+                                    <label for="street_number" class="oe_edit_only"/>
+                                    <span> </span>
+                                    <field name="street_number"/>
+                                    <label for="street_number2" class="oe_edit_only"/>
+                                    <field name="street_number2"/>
+                                </div>
+                                <field name="street2" attrs="{'invisible': [('street2', '=', False)] }"/>
+                                <div>
+                                    <div class="o_row">
+                                        <field name="l10n_mx_edi_colony" placeholder="Colony..."/>
+                                        <field name="l10n_mx_edi_colony_code" placeholder="Colony Code..."/>
+                                    </div>
+                                </div>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_id" class="o_address_state"
+                                       placeholder="State" options='{"no_open": True, "no_create_edit": True, "no_create": 1}'/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                <field name="country_id" placeholder="Country"
+                                       class="o_address_country" options='{"no_open": True, "no_create": True, "no_create_edit": True}'/>
+                            </div>
                         </group>
                     </group>
                 </sheet>

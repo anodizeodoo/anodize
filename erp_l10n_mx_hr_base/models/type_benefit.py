@@ -17,7 +17,8 @@ class TypeBenefit(models.Model):
     code = fields.Char(string='Code')
     day_year = fields.Integer(string='Days for years')
     day_month = fields.Integer(string='Days for month')
-    type_benefit_line_ids = fields.One2many('l10n.mx.type.benefit.line', 'type_benefit_id', 'Types of Benefits line')
+    type_benefit_line_ids = fields.One2many('l10n.mx.type.benefit.line',
+                                            'type_benefit_id', 'Types of Benefits line')
 
     def find_rule_by_antiquity(self, antiquity):
         last_type_benefit_line_start = self.env.ref('erp_l10n_mx_hr_base.benefit_type_line_1')
@@ -43,7 +44,8 @@ class TypeBenefitLine(models.Model):
     bonus_days = fields.Integer(string='Bonus Days')
     holidays2 = fields.Float(string='Holidays', compute='_compute_holidays2')
     total_days = fields.Float(string='Total days', compute='_compute_total_days')
-    integration_factor = fields.Float(string='Integration Factor', compute='_compute_integration_factor', digits=(16, 9))
+    integration_factor = fields.Float(string='Integration Factor',
+                                      compute='_compute_integration_factor', digits=(16, 9))
 
     @api.depends('holidays', 'vacation_cousin')
     def _compute_holidays2(self):
