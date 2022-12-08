@@ -6,16 +6,21 @@
         <field name="inherit_id" ref="hr.view_employee_tree"/>
         <field name="arch" type="xml">
             <field name="name" position="before">
-                <field name="registration_number"/>
+                <field name="registration_number" />
             </field>
+            <xpath expr="//field[@name='work_phone']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
             <field name="name" position="after">
                 <field name="l10n_mx_edi_rfc"/>
                 <field name="l10n_mx_edi_curp"/>
                 <field name="zip"/>
+                <field name="ssnid" string="NSS" optional="show"/>
+                <field name="private_email" optional="show"/>
             </field>
         </field>
     </record>
-
+    
     <record model="ir.ui.view" id="view_hr_employee_form_inherit_l10n_mx">
         <field name="name">view.hr.employee.form.inherit.l10n_mx</field>
         <field name="model">hr.employee</field>
