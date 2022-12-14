@@ -4,16 +4,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0+e-20220114\n"
+"Project-Id-Version: Odoo Server 14.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-02 02:19+0000\n"
-"PO-Revision-Date: 2022-08-02 02:19+0000\n"
+"POT-Creation-Date: 2022-12-12 23:59+0000\n"
+"PO-Revision-Date: 2022-12-12 18:01-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: es_MX\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_base.selection__hr_employee__l10n_mx_payment_method__ppd
@@ -98,7 +100,7 @@ msgstr "Catorcenal"
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__bonus_days
 msgid "Bonus Days"
-msgstr "Días de Aguinaldo"
+msgstr "Bono de Navidad"
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__zip
@@ -611,6 +613,11 @@ msgid "Monthly"
 msgstr "Mensual"
 
 #. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employee_tree
+msgid "NSS"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type__name
@@ -872,7 +879,7 @@ msgstr ""
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__vacation_cousin
 msgid "Vacation cousin (%)"
-msgstr "Prima Vacacional (%)"
+msgstr "Bono de vacaciones"
 
 #. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__date
