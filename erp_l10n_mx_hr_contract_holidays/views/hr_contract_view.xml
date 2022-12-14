@@ -28,10 +28,10 @@
                     <label for="l10n_mx_holidays"/>
                     <div class="o_row">
                         <field name="l10n_mx_holidays"/>
-                        <button name="action_update_l10n_mx_holidays" type="object" string="Update" class="oe_link"/>
+                        <!--<button name="action_update_l10n_mx_holidays" type="object" string="Update" class="oe_link"/>-->
                     </div>
-                    <field name="l10n_mx_vacation_bonus"/>
-                    <field name="l10n_mx_christmas_bonus"/>
+                    <field name="l10n_mx_vacation_bonus" readonly="0"/>
+                    <field name="l10n_mx_christmas_bonus" readonly="0"/>
                 </group>
             </group>
         </field>

@@ -127,6 +127,11 @@ class HrContract(models.Model):
             antiquity = relativedelta(fields.Date.today(), self.date_start).years
             type_benefit_line_id = self.l10n_mx_type_benefit_id.find_rule_by_antiquity(antiquity)
             self.l10n_mx_holidays = type_benefit_line_id.holidays
+            self.l10n_mx_vacation_bonus = type_benefit_line_id.vacation_cousin
+            self.l10n_mx_christmas_bonus = type_benefit_line_id.bonus_days
+        else:
+            self.l10n_mx_vacation_bonus = False
+            self.l10n_mx_christmas_bonus = False
 
     @api.depends('l10n_mx_type_benefit_id', 'date_start')
     def _compute_l10n_mx_vacation_christmas_bonus(self):
