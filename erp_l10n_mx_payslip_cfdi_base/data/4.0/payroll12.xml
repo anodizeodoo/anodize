@@ -50,8 +50,7 @@
                     ObjetoImp="01"
                     t-att-ValorUnitario="amount_untaxed"
                     t-att-Importe="amount_untaxed"
-                    t-att-Descuento="amount_discount">
-                </cfdi:Concepto>
+                    t-att-Descuento="amount_discount"/>
             </cfdi:Conceptos>
             <cfdi:Complemento>
                 <nomina12:Nomina

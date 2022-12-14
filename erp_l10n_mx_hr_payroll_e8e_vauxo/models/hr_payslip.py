@@ -534,6 +534,7 @@ Content-Disposition: form-data; name="xml"; filename="xml"
                                  'boundary="%s"') % boundary,
             }
             code = 0
+            msg = None
             try:
                 response_json = self._l10n_mx_edi_sw_call(url, headers, payload=payload)
                 cfdi_signed = response_json['data']['cfdi']
