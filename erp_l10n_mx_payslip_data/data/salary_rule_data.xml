@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<odoo noupdate="1">
     <!-- Perceptions -->
     <record id="hr_rule_l10n_mx_payroll_perception_001_g" model="hr.salary.rule">
         <field name="name">Sueldos, Salarios Rayas y Jornales</field>
