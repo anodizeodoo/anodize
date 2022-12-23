@@ -651,7 +651,7 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             # Update the content of the attachment
             attachment_id = self.l10n_mx_edi_retrieve_last_attachment()
             attachment_id.write({
-                'datas': base64.encodestring(xml_signed),
+                'datas': str(xml_signed),
                 'mimetype': 'application/xml'
             })
             post_msg = [_('The content of the attachment has been updated')]
@@ -931,7 +931,7 @@ Content-Disposition: form-data; name="xml"; filename="xml"
                 'name': filename,
                 'res_id': record.id,
                 'res_model': record._name,
-                'datas': base64.encodestring(cfdi),
+                'datas': data_xml.decode(encoding),
                 # 'mimetype': 'application/xml',
                 'description': 'Mexican payroll',
             })
