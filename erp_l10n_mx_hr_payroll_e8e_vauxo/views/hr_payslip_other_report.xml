@@ -32,7 +32,7 @@
                             </p>
                             <p class="m-0">
                                 <strong>Reg Pat:</strong>
-                                <span t-field="o.company_id.l10n_mx_edi_employer_registration_id.name"/>
+                                <span t-field="o.employee_id.l10n_mx_edi_employer_registration_id.name"/>
                             </p>
                             <p class="m-0">
                                 <strong>Reg Fiscal:</strong>
@@ -76,6 +76,18 @@
                                 <span t-field="o.contract_id.date_start"/>
                             </p>
                             <p class="m-0">
+                                <strong>Contract type:</strong>
+                                <span t-field="o.employee_id.category_ids"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Zip:</strong>
+                                <span t-field="o.employee_id.zip"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Type Regimen:</strong>
+                                <span t-field="o.employee_id.l10n_mx_edi_contract_regime_type_id.name"/>
+                            </p>
+                            <p class="m-0">
                                 <strong>Working day:</strong>
                                 <span t-field="o.employee_id.category_ids"/>
                             </p>
@@ -95,7 +107,7 @@
                             </p>
                             <p class="m-0">
                                 <strong>Period:</strong>
-                                <span t-field="o.contract_id.structure_type_id.default_schedule_pay"/>
+<!--                                <span t-field="o.contract_id.structure_type_id.default_schedule_pay"/>-->
                                 <span t-field="o.date_from"/>-<span t-field="o.date_to"/>
                             </p>
                             <p class="m-0">
@@ -116,7 +128,7 @@
                             </p>
                             <p class="m-0">
                                 <strong>SBC:</strong>
-                                <span t-field="o.contract_id.wage" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                <span t-field="o.contract_id.l10n_mx_payroll_integrated_salary" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                             </p>
                         </div>
                     </div>
@@ -152,14 +164,14 @@
                                             <td><span t-esc="perception.salary_rule_id.l10n_mx_sat_key_id.l10n_mx_sat_code"/></td>
                                             <td><span t-esc="perception.name"/></td>
                                             <td class="text-right">
-                                                <span t-esc="perception.total"/>
+                                                <span t-esc="'%.2f'% perception.total"/>
                                                 <t t-set="total_perception" t-value="total_perception + perception.total"/>
                                             </td>
                                         </tr>
                                     </t>
                                     <tr>
                                         <td colspan="3" class="text-center"><strong>Total Perceptions</strong></td>
-                                        <td class="text-right"><span t-esc="total_perception"/></td>
+                                        <td class="text-right"><span t-esc="'%.2f'% total_perception"/></td>
                                     </tr>
                                 </tbody>
                             </table>

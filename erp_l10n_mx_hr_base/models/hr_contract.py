@@ -5,6 +5,9 @@ from datetime import timedelta
 import calendar
 from math import floor
 from dateutil.relativedelta import relativedelta
+import logging
+
+_logger = logging.getLogger(__name__)
 
 from odoo import api, fields, models, _
 
@@ -179,6 +182,7 @@ class HrContract(models.Model):
     @api.depends('l10n_mx_type_benefit_id', 'l10n_mx_payroll_daily_salary',
                  'date_start', 'l10n_mx_payroll_integrated_salary_manual')
     def _compute_l10n_mx_payroll_integrated_salary(self):
+        _logger.info("Onchage initial....")
         for record in self:
             if record.l10n_mx_payroll_integrated_salary_manual:
                 record.l10n_mx_payroll_integrated_salary = record.l10n_mx_payroll_integrated_salary_manual
@@ -191,6 +195,8 @@ class HrContract(models.Model):
                                                         * type_benefit_line_id.integration_factor
                     record.l10n_mx_payroll_integrated_salary = float('%0.*f' % (precision_digits,
                                                                                 l10n_mx_payroll_integrated_salary))
+                    _logger.info("Empleado %s, Antiguedad %s, Salario Integrado %s" %
+                                 (str(record.id), str(antiquity), str(l10n_mx_payroll_integrated_salary)))
                 else:
                     record.l10n_mx_payroll_integrated_salary = False
 

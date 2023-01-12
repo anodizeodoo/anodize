@@ -4,6 +4,14 @@
 from datetime import datetime
 from odoo import fields, models, api, _
 
+TYPE_SEL_CHANGE_P = {
+    'DAILY': 'DIARIA',
+    'WEEKLY': 'SEMANAL',
+    'DECENNIAL': 'DÉCADA',
+    'BIWEEKLY': 'QUINCENAL',
+    'MONTHLY': 'MENSUAL',
+    'ANNUAL': 'ANUAL'
+}
 
 class TableIsr(models.Model):
     _name = "l10n.mx.table.isr"
@@ -35,7 +43,8 @@ class TableIsr(models.Model):
     def _compute_l10n_mx_isr_name(self):
         for isr in self:
             if isr.sudo().l10n_mx_isr_type:
-                isr.l10n_mx_isr_name = 'ISR {}'.format(isr.sudo().l10n_mx_isr_type)
+                isr_t_t = TYPE_SEL_CHANGE_P.get(isr.sudo().l10n_mx_isr_type, 'NO TIENE DEFINIDO')
+                isr.l10n_mx_isr_name = 'ISR {}'.format(isr_t_t)
             else:
                 isr.l10n_mx_isr_name = 'ISR'
 

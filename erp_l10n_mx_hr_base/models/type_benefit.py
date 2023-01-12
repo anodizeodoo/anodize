@@ -23,13 +23,17 @@ class TypeBenefit(models.Model):
     def find_rule_by_antiquity(self, antiquity):
         last_type_benefit_line_start = self.env.ref('erp_l10n_mx_hr_base.benefit_type_line_1')
         last_type_benefit_line_end = self.env.ref('erp_l10n_mx_hr_base.benefit_type_line_29')
-        if antiquity > last_type_benefit_line_end.antiquity:
+
+        domain = [('antiquity', '=', antiquity),
+                  ('type_benefit_id', '=', self.sudo().id)]
+        # rule = self.type_benefit_line_ids.search(domain, limit=1)
+        rule = self.env['l10n.mx.type.benefit.line'].sudo().search(domain, limit=1)
+
+        if antiquity > last_type_benefit_line_end.antiquity and not rule:
             rule = last_type_benefit_line_end
-        elif antiquity < last_type_benefit_line_end.antiquity:
+        elif antiquity < last_type_benefit_line_end.antiquity and not rule:
             rule = last_type_benefit_line_start
-        else:
-            domain = [('antiquity', '=', antiquity)]
-            rule = self.type_benefit_line_ids.search(domain, limit=1)
+
         return rule
 
 

@@ -27,13 +27,13 @@ class HrContract(models.Model):
     l10n_mx_vacation_bonus = fields.Integer(
         string="Vacation cousin (%)",
         tracking=True,
-        compute='_compute_l10n_mx_vacation_christmas_bonus',
+        # compute='_compute_l10n_mx_vacation_christmas_bonus',
         compute_sudo=True,
         help="Percentage of vacation bonus. The minimum is 25 %.")
     l10n_mx_christmas_bonus = fields.Integer(
         string="Bonus Days", help="Number of day for "
                                                           "the Christmas bonus. The minimum is 15 days' pay",
-        compute='_compute_l10n_mx_vacation_christmas_bonus',
+        # compute='_compute_l10n_mx_vacation_christmas_bonus',
         tracking=True,
         compute_sudo=True)
     l10n_mx_antiquity = fields.Char('Antiquity', compute="_compute_l10n_mx_antiquity")

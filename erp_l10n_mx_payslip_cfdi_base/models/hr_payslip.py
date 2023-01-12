@@ -219,6 +219,9 @@ class HrPayslip(models.Model):
             if line_aux_op002_id.sudo().salary_rule_id.l10n_mx_automatic_isr:
                 line_aux_op002_id.write({'amount': self._set_isr_negative(l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity), 'quantity': 1.0})
                 # line_aux_op002_id._compute_total()
+            line_neto_total_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'NET')
+            if line_neto_total_id and line_isr_id:
+                line_neto_total_id.write({'amount': line_neto_total_id.amount + line_isr_id.amount, 'quantity': 1.0})
         return True
 
     def action_view_error_payslip(self):
