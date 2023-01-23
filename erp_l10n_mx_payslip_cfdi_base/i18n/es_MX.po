@@ -2158,6 +2158,9 @@ msgstr "Con errores en CFDI"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_comp_year
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_minimum_wage__year
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umas__year
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umi__year
 msgid "Year"
 msgstr "Año"
 

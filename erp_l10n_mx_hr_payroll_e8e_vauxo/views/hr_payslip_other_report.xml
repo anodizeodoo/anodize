@@ -130,6 +130,14 @@
                                 <strong>SBC:</strong>
                                 <span t-field="o.contract_id.l10n_mx_payroll_integrated_salary" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                             </p>
+                            <p class="m-0">
+                                <strong>SD:</strong>
+                                <span t-field="o.contract_id.l10n_mx_payroll_daily_salary" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Payslip type:</strong>
+                                <span t-field="o.l10n_mx_payslip_type"/>
+                            </p>
                         </div>
                     </div>
 

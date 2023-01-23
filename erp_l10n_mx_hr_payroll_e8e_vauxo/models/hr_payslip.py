@@ -102,6 +102,8 @@ class HrPayslip(models.Model):
                                               tracking=True,
                                               default='PUE', string="Payment method")
 
+    l10n_mx_cfdi_stamped = fields.Char('Is cfdi stamped?')
+
     # -------------------------------------------------------------------------
     # HELPERS
     # -------------------------------------------------------------------------
@@ -741,13 +743,27 @@ Content-Disposition: form-data; name="xml"; filename="xml"
         """Overwrite method when state is done, to allow cancel payslip in done
         """
 
-        if self.sudo().filtered(lambda x_i: not x_i.l10n_mx_cancel_reason and
-                                                 x_i.l10n_mx_edi_is_required() and x_i.l10n_mx_cfdi_uuid):
+        cfdis_to_cancel = self.sudo().filtered(lambda x_i: not x_i.l10n_mx_cancel_reason and
+                                                 x_i.l10n_mx_edi_is_required() and x_i.l10n_mx_cfdi_uuid)
+
+        if cfdis_to_cancel:
             action = self.env.ref('erp_l10n_mx_hr_payroll_e8e_vauxo.cfdi_reason_cancelation_sat_wizard').read()[0]
             return action
 
+        cfdis_canceled = self.sudo().filtered(lambda x_i: x_i.l10n_mx_cancel_reason and
+                                                 x_i.l10n_mx_edi_is_required() and x_i.l10n_mx_cfdi_uuid
+                                              and x_i.l10n_mx_cfdi_stamped)
+
+        if cfdis_canceled:
+            raise ValidationError(_('No puede volver a cancelar el comprobante.'))
+
         to_cancel = self.filtered(lambda r: r.state == 'done')
         to_cancel.write({'state': 'cancel'})
+        payslip_stamped = self.filtered(lambda r: r.l10n_mx_edi_is_required()
+                                                  and not r.l10n_mx_cfdi_stamped
+                                                  and r.l10n_mx_cfdi_uuid)
+        for payslip in payslip_stamped:
+            payslip.write({'l10n_mx_cfdi_stamped': payslip.l10n_mx_cfdi_uuid})
         self.refresh()
         res = super(HrPayslip, self).action_payslip_cancel()
         mx_payslip = self.filtered(lambda r: r.l10n_mx_edi_is_required())
@@ -832,6 +848,8 @@ Content-Disposition: form-data; name="xml"; filename="xml"
                 pass
 
     def action_payslip_draft(self):
+        if self.l10n_mx_cfdi_stamped:
+            raise ValidationError(_('This payroll was already stamped, you cannot send it to draft.'))
         for record in self.filtered('l10n_mx_cfdi_uuid'):
             record.l10n_mx_origin = '04|%s' % record.l10n_mx_cfdi_uuid
         self.write({
@@ -869,6 +887,8 @@ Content-Disposition: form-data; name="xml"; filename="xml"
         """Generates the cfdi attachments for mexican companies when validated.
         """
         for record in self.filtered(lambda r: r.l10n_mx_edi_is_required()):
+            if record.l10n_mx_cfdi_stamped:
+                raise ValidationError(_('The cfdi cannot be duplicated.'))
             company = record.sudo().company_id or record.sudo().contract_id.company_id
             partner = company.sudo().partner_id.commercial_partner_id
             version = company.sudo().l10n_mx_stamped_version
@@ -889,7 +909,16 @@ Content-Disposition: form-data; name="xml"; filename="xml"
                 })
         return True
 
+    def action_refresh_from_work_entries(self):
+        if (self.filtered(lambda r: r.l10n_mx_edi_is_required() and r.l10n_mx_cfdi_uuid)):
+            raise ValidationError(
+                _('No puede volver calcular una vez que ya fue enviado el documento al PAC o al SAT!!!'))
+
+        super(HrPayslip, self).action_refresh_from_work_entries()
+
     def compute_sheet(self):
+        if (self.filtered(lambda r: r.l10n_mx_edi_is_required() and r.l10n_mx_cfdi_uuid)):
+            raise ValidationError(_('No puede volver a calcular hoja una vez que ya fue enviado el documento al PAC o al SAT!!!'))
         if (self.filtered(lambda r: r.l10n_mx_edi_is_required()) and
                 not self.env.user.company_id.l10n_mx_minimum_wage):
             raise ValidationError(_(
@@ -1124,14 +1153,15 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             msgs.append(_("• El ZIP en el Partner de la compañia es requerido."))
         if not values['customer'].vat:
             msgs.append(_("• El RFC del empleado es requerido."))
-        if values['company'].l10n_mx_edi_fiscal_regime != '601':
-            if not values['company'].partner_id.l10n_mx_edi_curp:
-                msgs.append(_("• El CURP del Partner de la compañia es requerido."))
-            if values['company'].partner_id.l10n_mx_edi_curp:
-                if len(values['company'].partner_id.l10n_mx_edi_curp) < 18:
-                    msgs.append(_("• El CURP del Partner de la compañia no debe tener menos de 18 caracteres."))
-                if not self.__pattern.match(values['company'].partner_id.l10n_mx_edi_curp):
-                    msgs.append(_("• El CURP del Partner de la compañia no es válido."))
+        # comentado temporalmente hasta que se defina si es requerido en el proceso
+        # if values['company'].l10n_mx_edi_fiscal_regime != '601':
+        #     if not values['company'].partner_id.l10n_mx_edi_curp:
+        #         msgs.append(_("• El CURP del Partner de la compañia es requerido."))
+        #     if values['company'].partner_id.l10n_mx_edi_curp:
+        #         if len(values['company'].partner_id.l10n_mx_edi_curp) < 18:
+        #             msgs.append(_("• El CURP del Partner de la compañia no debe tener menos de 18 caracteres."))
+        #         if not self.__pattern.match(values['company'].partner_id.l10n_mx_edi_curp):
+        #             msgs.append(_("• El CURP del Partner de la compañia no es válido."))
         if not values['customer'].l10n_mx_edi_curp:
             msgs.append(_("• El CURP del empleado es requerido."))
         if values['customer'].l10n_mx_edi_curp:
@@ -1456,11 +1486,16 @@ class HrPayslipRun(models.Model):
         edi_documents = self.env['hr.payslip'].search([('l10n_mx_sat_status', 'in',
                                                         ('retry', 'to_sign', False, 'undefined')),
                                                         ('state', 'in', ('verify', 'done')),
+                                                        ('l10n_mx_cfdi_uuid', '=', False),
                                                         ('l10n_mx_edi_error', '=', False)], limit=100)
         if edi_documents:
             for edi_doc in edi_documents:
                 try:
-                    edi_doc.l10n_mx_edi_action_send_cfdi()
+                    if not edi_doc.l10n_mx_cfdi_uuid:
+                        edi_doc.l10n_mx_edi_action_send_cfdi()
+                    else:
+                        if edi_doc.l10n_mx_sat_status == 'undefined' and edi_doc.l10n_mx_cfdi_uuid:
+                            edi_doc.l10n_mx_edi_update_sat_status()
                 except:
                     pass
 

@@ -22,10 +22,11 @@
                     <sheet>
                         <group>
                             <group>
+                                <field name="year"/>
                                 <field name="date_start"/>
-                                <field name="status" widget="boolean_toggle"/>
                             </group>
                             <group>
+                                <field name="status" widget="boolean_toggle"/>
                                 <field name="value_umi"/>
                             </group>
                         </group>

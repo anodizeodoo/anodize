@@ -72,6 +72,11 @@ class HrEmployeeLoan(models.Model):
                               currency_field='company_currency_id',
                               compute='_compute_residue',
                               compute_sudo=True)
+    employee_id = fields.Many2one('hr.employee', related='contract_id.employee_id')
+    amount_total = fields.Monetary(string='Total',
+                                   currency_field='company_currency_id',
+                                   compute='_compute_amount_total',
+                                   compute_sudo=True)
 
     @api.depends('credit_amount', 'payments_other_employers', 'accumulated_amount_withheld')
     def _compute_residue(self):
@@ -85,4 +90,9 @@ class HrEmployeeLoan(models.Model):
     def _compute_accumulated_amount_withheld(self):
         for record in self:
             record.accumulated_amount_withheld = 100
+
+    @api.depends('credit_amount', 'monthly_withhold', 'payments_other_employers', 'accumulated_amount_withheld', 'residue')
+    def _compute_amount_total(self):
+        for record in self:
+            record.amount_total = record.credit_amount + record.monthly_withhold + record.payments_other_employers +record.accumulated_amount_withheld + record.residue
 

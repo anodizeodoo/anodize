@@ -15,3 +15,4 @@ class TableMinimumWage(models.Model):
     zone_b = fields.Float(string='Zone B')
     zone_c = fields.Float(string='Zone C')
     status = fields.Boolean(string='Status')
+    year = fields.Char(string='Year', default=lambda self: str(fields.Date.today().year))

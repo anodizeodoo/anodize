@@ -329,6 +329,11 @@ msgid "<strong>Payment method:</strong>"
 msgstr "<strong>Método pago:</strong>"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
+msgid "<strong>Payslip type:</strong>"
+msgstr "<strong>Tipo de Nómina:</strong>"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
 msgid "<strong>Periocidad de pago:</strong>"
 msgstr ""
@@ -1083,6 +1088,12 @@ msgstr "El servicio de cancelación solicitado falló"
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
 #, python-format
+msgid "The cfdi cannot be duplicated."
+msgstr "El cfdi no se puede duplicar."
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
+#, python-format
 msgid "The cfdi generated is not valid"
 msgstr "El cfdi generado no es válido"
 
@@ -1150,6 +1161,12 @@ msgstr "El archivo XSD que valida la estructura del XML no fue encontrado"
 #, python-format
 msgid "There are conflicts in the work entry for this employee in the selected period."
 msgstr "Hay conflictos en la entrada de trabajo para este empleado en el período seleccionado."
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
+#, python-format
+msgid "This payroll was already stamped, you cannot send it to draft."
+msgstr "Esta nomina ya estaba timbrado no puede enviarlo a borrador."
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/wizard/hr_payroll_payslips_by_employees.py:0

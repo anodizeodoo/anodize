@@ -13,3 +13,4 @@ class TableUMAS(models.Model):
     date_start = fields.Date(string='Date Start')
     value_uma = fields.Float(string='Value UMA')
     status = fields.Boolean(string='Status')
+    year = fields.Char(string='Year', default=lambda self: str(fields.Date.today().year))

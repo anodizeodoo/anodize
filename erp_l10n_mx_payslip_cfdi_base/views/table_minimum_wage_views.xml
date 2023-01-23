@@ -24,6 +24,7 @@
                     <sheet>
                         <group>
                             <group>
+                                <field name="year"/>
                                 <field name="date_effective"/>
                                 <field name="status" widget="boolean_toggle"/>
                             </group>

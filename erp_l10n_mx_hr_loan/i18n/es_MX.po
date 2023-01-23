@@ -79,6 +79,11 @@ msgid "Display Name"
 msgstr "Nombre en pantalla"
 
 #. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__employee_id
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: erp_l10n_mx_hr_loan
 #: model:ir.model,name:erp_l10n_mx_hr_loan.model_hr_contract
 msgid "Employee Contract"
 msgstr "Contrato del empleado"
@@ -159,7 +164,7 @@ msgstr "Préstamo"
 
 #. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_contract__loan_ids
-#: model:ir.ui.menu,name:erp_l10n_mx_hr_loan.l10n_mx_loan
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_loan.l10n_mx_loan_report
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_loan.view_hr_payroll_contract_form_inherit
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_loan.view_l10n_mx_loan_form
 msgid "Loans"
