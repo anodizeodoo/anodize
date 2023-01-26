@@ -21,6 +21,7 @@
         "views/res_config_settings_views.xml",
         "views/hr_employee_views.xml",
         "views/hr_contract_view.xml",
+        "views/res_partner_views.xml",
         "wizard/reason_cancelation_sat_view.xml",
     ],
     "installable": True,
