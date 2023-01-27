@@ -487,12 +487,8 @@ msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
-msgid ""
-"<strong>Way to pay:</strong>\n"
-"                                <span>99-Por Definir</span>"
-msgstr ""
-"<strong>Forma de pago:</strong>\n"
-"                                <span>99-Por Definir</span>"
+msgid "<strong>Way to pay:</strong>"
+msgstr "<strong>Forma de pago:</strong>"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
@@ -1269,6 +1265,11 @@ msgstr "Mensajes sin leer"
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr "Número de mensajes sin leer"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.actions.server,name:erp_l10n_mx_hr_payroll_e8e_vauxo.action_update_partner_name
+msgid "Update partner name"
+msgstr "Actualizar Nombres de Contactos"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other

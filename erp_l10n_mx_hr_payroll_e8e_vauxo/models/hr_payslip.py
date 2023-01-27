@@ -924,7 +924,13 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             raise ValidationError(_(
                 'Please, you set the minimum wage in Mexico to that you '
                 'can calculate the payroll'))
+        for record in self:
+            lines = record.line_ids._export_to_payslip_line()
         res = super(HrPayslip, self).compute_sheet()
+        for line in lines:
+            line_id = self.line_ids.filtered(lambda x: x.code == line['code'])
+            if line_id.amount != line['amount']:
+                line_id.write({'amount': line['amount']})
         for payslip in self:
             payslip.write({
                 'l10n_mx_extra_node_ids': [
@@ -1505,3 +1511,22 @@ class HrPayslipRun(models.Model):
         if edi_cancel_documents:
             edi_cancel_documents.action_payslip_cancel()
             edi_cancel_documents.write({'l10_mx_cancel_pending': False})
+
+
+class HrPayslipLine(models.Model):
+    _inherit = 'hr.payslip.line'
+
+    def _export_to_payslip_line(self):
+        return [{
+            'sequence': line.sequence,
+            'code': line.code,
+            'name': line.name,
+            'note': line.note,
+            'salary_rule_id': line.salary_rule_id.id,
+            'contract_id': line.contract_id.id,
+            'employee_id': line.employee_id.id,
+            'amount': line.amount,
+            'quantity': line.quantity,
+            'rate': line.rate,
+            'slip_id': line.slip_id.id
+        } for line in self]

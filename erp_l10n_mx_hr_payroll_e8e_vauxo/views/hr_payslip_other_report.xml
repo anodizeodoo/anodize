@@ -3,7 +3,7 @@
 
     <template id="external_layout_standard_inherit" inherit_id="web.external_layout_standard">
         <xpath expr="//div[3]" position="replace">
-            <t t-if="o._name != 'hr.payslip'">
+            <t t-if="o and o._name != 'hr.payslip'">
                 <div class="row">
                     <div class="col-6" name="company_address">
                         <div t-field="company.partner_id"
@@ -19,28 +19,28 @@
         <t t-call="web.html_container">
         <t t-foreach="docs" t-as="o">
             <t t-call="web.external_layout">
-                <t t-set="o" t-value="o.with_context(lang=o.employee_id.address_home_id.lang or o.env.lang)"/>
+                <t t-set="o" t-value="o.with_context(lang=o.sudo().employee_id.address_home_id.lang or o.env.lang)"/>
                 <div class="page">
                     <div class="row" style="background-color: rgb(211, 211, 211); border: 2px solid black; padding: 10px;">
                         <div class="col-9">
                             <p class="m-0">
-                                <strong><span class="text-uppercase" t-esc="o.company_id.name"/></strong>
+                                <strong><span class="text-uppercase" t-esc="o.sudo().company_id.name"/></strong>
                             </p>
                             <p class="m-0">
                                 <strong>RFC:</strong>
-                                <span t-field="o.company_id.vat"/>
+                                <span t-field="o.sudo().company_id.vat"/>
                             </p>
                             <p class="m-0">
                                 <strong>Reg Pat:</strong>
-                                <span t-field="o.employee_id.l10n_mx_edi_employer_registration_id.name"/>
+                                <span t-field="o.sudo().employee_id.l10n_mx_edi_employer_registration_id.name"/>
                             </p>
                             <p class="m-0">
                                 <strong>Reg Fiscal:</strong>
-                                <span t-field="o.company_id.l10n_mx_edi_fiscal_regime"/>
+                                <span t-field="o.sudo().company_id.l10n_mx_edi_fiscal_regime"/>
                             </p>
                             <p class="m-0">
                                 <strong>Expedition place:</strong>
-                                <span t-field="o.company_id.zip"/> <span t-field="o.company_id.state_id.name"/>
+                                <span t-field="o.sudo().company_id.zip"/> <span t-field="o.sudo().company_id.state_id.name"/>
                             </p>
                         </div>
                         <div class="col-3">
@@ -61,82 +61,82 @@
                     <div class="row" style="margin-top:5px;">
                         <div class="col-6" style="border: 2px solid black;">
                             <p class="m-0">
-                                <strong><span t-field="o.number"/> -  <span t-field="o.employee_id"/></strong>
+                                <strong><span t-field="o.sudo().number"/> -  <span t-field="o.sudo().employee_id"/></strong>
                             </p>
                             <p class="m-0">
                                 <strong>RFC:</strong>
-                                <span t-field="o.employee_id.l10n_mx_edi_rfc"/>
+                                <span t-field="o.sudo().employee_id.l10n_mx_edi_rfc"/>
                             </p>
                             <p class="m-0">
                                 <strong>CURP:</strong>
-                                <span t-field="o.employee_id.l10n_mx_edi_curp"/>
+                                <span t-field="o.sudo().employee_id.l10n_mx_edi_curp"/>
                             </p>
                             <p class="m-0">
                                 <strong>Start date Labor Relationship:</strong>
-                                <span t-field="o.contract_id.date_start"/>
+                                <span t-field="o.sudo().contract_id.date_start"/>
                             </p>
                             <p class="m-0">
                                 <strong>Contract type:</strong>
-                                <span t-field="o.employee_id.category_ids"/>
+                                <span t-field="o.sudo().employee_id.category_ids"/>
                             </p>
                             <p class="m-0">
                                 <strong>Zip:</strong>
-                                <span t-field="o.employee_id.zip"/>
+                                <span t-field="o.sudo().employee_id.zip"/>
                             </p>
                             <p class="m-0">
                                 <strong>Type Regimen:</strong>
-                                <span t-field="o.employee_id.l10n_mx_edi_contract_regime_type_id.name"/>
+                                <span t-field="o.sudo().employee_id.l10n_mx_edi_contract_regime_type_id.name"/>
                             </p>
                             <p class="m-0">
                                 <strong>Working day:</strong>
-                                <span t-field="o.employee_id.category_ids"/>
+                                <span t-field="o.sudo().employee_id.category_ids"/>
                             </p>
                             <p class="m-0">
                                 <strong>NSS:</strong>
-                                <span t-field="o.employee_id.ssnid"/>
+                                <span t-field="o.sudo().employee_id.ssnid"/>
                             </p>
                             <p class="m-0">
                                 <strong>Type of Salary:</strong>
-                                <span t-field="o.contract_id.type_salary"/>
+                                <span t-field="o.sudo().contract_id.type_salary"/>
                             </p>
 
                         </div>
                         <div class="col-6" style="border: 2px solid black;">
                             <p class="m-0">
-                                <strong>Exercise: <span t-esc="o.l10n_mx_payment_date.year"/></strong>
+                                <strong>Exercise: <span t-esc="o.sudo().l10n_mx_payment_date.year"/></strong>
                             </p>
                             <p class="m-0">
                                 <strong>Period:</strong>
 <!--                                <span t-field="o.contract_id.structure_type_id.default_schedule_pay"/>-->
-                                <span t-field="o.date_from"/>-<span t-field="o.date_to"/>
+                                <span t-field="o.sudo().date_from"/>-<span t-field="o.sudo().date_to"/>
                             </p>
                             <p class="m-0">
                                 <strong>Pay days:</strong>
-                                <span t-esc="sum(o.worked_days_line_ids.mapped('number_of_days'))"/>
+                                <span t-esc="sum(o.sudo().worked_days_line_ids.mapped('number_of_days'))"/>
                             </p>
                             <p class="m-0">
                                 <strong>Payment date:</strong>
-                                <span t-field="o.l10n_mx_payment_date"/>
+                                <span t-field="o.sudo().l10n_mx_payment_date"/>
                             </p>
                             <p class="m-0">
                                 <strong>Job:</strong>
-                                <span t-field="o.contract_id.job_id"/>
+                                <span t-field="o.sudo().contract_id.job_id"/>
                             </p>
                             <p class="m-0">
                                 <strong>Dpto:</strong>
-                                <span t-field="o.contract_id.department_id"/>
+                                <span t-field="o.sudo().contract_id.department_id"/>
                             </p>
                             <p class="m-0">
                                 <strong>SBC:</strong>
-                                <span t-field="o.contract_id.l10n_mx_payroll_integrated_salary" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                <span t-field="o.sudo().contract_id.l10n_mx_payroll_integrated_salary" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                             </p>
                             <p class="m-0">
                                 <strong>SD:</strong>
-                                <span t-field="o.contract_id.l10n_mx_payroll_daily_salary" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                <span t-field="o.sudo().contract_id.l10n_mx_payroll_daily_salary" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                             </p>
                             <p class="m-0">
                                 <strong>Payslip type:</strong>
-                                <span t-field="o.l10n_mx_payslip_type"/>
+                                <span t-field="o.sudo().l10n_mx_payslip_type"/>
                             </p>
                         </div>
                     </div>
@@ -168,11 +168,11 @@
                                     <t t-set="total_perception" t-value="0.00"/>
                                     <t t-foreach="o.get_cfdi_perceptions_data()['perceptions']" t-as="perception">
                                         <tr>
-                                            <td><span t-esc="perception.code"/></td>
-                                            <td><span t-esc="perception.salary_rule_id.l10n_mx_sat_key_id.l10n_mx_sat_code"/></td>
-                                            <td><span t-esc="perception.name"/></td>
+                                            <td><span t-esc="perception.sudo().code"/></td>
+                                            <td><span t-esc="perception.sudo().salary_rule_id.l10n_mx_sat_key_id.l10n_mx_sat_code"/></td>
+                                            <td><span t-esc="perception.sudo().name"/></td>
                                             <td class="text-right">
-                                                <span t-esc="'%.2f'% perception.total"/>
+                                                <span t-esc="'%.2f'% perception.sudo().total"/>
                                                 <t t-set="total_perception" t-value="total_perception + perception.total"/>
                                             </td>
                                         </tr>
@@ -228,11 +228,11 @@
                             </p>
                             <p class="m-0">
                                 <strong>Way to pay:</strong>
-                                <span>99-Por Definir</span>
+                                <span t-field="o.sudo().l10n_mx_edi_payment_method_id"/>
                             </p>
                             <p class="m-0">
                                 <strong>Payment method:</strong>
-                                <span t-field="o.employee_id.l10n_mx_payment_method"/>
+                                <span t-field="o.sudo().l10n_mx_payment_method"/>
                             </p>
                             <p class="m-0">
                                 <strong>Issued from:</strong>
@@ -290,14 +290,14 @@
                             </p>
                         </div>
                     </div>
-                    <t t-if="o.l10n_mx_cfdi_uuid and xml">
+                    <t t-if="o.sudo().l10n_mx_cfdi_uuid and xml">
                         <div class="row" id='complement' style="margin-top:5px;" t-if="xml">
                             <div class="barcode col-3" t-if="xml">
                                 <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
                                 <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=180&amp;height=180' % quote_plus(
                                     'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(
-                                        re=o.l10n_mx_cfdi_supplier_rfc, rr=o.l10n_mx_cfdi_customer_rfc,
-                                        tt=0, id=o.l10n_mx_cfdi_uuid)
+                                        re=o.sudo().l10n_mx_cfdi_supplier_rfc, rr=o.sudo().l10n_mx_cfdi_customer_rfc,
+                                        tt=0, id=o.sudo().l10n_mx_cfdi_uuid)
                                         + '&amp;fe=%s' % quote_plus(
                                             sello, 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
                             </div>

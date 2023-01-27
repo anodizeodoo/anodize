@@ -79,7 +79,8 @@ class HrContract(models.Model):
     l10n_mx_payroll_infonavit_type = fields.Selection(
         [('percentage', _('Percentage')),
          ('vsm', _('Number of minimum wages')),
-         ('fixed_amount', _('Fixed amount')), ],
+         ('fixed_amount', _('Fixed amount')),
+         ('discount_factor', _('Discount Factor')),],
         tracking=True,
         string='INFONAVIT discount', help="INFONAVIT discount type that "
                                           "is calculated in the employee's payslip")

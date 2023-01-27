@@ -309,6 +309,13 @@ msgid "Description"
 msgstr "Descripción"
 
 #. module: erp_l10n_mx_hr_base
+#: code:addons/erp_l10n_mx_hr_base/models/hr_contract.py:0
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_base.selection__hr_contract__l10n_mx_payroll_infonavit_type__discount_factor
+#, python-format
+msgid "Discount Factor"
+msgstr "Factor Descuento"
+
+#. module: erp_l10n_mx_hr_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__display_name
