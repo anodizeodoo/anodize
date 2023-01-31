@@ -15,6 +15,7 @@
                     <group string="Configuration for ISR/IMSS calculation">
                         <field name="l10n_mx_isr"/>
                         <field name="l10n_mx_imss"/>
+                        <field name="l10n_mx_percep_grav_isr"/>
                     </group>
                     <group></group>
                 </group>
@@ -26,6 +27,15 @@
             <field name="code" position="attributes">
                 <attribute name="attrs">{'readonly': [('l10n_mx_visibility_automatic_isr', '=', True)]}</attribute>
             </field>
+            <xpath expr="//notebook/page[last()]" position="after">
+                <page string="ISR decreases" attrs="{'invisible': [('code', '!=', 'AUX_ISR')]}">
+                    <field name="rule_aux_isr_ids">
+                        <tree editable="bottom">
+                            <field name="rule_id"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
         </field>
     </record>
 

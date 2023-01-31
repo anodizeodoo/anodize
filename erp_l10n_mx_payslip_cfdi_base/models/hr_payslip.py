@@ -179,6 +179,31 @@ class HrPayslip(models.Model):
                                                                  r.code == 'WORK100').number_of_days
         return days_pay
 
+    # def _get_payslip_lines(self):
+    #     line_vals = super(HrPayslip, self)._get_payslip_lines()
+    #     total_net = 0.00
+    #     for line in line_vals:
+    #         line_id = self.line_ids.filtered(lambda r: r.sudo().salary_rule_id.id == line['salary_rule_id'])
+    #         if line_id and line_id.salary_rule_id.l10n_mx_automatic_isr:
+    #             line['amount'] = line_id.amount
+    #             line['quantity'] = line_id.quantity
+    #             line['rate'] = line_id.rate
+    #             if line_id.salary_rule_id.code == '002':
+    #                 total_net = line_id.total
+    #     if list(line_vals)[len(line_vals) - 1]['code'] == 'NET':
+    #         list(line_vals)[len(line_vals) - 1]['amount'] = list(line_vals)[len(line_vals) - 1]['amount'] + total_net
+    #     return line_vals
+
+    def _get_input_line_total_amount(self):
+        return sum([line.amount for line in self.input_line_ids])
+
+    def get_amount_rules_isr_decreases(self):
+        rule_aux_isr_ids = self.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'AUX_ISR').salary_rule_id.rule_aux_isr_ids
+        amount = 0.0
+        for rule in rule_aux_isr_ids:
+            amount += self.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == rule.rule_id.code).amount
+        return amount
+
     def compute_sheet(self):
         super(HrPayslip, self).compute_sheet()
         for record in self:
@@ -186,10 +211,14 @@ class HrPayslip(models.Model):
                 raise ValidationError(_('The payment period in the contract %s must have to which ISR belongs.'
                                         % (record.sudo().contract_id.name)))
             total_rules_graba_isr = sum(record.sudo().line_ids.filtered(lambda r:
-                                                                 r.salary_rule_id.l10n_mx_isr is True).mapped('amount'))
+                                                                 r.salary_rule_id.l10n_mx_isr is True).mapped('total'))
             print("Total Gravable ISR", total_rules_graba_isr)
             day_payment = record.get_worked_days_for_pay()
-            period_taxable = (record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.day_payment
+            if record.sudo().line_ids.filtered(lambda r: r.salary_rule_id.l10n_mx_percep_grav_isr):
+                period_taxable = total_rules_graba_isr + sum(record.sudo().line_ids.filtered(lambda r:
+                                                    r.salary_rule_id.l10n_mx_percep_grav_isr is True).mapped('total'))
+            else:
+                period_taxable = (record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.day_payment
                               * record.sudo().contract_id.l10n_mx_payroll_daily_salary) + total_rules_graba_isr
             l10n_mx_table_isr_rate_id = record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.\
                 l10n_mx_table_isr_id.find_rule_by_rate(period_taxable)
@@ -205,11 +234,17 @@ class HrPayslip(models.Model):
             isr = marginal_tax + rate_fixed_fee
             l10n_mx_table_isr_subsidy_rate_id = record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.\
                 l10n_mx_table_isr_id.find_rule_by_subsidy(period_taxable)
-            isr_total = isr - l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity
+            isr_total = isr - l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity + record.get_amount_rules_isr_decreases()
             print("ISR Subsidy Quantity", l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity)
             line_isr_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == '002')
+            isr_computed_zero = False
+            if record.contract_id.l10n_mx_payroll_daily_salary <= record.contract_id.company_id.l10n_mx_minimum_wage:
+                isr_computed_zero = True
+            if line_isr_id.salary_rule_id.l10n_mx_percep_grav_isr:
+                isr_total += total_rules_graba_isr
             if line_isr_id.salary_rule_id.l10n_mx_automatic_isr:
-                line_isr_id.write({'amount': self._set_isr_negative(isr_total), 'quantity': 1.0})
+                isr_value = self._set_isr_negative(isr_total) if not isr_computed_zero else 0.0
+                line_isr_id.write({'amount': isr_value, 'quantity': 1.0})
                 # line_isr_id._compute_total()
             line_aux_isr_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'AUX_ISR')
             if line_aux_isr_id.sudo().salary_rule_id.l10n_mx_automatic_isr:
@@ -221,7 +256,8 @@ class HrPayslip(models.Model):
                 # line_aux_op002_id._compute_total()
             line_neto_total_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'NET')
             if line_neto_total_id and line_isr_id:
-                line_neto_total_id.write({'amount': line_neto_total_id.amount + line_isr_id.amount, 'quantity': 1.0})
+                line_neto_total_id.write({'amount': line_neto_total_id.amount + line_isr_id.amount +
+                                                    record._get_input_line_total_amount(), 'quantity': 1.0})
         return True
 
     def action_view_error_payslip(self):

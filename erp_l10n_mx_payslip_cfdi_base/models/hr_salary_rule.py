@@ -2,6 +2,13 @@
 from odoo import fields, models
 
 
+class HrRuleAuxIsr(models.Model):
+    _name = 'hr.rule.aux.isr'
+
+    rule_id = fields.Many2one('hr.salary.rule', string='Rule')
+    aux_isr_rule_id = fields.Many2one('hr.salary.rule', string='Rule')
+
+
 class HrSalaryRule(models.Model):
     _inherit = 'hr.salary.rule'
 
@@ -13,8 +20,10 @@ class HrSalaryRule(models.Model):
     l10n_mx_sat_key_id = fields.Many2one('l10n.mx.sat.keys', 'SAT keys')
     l10n_mx_isr = fields.Boolean(string='ISR')
     l10n_mx_imss = fields.Boolean(string='IMSS')
+    l10n_mx_percep_grav_isr = fields.Boolean(string='PERCEP GRAV ISR')
     l10n_mx_automatic_isr = fields.Boolean(string='Automatic calculation')
     l10n_mx_visibility_automatic_isr =fields.Boolean(compute='_compute_l10n_mx_visibility_automatic_isr')
+    rule_aux_isr_ids = fields.One2many('hr.rule.aux.isr', 'aux_isr_rule_id', 'Rule line')
 
 
     def _compute_l10n_mx_visibility_automatic_isr(self):

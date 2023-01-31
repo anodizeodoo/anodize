@@ -924,13 +924,13 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             raise ValidationError(_(
                 'Please, you set the minimum wage in Mexico to that you '
                 'can calculate the payroll'))
-        for record in self:
-            lines = record.line_ids._export_to_payslip_line()
+        # for record in self:
+        #     lines = record.line_ids._export_to_payslip_line()
         res = super(HrPayslip, self).compute_sheet()
-        for line in lines:
-            line_id = self.line_ids.filtered(lambda x: x.code == line['code'])
-            if line_id.amount != line['amount']:
-                line_id.write({'amount': line['amount']})
+        # for line in lines:
+        #     line_id = self.line_ids.filtered(lambda x: x.code == line['code'])
+        #     if line_id.amount != line['amount']:
+        #         line_id.write({'amount': line['amount']})
         for payslip in self:
             payslip.write({
                 'l10n_mx_extra_node_ids': [

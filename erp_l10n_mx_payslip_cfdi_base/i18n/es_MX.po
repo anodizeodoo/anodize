@@ -1029,6 +1029,11 @@ msgid "ISR ajustado por subsidio"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.hr_salary_rule_view_form_inh_l10n_mx
+msgid "ISR decreases"
+msgstr "Disminusiones al ISR"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__message_needaction
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__message_unread
 msgid "If checked, new messages require your attention."
