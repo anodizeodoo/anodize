@@ -73,6 +73,11 @@ msgid "ID"
 msgstr "ID"
 
 #. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_date_imss
+msgid "IMSS discharge date"
+msgstr "Fecha de Alta IMSS"
+
+#. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,help:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_holidays
 msgid "Initial number of days for holidays. The minimum is 6 days."
 msgstr "Número inicial de días de vacaciones. El mínimo es 6 días."

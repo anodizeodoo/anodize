@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="report_classifier_01" model="l10n.mx.report.classifier">
+            <field name="name">Percepciones</field>
+            <field name="code">P001</field>
+        </record>
+        <record id="report_classifier_02" model="l10n.mx.report.classifier">
+            <field name="name">Deducciones</field>
+            <field name="code">D001</field>
+        </record>
+        <record id="report_classifier_03" model="l10n.mx.report.classifier">
+            <field name="name">Obligaciones</field>
+            <field name="code">O001</field>
+        </record>
+    </data>
+</odoo>

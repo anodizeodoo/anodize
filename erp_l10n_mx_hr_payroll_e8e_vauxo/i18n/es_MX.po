@@ -517,6 +517,16 @@ msgid "Amount"
 msgstr "Monto"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__l10n_mx_antiquity
+msgid "Antiquity"
+msgstr "Antiguedad"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_modify_salary__application_date
+msgid "Application Date"
+msgstr "Fecha de Aplicación"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_attachment_count
 msgid "Attachment Count"
 msgstr "Número de archivos adjuntos"
@@ -526,6 +536,11 @@ msgstr "Número de archivos adjuntos"
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "Barcode"
 msgstr "Código de Barra"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__l10n_mx_christmas_bonus
+msgid "Bonus Days"
+msgstr "Días de Aguinaldo"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model,name:erp_l10n_mx_hr_payroll_e8e_vauxo.model_cfdi_reason_payslip_cancelation
@@ -649,6 +664,11 @@ msgid "Confirmar"
 msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__contract_id
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_cfdi_reason_payslip_cancelation__create_uid
 msgid "Created by"
 msgstr ""
@@ -664,6 +684,16 @@ msgid "Customer RFC"
 msgstr "RFC del cliente"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__l10n_mx_payroll_daily_salary
+msgid "Daily Salary"
+msgstr "Salario Diario"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__l10n_mx_holidays
+msgid "Days of holidays"
+msgstr "Días de Vacaciones"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
 msgid "Deducciones"
 msgstr ""
@@ -672,6 +702,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
 msgid "Deductions"
 msgstr "Deducciones"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__department_id
+msgid "Department"
+msgstr "Departamento"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other
@@ -710,6 +745,7 @@ msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model,name:erp_l10n_mx_hr_payroll_e8e_vauxo.model_hr_employee
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__employee_id
 msgid "Employee"
 msgstr "Empleado"
 
@@ -811,6 +847,28 @@ msgid "Importe Gravado"
 msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:l10n.mx.increment.type,name:erp_l10n_mx_hr_payroll_e8e_vauxo.increment_type_02
+msgid "Increase by %"
+msgstr " Incremento por %"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:l10n.mx.increment.type,name:erp_l10n_mx_hr_payroll_e8e_vauxo.increment_type_03
+msgid "Increase by quantity"
+msgstr "Icremento por cantidad "
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model,name:erp_l10n_mx_hr_payroll_e8e_vauxo.model_l10n_mx_increment_type
+msgid "Increment Type"
+msgstr "Tipo de Incremento"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_payroll_e8e_vauxo.increment_type_action
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_modify_salary__increment_type_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_payroll_e8e_vauxo.erp_l10n_mx_increment_type_menu
+msgid "Increment type"
+msgstr "Tipo de Incremento"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,help:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_employee__l10n_mx_edi_payment_method_id
 msgid ""
 "Indicates the way the invoice was/will be paid, where the options could be: Cash, Nominal Check, Credit Card, etc. "
@@ -824,9 +882,24 @@ msgid ""
 msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__l10n_mx_payroll_integrated_salary
+msgid "Integrated Salary"
+msgstr "Salario Integrado"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__integration_factor
+msgid "Integration Factor"
+msgstr "Factor Integración"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_is_follower
 msgid "Is Follower"
 msgstr "Es un seguidor"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__job_id
+msgid "Job"
+msgstr "Puesto de Trabajo"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi_amount
@@ -884,6 +957,19 @@ msgid "Messages"
 msgstr "Mensajes"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model,name:erp_l10n_mx_hr_payroll_e8e_vauxo.model_l10n_mx_modify_salary
+msgid "Modify Salary"
+msgstr "Modificación de Salarios"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_payroll_e8e_vauxo.modify_salary_action
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__modify_salary_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_payroll_e8e_vauxo.erp_l10n_mx_modify_salary_menu
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.view_modify_salary_form
+msgid "Modify salary"
+msgstr "Modificación de Salarios"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.actions.act_window,name:erp_l10n_mx_hr_payroll_e8e_vauxo.cfdi_reason_cancelation_sat_wizard
 msgid "Motivo de cancelacion SAT"
 msgstr ""
@@ -894,9 +980,16 @@ msgid "Motivo de cancelación"
 msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_increment_type__name
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip
 msgid "Name"
 msgstr "Nombre"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_increment_type__name
+#: model:l10n.mx.increment.type,name:erp_l10n_mx_hr_payroll_e8e_vauxo.increment_type_04
+msgid "New General Salary"
+msgstr "Nuevo salario General"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: code:addons/erp_l10n_mx_hr_payroll_e8e_vauxo/models/hr_payslip.py:0
@@ -973,6 +1066,11 @@ msgid "Payment method"
 msgstr "Método de pago"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_payroll_e8e_vauxo.menu_hr_payroll_processes
+msgid "Payroll Processes"
+msgstr "Procesos de Nómina"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model,name:erp_l10n_mx_hr_payroll_e8e_vauxo.model_hr_payslip_run
 msgid "Payslip Batches"
 msgstr "Lotes de recibos de nómina"
@@ -1032,9 +1130,30 @@ msgid "SAT Receipt"
 msgstr "Recibo SAT"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__l10n_mx_payroll_integrated_salary_new
+msgid "SBC New"
+msgstr "SBC Nuevo"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__l10n_mx_payroll_daily_salary_new
+msgid "SD New"
+msgstr "SD Nuevo"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__message_has_sms_error
 msgid "SMS Delivery error"
 msgstr "Error de entrega del SMS"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model,name:erp_l10n_mx_hr_payroll_e8e_vauxo.model_l10n_mx_salary_employee
+msgid "Salary Employee"
+msgstr "Salario por empleado"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_modify_salary__salary_employee_ids
+#: model:l10n.mx.increment.type,name:erp_l10n_mx_hr_payroll_e8e_vauxo.increment_type_01
+msgid "Salary by Employee"
+msgstr "Salario por empleado"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.res_config_settings_view_form_inherit
@@ -1063,6 +1182,11 @@ msgstr "Algunas entradas de trabajo no se pudieron validar."
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip_run__l10n_mx_stamped_version
 msgid "Stamped version"
 msgstr "Versión de Timbrado"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__state
+msgid "Status"
+msgstr "Estado"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_payslip__l10n_mx_cfdi_supplier_rfc
@@ -1253,6 +1377,7 @@ msgstr ""
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_hr_contract__type_salary
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__type_salary
 msgid "Type salary"
 msgstr "Tipo de salario"
 
@@ -1270,6 +1395,11 @@ msgstr "Número de mensajes sin leer"
 #: model:ir.actions.server,name:erp_l10n_mx_hr_payroll_e8e_vauxo.action_update_partner_name
 msgid "Update partner name"
 msgstr "Actualizar Nombres de Contactos"
+
+#. module: erp_l10n_mx_hr_payroll_e8e_vauxo
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_e8e_vauxo.field_l10n_mx_salary_employee__l10n_mx_vacation_bonus
+msgid "Vacation cousin (%)"
+msgstr "% Prima Vacacional"
 
 #. module: erp_l10n_mx_hr_payroll_e8e_vauxo
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other

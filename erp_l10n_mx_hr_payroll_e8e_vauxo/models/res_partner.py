@@ -9,23 +9,24 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     def _get_return_without_accent(self, word):
-        word = re.sub(r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1", normalize("NFD", word),
+        word = re.sub(r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1",
+                      normalize("NFD", word),
                       0, re.I)
         word = normalize('NFC', word)
         return word
 
     @api.model
     def create(self, vals):
-        if vals.get('name'):
+        if vals.get('name') and vals.get('employee'):
             vals.update({'name': self._get_return_without_accent(vals.get('name')).upper()})
         return super(ResPartner, self).create(vals)
 
     def write(self, vals):
-        if vals.get('name'):
+        employees_partners = self.sudo().filtered(lambda s: s.employee)
+        if vals.get('name') and len(employees_partners) == len(self.ids):
             vals.update({'name': self._get_return_without_accent(vals.get('name')).upper()})
         return super(ResPartner, self).write(vals)
 
     def action_update_partner_name(self):
-        for record in self:
+        for record in self.filtered(lambda s: s.employee):
             record.name = self._get_return_without_accent(record.name).upper()
-

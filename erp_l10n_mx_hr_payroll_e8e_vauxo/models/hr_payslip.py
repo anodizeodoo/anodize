@@ -1493,7 +1493,8 @@ class HrPayslipRun(models.Model):
                                                         ('retry', 'to_sign', False, 'undefined')),
                                                         ('state', 'in', ('verify', 'done')),
                                                         ('l10n_mx_cfdi_uuid', '=', False),
-                                                        ('l10n_mx_edi_error', '=', False)], limit=100)
+                                                        ('l10n_mx_edi_error', '=', False),
+                                                        ('struct_id.l10n_mx_stamp_payroll', '=', True)], limit=100)
         if edi_documents:
             for edi_doc in edi_documents:
                 try:

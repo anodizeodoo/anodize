@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="increment_type_01" model="l10n.mx.increment.type">
+            <field name="name">Salary by Employee</field>
+        </record>
+        <record id="increment_type_02" model="l10n.mx.increment.type">
+            <field name="name">Increase by %</field>
+        </record>
+        <record id="increment_type_03" model="l10n.mx.increment.type">
+            <field name="name">Increase by quantity</field>
+        </record>
+        <record id="increment_type_04" model="l10n.mx.increment.type">
+            <field name="name">New General Salary</field>
+        </record>
+    </data>
+</odoo>

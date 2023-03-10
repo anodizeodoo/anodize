@@ -6,15 +6,16 @@
         <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="after">
+                <field name="l10n_mx_stamp_payroll" invisible="1"/>
                     <div class="alert alert-info" role="alert" style="margin-bottom:0px;"
-                        attrs="{'invisible': ['|', ('l10n_mx_pac_status', 'in', ['signed']), ('state', 'in', ['draft', 'cancel'])]}">
+                        attrs="{'invisible': ['|', '|', ('l10n_mx_pac_status', 'in', ['signed']), ('state', 'in', ['draft', 'cancel']), ('l10n_mx_stamp_payroll', '=', False)]}">
                          <div>The payslip will be sent asynchronously to service: CFDI (<field name="l10n_mx_stamped_version" class="oe_inline"/>) or <button name="l10n_mx_edi_action_send_cfdi" type="object" class="oe_link" string="⇒ Send now" />
                          </div>
                     </div>
                     <div class="alert alert-warning"
                      role="alert"
                      style="margin-bottom:0px;"
-                     attrs="{'invisible': [('l10n_mx_edi_error', '=', False)]}">
+                     attrs="{'invisible': ['|', ('l10n_mx_edi_error', '=', False), ('l10n_mx_stamp_payroll', '=', False)]}">
                         <field name="l10n_mx_edi_error" readonly="1"/>
                         <button
                             name="l10n_mx_edi_action_send_cfdi"
@@ -140,20 +141,21 @@
         <field name="arch" type="xml">
             <xpath expr="/tree/field[@name='state']" position="after">
                 <field name="l10n_mx_edi_error" invisible="not context.get('from_see_error_run', 0)"/>
+                <field name="l10n_mx_stamp_payroll" invisible="1"/>
                 <button type="object" string="Send CFDI" name="l10n_mx_edi_action_send_cfdi"
                         class="text-success"
-                        attrs="{'column_invisible': ['|', ('l10n_mx_pac_status', 'in', ['signed']), ('state', 'in', ['draft', 'cancel'])], 'invisible': ['|', ('l10n_mx_pac_status', 'in', ['signed']), ('state', 'in', ['draft', 'cancel'])]}"
+                        attrs="{'column_invisible': ['|', '|', ('l10n_mx_pac_status', 'in', ['signed']), ('state', 'in', ['draft', 'cancel']), ('l10n_mx_stamp_payroll', '=', False)], 'invisible': ['|', '|', ('l10n_mx_pac_status', 'in', ['signed']), ('state', 'in', ['draft', 'cancel']), ('l10n_mx_stamp_payroll', '=', False)]}"
                         icon="fa-paper-plane"/>
                 <button type="object" string="View Error"
                         class="text-warning"
                         invisible="context.get('from_see_error_run', 1)"
                         name="action_view_error_payslip"
-                        attrs="{'column_invisible': ['|', ('l10n_mx_pac_status', 'in', ['signed']), ('state', 'in', ['draft', 'cancel'])], 'invisible': ['|', ('l10n_mx_pac_status', 'in', ['signed']), ('state', 'in', ['draft', 'cancel'])]}"
+                        attrs="{'column_invisible': ['|', '|', ('l10n_mx_pac_status', 'in', ['signed']), ('state', 'in', ['draft', 'cancel']), ('l10n_mx_stamp_payroll', '=', False)], 'invisible': ['|', '|', ('l10n_mx_pac_status', 'in', ['signed']), ('state', 'in', ['draft', 'cancel']), ('l10n_mx_stamp_payroll', '=', False)]}"
                         icon="fa-bug"/>
                 <button type="object" string="Cancel"
                         class="text-info"
                         name="action_payslip_cancel"
-                        attrs="{'column_invisible': [('state', 'not in', ['draft','hr_check','confirm','verify','done'])], 'invisible': [('state', 'not in', ['draft','hr_check','confirm','verify','done'])]}"
+                        attrs="{'column_invisible': ['|', ('state', 'not in', ['draft','hr_check','confirm','verify','done']), ('l10n_mx_stamp_payroll', '=', False)], 'invisible': ['|', ('state', 'not in', ['draft','hr_check','confirm','verify','done']), ('l10n_mx_stamp_payroll', '=', False)]}"
                         icon="fa-close"/>
 
             </xpath>

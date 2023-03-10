@@ -20,3 +20,5 @@ class ResConfigSettings(models.TransientModel):
         string='Mexican UMI', readonly=False, help='Indicates the current UMI in Mexico')
     l10n_mx_stamped_version = fields.Selection(related='company_id.l10n_mx_stamped_version',
                                                string='Stamped version', readonly=False)
+    l10n_mx_stamp_receipt = fields.Boolean(related='company_id.l10n_mx_stamp_receipt', string='Payroll receipt stamp', readonly=False)
+    l10n_mx_stamp_receipt_readonly = fields.Boolean(related='company_id.l10n_mx_stamp_receipt_readonly')

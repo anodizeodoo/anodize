@@ -25,8 +25,8 @@
                                 <field name="l10n_mx_days" required="1"/>
                             </group>
                             <group>
-                                <field name="l10n_mx_rule_value_init" required="1"/>
-                                <field name="l10n_mx_rule_value_end" required="1"/>
+                                <field name="l10n_mx_rule_value_init" invisible="1"/>
+                                <field name="l10n_mx_rule_value_end" invisible="1"/>
                             </group>
                         </group>
                     </sheet>
