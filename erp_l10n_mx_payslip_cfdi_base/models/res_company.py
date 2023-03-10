@@ -19,3 +19,14 @@ class ResCompany(models.Model):
     l10n_mx_stamped_version = fields.Selection(
         [('version_3', 'Version 3.3'), ('version_4', 'Version 4.0')], string='Stamped version',
         default='version_3')
+
+    l10n_mx_stamp_receipt = fields.Boolean(string='Payroll receipt stamp', default=False)
+
+    l10n_mx_stamp_receipt_readonly = fields.Boolean(compute='_compute_l10n_mx_stamp_receipt_readonly')
+
+    def _compute_l10n_mx_stamp_receipt_readonly(self):
+        pac_status_signed = self.env['hr.payslip'].search([('l10n_mx_pac_status', '=', 'signed')])
+        if self.l10n_mx_stamp_receipt and len(pac_status_signed) > 0:
+            self.l10n_mx_stamp_receipt_readonly = True
+        else:
+            self.l10n_mx_stamp_receipt_readonly = False

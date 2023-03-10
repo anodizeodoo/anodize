@@ -9,6 +9,14 @@ class HrRuleAuxIsr(models.Model):
     aux_isr_rule_id = fields.Many2one('hr.salary.rule', string='Rule')
 
 
+class HrRuleReportClassifier(models.Model):
+    _name = 'hr.rule.report.classifier'
+
+    rule_id = fields.Many2one('hr.salary.rule', string='Rule')
+    report_classifier_id = fields.Many2one('l10n.mx.report.classifier', string='Report classifier')
+    sequence = fields.Integer(string='Sequence', index=True)
+
+
 class HrSalaryRule(models.Model):
     _inherit = 'hr.salary.rule'
 
@@ -24,6 +32,7 @@ class HrSalaryRule(models.Model):
     l10n_mx_automatic_isr = fields.Boolean(string='Automatic calculation')
     l10n_mx_visibility_automatic_isr =fields.Boolean(compute='_compute_l10n_mx_visibility_automatic_isr')
     rule_aux_isr_ids = fields.One2many('hr.rule.aux.isr', 'aux_isr_rule_id', 'Rule line')
+    rule_report_classifier_ids = fields.One2many('hr.rule.report.classifier', 'rule_id', 'Report classifier line')
 
 
     def _compute_l10n_mx_visibility_automatic_isr(self):
@@ -40,3 +49,10 @@ class HrPayrollStructure(models.Model):
     l10n_mx_payslip_type = fields.Selection([('O', 'O-Ordinary Payroll'),
                                              ('E', 'E-Extraordinary')],
                                             string='Type of payroll')
+    l10n_mx_stamp_payroll = fields.Boolean(string='Payroll stamp', default=False)
+
+
+class HrSalaryRuleCategory(models.Model):
+    _inherit = 'hr.salary.rule.category'
+
+    report_classifier_id = fields.Many2one('l10n.mx.report.classifier', string='Report classifier')

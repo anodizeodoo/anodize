@@ -44,6 +44,8 @@ class HrContract(models.Model):
                                                           compute_sudo=True)
     name = fields.Char(required=False, tracking=True)
 
+    l10n_mx_date_imss = fields.Date(string='IMSS discharge date')
+
     def _get_static_SDI(self):
         """Get the integrated salary for the static perceptions like:
             - Salary

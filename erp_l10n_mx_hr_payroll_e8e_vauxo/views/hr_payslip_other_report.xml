@@ -2,18 +2,19 @@
 <odoo>
 
     <template id="external_layout_standard_inherit" inherit_id="web.external_layout_standard">
-        <xpath expr="//div[3]" position="replace">
-            <t t-if="o and o._name != 'hr.payslip'">
-                <div class="row">
-                    <div class="col-6" name="company_address">
-                        <div t-field="company.partner_id"
-                            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
-                        />
-                    </div>
-                </div>
-            </t>
+        <xpath expr="//div[3]" position="attributes">
+            <attribute name="t-if">o and o._name != 'hr.payslip'</attribute>
+<!--            <t t-if="o and o._name != 'hr.payslip'">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-6" name="company_address">-->
+<!--                        <div t-field="company.partner_id"-->
+<!--                            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'-->
+<!--                        />-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </t>-->
         </xpath>
-    </template>
+    </template> 
 
     <template id='l10n_mx_edi_report_payslip_other'>
         <t t-call="web.html_container">

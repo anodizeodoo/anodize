@@ -147,6 +147,7 @@ class HrPayslip(models.Model):
 
     l10_mx_cancel_pending = fields.Boolean(readonly=True, default=False, copy=False,
                           help="It indicates that the payslip its pending to cancel cfdi.")
+    l10n_mx_stamp_payroll = fields.Boolean(related='struct_id.l10n_mx_stamp_payroll')
 
     def l10n_mx_is_last_payslip(self):
         """Check if the date to in the payslip is the last of the current month

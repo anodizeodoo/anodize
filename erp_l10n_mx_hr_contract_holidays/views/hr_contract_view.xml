@@ -12,6 +12,9 @@
             <field name="name" position="attributes">
                 <attribute name="attrs">{'invisible': [('l10n_mx_automatic_sequence_contracts', '=', True)], 'required': [('l10n_mx_automatic_sequence_contracts', '=', False)]}</attribute>
 			</field>
+            <field name="date_start" position="after">
+                <field name="l10n_mx_date_imss"/>
+            </field>
             <field name="date_end" position="before">
                 <field name="l10n_mx_antiquity"/>
             </field>

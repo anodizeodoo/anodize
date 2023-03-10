@@ -77,6 +77,7 @@ class HrPayslipEmployees(models.TransientModel):
             'contract_id': contract.id,
             'struct_id': self.structure_id.id or contract.structure_type_id.default_struct_id.id,
             'l10n_mx_payslip_type': self.structure_id.l10n_mx_payslip_type,
+            'l10n_mx_payment_date': payslip_run.l10n_mx_payment_date,
         }) for contract in contracts]
 
         payslips = Payslip.with_context(tracking_disable=True).create(payslip_values)

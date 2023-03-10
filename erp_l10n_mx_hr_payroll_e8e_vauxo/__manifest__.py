@@ -14,6 +14,7 @@
     "data": [
         "security/ir.model.access.csv",
         "data/cron.xml",
+        "data/increment_type_data.xml",
         "views/hr_payslip_view.xml",
         "views/hr_payslip_sat_report.xml",
         "views/hr_payroll_reports.xml",
@@ -22,6 +23,8 @@
         "views/hr_employee_views.xml",
         "views/hr_contract_view.xml",
         "views/res_partner_views.xml",
+        "views/increment_type_views.xml",
+        "views/modify_salary_views.xml",
         "wizard/reason_cancelation_sat_view.xml",
     ],
     "installable": True,

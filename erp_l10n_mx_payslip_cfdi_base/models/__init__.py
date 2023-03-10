@@ -13,3 +13,5 @@ from . import table_minimum_wage
 from . import table_umas
 from . import table_umi
 from . import schedule_pay
+from . import report_classifier
+from . import table_imss
