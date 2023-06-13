@@ -1,0 +1,4 @@
+[submodule "solt-erp-multicompany"]
+	path = solt-erp-multicompany
+	url = git@gitlab.com:reymor/solt-erp-multicompany.git
+	branch = 14.0

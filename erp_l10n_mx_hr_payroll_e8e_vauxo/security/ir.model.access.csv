@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-cfdi_reason_payslip_cancelation_all,cfdi.reason.payslip.cancelation,model_cfdi_reason_payslip_cancelation,,1,1,1,1
-access_increment_type,access.increment.type group_hr_manager,model_l10n_mx_increment_type,hr_payroll.group_hr_payroll_manager,1,1,1,1
-access_modify_salary,access.modify.salary group_hr_manager,model_l10n_mx_modify_salary,hr_payroll.group_hr_payroll_manager,1,1,1,1
-access_salary_employee,access.salary.employee group_hr_manager,model_l10n_mx_salary_employee,hr_payroll.group_hr_payroll_manager,1,1,1,1
