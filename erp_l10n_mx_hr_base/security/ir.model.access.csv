@@ -6,3 +6,4 @@ access_contract_regime_type,access.contract.regime.type group_hr_manager,model_l
 access_type_benefit,access.type.benefit group_hr_manager,model_l10n_mx_type_benefit,hr.group_hr_manager,1,1,1,1
 access_type_benefit_line,access.type.benefit.line group_hr_manager,model_l10n_mx_type_benefit_line,hr.group_hr_manager,1,1,1,1
 access_schedule_pay,access.schedule.pay group_hr_manager,model_l10n_mx_payroll_schedule_pay,hr_payroll.group_hr_payroll_manager,1,1,1,1
+

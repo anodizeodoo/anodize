@@ -49,7 +49,7 @@ class TypeBenefitLine(models.Model):
     holidays2 = fields.Float(string='Holidays', compute='_compute_holidays2')
     total_days = fields.Float(string='Total days', compute='_compute_total_days')
     integration_factor = fields.Float(string='Integration Factor',
-                                      compute='_compute_integration_factor', digits=(16, 9))
+                                      compute='_compute_integration_factor', digits=(16, 4))
 
     @api.depends('holidays', 'vacation_cousin')
     def _compute_holidays2(self):
