@@ -2,17 +2,17 @@
 <odoo>
     <data>
 
-        <record id="view_schedule_pay_form_inherit" model="ir.ui.view">
-            <field name="name">l10n.mx.payroll.schedule.pay.form.inherit</field>
-            <field name="model">l10n.mx.payroll.schedule.pay</field>
-            <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_schedule_pay_form"/>
-            <field name="arch" type="xml">
-                <field name="name" position="after">
-                    <field name="l10n_mx_table_isr_id"
-                           options="{'no_create_edit': True, 'no_create': 1}"/>
-                </field>
-            </field>
-        </record>
+<!--        <record id="view_schedule_pay_form_inherit" model="ir.ui.view">-->
+<!--            <field name="name">l10n.mx.payroll.schedule.pay.form.inherit</field>-->
+<!--            <field name="model">l10n.mx.payroll.schedule.pay</field>-->
+<!--            <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_schedule_pay_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <field name="name" position="after">-->
+<!--                    <field name="l10n_mx_table_isr_id"-->
+<!--                           options="{'no_create_edit': True, 'no_create': 1}"/>-->
+<!--                </field>-->
+<!--            </field>-->
+<!--        </record>-->
 
     </data>
 </odoo>

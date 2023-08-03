@@ -2,60 +2,60 @@
 <odoo>
     <data>
 
-        <record id="sat_keys_view_tree" model="ir.ui.view">
-            <field name="name">sat.keys.view.tree</field>
-            <field name="model">l10n.mx.sat.keys</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="sequence" widget="handle"/>
-                    <field name="l10n_mx_sat_code"/>
-                    <field name="l10n_mx_sat_name"/>
-                    <field name="l10n_mx_sat_classification"/>
-                    <field name="l10n_mx_sat_date_start"/>
-                </tree>
-            </field>
-        </record>
+<!--        <record id="sat_keys_view_tree" model="ir.ui.view">-->
+<!--            <field name="name">sat.keys.view.tree</field>-->
+<!--            <field name="model">l10n.mx.sat.keys</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree>-->
+<!--                    <field name="sequence" widget="handle"/>-->
+<!--                    <field name="l10n_mx_sat_code"/>-->
+<!--                    <field name="l10n_mx_sat_name"/>-->
+<!--                    <field name="l10n_mx_sat_classification"/>-->
+<!--                    <field name="l10n_mx_sat_date_start"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <record id="sat_keys_view_form" model="ir.ui.view">
-            <field name="name">sat.keys.view.form</field>
-            <field name="model">l10n.mx.sat.keys</field>
-            <field name="arch" type="xml">
-                <form string="SAT keys">
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="l10n_mx_sat_code" required="1"/>
-                                <field name="l10n_mx_sat_name" required="1"/>
-                                <field name="l10n_mx_sat_classification"/>
-                            </group>
-                            <group>
-                                <field name="l10n_mx_sat_date_start" required="1"/>
-                                <field name="l10n_mx_sat_date_end"/>
-                                <field name="active" widget="boolean_toggle"/>
-                            </group>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+<!--        <record id="sat_keys_view_form" model="ir.ui.view">-->
+<!--            <field name="name">sat.keys.view.form</field>-->
+<!--            <field name="model">l10n.mx.sat.keys</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="SAT keys">-->
+<!--                    <sheet>-->
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="l10n_mx_sat_code" required="1"/>-->
+<!--                                <field name="l10n_mx_sat_name" required="1"/>-->
+<!--                                <field name="l10n_mx_sat_classification"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="l10n_mx_sat_date_start" required="1"/>-->
+<!--                                <field name="l10n_mx_sat_date_end"/>-->
+<!--                                <field name="active" widget="boolean_toggle"/>-->
+<!--                            </group>-->
+<!--                        </group>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <record id="sat_keys_action" model="ir.actions.act_window">
-            <field name="name">SAT grouping code</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">l10n.mx.sat.keys</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-                <p class="o_view_nocontent">
-                   No records found.
-                </p>
-            </field>
-        </record>
+<!--        <record id="sat_keys_action" model="ir.actions.act_window">-->
+<!--            <field name="name">SAT grouping code</field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model">l10n.mx.sat.keys</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="help" type="html">-->
+<!--                <p class="o_view_nocontent">-->
+<!--                   No records found.-->
+<!--                </p>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <menuitem id="menu_action_sat_keys"
-                  action="sat_keys_action"
-                  name="SAT grouping code"
-                  parent="erp_l10n_mx_hr_base.menu_hr_payroll_catalogs"
-                  sequence="5"/>
+<!--        <menuitem id="menu_action_sat_keys"-->
+<!--                  action="sat_keys_action"-->
+<!--                  name="SAT grouping code"-->
+<!--                  parent="erp_l10n_mx_hr_base.menu_hr_payroll_catalogs"-->
+<!--                  sequence="5"/>-->
 
     </data>
 </odoo>
