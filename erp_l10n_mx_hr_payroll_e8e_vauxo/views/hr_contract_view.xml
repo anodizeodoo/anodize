@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.ui.view" id="view_hr_payroll_contract_form_inherit">
-        <field name="name">view.hr.contract.form.inherit</field>
-        <field name="model">hr.contract</field>
-        <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='l10n_mx_type_benefit_id']" position="before">
-                <field name="type_salary"/>
-            </xpath>
-        </field>
-    </record>
+<!--    <record model="ir.ui.view" id="view_hr_payroll_contract_form_inherit">-->
+<!--        <field name="name">view.hr.contract.form.inherit</field>-->
+<!--        <field name="model">hr.contract</field>-->
+<!--        <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='l10n_mx_type_benefit_id']" position="before">-->
+<!--                <field name="type_salary"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
 </odoo>

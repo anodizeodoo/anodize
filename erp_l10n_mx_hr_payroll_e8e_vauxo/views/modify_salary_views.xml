@@ -2,77 +2,77 @@
 <odoo>
     <data>
 
-        <record id="modify_salary_view_tree" model="ir.ui.view">
-            <field name="name">l10n.mx.modify.salary.tree</field>
-            <field name="model">l10n.mx.modify.salary</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="application_date"/>
-                    <field name="increment_type_id"/>
-                </tree>
-            </field>
-        </record>
+<!--        <record id="modify_salary_view_tree" model="ir.ui.view">-->
+<!--            <field name="name">l10n.mx.modify.salary.tree</field>-->
+<!--            <field name="model">l10n.mx.modify.salary</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree>-->
+<!--                    <field name="application_date"/>-->
+<!--                    <field name="increment_type_id"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <record id="view_modify_salary_form" model="ir.ui.view">
-            <field name="name">l10n.mx.modify.salary.form</field>
-            <field name="model">l10n.mx.modify.salary</field>
-            <field name="arch" type="xml">
-                <form>
-                    <header>
-                        <button name="modify_salary" string="Modify salary"  type="object" class="oe_highlight"
-                                confirm="¿Está seguro que desea continuar con la modificación de salarios?"
-                        />
-                    </header>
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="application_date" required="1"/>
-                            </group>
-                            <group>
-                                <field name="increment_type_id" required="1"/>
-                            </group>
-                        </group>
-                        <field name="salary_employee_ids" nolabel="1">
-                            <tree editable="bottom" delete="false" create="false">
-                                <field name="contract_id" optional="show" readonly="1"/>
-                                <field name="employee_id" optional="show" readonly="1"/>
-                                <field name="job_id" optional="show" readonly="1"/>
-                                <field name="department_id" optional="show" readonly="1"/>
-                                <field name="state" widget="badge" decoration-info="state == 'open'" optional="show"/>
-                                <field name="l10n_mx_payroll_daily_salary" optional="show" readonly="1"/>
-                                <field name="l10n_mx_payroll_integrated_salary" optional="show" readonly="1"/>
-                                <field name="type_salary" optional="show"/>
-                                <field name="l10n_mx_date_imss" optional="show"/>
-                                <field name="l10n_mx_antiquity" optional="show"/>
-                                <field name="l10n_mx_holidays" optional="show"/>
-                                <field name="l10n_mx_vacation_bonus" optional="show"/>
-                                <field name="l10n_mx_christmas_bonus" optional="show"/>
-                                <field name="integration_factor" optional="show" style='color:blue;font-weight:bold;'/>
-                                <field name="l10n_mx_payroll_daily_salary_new" optional="show" style='color:blue;font-weight:bold;'/>
-                                <field name="l10n_mx_payroll_integrated_salary_new" optional="show" style='color:blue;font-weight:bold;'/>
-                            </tree>
-                        </field>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+<!--        <record id="view_modify_salary_form" model="ir.ui.view">-->
+<!--            <field name="name">l10n.mx.modify.salary.form</field>-->
+<!--            <field name="model">l10n.mx.modify.salary</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form>-->
+<!--                    <header>-->
+<!--                        <button name="modify_salary" string="Modify salary"  type="object" class="oe_highlight"-->
+<!--                                confirm="¿Está seguro que desea continuar con la modificación de salarios?"-->
+<!--                        />-->
+<!--                    </header>-->
+<!--                    <sheet>-->
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="application_date" required="1"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="increment_type_id" required="1"/>-->
+<!--                            </group>-->
+<!--                        </group>-->
+<!--                        <field name="salary_employee_ids" nolabel="1">-->
+<!--                            <tree editable="bottom" delete="false" create="false">-->
+<!--                                <field name="contract_id" optional="show" readonly="1"/>-->
+<!--                                <field name="employee_id" optional="show" readonly="1"/>-->
+<!--                                <field name="job_id" optional="show" readonly="1"/>-->
+<!--                                <field name="department_id" optional="show" readonly="1"/>-->
+<!--                                <field name="state" widget="badge" decoration-info="state == 'open'" optional="show"/>-->
+<!--                                <field name="l10n_mx_payroll_daily_salary" optional="show" readonly="1"/>-->
+<!--                                <field name="l10n_mx_payroll_integrated_salary" optional="show" readonly="1"/>-->
+<!--                                <field name="type_salary" optional="show"/>-->
+<!--                                <field name="l10n_mx_date_imss" optional="show"/>-->
+<!--                                <field name="l10n_mx_antiquity" optional="show"/>-->
+<!--                                <field name="l10n_mx_holidays" optional="show"/>-->
+<!--                                <field name="l10n_mx_vacation_bonus" optional="show"/>-->
+<!--                                <field name="l10n_mx_christmas_bonus" optional="show"/>-->
+<!--                                <field name="integration_factor" optional="show" style='color:blue;font-weight:bold;'/>-->
+<!--                                <field name="l10n_mx_payroll_daily_salary_new" optional="show" style='color:blue;font-weight:bold;'/>-->
+<!--                                <field name="l10n_mx_payroll_integrated_salary_new" optional="show" style='color:blue;font-weight:bold;'/>-->
+<!--                            </tree>-->
+<!--                        </field>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <record id="modify_salary_action" model="ir.actions.act_window">
-            <field name="name">Modify salary</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">l10n.mx.modify.salary</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-                <p class="o_view_nocontent">
-                   No records found.
-                </p>
-            </field>
-        </record>
+<!--        <record id="modify_salary_action" model="ir.actions.act_window">-->
+<!--            <field name="name">Modify salary</field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model">l10n.mx.modify.salary</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="help" type="html">-->
+<!--                <p class="o_view_nocontent">-->
+<!--                   No records found.-->
+<!--                </p>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <menuitem id="erp_l10n_mx_modify_salary_menu"
-                  sequence="20" name="Modify salary"
-                  parent="menu_hr_payroll_processes"
-                  action="modify_salary_action"/>
+<!--        <menuitem id="erp_l10n_mx_modify_salary_menu"-->
+<!--                  sequence="20" name="Modify salary"-->
+<!--                  parent="menu_hr_payroll_processes"-->
+<!--                  action="modify_salary_action"/>-->
 
     </data>
 </odoo>
