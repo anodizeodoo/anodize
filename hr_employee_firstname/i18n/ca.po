@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-03-21 14:17+0000\n"
-"Last-Translator: Noel estudillo <noelestudilloviera@gmail.com>\n"
+"PO-Revision-Date: 2021-05-11 13:47+0000\n"
+"Last-Translator: Haftec <hmahamud@tecnihand.com>\n"
 "Language-Team: none\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -19,19 +19,12 @@ msgstr ""
 #. module: hr_employee_firstname
 #: model:ir.model,name:hr_employee_firstname.model_hr_employee_base
 msgid "Basic Employee"
-msgstr "Empleat bàsic"
+msgstr ""
 
 #. module: hr_employee_firstname
 #: model:ir.model,name:hr_employee_firstname.model_res_config_settings
 msgid "Config Settings"
-msgstr "Paràmetres de configuració"
-
-#. module: hr_employee_firstname
-#: model:ir.model.fields,field_description:hr_employee_firstname.field_hr_employee__display_name
-#: model:ir.model.fields,field_description:hr_employee_firstname.field_hr_employee_base__display_name
-#: model:ir.model.fields,field_description:hr_employee_firstname.field_res_config_settings__display_name
-msgid "Display Name"
-msgstr "Nom de visualització"
+msgstr ""
 
 #. module: hr_employee_firstname
 #: model:ir.model,name:hr_employee_firstname.model_hr_employee
@@ -52,20 +45,6 @@ msgid "First name"
 msgstr "Nom"
 
 #. module: hr_employee_firstname
-#: model:ir.model.fields,field_description:hr_employee_firstname.field_hr_employee__id
-#: model:ir.model.fields,field_description:hr_employee_firstname.field_hr_employee_base__id
-#: model:ir.model.fields,field_description:hr_employee_firstname.field_res_config_settings__id
-msgid "ID"
-msgstr "ID"
-
-#. module: hr_employee_firstname
-#: model:ir.model.fields,field_description:hr_employee_firstname.field_hr_employee____last_update
-#: model:ir.model.fields,field_description:hr_employee_firstname.field_hr_employee_base____last_update
-#: model:ir.model.fields,field_description:hr_employee_firstname.field_res_config_settings____last_update
-msgid "Last Modified on"
-msgstr "Darrera modificació el"
-
-#. module: hr_employee_firstname
 #: model:ir.model.fields,field_description:hr_employee_firstname.field_hr_employee__lastname
 #: model:ir.model.fields,field_description:hr_employee_firstname.field_hr_employee_base__lastname
 #: model:ir.model.fields,field_description:hr_employee_firstname.field_hr_employee_public__lastname
@@ -81,4 +60,7 @@ msgstr "No s'ha definit cap nom."
 #. module: hr_employee_firstname
 #: model:ir.model.fields,help:hr_employee_firstname.field_res_config_settings__employee_names_order
 msgid "Order to compose employee fullname"
-msgstr "Ordre per redactar el nom complet de l'empleat"
+msgstr ""
+
+#~ msgid "Last Modified on"
+#~ msgstr "Darrera modificació el"

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ir_sequence_hr_nanager,access.ir_sequence_hr_manager,base.model_ir_sequence,hr.group_hr_manager,1,1,1,1

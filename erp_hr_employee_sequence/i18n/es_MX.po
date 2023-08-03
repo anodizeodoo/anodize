@@ -1,0 +1,58 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* erp_hr_employee_sequence
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20220326\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-08 19:09+0000\n"
+"PO-Revision-Date: 2022-11-08 13:09-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.2\n"
+
+#. module: erp_hr_employee_sequence
+#: model:ir.model.fields,field_description:erp_hr_employee_sequence.field_hr_employee__display_name
+msgid "Display Name"
+msgstr "Nombre en pantalla"
+
+#. module: erp_hr_employee_sequence
+#: model:ir.model,name:erp_hr_employee_sequence.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: erp_hr_employee_sequence
+#: model:ir.actions.act_window,name:erp_hr_employee_sequence.erp_hr_employee_sequence_hr_view_ir_sequence_form
+msgid "Employee Sequence"
+msgstr "Secuencia de Empleados"
+
+#. module: erp_hr_employee_sequence
+#: model:ir.model.fields,field_description:erp_hr_employee_sequence.field_hr_employee__id
+msgid "ID"
+msgstr ""
+
+#. module: erp_hr_employee_sequence
+#: model:ir.model.fields,field_description:erp_hr_employee_sequence.field_hr_employee____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: erp_hr_employee_sequence
+#: model:ir.model.fields,field_description:erp_hr_employee_sequence.field_hr_employee__number
+msgid "No. Employee"
+msgstr "No Empleado"
+
+#. module: erp_hr_employee_sequence
+#: model:ir.model.fields,field_description:erp_hr_employee_sequence.field_hr_employee__registration_number
+msgid "Registration Number of the Employee"
+msgstr "Número de registro del empleado"
+
+#. module: erp_hr_employee_sequence
+#: model:ir.ui.menu,name:erp_hr_employee_sequence.erp_hr_employee_hr_ir_sequence_menu
+msgid "Sequence"
+msgstr "Secuencia de Empleados"
