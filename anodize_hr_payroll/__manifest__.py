@@ -12,10 +12,10 @@
     """,
     'depends': ['base', 'hr_payroll', 'report_xlsx'],
     'data': [
-        'report/payroll_templates.xml',
-        'report/payroll_report_views.xml',
-        'views/hr_payslip_views.xml',
-        'views/hr_employee_views.xml',
+        # 'report/payroll_templates.xml',
+        # 'report/payroll_report_views.xml',
+        # 'views/hr_payslip_views.xml',
+        # 'views/hr_employee_views.xml',
     ],
     'installable': True,
 }
