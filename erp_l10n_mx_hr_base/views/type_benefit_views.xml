@@ -2,80 +2,80 @@
 <odoo>
     <data>
 
-        <record id="type_benefit_view_search" model="ir.ui.view">
-            <field name="name">type.benefit.view.search</field>
-            <field name="model">l10n.mx.type.benefit</field>
-            <field name="arch" type="xml">
-                <search>
-                    <field name="name"/>
-                    <field name="code"/>
-                </search>
-            </field>
-        </record>
+<!--        <record id="type_benefit_view_search" model="ir.ui.view">-->
+<!--            <field name="name">type.benefit.view.search</field>-->
+<!--            <field name="model">l10n.mx.type.benefit</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <search>-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="code"/>-->
+<!--                </search>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <record id="type_benefit_view_tree" model="ir.ui.view">
-            <field name="name">type.benefit.tree</field>
-            <field name="model">l10n.mx.type.benefit</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                    <field name="code"/>
-                    <field name="day_year"/>
-                    <field name="day_month"/>
-                </tree>
-            </field>
-        </record>
+<!--        <record id="type_benefit_view_tree" model="ir.ui.view">-->
+<!--            <field name="name">type.benefit.tree</field>-->
+<!--            <field name="model">l10n.mx.type.benefit</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree>-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="code"/>-->
+<!--                    <field name="day_year"/>-->
+<!--                    <field name="day_month"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <record id="view_type_benefit_form" model="ir.ui.view">
-            <field name="name">type.benefit.form</field>
-            <field name="model">l10n.mx.type.benefit</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="name" required="1"/>
-                                <field name="code" required="1"/>
-                            </group>
-                            <group>
-                                <field name="day_year"/>
-                                <field name="day_month"/>
-                            </group>
-                        </group>
-                        <group>
-                            <field name="type_benefit_line_ids" nolabel="1">
-                                <tree editable="bottom">
-                                    <field name="antiquity"/>
-                                    <field name="holidays"/>
-                                    <field name="vacation_cousin"/>
-                                    <field name="bonus_days"/>
-                                    <field name="holidays2"/>
-                                    <field name="total_days"/>
-                                    <field name="integration_factor"/>
-                                </tree>
-                            </field>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+<!--        <record id="view_type_benefit_form" model="ir.ui.view">-->
+<!--            <field name="name">type.benefit.form</field>-->
+<!--            <field name="model">l10n.mx.type.benefit</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form>-->
+<!--                    <sheet>-->
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="name" required="1"/>-->
+<!--                                <field name="code" required="1"/>-->
+<!--                            </group>-->
+<!--                            <group>-->
+<!--                                <field name="day_year"/>-->
+<!--                                <field name="day_month"/>-->
+<!--                            </group>-->
+<!--                        </group>-->
+<!--                        <group>-->
+<!--                            <field name="type_benefit_line_ids" nolabel="1">-->
+<!--                                <tree editable="bottom">-->
+<!--                                    <field name="antiquity"/>-->
+<!--                                    <field name="holidays"/>-->
+<!--                                    <field name="vacation_cousin"/>-->
+<!--                                    <field name="bonus_days"/>-->
+<!--                                    <field name="holidays2"/>-->
+<!--                                    <field name="total_days"/>-->
+<!--                                    <field name="integration_factor"/>-->
+<!--                                </tree>-->
+<!--                            </field>-->
+<!--                        </group>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <record id="type_benefit_action" model="ir.actions.act_window">
-            <field name="name">Types of Benefits</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">l10n.mx.type.benefit</field>
-            <field name="view_mode">tree,form</field>
-            <field name="help" type="html">
-                <p class="o_view_nocontent">
-                   No records found.
-                </p>
-            </field>
-        </record>
+<!--        <record id="type_benefit_action" model="ir.actions.act_window">-->
+<!--            <field name="name">Types of Benefits</field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model">l10n.mx.type.benefit</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--            <field name="help" type="html">-->
+<!--                <p class="o_view_nocontent">-->
+<!--                   No records found.-->
+<!--                </p>-->
+<!--            </field>-->
+<!--        </record>-->
 
-        <menuitem id="erp_l10n_mx_type_benefit_menu"
-                  sequence="10" name="Types of Benefits"
-                  parent="erp_l10n_mx_hr_base.menu_config_contract_catalogs"
-                  action="erp_l10n_mx_hr_base.type_benefit_action"/>
+<!--        <menuitem id="erp_l10n_mx_type_benefit_menu"-->
+<!--                  sequence="10" name="Types of Benefits"-->
+<!--                  parent="erp_l10n_mx_hr_base.menu_config_contract_catalogs"-->
+<!--                  action="erp_l10n_mx_hr_base.type_benefit_action"/>-->
 
     </data>
 </odoo>
