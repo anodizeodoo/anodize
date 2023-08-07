@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 hr_payslip_overtime_manager,hr.payslip.overtime.manager,model_hr_payslip_overtime,,1,1,1,1
+access_type_overtime_manager,access_type_overtime_manager,model_hr_type_overtime,hr_payroll.group_hr_payroll_manager,1,1,1,1
+access_register_overtime_manager,access_register_overtime_manager,model_hr_register_overtime,hr_payroll.group_hr_payroll_manager,1,1,1,1
+access_register_overtime_line_manager,access_register_overtime_line_manager,model_hr_register_overtime_line,hr_payroll.group_hr_payroll_manager,1,1,1,1
