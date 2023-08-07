@@ -9,10 +9,11 @@
             <field name="arch" type="xml">
                 <field name="name" position="before">
                     <field name="registration_number" position="move"/>
+                    <field name="is_sequence" invisible="1"/>
                 </field>
                 <field name="registration_number" position="attributes">
-                    <attribute name="attrs">{'invisible':[('registration_number', '=', False)]}</attribute>
-                    <attribute name="readonly">1</attribute>
+                    <attribute name="attrs">{'invisible':[('registration_number', '=', False)], 'readonly': [('is_sequence', '=', True)]}</attribute>
+<!--                    <attribute name="readonly">1</attribute>-->
                     <attribute name="class">mr-2 border pl-1 pr-1 border border-primary</attribute>
                 </field>
             </field>

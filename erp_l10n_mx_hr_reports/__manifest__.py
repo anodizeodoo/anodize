@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-
 {
     'name': "ERP MX HR Reports",
-    'version': "14.0.0.0",
+    'version': "16.0.0.0",
     'category': "HR PAYROLL",
     'author': 'Soltein SA de CV',
     'website': 'http://www.soltein.net',
