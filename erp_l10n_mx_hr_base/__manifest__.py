@@ -32,9 +32,9 @@
         "views/contract_regime_type_views.xml",
         "views/job_risk_views.xml",
         "views/res_config_settings_view.xml",
-        # "views/res_partner_views.xml",
-        # "views/type_benefit_views.xml",
-        # "views/schedule_pay_views.xml",
+        "views/res_partner_views.xml",
+        "views/type_benefit_views.xml",
+        "views/schedule_pay_views.xml",
     ],
     "installable": True,
 }
