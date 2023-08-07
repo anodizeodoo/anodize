@@ -4,19 +4,83 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0+e-20210119\n"
+"Project-Id-Version: Odoo Server 15.0+e-20220404\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-21 01:27+0000\n"
-"PO-Revision-Date: 2022-01-20 19:29-0600\n"
+"POT-Creation-Date: 2022-07-19 13:02+0000\n"
+"PO-Revision-Date: 2022-07-19 13:02+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es\n"
-"X-Generator: Poedit 3.0\n"
 
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__inability
+msgid "% Inability"
+msgstr "% de Incapacidad"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_hr_payslip_form_inherit
+msgid ""
+"<span class=\"o_stat_text\">\n"
+"                            Time Off\n"
+"                        </span>"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_03
+msgid "ACCIDENTE DE TRAYECTO"
+msgstr ""
+"<span class=\"o_stat_text\">\n"
+"                            Tiempo personal\n"
+"                        </span>"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_payslip__show_leaves
+msgid "Able to see Remaining Time Off"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__holiday_status_id
+msgid "Absence Type"
+msgstr "Tipo de Ausencia"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_hr_contract_form_inherit
+msgid "Absences"
+msgstr "Ausencias"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_payslip__allocation_display
+msgid "Allocation Display"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_payslip__allocation_used_display
+msgid "Allocation Used Display"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__l10n_mx_antiquity
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_antiquity
+msgid "Antiquity"
+msgstr "Antigüedad"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__amount
+msgid "Amount"
+msgstr "Importe"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__apply
+msgid "Apply"
+msgstr "Aplicar"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__allocation_id
+msgid "Assignment"
+msgstr "Asignación"
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.res_config_settings_view_form_inherit
@@ -31,24 +95,128 @@ msgstr "Antigüedad"
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_christmas_bonus
 msgid "Bonus Days"
-msgstr "Días de Aguinaldo"
+msgstr "Días de bonificación"
 
 #. module: erp_l10n_mx_hr_contract_holidays
-#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_hr_contract
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_generate_holidays_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_generate_holidays_form
+msgid "Check Apply All"
+msgstr "Marcar Aplicar Todos"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type__code
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type_considered__code
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_disability_control__code
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_insurance_branch__code
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_risk_type__code
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_sequel__code
+msgid "Code"
+msgstr "Código"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_res_company
+msgid "Companies"
+msgstr "Empresas"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__contract_id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__holidays_contract_id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_allocation__contract_id
 msgid "Contract"
 msgstr "Contrato"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__name
+msgid "Contract Reference"
+msgstr "Referencia de contrato"
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_automatic_sequence_contracts
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_res_company__l10n_mx_automatic_sequence_contracts
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_res_config_settings__l10n_mx_automatic_sequence_contracts
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.res_config_settings_view_form_inherit
 msgid "Contracts"
 msgstr "Contratos"
 
 #. module: erp_l10n_mx_hr_contract_holidays
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_holidays
-msgid "Days of holidays"
-msgstr "Días de vacaciones"
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_wizard__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type_considered__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_disability_control__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_insurance_branch__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_risk_type__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_sequel__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_wizard__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type_considered__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_disability_control__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_insurance_branch__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_risk_type__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_sequel__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_09
+msgid "DIAS DE CASTIGO"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_12
+msgid "DIAS FESTIVO TRABAJADO"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__date_end
+msgid "Date end"
+msgstr "Fecha Hasta"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_hr_payslip_form_inherit
+msgid "Days"
+msgstr "Días"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__date_start
+msgid "Date start"
+msgstr "Fecha Desde"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_hr_payslip_form_inherit
+msgid "Days"
+msgstr "Días"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__days_assigned
+msgid "Days Assigned"
+msgstr "Días Asignados"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__days_available
+msgid "Days Available"
+msgstr "Días Disponibles"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__days_enjoyed
+msgid "Days Enjoyed"
+msgstr "Días Disfrutados"
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays__l10n_mx_days
@@ -56,26 +224,167 @@ msgid "Days for years"
 msgstr "Días por años"
 
 #. module: erp_l10n_mx_hr_contract_holidays
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__l10n_mx_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_holidays
+msgid "Days of holidays"
+msgstr "Días de vacaciones"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type__decreases_seventh_day
+msgid "Decreases from the seventh day"
+msgstr "Disminuye del Séptimo Día"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__department_id
+msgid "Department"
+msgstr "Departamento"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.hr_leave_disabilities_action
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_contract_holidays.selection__hr_leave__type__disabilities
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_disabilities_configuration
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_manager_disabilities
+msgid "Disabilities"
+msgstr "Incapacidades"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.disability_control_action
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_l10n_mx_disability_control
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__disability_control_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_action_disability_control
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.disability_control_view_form
+msgid "Disability Control"
+msgstr "Control Incapacidad"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_wizard__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type_considered__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_disability_control__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_insurance_branch__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_risk_type__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_sequel__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays__display_name
 msgid "Display Name"
 msgstr "Nombre en pantalla"
 
 #. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_04
+msgid "ENFERMEDAD GENERAN / ACCIDENTE FUERA DEL TRABAJO"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__employee_id
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_hr_contract
+msgid "Employee Contract"
+msgstr "Contrato del empleado"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__date_end_period
+msgid "End Date of the Trial Period"
+msgstr "Fecha Fin del Periodo de Prueba"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_08
+msgid "FALTAS INJUSTIFICADAS"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__folio
+msgid "Folio"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_generate_holidays_form
+msgid "Generate"
+msgstr "Generar"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.generate_holidays_action
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.generate_holidays_menu
+msgid "Generate Holidays"
+msgstr "Generar Vacaciones"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: code:addons/erp_l10n_mx_hr_contract_holidays/wizard/generate_holidays.py:0
+#: code:addons/erp_l10n_mx_hr_contract_holidays/wizard/generate_holidays.py:0
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__holidays_employee_id
+#, python-format
+msgid "Generate holidays"
+msgstr "Generar Vacaciones"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_generate_holidays_wizard
+msgid "Generate holidays wizard"
+msgstr "Asistente Generar Vacaciones"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.hr_leave_holidays_action
 #: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.table_holidays_action
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_hr_contract_holidays
 #: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_l10n_mx_table_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__contract_holidays_ids
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__hr_leave_id
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_contract_holidays.selection__hr_leave__type__holidays
 #: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_action_table_holidays
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_manager_approve_holidays
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_hr_contract_form_inherit
 msgid "Holidays"
 msgstr "Vacaciones"
 
 #. module: erp_l10n_mx_hr_contract_holidays
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__hourly_wage
+msgid "Hourly wage"
+msgstr "Sueldo por Hora"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_wizard__holidays_employee_ids
+msgid "Holidays Employee Lines"
+msgstr "Lineas Vacaciones Empleados"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_generate_holidays_line_wizard
+msgid "Holidays employee line wizard"
+msgstr "Lineas Vacaciones Empleados"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_wizard__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type_considered__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_disability_control__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_insurance_branch__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_risk_type__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_sequel__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_date_imss
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.hr_contract_holidays_view_search_inherit
 msgid "IMSS discharge date"
+msgstr "Fecha de Inicio"
+
+#. module: hr_contract
+#: model:ir.model.fields,field_description:hr_contract.field_hr_contract__date_start
+msgid "Start Date"
 msgstr "Fecha de Alta IMSS"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_05
+msgid "INCAPACIDAD PAGADA POR LA EMPRESA"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_06
+msgid "INCAPACIDAD POR MATERNIDAD"
+msgstr ""
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,help:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_holidays
@@ -83,9 +392,115 @@ msgid "Initial number of days for holidays. The minimum is 6 days."
 msgstr "Número inicial de días de vacaciones. El mínimo es 6 días."
 
 #. module: erp_l10n_mx_hr_contract_holidays
-#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract____last_update
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.insurance_branch_action
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_l10n_mx_insurance_branch
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__insurance_branch_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_action_insurance_branch
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.insurance_branch_view_form
+msgid "Insurance branch"
+msgstr "Ramo de Seguro"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__is_work_risk
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_insurance_branch__is_work_risk
+msgid "Is work risk"
+msgstr "Es riego de trabajo"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.type_considered_action
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_hr_leave_type_considered
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__considered_id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type__considered_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_action_type_considered
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.type_considered_view_form
+msgid "It is considered"
+msgstr "Se considera"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__job_id
+msgid "Job Position"
+msgstr "Puesto de Trabajo"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_11
+msgid "LICENCIA 140 BIS"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_wizard____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type_considered____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_disability_control____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_insurance_branch____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_risk_type____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_sequel____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_wizard__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type_considered__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_disability_control__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_insurance_branch__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_risk_type__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_sequel__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_wizard__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract_holidays__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type_considered__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_disability_control__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_insurance_branch__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_risk_type__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_sequel__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave_type_considered__name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_disability_control__name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_insurance_branch__name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_risk_type__name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_sequel__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_contract_holidays.disability_control_action
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_contract_holidays.hr_leave_disabilities_action
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_contract_holidays.hr_leave_holidays_action
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_contract_holidays.insurance_branch_action
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_contract_holidays.risk_type_action
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_contract_holidays.sequel_action
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_contract_holidays.table_holidays_action
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_contract_holidays.type_considered_action
+msgid "No records found."
+msgstr "No hay registros."
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_number
+msgid "No. Contract"
+msgstr "No. Contrato"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_generate_holidays_form
+msgid "Not Check Apply All"
+msgstr "Desmarcar Todos"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_res_company__number_days_contracts
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_res_config_settings__number_days_contracts
+msgid "Number Days"
+msgstr "Número de días"
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,help:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_christmas_bonus
@@ -93,15 +508,48 @@ msgid "Number of day for the Christmas bonus. The minimum is 15 days' pay"
 msgstr "Número de días para el bono navideño. El mínimo son 15 días de pago."
 
 #. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_01
+msgid "PERMISO CON GOCE DE SUELDO"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_02
+msgid "PERMISOS SIN GOCE DE SUELDO"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Nómina"
+
+#. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,help:erp_l10n_mx_hr_contract_holidays.field_hr_contract__l10n_mx_vacation_bonus
 msgid "Percentage of vacation bonus. The minimum is 25 %."
 msgstr "Porcentaje de bono de vacaciones. El mínimo es 25%."
 
 #. module: erp_l10n_mx_hr_contract_holidays
-#: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.contract_view_ir_sequence_form
-#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.erp_l10n_mx_hr_contract_holidays_ir_sequence_menu
-msgid "Sequence Contract"
-msgstr "Secuencia Contratos"
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_hr_employee_processes
+msgid "Processes"
+msgstr "Procesos"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:hr.leave.type,name:erp_l10n_mx_hr_contract_holidays.leave_type_10
+msgid "RETARDOS"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_hr_payslip_form_inherit
+msgid "Remaining leaves"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.risk_type_action
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_l10n_mx_risk_type
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__risk_type_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_action_risk_type
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.risk_type_view_form
+msgid "Risk type"
+msgstr "Tipo de Riesgo"
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays__l10n_mx_rule_value_end
@@ -114,6 +562,31 @@ msgid "Rule value init month"
 msgstr "Valor inicial en meses"
 
 #. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.sequel_action
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_l10n_mx_sequel
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__sequel_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_action_sequel
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.sequel_view_form
+msgid "Sequel"
+msgstr "Secuela"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_contract_holidays.contract_view_ir_sequence_form
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.erp_l10n_mx_hr_contract_holidays_ir_sequence_menu
+msgid "Sequence Contract"
+msgstr "Secuencia Contratos"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__date_start
+msgid "Start Date"
+msgstr "Fecha de Inicio"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,help:erp_l10n_mx_hr_contract_holidays.field_generate_holidays_line_wizard__date_start
+msgid "Start date of the contract."
+msgstr "Fecha de inicio del contrato"
+
+#. module: erp_l10n_mx_hr_contract_holidays
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.table_holidays_view_form
 msgid "Table holidays"
 msgstr "Tabla de vacaciones"
@@ -122,6 +595,56 @@ msgstr "Tabla de vacaciones"
 #: model:ir.ui.menu,name:erp_l10n_mx_hr_contract_holidays.menu_table_configuration
 msgid "Tables"
 msgstr "Tablas"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_hr_leave
+msgid "Time Off"
+msgstr "Tiempo personal"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_hr_leave_allocation
+msgid "Time Off Allocation"
+msgstr "Asignación de tiempo personal"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model,name:erp_l10n_mx_hr_contract_holidays.model_hr_leave_type
+msgid "Time Off Type"
+msgstr "Tipo de tiempo personal"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_contract_holidays.selection__hr_contract__state__renovate
+msgid "To Renovate"
+msgstr "Para Renovar"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__total_disabilities
+msgid "Total Disabilities"
+msgstr "Total Incapacidades"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__total_discounted_days_ptu
+msgid "Total Discounted Days PTU"
+msgstr "Total Días Descontados PTU"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__total_unexcused_absences
+msgid "Total Unexcused Absences"
+msgstr "Total Faltas Injustificadas"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__is_vacation
+msgid "Vacation"
+msgstr "Vacaciones"
+
+#. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_leave__is_vacation_bonus
+msgid "Vacation bonus"
+msgstr "Prima Vacacional"
 
 #. module: erp_l10n_mx_hr_contract_holidays
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_contract_holidays.view_hr_contract_form_inherit_l10n_mx
@@ -134,6 +657,11 @@ msgid "Vacation cousin (%)"
 msgstr "Prima Vacacional (%)"
 
 #. module: erp_l10n_mx_hr_contract_holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_hr_contract__work_days
+msgid "Work Days"
+msgstr "Días Laborados"
+
+#. module: erp_l10n_mx_hr_contract_holidays
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_contract_holidays.field_l10n_mx_table_holidays__l10n_mx_year
 msgid "Years"
 msgstr "Años"
@@ -144,4 +672,9 @@ msgstr "Años"
 msgid "{} Year(s) {} Month(s) {} Day(s)"
 msgstr "{} Año(s) {} Mes(es) {} Día(s)"
 
-
+#. module: hr_holidays
+#: model:ir.actions.act_window,name:hr_holidays.open_view_holiday_status
+#: model:ir.ui.menu,name:hr_holidays.hr_holidays_status_menu_configuration
+#: model_terms:ir.ui.view,arch_db:hr_holidays.view_holidays_status_filter
+msgid "Time Off Types"
+msgstr "Tipos de Incidencias"

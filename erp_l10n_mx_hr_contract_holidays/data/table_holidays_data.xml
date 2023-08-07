@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1" >
-    <data >
+<odoo>
+    <data noupdate="1">
         <record id="table_holidays_1" model="l10n.mx.table.holidays">
             <field name="l10n_mx_year">1</field>
             <field name="l10n_mx_days">6</field>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="sequel_view_tree" model="ir.ui.view">
+            <field name="name">sequel.view.tree</field>
+            <field name="model">l10n.mx.sequel</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sequel_view_form" model="ir.ui.view">
+            <field name="name">sequel.view.form</field>
+            <field name="model">l10n.mx.sequel</field>
+            <field name="arch" type="xml">
+                <form string="Sequel">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                            </group>
+                            <group>
+                                <field name="code" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sequel_action" model="ir.actions.act_window">
+            <field name="name">Sequel</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.mx.sequel</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                   No records found.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+            id="menu_action_sequel"
+            action="sequel_action"
+            name="Sequel"
+            parent="erp_l10n_mx_hr_contract_holidays.menu_disabilities_configuration"
+            sequence="30"/>
+
+    </data>
+</odoo>
