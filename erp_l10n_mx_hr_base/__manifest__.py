@@ -26,7 +26,7 @@
         "data/schedule_pay_data.xml",
         "data/ir_cron_data.xml",
         "security/ir.model.access.csv",
-        # "views/hr_contract_view.xml",
+        "views/hr_contract_view.xml",
         # "views/hr_employee_views.xml",
         # "views/hr_contract_type_views.xml",
         # "views/contract_regime_type_views.xml",
