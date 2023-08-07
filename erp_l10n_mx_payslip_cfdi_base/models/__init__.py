@@ -15,3 +15,4 @@ from . import table_umi
 from . import schedule_pay
 from . import report_classifier
 from . import table_imss
+from . import table_net_adjustments

@@ -17,12 +17,16 @@ class ResCompany(models.Model):
         'Mexican UMI', help='Indicates the current UMI in Mexico')
 
     l10n_mx_stamped_version = fields.Selection(
-        [('version_3', 'Version 3.3'), ('version_4', 'Version 4.0')], string='Stamped version',
+        [('version_3', 'Version 3.3'),
+         ('version_4', 'Version 4.0')],
+        string='Stamped version',
         default='version_3')
 
     l10n_mx_stamp_receipt = fields.Boolean(string='Payroll receipt stamp', default=False)
 
     l10n_mx_stamp_receipt_readonly = fields.Boolean(compute='_compute_l10n_mx_stamp_receipt_readonly')
+
+    work_fonacot = fields.Integer(string="Workplace FONACOT", tracking=True)
 
     def _compute_l10n_mx_stamp_receipt_readonly(self):
         pac_status_signed = self.env['hr.payslip'].search([('l10n_mx_pac_status', '=', 'signed')])

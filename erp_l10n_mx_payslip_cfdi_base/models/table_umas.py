@@ -10,7 +10,7 @@ class TableUMAS(models.Model):
     _description = 'UMAS'
     _rec_name = 'date_start'
 
-    date_start = fields.Date(string='Date Start')
-    value_uma = fields.Float(string='Value UMA')
-    status = fields.Boolean(string='Status')
-    year = fields.Char(string='Year', default=lambda self: str(fields.Date.today().year))
+    date_start = fields.Date(string='Date Start', index=True)
+    value_uma = fields.Float(string='Value UMA', index=True)
+    status = fields.Boolean(string='Status', index=True)
+    year = fields.Char(string='Year', default=lambda self: str(fields.Date.today().year), index=True)

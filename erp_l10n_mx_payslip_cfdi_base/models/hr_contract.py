@@ -16,6 +16,8 @@ class HrContract(models.Model):
                                          tracking=True,
                                          help='Get the sum of Variable SDI + Integrated Salary')
 
+    net_adjustments_ids = fields.One2many('hr.contract.net.adjustments', 'contract_id', 'Ajustes al Neto')
+
     @api.depends()
     def _compute_sdi_total(self):
         for record in self:
@@ -54,3 +56,25 @@ class HrContract(models.Model):
         holidays = self.get_current_holidays() * vacation_bonus
         bonus = self.l10n_mx_christmas_bonus or 15
         return 1 + (holidays + bonus)/365
+
+    def open_net_adjustments_view(self):
+        action = self.env.ref('erp_l10n_mx_payslip_cfdi_base.hr_contract_net_adjustments_action').read()[0]
+        action['context'] = {}
+        action['domain'] = [('contract_id', '=', self.sudo().id)]
+        return action
+
+    def get_work_days_domains(self, date_from, date_to):
+        domain_wd = super(HrContract, self).get_work_days_domains(date_from, date_to) + \
+                    [('l10n_mx_payslip_type', '=', 'O')]
+        return domain_wd
+
+class HrContractNetAdjustments(models.Model):
+    _name = "hr.contract.net.adjustments"
+    _description = 'Ajustes al Neto'
+
+    payslip_id = fields.Many2one('hr.payslip', string='Recibo de Nómina', ondelete='cascade', index=True)
+    date_start = fields.Date(string='Fecha Inicio', related='payslip_id.date_from', compute_sudo=True)
+    date_end = fields.Date(string='Fecha Fin', related='payslip_id.date_to', compute_sudo=True)
+    amount = fields.Float(string='Importe', index=True)
+    struct_id = fields.Many2one('hr.payroll.structure', string='Estructura Salarial', related='payslip_id.struct_id', compute_sudo=True)
+    contract_id = fields.Many2one('hr.contract', string='Contrato', index=True)

@@ -121,7 +121,7 @@ class HrPayslip(models.Model):
         help="Keep empty to use the current date")
 
     l10n_mx_time_payslip = fields.Char(
-        string='Time payslip', readonly=True, copy=False,
+        string='Time payslip', readonly=True, copy=False, index=True,
         states={'draft': [('readonly', False)]},
         help="Keep empty to use the current México central time")
 
@@ -131,23 +131,34 @@ class HrPayslip(models.Model):
     input_line_ids = fields.One2many(copy=True)
 
     l10n_mx_payslip_type = fields.Selection([('O', 'O-Ordinary Payroll'), ('E', 'E-Extraordinary')],
-                                            string='Type of payroll')
+                                            string='Type of payroll', index=True,)
 
-    l10n_mx_edi_error = fields.Char(string="EDI Error", copy=False)
+    l10n_mx_edi_error = fields.Char(string="EDI Error", copy=False, index=True,)
 
     l10n_mx_cancel_reason = fields.Selection(
         selection=[('01', ('Comprobante emitido con errores con relación')),
                    ('02', ('Comprobante emitido con errores sin relación')),
                    ('03', ('No se llevó a cabo la operación')),
                    ('04', ('Operación nominativa relacionada en la factura global'))],
-        string=('Cancellation reason'), tracking=True, copy=False)
+        string=('Cancellation reason'), tracking=True, copy=False, index=True,)
 
     l10n_mx_foliosustitucion_cancel = fields.Char(string="Folio Substitution",
-                                                  tracking=True, copy=False)
+                                                  tracking=True, copy=False, index=True,)
 
-    l10_mx_cancel_pending = fields.Boolean(readonly=True, default=False, copy=False,
+    l10_mx_cancel_pending = fields.Boolean(readonly=True, default=False, copy=False, index=True,
                           help="It indicates that the payslip its pending to cancel cfdi.")
-    l10n_mx_stamp_payroll = fields.Boolean(related='struct_id.l10n_mx_stamp_payroll')
+    l10n_mx_stamp_payroll = fields.Boolean(related='struct_id.l10n_mx_stamp_payroll', compute_sudo=True)
+
+    loan_ids = fields.One2many(related='contract_id.loan_ids', readonly=False, tracking=True, compute_sudo=True)
+    number_fonacot = fields.Char(related='contract_id.number_fonacot', readonly=False, tracking=True, compute_sudo=True)
+
+    l10n_mx_payroll_infonavit_type = fields.Selection(related='contract_id.l10n_mx_payroll_infonavit_type', readonly=False, tracking=True, compute_sudo=True)
+    l10n_mx_payroll_infonavit_rate = fields.Float(related='contract_id.l10n_mx_payroll_infonavit_rate', readonly=False, tracking=True, compute_sudo=True)
+    l10n_mx_payroll_infonavit_credit_number = fields.Integer(related='contract_id.l10n_mx_payroll_infonavit_credit_number', readonly=False, tracking=True, compute_sudo=True)
+    l10n_mx_payroll_infonavit_active = fields.Boolean(related='contract_id.l10n_mx_payroll_infonavit_active', readonly=False, tracking=True, compute_sudo=True)
+    l10n_mx_payroll_infonavit_description = fields.Char(related='contract_id.l10n_mx_payroll_infonavit_description', readonly=False, tracking=True, compute_sudo=True)
+    l10n_mx_payroll_infonavit_date_start = fields.Date(related='contract_id.l10n_mx_payroll_infonavit_date_start', readonly=False, tracking=True, compute_sudo=True)
+    l10n_mx_payroll_infonavit_date_register = fields.Date(related='contract_id.l10n_mx_payroll_infonavit_date_register', readonly=False, tracking=True, compute_sudo=True)
 
     def l10n_mx_is_last_payslip(self):
         """Check if the date to in the payslip is the last of the current month
@@ -206,7 +217,6 @@ class HrPayslip(models.Model):
         return amount
 
     def compute_sheet(self):
-        super(HrPayslip, self).compute_sheet()
         for record in self:
             if not record.sudo().contract_id.l10n_mx_payroll_schedule_pay_id.l10n_mx_table_isr_id:
                 raise ValidationError(_('The payment period in the contract %s must have to which ISR belongs.'
@@ -238,6 +248,8 @@ class HrPayslip(models.Model):
             isr_total = isr - l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity + record.get_amount_rules_isr_decreases()
             print("ISR Subsidy Quantity", l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity)
             line_isr_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == '002')
+            if len(line_isr_id) > 1:
+                raise ValidationError("Tiene mas de una regla ligada al codigo %s, Reglas con problemas de duplicidade: %s" % ('002', ', '.join(line_isr_id.mapped("name"))))
             isr_computed_zero = False
             if record.contract_id.l10n_mx_payroll_daily_salary <= record.contract_id.company_id.l10n_mx_minimum_wage:
                 isr_computed_zero = True
@@ -246,20 +258,61 @@ class HrPayslip(models.Model):
             if line_isr_id.salary_rule_id.l10n_mx_automatic_isr:
                 isr_value = self._set_isr_negative(isr_total) if not isr_computed_zero else 0.0
                 line_isr_id.write({'amount': isr_value, 'quantity': 1.0})
+                line_isr_id.salary_rule_id.write({'amount_select': 'fix', 'amount_fix': isr_value, 'quantity': 1.0})
                 # line_isr_id._compute_total()
             line_aux_isr_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'AUX_ISR')
+            if len(line_aux_isr_id) > 1:
+                raise ValidationError("Tiene mas de una regla ligada al codigo %s, Reglas con problemas de duplicidade: %s" % ('AUX_ISR', ', '.join(line_aux_isr_id.mapped("name"))))
             if line_aux_isr_id.sudo().salary_rule_id.l10n_mx_automatic_isr:
                 line_aux_isr_id.write({'amount': self._set_isr_negative(isr), 'quantity': 1.0})
+                line_aux_isr_id.salary_rule_id.write({'amount_select': 'fix', 'amount_fix': self._set_isr_negative(isr), 'quantity': 1.0})
                 # line_aux_isr_id._compute_total()
             line_aux_op002_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'AUX_OP002')
+            if len(line_aux_op002_id) > 1:
+                raise ValidationError("Tiene mas de una regla ligada al codigo %s, Reglas con problemas de duplicidade: %s" % ('AUX_OP002', ', '.join(line_aux_op002_id.mapped("name"))))
             if line_aux_op002_id.sudo().salary_rule_id.l10n_mx_automatic_isr:
                 line_aux_op002_id.write({'amount': self._set_isr_negative(l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity), 'quantity': 1.0})
+                line_aux_op002_id.salary_rule_id.write({'amount_select': 'fix', 'amount_fix': self._set_isr_negative(l10n_mx_table_isr_subsidy_rate_id.l10n_mx_isr_subsidy_quantity), 'quantity': 1.0})
                 # line_aux_op002_id._compute_total()
-            line_neto_total_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.code == 'NET')
+
+            line_neto_total_id = record.line_ids.filtered(lambda r: r.sudo().salary_rule_id.is_total_deduction is True)
+            if len(line_neto_total_id) > 1:
+                raise ValidationError("Tiene mas de una regla ligada al codigo %s, Reglas con problemas de duplicidade: %s" % ('NET', ', '.join(line_neto_total_id.mapped("name"))))
+
             if line_neto_total_id and line_isr_id:
                 line_neto_total_id.write({'amount': line_neto_total_id.amount + line_isr_id.amount +
-                                                    record._get_input_line_total_amount(), 'quantity': 1.0})
-        return True
+                                                   record._get_input_line_total_amount(), 'quantity': 1.0})
+        res = super(HrPayslip, self).compute_sheet()
+        line_rule_loan_ids = self.line_ids.sudo().filtered(lambda r: r.sudo().salary_rule_id.is_loan)
+        for loan in line_rule_loan_ids:
+            loan_ids = self.loan_ids.filtered(lambda l: l.sudo().rule_id.id == loan.salary_rule_id.id and l.payment_term < l.count_payslip)
+            if loan_ids:
+                loan_ids.write({'amount': 0})
+
+        rule_apply_net_adjustments = self.sudo().line_ids.filtered(lambda r: r.sudo().salary_rule_id.l10n_mx_sum_total is True)
+        rule_is_net_adjustments = self.sudo().line_ids.filtered(lambda r: r.sudo().salary_rule_id.is_net_adjustments is True)
+        rule_is_total_deduction = self.sudo().line_ids.filtered(lambda r: r.sudo().salary_rule_id.is_total_deduction is True)
+
+        if rule_apply_net_adjustments and rule_is_net_adjustments:
+            table_net_adjustments_id = rule_is_net_adjustments[0].salary_rule_id.table_net_adjustments_id
+            amount_round = table_net_adjustments_id.sudo().round(rule_apply_net_adjustments[0].amount)
+            if amount_round != 0:
+                rule_is_net_adjustments[0].sudo().write({'amount': amount_round})
+                rule_apply_net_adjustments[0].sudo().write({'amount': rule_apply_net_adjustments[0].amount + amount_round})
+                if rule_is_total_deduction:
+                    rule_is_total_deduction[0].sudo().write({'amount': rule_is_total_deduction[0].amount + amount_round})
+
+                net_adjustments_id = self.env['hr.contract.net.adjustments'].sudo().search([('payslip_id', '=', record.id)])
+                if not net_adjustments_id:
+                    net_adjustments_id = self.env['hr.contract.net.adjustments'].sudo().create({
+                        'payslip_id': record.id,
+                        'amount': amount_round,
+                        'contract_id': record.contract_id.id
+                    })
+                    record.contract_id.sudo().write({'net_adjustments_ids': [(4, net_adjustments_id.id)]})
+                else:
+                    net_adjustments_id.write({'amount': amount_round, 'contract_id': record.contract_id.sudo().id})
+        return res
 
     def action_view_error_payslip(self):
         self.ensure_one()
@@ -410,4 +463,11 @@ class HrPayslipRun(models.Model):
         res = super(HrPayslipRun, self).action_open_payslips()
         if res:
             res.update({'name': _("Payslips")})
+        return res
+
+    def action_validate(self):
+        res = super(HrPayslipRun, self).action_validate()
+        payslip_result = self.mapped('slip_ids').filtered(lambda slip: slip.state not in ['draft', 'cancel'])
+        for payslip in payslip_result:
+            payslip.write({'l10n_mx_payment_date': self.l10n_mx_payment_date})
         return res

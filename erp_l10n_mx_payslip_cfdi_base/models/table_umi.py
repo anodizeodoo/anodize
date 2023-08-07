@@ -10,7 +10,7 @@ class TableUMI(models.Model):
     _description = 'UMI'
     _rec_name = 'date_start'
 
-    date_start = fields.Date(string='Date Start')
-    value_umi = fields.Float(string='Value UMI')
-    status = fields.Boolean(string='Status')
-    year = fields.Char(string='Year', default=lambda self: str(fields.Date.today().year))
+    date_start = fields.Date(string='Date Start', index=True)
+    value_umi = fields.Float(string='Value UMI', index=True)
+    status = fields.Boolean(string='Status', index=True)
+    year = fields.Char(string='Year', default=lambda self: str(fields.Date.today().year), index=True)

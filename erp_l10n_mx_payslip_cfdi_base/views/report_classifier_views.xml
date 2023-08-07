@@ -2,60 +2,60 @@
 <odoo>
     <data>
 
-<!--        <record id="report_classifier_view_tree" model="ir.ui.view">-->
-<!--            <field name="name">report.classifier.view.tree</field>-->
-<!--            <field name="model">l10n.mx.report.classifier</field>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <tree>-->
-<!--                    <field name="code"/>-->
-<!--                    <field name="name"/>-->
-<!--                </tree>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="report_classifier_view_tree" model="ir.ui.view">
+            <field name="name">report.classifier.view.tree</field>
+            <field name="model">l10n.mx.report.classifier</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
 
-<!--        <record id="report_classifier_view_form" model="ir.ui.view">-->
-<!--            <field name="name">report.classifier.view.form</field>-->
-<!--            <field name="model">l10n.mx.report.classifier</field>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <form string="Report classifier">-->
-<!--                    <sheet>-->
-<!--                        <group>-->
-<!--                            <group>-->
-<!--                                <field name="code"/>-->
-<!--                            </group>-->
-<!--                            <group>-->
-<!--                                <field name="name"/>-->
-<!--                            </group>-->
-<!--                        </group>-->
-<!--                    </sheet>-->
-<!--                </form>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="report_classifier_view_form" model="ir.ui.view">
+            <field name="name">report.classifier.view.form</field>
+            <field name="model">l10n.mx.report.classifier</field>
+            <field name="arch" type="xml">
+                <form string="Report classifier">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-<!--        <record id="report_classifier_action" model="ir.actions.act_window">-->
-<!--            <field name="name">Report classifier</field>-->
-<!--            <field name="type">ir.actions.act_window</field>-->
-<!--            <field name="res_model">l10n.mx.report.classifier</field>-->
-<!--            <field name="view_mode">tree,form</field>-->
-<!--            <field name="help" type="html">-->
-<!--                <p class="o_view_nocontent">-->
-<!--                   No records found.-->
-<!--                </p>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="report_classifier_action" model="ir.actions.act_window">
+            <field name="name">Report classifier</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.mx.report.classifier</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                   No records found.
+                </p>
+            </field>
+        </record>
 
-<!--        <menuitem-->
-<!--            id="menu_report_configuration"-->
-<!--            name="Reports"-->
-<!--            parent="hr_work_entry_contract.menu_hr_payroll_configuration"-->
-<!--            sequence="200"/>-->
+        <menuitem
+            id="menu_report_configuration"
+            name="Reports"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"
+            sequence="200"/>
 
-<!--        <menuitem-->
-<!--            id="menu_action_report_classifier"-->
-<!--            action="report_classifier_action"-->
-<!--            name="Report classifier"-->
-<!--            parent="erp_l10n_mx_payslip_cfdi_base.menu_report_configuration"-->
-<!--            sequence="10"/>-->
+        <menuitem
+            id="menu_action_report_classifier"
+            action="report_classifier_action"
+            name="Report classifier"
+            parent="erp_l10n_mx_payslip_cfdi_base.menu_report_configuration"
+            sequence="10"/>
 
     </data>
 </odoo>

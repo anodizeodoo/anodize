@@ -2,57 +2,57 @@
 <odoo>
     <data>
 
-<!--        <record id="table_umi_view_tree" model="ir.ui.view">-->
-<!--            <field name="name">table.umi.view.tree</field>-->
-<!--            <field name="model">l10n.mx.table.umi</field>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <tree>-->
-<!--                    <field name="date_start"/>-->
-<!--                    <field name="value_umi"/>-->
-<!--                    <field name="status" widget="boolean_toggle"/>-->
-<!--                </tree>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="table_umi_view_tree" model="ir.ui.view">
+            <field name="name">table.umi.view.tree</field>
+            <field name="model">l10n.mx.table.umi</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date_start"/>
+                    <field name="value_umi"/>
+                    <field name="status" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
 
-<!--        <record id="table_umi_view_form" model="ir.ui.view">-->
-<!--            <field name="name">table.umi.view.form</field>-->
-<!--            <field name="model">l10n.mx.table.umi</field>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <form string="Table UMI">-->
-<!--                    <sheet>-->
-<!--                        <group>-->
-<!--                            <group>-->
-<!--                                <field name="year"/>-->
-<!--                                <field name="date_start"/>-->
-<!--                            </group>-->
-<!--                            <group>-->
-<!--                                <field name="status" widget="boolean_toggle"/>-->
-<!--                                <field name="value_umi"/>-->
-<!--                            </group>-->
-<!--                        </group>-->
-<!--                    </sheet>-->
-<!--                </form>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="table_umi_view_form" model="ir.ui.view">
+            <field name="name">table.umi.view.form</field>
+            <field name="model">l10n.mx.table.umi</field>
+            <field name="arch" type="xml">
+                <form string="Table UMI">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="year"/>
+                                <field name="date_start"/>
+                            </group>
+                            <group>
+                                <field name="status" widget="boolean_toggle"/>
+                                <field name="value_umi"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-<!--        <record id="table_umi_action" model="ir.actions.act_window">-->
-<!--            <field name="name">UMI</field>-->
-<!--            <field name="type">ir.actions.act_window</field>-->
-<!--            <field name="res_model">l10n.mx.table.umi</field>-->
-<!--            <field name="view_mode">tree,form</field>-->
-<!--            <field name="help" type="html">-->
-<!--                <p class="o_view_nocontent">-->
-<!--                   No records found.-->
-<!--                </p>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="table_umi_action" model="ir.actions.act_window">
+            <field name="name">UMI</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.mx.table.umi</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                   No records found.
+                </p>
+            </field>
+        </record>
 
-<!--        <menuitem-->
-<!--            id="menu_action_table_umi"-->
-<!--            action="table_umi_action"-->
-<!--            name="UMI"-->
-<!--            parent="erp_l10n_mx_hr_contract_holidays.menu_table_configuration"-->
-<!--            sequence="35"/>-->
+        <menuitem
+            id="menu_action_table_umi"
+            action="table_umi_action"
+            name="UMI"
+            parent="erp_l10n_mx_hr_contract_holidays.menu_table_configuration"
+            sequence="35"/>
 
     </data>
 </odoo>

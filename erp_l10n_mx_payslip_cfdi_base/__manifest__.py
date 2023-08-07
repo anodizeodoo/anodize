@@ -1,12 +1,11 @@
 # coding: utf-8
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 {
     "name": "Mexican Payslip CFDI Base",
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "author": "Soltein SA de CV",
     "category": "Localization",
     "website": "https://www.soltein.net",
+    "license": "AGPL-3",
     "depends": [
         "erp_l10n_mx_hr_base",
         "erp_l10n_mx_hr_contract_holidays",
@@ -36,9 +35,11 @@
         "views/table_minimum_wage_views.xml",
         "views/table_umas_views.xml",
         "views/table_umi_views.xml",
+        "views/table_net_adjustments_views.xml",
         "views/schedule_pay_views.xml",
         "views/report_classifier_views.xml",
         "wizard/generate_report_views.xml",
+        "reports/receipt_printing_report_pdf.xml",
     ],
     "installable": True,
 }

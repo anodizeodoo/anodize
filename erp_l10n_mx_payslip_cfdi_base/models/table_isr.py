@@ -25,13 +25,13 @@ class TableIsr(models.Model):
                                    compute='_compute_l10n_mx_isr_name', store=True,
                                    index=True, translate=True)
     l10n_mx_isr_year = fields.Selection(string='Years', selection=_get_years,
-                                        default=str(datetime.now().year))
+                                        default=str(datetime.now().year), index=True)
     l10n_mx_isr_type = fields.Selection([('DAILY', 'DAILY'),
                                          ('WEEKLY', 'WEEKLY'),
                                          ('DECENNIAL', 'DECENNIAL'),
                                          ('BIWEEKLY', 'BIWEEKLY'),
                                          ('MONTHLY', 'MONTHLY'),
-                                         ('ANNUAL', 'ANNUAL')], string='Type')
+                                         ('ANNUAL', 'ANNUAL')], string='Type', index=True)
     l10n_mx_isr_rate_ids = fields.One2many('l10n.mx.table.isr.rate',
                                            'l10n_mx_table_isr_id',
                                            string='Rate ISR')
@@ -70,18 +70,18 @@ class TableIsrRate(models.Model):
     _name = "l10n.mx.table.isr.rate"
     _description = 'Rate ISR'
 
-    l10n_mx_table_isr_id = fields.Many2one('l10n.mx.table.isr', string='Table ISR')
-    l10n_mx_isr_rate_lower_limit = fields.Float(string='Lower limit')
-    l10n_mx_isr_rate_upper_limit = fields.Float(string='Upper limit')
-    l10n_mx_isr_rate_fixed_fee = fields.Float(string='Fixed fee')
-    l10n_mx_isr_rate_percentage = fields.Float(string='Percentage')
+    l10n_mx_table_isr_id = fields.Many2one('l10n.mx.table.isr', string='Table ISR', index=True)
+    l10n_mx_isr_rate_lower_limit = fields.Float(string='Lower limit', index=True)
+    l10n_mx_isr_rate_upper_limit = fields.Float(string='Upper limit', index=True)
+    l10n_mx_isr_rate_fixed_fee = fields.Float(string='Fixed fee', index=True)
+    l10n_mx_isr_rate_percentage = fields.Float(string='Percentage', index=True)
 
 
 class TableIsrSubsidyRate(models.Model):
     _name = "l10n.mx.table.isr.subsidy.rate"
     _description = 'Subsidy Rate'
 
-    l10n_mx_table_isr_id = fields.Many2one('l10n.mx.table.isr', string='Table ISR')
-    l10n_mx_isr_subsidy_income_from = fields.Float(string='For income from')
-    l10n_mx_isr_subsidy_income_of = fields.Float(string='Up to income of')
-    l10n_mx_isr_subsidy_quantity = fields.Float(string='Subsidy quantity')
+    l10n_mx_table_isr_id = fields.Many2one('l10n.mx.table.isr', string='Table ISR', index=True)
+    l10n_mx_isr_subsidy_income_from = fields.Float(string='For income from', index=True)
+    l10n_mx_isr_subsidy_income_of = fields.Float(string='Up to income of', index=True)
+    l10n_mx_isr_subsidy_quantity = fields.Float(string='Subsidy quantity', index=True)
