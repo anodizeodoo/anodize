@@ -22,6 +22,7 @@ from odoo.tools.xml_utils import _check_with_xsd
 
 _logger = logging.getLogger(__name__)
 
+
 class HrPayslipInability(models.Model):
     _name = 'hr.payslip.inability'
     _description = 'Pay Slip inability'
@@ -32,15 +33,16 @@ class HrPayslipInability(models.Model):
     sequence = fields.Integer(required=True, default=10)
     days = fields.Integer(
         help='Number of days in which the employee performed inability in '
-        'the payslip period', required=True)
+        'the payslip period', required=True, index=True)
     inability_type = fields.Selection(
         [('01', 'Risk of work'),
          ('02', 'Disease in general'),
          ('03', 'Maternity'),
          ('04', 'License for medical care of children diagnosed with cancer.')
-         ], 'Type', required=True, default='01',
+         ], 'Type', required=True, default='01', index=True,
         help='Reason for inability: Catalog published in the SAT portal')
-    amount = fields.Float(help='Amount for the inability', required=True)
+    amount = fields.Float(help='Amount for the inability', required=True, index=True)
+
 
 class HrPayslip(models.Model):
     _inherit = 'hr.payslip'
@@ -50,3 +52,42 @@ class HrPayslip(models.Model):
         readonly=True, states={'draft': [('readonly', False)]},
         help='Used in XML like optional node to express disabilities '
         'applicable by employee.', copy=True)
+
+    @api.model
+    def create(self, vals):
+        res = super(HrPayslip, self).create(vals)
+        leave_ids = self.env['hr.leave'].search([
+            ('type', '=', 'disabilities'),
+            ('request_date_from', '>=', res.date_from),
+            ('request_date_to', '<=', res.date_to),
+            ('employee_id', '=', res.employee_id.id)
+        ])
+        inability_lines = []
+        for leave in leave_ids:
+            if leave.insurance_branch_id.id == self.env.ref('erp_l10n_mx_hr_contract_holidays.insurance_branch_1').id:
+                inability_type = '01'
+            elif leave.insurance_branch_id.id == self.env.ref('erp_l10n_mx_hr_contract_holidays.insurance_branch_2').id:
+                inability_type = '02'
+            elif leave.insurance_branch_id.id == self.env.ref('erp_l10n_mx_hr_contract_holidays.insurance_branch_6').id:
+                inability_type = '04'
+            else:
+                inability_type = '03'
+            inability_lines.append((0, 0, {
+                'days': int(leave.number_of_days),
+                'inability_type': inability_type,
+                'amount': leave.amount,
+            }))
+        res.write({'l10n_mx_inability_line_ids': inability_lines})
+        return res
+
+    def action_open_inability(self):
+        self.ensure_one()
+        return {
+            'name': 'Incapacidades',
+            'view_mode': 'tree',
+            'res_model': 'hr.payslip.inability',
+            'type': 'ir.actions.act_window',
+            'target': 'current',
+            'domain': [('payslip_id', '=', self.id)],
+            'context': {'default_payslip_id': self.id},
+        }

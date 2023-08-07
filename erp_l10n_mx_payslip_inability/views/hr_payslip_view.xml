@@ -5,26 +5,42 @@
         <field name="model">hr.payslip</field>
         <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='input_line_ids']" position="after">
-                <separator string="Inabilities"/>
-                <field name="l10n_mx_inability_line_ids" colspan="4" nolabel="1">
-                    <tree string="Inability" editable="bottom">
-                        <field name="days"/>
-                        <field name="inability_type"/>
-                        <field name="amount"/>
-                        <field name="sequence" invisible="True"/>
-                    </tree>
-                    <form string="Inability">
-                        <group col="4">
-                            <field name="days"/>
-                            <field name="inability_type"/>
-                            <field name="amount"/>
-                            <field name="sequence"/>
-                        </group>
-                    </form>
-                </field>
-            </xpath>
+            <div name="button_box" position="inside" >
+                <button type="object" class="oe_stat_button" icon="fa-check" name="action_open_inability" string="Incapacidades"/>
+            </div>
+<!--            <xpath expr="//field[@name='input_line_ids']" position="after">-->
+<!--                <separator string="Inabilities"/>-->
+<!--                <field name="l10n_mx_inability_line_ids" colspan="4" nolabel="1">-->
+<!--                    <tree string="Inability" editable="bottom">-->
+<!--                        <field name="days"/>-->
+<!--                        <field name="inability_type"/>-->
+<!--                        <field name="amount"/>-->
+<!--                        <field name="sequence" invisible="True"/>-->
+<!--                    </tree>-->
+<!--                    <form string="Inability">-->
+<!--                        <group col="4">-->
+<!--                            <field name="days"/>-->
+<!--                            <field name="inability_type"/>-->
+<!--                            <field name="amount"/>-->
+<!--                            <field name="sequence"/>-->
+<!--                        </group>-->
+<!--                    </form>-->
+<!--                </field>-->
+<!--            </xpath>-->
+        </field>
+    </record>
 
+    <record id="hr_payslip_inability_view_tree" model="ir.ui.view">
+        <field name="name">hr.payslip.inability_view_tree</field>
+        <field name="model">hr.payslip.inability</field>
+        <field name="arch" type="xml">
+            <tree string="Incapacidades" editable="bottom">
+                <field name="days"/>
+                <field name="inability_type"/>
+                <field name="amount"/>
+                <field name="sequence" invisible="True"/>
+                <field name="payslip_id" invisible="True"/>
+            </tree>
         </field>
     </record>
 
