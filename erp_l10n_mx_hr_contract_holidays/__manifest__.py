@@ -25,7 +25,7 @@
         "data/disability_control_data.xml",
         "views/hr_contract_view.xml",
         "views/ir_sequence_views.xml",
-        # "views/res_config_settings_views.xml",
+        "views/res_config_settings_views.xml",
         # "views/table_holidays_views.xml",
         # "views/hr_leave_type_considered_views.xml",
         # "views/hr_leave_type_views.xml",
