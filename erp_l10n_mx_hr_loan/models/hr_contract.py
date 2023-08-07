@@ -29,10 +29,9 @@ class HrContract(models.Model):
         'hr.employee.loan', 'contract_id', 'Loans', context={'active_test': False},
         help='Indicate the loans for the employee. Will be considered on the '
              'payslips.')
-    work_fonacot = fields.Char(string="Workplace FONACOT",
-                               tracking=True)
+
     number_fonacot = fields.Char(string="Number FONACOT",
-        tracking=True,
+        tracking=True, index=True,
         help='If comes from Fonacot, indicate the number.')
 
 class HrEmployeeLoan(models.Model):
@@ -41,15 +40,16 @@ class HrEmployeeLoan(models.Model):
 
     name = fields.Char(
         'Number', help='Number for this record, if comes from Fonacot, use '
-        '"No. Credito"', required=True)
+        '"No. Credito"', required=True, index=True)
     monthly_withhold = fields.Float(
         help='Indicates the amount to withhold in a monthly basis.')
     payment_term = fields.Integer(
         help='Indicates the payment term for this loan.')
-    loan_type = fields.Selection([
-        ('company', 'Company'),
-        ('fonacot', 'Fonacot'),
-    ], 'Type', help='Indicates the loan type.')
+    # loan_type = fields.Selection([
+    #     ('company', 'Company'),
+    #     ('fonacot', 'Fonacot'),
+    # ], 'Type', help='Indicates the loan type.')
+    loan_type_id = fields.Many2one('l10n.mx.loan.type', string='Type')
     contract_id = fields.Many2one(
         'hr.contract', help='Employee for this loan')
     active = fields.Boolean(
@@ -60,6 +60,7 @@ class HrEmployeeLoan(models.Model):
     company_currency_id = fields.Many2one('res.currency',
                                           related='contract_id.company_id.currency_id',
                                           string="Company Currency",
+                                          compute_sudo=True,
                                           readonly=True)
     credit_amount = fields.Monetary(string="Credit Amount", currency_field='company_currency_id')
     payments_other_employers = fields.Monetary(string="Payments by other employers",
@@ -68,15 +69,18 @@ class HrEmployeeLoan(models.Model):
                                                   currency_field='company_currency_id',
                                                   compute='_compute_accumulated_amount_withheld',
                                                   compute_sudo=True)
+    count_payslip = fields.Integer(compute='_compute_accumulated_amount_withheld', compute_sudo=True)
     residue = fields.Monetary(string="Residue",
                               currency_field='company_currency_id',
                               compute='_compute_residue',
                               compute_sudo=True)
-    employee_id = fields.Many2one('hr.employee', related='contract_id.employee_id')
+    employee_id = fields.Many2one('hr.employee', related='contract_id.employee_id', compute_sudo=True)
     amount_total = fields.Monetary(string='Total',
                                    currency_field='company_currency_id',
                                    compute='_compute_amount_total',
                                    compute_sudo=True)
+    rule_id = fields.Many2one('hr.salary.rule', string='Rule')
+    amount = fields.Monetary(string='Amount', currency_field='company_currency_id')
 
     @api.depends('credit_amount', 'payments_other_employers', 'accumulated_amount_withheld')
     def _compute_residue(self):
@@ -87,9 +91,16 @@ class HrEmployeeLoan(models.Model):
                              payments_other_employers - \
                              record.accumulated_amount_withheld
 
+    @api.depends('contract_id', 'date_start', 'date_end', 'rule_id')
     def _compute_accumulated_amount_withheld(self):
         for record in self:
-            record.accumulated_amount_withheld = 100
+            domain = [('contract_id', '=', record.contract_id._origin.id),
+                      ('date_from', '>=', record.date_start),
+                      ('date_to', '<=', record.date_end),
+                      ]
+            payslips = self.env['hr.payslip'].search(domain)
+            record.count_payslip = len(payslips)
+            record.accumulated_amount_withheld = sum(payslips.line_ids.filtered(lambda l: l.salary_rule_id.id == record.rule_id.id).mapped('total'))
 
     @api.depends('credit_amount', 'monthly_withhold', 'payments_other_employers', 'accumulated_amount_withheld', 'residue')
     def _compute_amount_total(self):

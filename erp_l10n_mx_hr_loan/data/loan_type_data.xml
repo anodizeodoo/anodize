@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="loan_type_01" model="l10n.mx.loan.type">
+            <field name="name">Fonacot</field>
+            <field name="code">001</field>
+            <field name="active" eval="True"/>
+        </record>
+        <record id="loan_type_02" model="l10n.mx.loan.type">
+            <field name="name">Préstamos Personales</field>
+            <field name="code">002</field>
+            <field name="active" eval="True"/>
+        </record>
+        <record id="loan_type_03" model="l10n.mx.loan.type">
+            <field name="name">Préstamos Compañía</field>
+            <field name="code">003</field>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

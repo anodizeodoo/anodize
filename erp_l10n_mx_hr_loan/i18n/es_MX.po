@@ -24,6 +24,7 @@ msgstr "Monto Acumulado retenido"
 
 #. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__active
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_l10n_mx_loan_type__active
 msgid "Active"
 msgstr "Activo"
 
@@ -31,6 +32,11 @@ msgstr "Activo"
 #: model:ir.model,name:erp_l10n_mx_hr_loan.model_hr_employee_loan
 msgid "Allow register the loans in each employee (Fonacot)"
 msgstr "Permite registrar los prestamos en cada empleado (Fonacot)"
+
+#. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_l10n_mx_loan_type__code
+msgid "Code"
+msgstr "Código"
 
 #. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields.selection,name:erp_l10n_mx_hr_loan.selection__hr_employee_loan__loan_type__company
@@ -163,10 +169,22 @@ msgid "Loan"
 msgstr "Préstamo"
 
 #. module: erp_l10n_mx_hr_loan
+#: model:ir.model,name:erp_l10n_mx_hr_loan.model_l10n_mx_loan_type
+msgid "Loan Type"
+msgstr "Tipo de Préstamos"
+
+#. module: erp_l10n_mx_hr_loan
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_loan.loan_type_action
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_loan.erp_l10n_mx_loan_type_menu
+msgid "Loan type"
+msgstr "Tipo de Préstamos"
+
+#. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_contract__loan_ids
 #: model:ir.ui.menu,name:erp_l10n_mx_hr_loan.l10n_mx_loan_report
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_loan.view_hr_payroll_contract_form_inherit
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_loan.view_l10n_mx_loan_form
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_loan.menu_config_loan_catalogs
 msgid "Loans"
 msgstr "Préstamos"
 
@@ -174,6 +192,16 @@ msgstr "Préstamos"
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__monthly_withhold
 msgid "Monthly Withhold"
 msgstr "Retención Mensual"
+
+#. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_l10n_mx_loan_type__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: erp_l10n_mx_hr_loan
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_loan.loan_type_action
+msgid "No records found."
+msgstr "Ho hay registros para mostrar."
 
 #. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__name
@@ -204,6 +232,12 @@ msgstr "Pagos por otros patrones"
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__residue
 msgid "Residue"
 msgstr "Saldo"
+
+#. module: erp_l10n_mx_hr_loan
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__rule_id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_l10n_mx_loan_type__rule_id
+msgid "Rule"
+msgstr "Regla Salarial"
 
 #. module: erp_l10n_mx_hr_loan
 #: model:ir.model.fields,field_description:erp_l10n_mx_hr_loan.field_hr_employee_loan__loan_type

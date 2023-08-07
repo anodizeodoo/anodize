@@ -9,14 +9,14 @@
                 <page string="Loans">
                     <group string="Information FONACOT">
                         <group>
-                            <field name="work_fonacot"/>
                             <field name="number_fonacot"/>
                         </group>
                         <group></group>
                     </group>
                     <field name="loan_ids" nolabel="1">
                         <tree editable="bottom">
-                            <field name="loan_type" required="1"/>
+                            <field name="loan_type_id" required="1" options='{"no_create": True, "no_open": True}'/>
+                            <field name="rule_id" domain="[('is_loan', '=', True)]"/>
                             <field name="date_start" required="1"/>
                             <field name="date_end" required="1"/>
                             <field name="name" required="1"/>
@@ -45,7 +45,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="loan_type" required="1"/>
+                            <field name="loan_type_id" required="1" options='{"no_create": True, "no_open": True}'/>
                             <field name="date_start" required="1"/>
                             <field name="date_end" required="1"/>
                             <field name="name" required="1"/>
@@ -75,7 +75,7 @@
             <tree string="Loan">
                 <field name="employee_id"/>
                 <field name="contract_id"/>
-                <field name="loan_type"/>
+                <field name="loan_type_id"/>
                 <field name="date_start"/>
                 <field name="date_end"/>
                 <field name="name"/>
