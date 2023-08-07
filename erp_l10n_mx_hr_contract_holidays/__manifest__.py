@@ -37,8 +37,8 @@
         "views/hr_payslip_views.xml",
         "views/hr_work_entry_views.xml",
         "wizard/generate_holidays_views.xml",
-        # "wizard/modify_date_imss_views.xml",
-        # "wizard/modify_state_contract_views.xml",
+        "wizard/modify_date_imss_views.xml",
+        "wizard/modify_state_contract_views.xml",
     ],
     "installable": True,
 }
