@@ -83,28 +83,28 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="view_hr_contract_form_inherit_l10n_mx">
-        <field name="name">view.hr.contract.form.inherit.l10n_mx</field>
-        <field name="model">hr.contract</field>
-        <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx"/>
-        <field name="arch" type="xml">
-            <field name="l10n_mx_type_benefit_id" position="before">
-                <field name="structure_type_id" position="move"/>
-            </field>
-            <field name="l10n_mx_payroll_daily_salary" position="before">
-                <field name="hourly_wage"/>
-            </field>
-            <group name="mx_info" position="inside">
-                <label for="l10n_mx_holidays"/>
-                <div class="o_row">
-                    <field name="l10n_mx_holidays"/>
-                    <!--<button name="action_update_l10n_mx_holidays" type="object" string="Update" class="oe_link"/>-->
-                </div>
-                <field name="l10n_mx_vacation_bonus" readonly="0"/>
-                <field name="l10n_mx_christmas_bonus" readonly="0"/>
-            </group>
-        </field>
-    </record>
+<!--    <record model="ir.ui.view" id="view_hr_contract_form_inherit_l10n_mx">-->
+<!--        <field name="name">view.hr.contract.form.inherit.l10n_mx</field>-->
+<!--        <field name="model">hr.contract</field>-->
+<!--        <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <field name="l10n_mx_type_benefit_id" position="before">-->
+<!--                <field name="structure_type_id" position="move"/>-->
+<!--            </field>-->
+<!--            <field name="l10n_mx_payroll_daily_salary" position="before">-->
+<!--                <field name="hourly_wage"/>-->
+<!--            </field>-->
+<!--            <group name="mx_info" position="inside">-->
+<!--                <label for="l10n_mx_holidays"/>-->
+<!--                <div class="o_row">-->
+<!--                    <field name="l10n_mx_holidays"/>-->
+<!--                    &lt;!&ndash;<button name="action_update_l10n_mx_holidays" type="object" string="Update" class="oe_link"/>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <field name="l10n_mx_vacation_bonus" readonly="0"/>-->
+<!--                <field name="l10n_mx_christmas_bonus" readonly="0"/>-->
+<!--            </group>-->
+<!--        </field>-->
+<!--    </record>-->
 
     <record model="ir.ui.view" id="hr_contract_holidays_view_search_inherit">
         <field name="name">hr.contract.holidays.view.search.inherit</field>
