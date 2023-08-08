@@ -30,7 +30,7 @@
         "views/process_finiquito_views.xml",
         "views/hr_salary_rule_views.xml",
         "wizard/reason_cancelation_sat_view.xml",
-        # "wizard/generate_calculation_ptu_views.xml",
+        "wizard/generate_calculation_ptu_views.xml",
     ],
     "installable": True,
 }
