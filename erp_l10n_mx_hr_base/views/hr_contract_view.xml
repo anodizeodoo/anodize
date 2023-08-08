@@ -108,20 +108,20 @@
         </field>
     </record>
 
-<!--    <record model="ir.ui.view" id="hr_contract_view_search_inherit">-->
-<!--        <field name="name">hr.contract.view.search.inherit</field>-->
-<!--        <field name="model">hr.contract</field>-->
-<!--        <field name="inherit_id" ref="hr_contract.hr_contract_view_search"/>-->
-<!--        <field name="arch" type="xml">-->
-<!--            <filter name='group_by_state' position="after">-->
-<!--                <filter string="Structure type" name='group_structure_type' domain="[]" context="{'group_by': 'structure_type_id'}"/>-->
-<!--                <filter string="Contract type" name='group_contract_type' domain="[]" context="{'group_by': 'l10n_mx_payroll_contract_type_id'}"/>-->
-<!--                <filter string="Schedule Pay" name='group_schedule_pay' domain="[]" context="{'group_by': 'l10n_mx_payroll_schedule_pay_id'}"/>-->
-<!--                <filter string="Working schedule" name='group_working_schedule' domain="[]" context="{'group_by': 'resource_calendar_id'}"/>-->
-<!--                <filter string="HR Responsible" name='group_hr_responsible' domain="[]" context="{'group_by': 'hr_responsible_id'}"/>-->
-<!--            </filter>-->
+    <record model="ir.ui.view" id="hr_contract_view_search_inherit">
+        <field name="name">hr.contract.view.search.inherit</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_search"/>
+        <field name="arch" type="xml">
+            <filter name='group_by_state' position="after">
+                <filter string="Structure type" name='group_structure_type' domain="[]" context="{'group_by': 'structure_type_id'}"/>
+                <filter string="Contract type" name='group_contract_type' domain="[]" context="{'group_by': 'l10n_mx_payroll_contract_type_id'}"/>
+                <filter string="Schedule Pay" name='group_schedule_pay' domain="[]" context="{'group_by': 'l10n_mx_payroll_schedule_pay_id'}"/>
+                <filter string="Working schedule" name='group_working_schedule' domain="[]" context="{'group_by': 'resource_calendar_id'}"/>
+                <filter string="HR Responsible" name='group_hr_responsible' domain="[]" context="{'group_by': 'hr_responsible_id'}"/>
+            </filter>
 
-<!--        </field>-->
-<!--    </record>-->
+        </field>
+    </record>
 
 </odoo>
