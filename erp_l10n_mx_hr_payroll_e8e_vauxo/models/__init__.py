@@ -8,3 +8,6 @@ from . import hr_contract
 from . import res_partner
 from . import increment_type
 from . import modify_salary
+from . import employee_ptu
+from . import process_finiquito
+from . import hr_salary_rule

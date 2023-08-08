@@ -9,8 +9,7 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     def _get_return_without_accent(self, word):
-        word = re.sub(r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1",
-                      normalize("NFD", word),
+        word = re.sub(r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1", normalize("NFD", word),
                       0, re.I)
         word = normalize('NFC', word)
         return word
@@ -30,3 +29,4 @@ class ResPartner(models.Model):
     def action_update_partner_name(self):
         for record in self.filtered(lambda s: s.employee):
             record.name = self._get_return_without_accent(record.name).upper()
+

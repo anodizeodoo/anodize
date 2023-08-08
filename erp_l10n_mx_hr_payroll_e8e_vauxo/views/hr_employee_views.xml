@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-<!--    <record model="ir.ui.view" id="vauxo_view_hr_employee_form_inherit_l10n_mx">-->
-<!--        <field name="name">vauxo.view.hr.employee.form.inherit.l10n_mx</field>-->
-<!--        <field name="model">hr.employee</field>-->
-<!--        <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_hr_employee_form_inherit_l10n_mx"/>-->
-<!--        <field name="arch" type="xml">-->
+    <record model="ir.ui.view" id="vauxo_view_hr_employee_form_inherit_l10n_mx">
+        <field name="name">vauxo.view.hr.employee.form.inherit.l10n_mx</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_hr_employee_form_inherit_l10n_mx"/>
+        <field name="arch" type="xml">
 
-<!--            <xpath expr="//field[@name='l10n_mx_edi_clabe']" position="after">-->
-<!--                <field name="l10n_mx_edi_payment_method_id"-->
-<!--                           options="{'no_create': True, 'no_create_edit': True}"/>-->
-<!--            </xpath>-->
+            <xpath expr="//field[@name='l10n_mx_edi_clabe']" position="after">
+                <field name="l10n_mx_edi_payment_method_id"
+                           options="{'no_create': True, 'no_create_edit': True}"/>
+            </xpath>
 
-<!--        </field>-->
-<!--    </record>-->
+        </field>
+    </record>
 
 </odoo>

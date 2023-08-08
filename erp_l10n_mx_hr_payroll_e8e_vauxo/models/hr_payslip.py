@@ -6,9 +6,11 @@ import base64
 import logging
 import re
 import time
+import math
 from io import BytesIO
 from itertools import groupby
 from calendar import monthrange
+from datetime import datetime, timedelta
 import requests
 
 from lxml import etree, objectify
@@ -82,11 +84,13 @@ class HrPayslip(models.Model):
     l10n_mx_cfdi_amount = fields.Float(compute='_compute_cfdi_values',
                                        store=True,
                                        compute_sudo=True)
-    l10n_mx_cfdi_certificate_id = fields.Many2one('l10n_mx_edi.certificate', string='Certificado (SAT)')
+    l10n_mx_cfdi_certificate_id = fields.Many2one('l10n_mx_edi.certificate', string='Certificado (SAT)', index=True)
 
     l10n_mx_stamped_version = fields.Selection(
-        [('version_3', 'Version 3.3'), ('version_4', 'Version 4.0')], string='Stamped version',
-        default='version_3', related='company_id.l10n_mx_stamped_version', compute_sudo=True)
+        [('version_3', 'Version 3.3'),
+         ('version_4', 'Version 4.0')],
+        string='Stamped version',
+        related='company_id.l10n_mx_stamped_version', compute_sudo=True)
 
     #  Payments
     l10n_mx_edi_payment_method_id = fields.Many2one(
@@ -99,10 +103,14 @@ class HrPayslip(models.Model):
 
     l10n_mx_payment_method = fields.Selection([('PUE', '(PUE) Pago en una sola exhibición'),
                                                ('PPD', '(PPD) Pago en parcialidades o diferido')],
-                                              tracking=True,
+                                              tracking=True, index=True,
                                               default='PUE', string="Payment method")
 
-    l10n_mx_cfdi_stamped = fields.Char('Is cfdi stamped?')
+    l10n_mx_cfdi_stamped = fields.Char('Is cfdi stamped?', index=True)
+
+    state_sent = fields.Selection([('sent', 'Sent'), ('not_sent', 'Not Sent')], string='State Sent', default='not_sent', index=True)
+    l10n_mx_payroll_daily_salary = fields.Float(related='contract_id.l10n_mx_payroll_daily_salary', compute_sudo=True)
+    l10n_mx_payroll_integrated_salary = fields.Float(related='contract_id.l10n_mx_payroll_integrated_salary', compute_sudo=True)
 
     # -------------------------------------------------------------------------
     # HELPERS
@@ -147,12 +155,15 @@ class HrPayslip(models.Model):
         """
         self.ensure_one()
         nodes = []
-        categ_g = self.env.ref(
-            'erp_l10n_mx_payslip_data.hr_salary_rule_category_perception_mx_taxed')
-        categ_e = self.env.ref(
-            'erp_l10n_mx_payslip_data.hr_salary_rule_category_perception_mx_exempt')
+        # categ_g = self.env.ref(
+        #     'erp_l10n_mx_payslip_data.hr_salary_rule_category_perception_mx_taxed')
+        categ_g = self.company_id.sudo().category_perception_mx_taxed_ids.ids
+        # categ_e = self.env.ref(
+        #     'erp_l10n_mx_payslip_data.hr_salary_rule_category_perception_mx_exempt')
+        categ_e = self.company_id.sudo().category_perception_mx_exempt_ids.ids
+        categ_eg = categ_e + categ_g
         perceptions = self.line_ids.filtered(
-            lambda r: r.category_id in [categ_g, categ_e] and r.total and
+            lambda r: r.category_id.id in categ_eg and r.total and
             r.code[-3:] in ('022', '023', '025', '039', '044'))
         separation_line_ids = perceptions.filtered(
             lambda line: line.code[-3:] in ('022', '023', '025'))
@@ -259,9 +270,9 @@ class HrPayslip(models.Model):
 
     @api.model
     def _l10n_mx_edi_solfact_info(self, company_id, service_type):
-        test = company_id.l10n_mx_edi_pac_test_env
-        username = company_id.l10n_mx_edi_pac_username
-        password = company_id.l10n_mx_edi_pac_password
+        test = company_id.sudo().l10n_mx_edi_pac_test_env
+        username = company_id.sudo().l10n_mx_edi_pac_username
+        password = company_id.sudo().l10n_mx_edi_pac_password
         url = ('https://testing.solucionfactible.com/ws/services/Timbrado?wsdl'
                if test else
                'https://solucionfactible.com/ws/services/Timbrado?wsdl')
@@ -329,9 +340,9 @@ class HrPayslip(models.Model):
             record._l10n_mx_edi_post_cancel_process(cancelled, code, msg)
 
     def _l10n_mx_edi_finkok_info(self, company_id, service_type):
-        test = company_id.l10n_mx_edi_pac_test_env
-        username = company_id.l10n_mx_edi_pac_username
-        password = company_id.l10n_mx_edi_pac_password
+        test = company_id.sudo().l10n_mx_edi_pac_test_env
+        username = company_id.sudo().l10n_mx_edi_pac_username
+        password = company_id.sudo().l10n_mx_edi_pac_password
         if service_type == 'sign':
             url = (
                 'http://demo-facturacion.finkok.com/servicios/soap/stamp.wsdl'
@@ -426,9 +437,9 @@ class HrPayslip(models.Model):
             record._l10n_mx_edi_post_cancel_process(cancelled, code, msg)
 
     def _l10n_mx_edi_sw_info(self, company_id, service_type):
-        test = company_id.l10n_mx_edi_pac_test_env
-        username = company_id.l10n_mx_edi_pac_username
-        password = company_id.l10n_mx_edi_pac_password
+        test = company_id.sudo().l10n_mx_edi_pac_test_env
+        username = company_id.sudo().l10n_mx_edi_pac_username
+        password = company_id.sudo().l10n_mx_edi_pac_password
         url = ('http://services.test.sw.com.mx/'
                if test else 'https://services.sw.com.mx/')
         url_service = url + ('cfdi33/stamp/v3/b64' if service_type == 'sign'
@@ -503,8 +514,8 @@ class HrPayslip(models.Model):
 
     def _l10n_mx_edi_sw_sign(self, pac_info):
         token = self._l10n_mx_edi_get_sw_token(pac_info)
-        if not token:
-            body_msg = _("Token could not be obtained %s") % req_e
+        if not token or token.get('errors', False):
+            body_msg = _("Token could not be obtained")
             self.write(dict(l10n_mx_edi_error=body_msg))
             self.message_post(body = body_msg)
             self.env.cr.commit()
@@ -554,8 +565,8 @@ Content-Disposition: form-data; name="xml"; filename="xml"
 
     def _l10n_mx_edi_sw_cancel(self, pac_info):
         token = self._l10n_mx_edi_get_sw_token(pac_info)
-        if not token:
-            body_msg = _("Token could not be obtained %s") % req_e
+        if not token or token.get('errors', False):
+            body_msg = _("Token could not be obtained")
             self.write(dict(l10n_mx_edi_error=body_msg))
             self.message_post(body=body_msg)
             self.env.cr.commit()
@@ -572,7 +583,7 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             motivo = rec.l10n_mx_cancel_reason
             company = rec.sudo().company_id
             certificates = company.l10n_mx_edi_certificate_ids
-            certificate = certificates.get_valid_certificate()
+            certificate = certificates._get_valid_certificate()
             payload_dict = {
                 'rfc': company.vat,
                 'b64Cer': certificate.content.decode('UTF-8'),
@@ -731,13 +742,13 @@ Content-Disposition: form-data; name="xml"; filename="xml"
     # Payslip methods
     # -------------------------------------------------------------------------
 
-    @api.onchange('employee_id', 'struct_id', 'contract_id', 'date_from', 'date_to')  # noqa
-    def _onchange_employee(self):
-        res = super(HrPayslip, self)._onchange_employee()
-        self.company_id = (self.employee_id.company_id or
-                           self.contract_id.company_id or
-                           self.env.user.company_id)
-        return res
+    # @api.onchange('employee_id', 'struct_id', 'contract_id', 'date_from', 'date_to')  # noqa
+    # def _onchange_employee(self):
+    #     res = super(HrPayslip, self)._onchange_employee()
+    #     self.company_id = (self.employee_id.company_id or
+    #                        self.contract_id.company_id or
+    #                        self.env.user.company_id)
+    #     return res
 
     def action_payslip_cancel(self):
         """Overwrite method when state is done, to allow cancel payslip in done
@@ -764,7 +775,7 @@ Content-Disposition: form-data; name="xml"; filename="xml"
                                                   and r.l10n_mx_cfdi_uuid)
         for payslip in payslip_stamped:
             payslip.write({'l10n_mx_cfdi_stamped': payslip.l10n_mx_cfdi_uuid})
-        self.refresh()
+        # self.refresh()
         res = super(HrPayslip, self).action_payslip_cancel()
         mx_payslip = self.filtered(lambda r: r.l10n_mx_edi_is_required())
         if mx_payslip:
@@ -792,13 +803,58 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             template = False
         compose_form = self.env.ref(
             'mail.email_compose_message_wizard_form', False)
+
+        attaches = []
+
+        # attach_xml_id = self.env['ir.attachment'].search([
+        #     ('name', '=', self.l10n_mx_cfdi_name),
+        #     ('res_id', '=', self.id),
+        #     ('res_model', '=', self._name)
+        # ], order='create_date desc, id desc', limit=1)
+        # if attach_xml_id:
+        #     attaches.append(attach_xml_id.id)
+
+        cfdi_values = self._l10n_mx_edi_create_cfdi()
+        cfdi = cfdi_values.pop('cfdi', None)
+        ctx = self.env.context.copy()
+        ctx.pop('default_type', False)
+        name = 'MX-Payroll-3-3.xml' if self.company_id.l10n_mx_stamped_version == 'version_3' else 'MX-Payroll-4-0.xml'
+        filename = ('%s-%s' % (self.number, name)).replace('/', '')
+        encoding = 'utf-8'
+        data_xml = base64.encodebytes(cfdi)
+        attach_xml_id = self.env['ir.attachment'].with_context(ctx).create({
+            'name': filename,
+            'res_id': self.id,
+            'res_model': self._name,
+            'datas': data_xml.decode(encoding),
+            'description': 'Mexican payroll',
+        })
+        if attach_xml_id:
+            attaches.append(attach_xml_id.id)
+
+        pdf = self.env["ir.actions.report"].sudo()._render_qweb_pdf(
+            self.env.ref('hr_payroll.action_report_payslip').id,
+            res_ids=self.ids)[0]
+        if pdf:
+            pdf_payslip = base64.b64encode(pdf)
+            document_vals = {'name': 'Recibo de Nómina ' + self.employee_id.name + '.pdf',
+                             'datas': pdf_payslip,
+                             'store_fname': 'Recibo de Nómina ' + self.employee_id.name + '.pdf',
+                             'res_model': self._name,
+                             'res_id': self.id,
+                             'type': 'binary', }
+            attach_pdf_id = self.env['ir.attachment'].create(document_vals)
+            if attach_pdf_id:
+                attaches.append(attach_pdf_id.id)
+
         ctx = self._context.copy()
-        ctx['default_model'] = 'hr.payslip'
         ctx['default_model'] = 'hr.payslip'
         ctx['default_res_id'] = self.id
         ctx['default_use_template'] = bool(template)
         ctx['default_template_id'] = template or False
         ctx['default_composition_mode'] = 'comment'
+        ctx['default_attachment_ids'] = [(6, 0, attaches)]
+
         return {
             'name': _('Compose Email'),
             'type': 'ir.actions.act_window',
@@ -894,8 +950,8 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             version = company.sudo().l10n_mx_stamped_version
             tz = self.env['account.move']._l10n_mx_edi_get_cfdi_partner_timezone(partner)
             date_mx = fields.datetime.now(tz)
-            # if not record.l10n_mx_expedition_date:
-            record.l10n_mx_expedition_date = date_mx.date()
+            if not record.l10n_mx_expedition_date:
+                record.l10n_mx_expedition_date = date_mx.date()
             if not record.l10n_mx_time_payslip:
                 record.l10n_mx_time_payslip = date_mx.strftime(
                     DEFAULT_SERVER_TIME_FORMAT)
@@ -1081,16 +1137,19 @@ Content-Disposition: form-data; name="xml"; filename="xml"
         return payroll
 
     def get_cfdi_perceptions_data(self):
-        categ_g = self.env.ref(
-            'erp_l10n_mx_payslip_data.hr_salary_rule_category_perception_mx_taxed')
-        categ_e = self.env.ref(
-            'erp_l10n_mx_payslip_data.hr_salary_rule_category_perception_mx_exempt')
+        # categ_g = self.env.ref(
+        #     'erp_l10n_mx_payslip_data.hr_salary_rule_category_perception_mx_taxed')
+        categ_g = self.company_id.sudo().category_perception_mx_taxed_ids.ids
+        # categ_e = self.env.ref(
+        #     'erp_l10n_mx_payslip_data.hr_salary_rule_category_perception_mx_exempt')
+        categ_e = self.company_id.sudo().category_perception_mx_exempt_ids.ids
+        categ_eg = categ_e + categ_g
         perceptions = self.line_ids.filtered(
-            lambda r: r.category_id in [categ_g, categ_e] and r.total and r.salary_rule_id.appears_on_payslip)
+            lambda r: r.category_id.id in categ_eg and r.total and r.salary_rule_id.appears_on_payslip)
         total_taxed = round(sum(perceptions.filtered(
-            lambda r: r.category_id == categ_g).mapped('total')), 2)
+            lambda r: r.category_id.id in categ_g).mapped('total')), 2)
         total_exempt = round(sum(perceptions.filtered(
-            lambda r: r.category_id == categ_e).mapped('total')), 2)
+            lambda r: r.category_id.id in categ_e).mapped('total')), 2)
         total_salaries = round(sum(perceptions.filtered(
             lambda r: r.code[-3:] not in [
                 '022', '023', '025', '039', '044']).mapped('total')), 2)
@@ -1121,13 +1180,18 @@ Content-Disposition: form-data; name="xml"; filename="xml"
         return values
 
     def get_cfdi_deductions_data(self):
-        categ = self.env.ref(
-            'erp_l10n_mx_payslip_data.hr_salary_rule_category_deduction_mx')
+        # categ = self.env.ref(
+        #     'erp_l10n_mx_payslip_data.hr_salary_rule_category_deduction_mx')
+        categ = self.company_id.sudo().category_perception_mx_taxed_ids.ids
         deductions = self.line_ids.filtered(
-            lambda r: r.category_id == categ and r.amount and r.salary_rule_id.appears_on_payslip)
-        total = sum(deductions.mapped('total'))
+            lambda r: r.category_id.id in categ and r.amount and r.salary_rule_id.appears_on_payslip)
+        total = sum(deductions.filtered(lambda r: not r.salary_rule_id.is_net_adjustments).mapped('total'))
         total_other = sum(deductions.filtered(
-            lambda r: r.code[-3:] != '002').mapped('total'))
+            lambda r: r.code[-3:] != '002' and not r.salary_rule_id.is_net_adjustments).mapped('total'))
+        net_adjustments = deductions.filtered(lambda r: r.salary_rule_id.is_net_adjustments)
+        if net_adjustments:
+            total_other = total_other - net_adjustments.total
+            total = total - net_adjustments.total
         total_withheld = sum(deductions.filtered(
             lambda r: r.code[-3:] == '002').mapped('total'))
         return {
@@ -1136,18 +1200,267 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             'total_taxes_withheld': '%.2f' % abs(total_withheld) if total_withheld else None,  # noqa
             'deductions': deductions,
         }
-
     def get_cfdi_other_payments_data(self):
         """Records with category Other Payments are used in the node
         "OtrosPagos"."""
-        categ = self.env.ref(
-            'erp_l10n_mx_payslip_data.hr_salary_rule_category_other_mx')
+        # categ = self.env.ref(
+        #     'erp_l10n_mx_payslip_data.hr_salary_rule_category_other_mx')
+        categ = self.company_id.sudo().category_other_mx_ids.ids
         other_payments = self.line_ids.filtered(
-            lambda r: r.category_id == categ and r.amount)
+            lambda r: r.category_id.id in categ)
+        # se quito de arriba
+        # and r.amount
         return {
             'total_other': abs(sum(other_payments.mapped('total'))),
             'other_payments': other_payments,
         }
+
+    def get_cfdi_perceptions_data_xml(self):
+        attachment_id = self.message_main_attachment_id
+        if attachment_id:
+            xml_content = base64.b64decode(attachment_id.datas)
+            if b'xmlns:schemaLocation' in xml_content:
+                xml_content = xml_content.replace(b'xmlns:schemaLocation', b'xsi:schemaLocation')
+            try:
+                tree = etree.fromstring(xml_content)
+            except Exception as e:
+                raise
+            try:
+                ns = tree.nsmap
+                ns.update({'re': 'http://exslt.org/regular-expressions'})
+            except Exception:
+                ns = {'re': 'http://exslt.org/regular-expressions'}
+            payslip = tree.xpath("//*[re:test(local-name(), 'Percepcion','i')]", namespaces=ns)
+            data = []
+            for py in payslip:
+                values = {}
+                if py.attrib.get('TipoPercepcion', False):
+                    values.update({
+                        'code': py.attrib['TipoPercepcion']
+                    })
+                if py.attrib.get('Clave', False):
+                    values.update({
+                        'clave': py.attrib['Clave']
+                    })
+                if py.attrib.get('Concepto', False):
+                    values.update({
+                        'concepto': py.attrib['Concepto']
+                    })
+                if py.attrib.get('ImporteGravado', False) or py.attrib.get('ImporteExento', False):
+                    if py.attrib.get('ImporteGravado', False) != '0.00':
+                        values.update({
+                            'total': float(py.attrib['ImporteGravado'])
+                        })
+                    else:
+                        values.update({
+                            'total': float(py.attrib['ImporteExento'])
+                        })
+                if values:
+                    data.append(values)
+            return data
+
+    def get_sat_perceptions_data_xml(self):
+        attachment_id = self.message_main_attachment_id
+        if attachment_id:
+            xml_content = base64.b64decode(attachment_id.datas)
+            if b'xmlns:schemaLocation' in xml_content:
+                xml_content = xml_content.replace(b'xmlns:schemaLocation', b'xsi:schemaLocation')
+            try:
+                tree = etree.fromstring(xml_content)
+            except Exception as e:
+                raise
+            try:
+                ns = tree.nsmap
+                ns.update({'re': 'http://exslt.org/regular-expressions'})
+            except Exception:
+                ns = {'re': 'http://exslt.org/regular-expressions'}
+            payslip = tree.xpath("//*[re:test(local-name(), 'Percepcion','i')]", namespaces=ns)
+            data = []
+            for py in payslip:
+                values = {}
+                if py.attrib.get('TipoPercepcion', False):
+                    values.update({
+                        'code': py.attrib['TipoPercepcion']
+                    })
+                if py.attrib.get('Clave', False):
+                    values.update({
+                        'clave': py.attrib['Clave']
+                    })
+                if py.attrib.get('Concepto', False):
+                    values.update({
+                        'concepto': py.attrib['Concepto']
+                    })
+                if py.attrib.get('ImporteGravado', False):
+                    values.update({
+                            'importegravado': float(py.attrib['ImporteGravado'])
+                    })
+                if py.attrib.get('ImporteExento', False):
+                    values.update({
+                            'importeexento': float(py.attrib['ImporteExento'])
+                        })
+                if values:
+                    data.append(values)
+            return data
+
+    def get_cfdi_deductions_data_xml(self):
+        attachment_id = self.message_main_attachment_id
+        if attachment_id:
+            xml_content = base64.b64decode(attachment_id.datas)
+            if b'xmlns:schemaLocation' in xml_content:
+                xml_content = xml_content.replace(b'xmlns:schemaLocation', b'xsi:schemaLocation')
+            try:
+                tree = etree.fromstring(xml_content)
+            except Exception as e:
+                raise
+            try:
+                ns = tree.nsmap
+                ns.update({'re': 'http://exslt.org/regular-expressions'})
+            except Exception:
+                ns = {'re': 'http://exslt.org/regular-expressions'}
+            payslip = tree.xpath("//*[re:test(local-name(), 'Deduccion','i')]", namespaces=ns)
+            data = []
+            for py in payslip:
+                values = {}
+                if py.attrib.get('TipoDeduccion', False):
+                    values.update({
+                        'code': py.attrib['TipoDeduccion']
+                    })
+                if py.attrib.get('Clave', False):
+                    values.update({
+                        'clave': py.attrib['Clave']
+                    })
+                if py.attrib.get('Concepto', False):
+                    values.update({
+                        'concepto': py.attrib['Concepto']
+                    })
+                if py.attrib.get('Importe', False):
+                    values.update({
+                        'importe': float(py.attrib['Importe'])
+                    })
+                if values:
+                    data.append(values)
+            return data
+
+    def get_sat_deductions_data_xml(self):
+        attachment_id = self.message_main_attachment_id
+        if attachment_id:
+            xml_content = base64.b64decode(attachment_id.datas)
+            if b'xmlns:schemaLocation' in xml_content:
+                xml_content = xml_content.replace(b'xmlns:schemaLocation', b'xsi:schemaLocation')
+            try:
+                tree = etree.fromstring(xml_content)
+            except Exception as e:
+                raise
+            try:
+                ns = tree.nsmap
+                ns.update({'re': 'http://exslt.org/regular-expressions'})
+            except Exception:
+                ns = {'re': 'http://exslt.org/regular-expressions'}
+            payslip = tree.xpath("//*[re:test(local-name(), 'Deduccion','i')]", namespaces=ns)
+            data = []
+            for py in payslip:
+                values = {}
+                if py.attrib.get('TipoDeduccion', False):
+                    values.update({
+                        'code': py.attrib['TipoDeduccion']
+                    })
+                if py.attrib.get('Clave', False):
+                    values.update({
+                        'clave': py.attrib['Clave']
+                    })
+                if py.attrib.get('Concepto', False):
+                    values.update({
+                        'concepto': py.attrib['Concepto']
+                    })
+                if py.attrib.get('Importe', False):
+                    values.update({
+                        'importe': float(py.attrib['Importe'])
+                    })
+                if values:
+                    data.append(values)
+            return data
+
+    def get_sat_total_deductions_data_xml(self):
+        attachment_id = self.message_main_attachment_id
+        if attachment_id:
+            xml_content = base64.b64decode(attachment_id.datas)
+            if b'xmlns:schemaLocation' in xml_content:
+                xml_content = xml_content.replace(b'xmlns:schemaLocation', b'xsi:schemaLocation')
+            try:
+                tree = etree.fromstring(xml_content)
+            except Exception as e:
+                raise
+            try:
+                ns = tree.nsmap
+                ns.update({'re': 'http://exslt.org/regular-expressions'})
+            except Exception:
+                ns = {'re': 'http://exslt.org/regular-expressions'}
+            payslip = tree.xpath("//*[re:test(local-name(), 'Deduccion','i')]", namespaces=ns)
+            data = []
+            for py in payslip:
+                values = {}
+                if py.attrib.get('TotalOtrasDeducciones', False):
+                    values.update({
+                        'totaldeducciones': float(py.attrib['TotalOtrasDeducciones'])
+                    })
+                if py.attrib.get('TotalImpuestosRetenidos', False):
+                    values.update({
+                        'totalimpuestosretenidos': float(py.attrib['TotalImpuestosRetenidos'])
+                    })
+                if py.attrib.get('TotalOtrasDeducciones', False) or py.attrib.get('TotalImpuestosRetenidos', False):
+                    if tree.attrib.get('Total', False):
+                        values.update({
+                            'total': float(tree.attrib['Total'])
+                        })
+                    if tree.attrib.get('SubTotal', False):
+                        values.update({
+                            'subtotal': float(tree.attrib['SubTotal'])
+                        })
+                    if tree.attrib.get('Descuento', False):
+                        values.update({
+                            'discount': float(tree.attrib['Descuento'])
+                        })
+                if values:
+                    data.append(values)
+            return data
+
+    def get_sat_totals_data_xml(self):
+        attachment_id = self.message_main_attachment_id
+        if attachment_id:
+            xml_content = base64.b64decode(attachment_id.datas)
+            if b'xmlns:schemaLocation' in xml_content:
+                xml_content = xml_content.replace(b'xmlns:schemaLocation', b'xsi:schemaLocation')
+            try:
+                tree = etree.fromstring(xml_content)
+            except Exception as e:
+                raise
+            try:
+                ns = tree.nsmap
+                ns.update({'re': 'http://exslt.org/regular-expressions'})
+            except Exception:
+                ns = {'re': 'http://exslt.org/regular-expressions'}
+            payslip = tree.xpath("//*[re:test(local-name(), 'Nomina','i')]", namespaces=ns)
+            data = []
+            if payslip:
+                values = {}
+                if payslip[0].attrib.get('TotalPercepciones', False):
+                    values.update({
+                        'totalpercepciones': float(payslip[0].attrib['TotalPercepciones'])
+                    })
+                if payslip[0].attrib.get('TotalDeducciones', False):
+                    values.update({
+                        'totaldeducciones': float(payslip[0].attrib['TotalDeducciones'])
+                    })
+                if payslip[0].attrib.get('TotalOtrosPagos', False):
+                    values.update({
+                        'totalotrospagos': float(payslip[0].attrib['TotalOtrosPagos'])
+                    })
+                if values:
+                    data.append(values)
+                return data
+
+
+
 
     __pattern = re.compile(r'[A-Z][AEIOUX][A-Z]{2}[0-9]{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])[MH]([ABCMTZ]S|[BCJMOT]C|[CNPST]L|[GNQ]T|[GQS]R|C[MH]|[MY]N|[DH]G|NE|VZ|DF|SP)[BCDFGHJ-NP-TV-Z]{3}[0-9A-Z][0-9]')
 
@@ -1157,10 +1470,11 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             msgs.append(_("• El régimen fiscal para el SAT es requerido."))
         if not values['supplier'].zip:
             msgs.append(_("• El ZIP en el Partner de la compañia es requerido."))
-        if not values['customer'].vat:
+        if not values['employee'].l10n_mx_edi_rfc:
             msgs.append(_("• El RFC del empleado es requerido."))
+        vat_c_len = False if len(values['company'].partner_id.vat) < 13 else True
         # comentado temporalmente hasta que se defina si es requerido en el proceso
-        # if values['company'].l10n_mx_edi_fiscal_regime != '601':
+        # if values['company'].l10n_mx_edi_fiscal_regime != '601' and vat_c_len:
         #     if not values['company'].partner_id.l10n_mx_edi_curp:
         #         msgs.append(_("• El CURP del Partner de la compañia es requerido."))
         #     if values['company'].partner_id.l10n_mx_edi_curp:
@@ -1168,12 +1482,12 @@ Content-Disposition: form-data; name="xml"; filename="xml"
         #             msgs.append(_("• El CURP del Partner de la compañia no debe tener menos de 18 caracteres."))
         #         if not self.__pattern.match(values['company'].partner_id.l10n_mx_edi_curp):
         #             msgs.append(_("• El CURP del Partner de la compañia no es válido."))
-        if not values['customer'].l10n_mx_edi_curp:
+        if not values['employee'].l10n_mx_edi_curp:
             msgs.append(_("• El CURP del empleado es requerido."))
-        if values['customer'].l10n_mx_edi_curp:
-            if len(values['customer'].l10n_mx_edi_curp) < 18:
+        if values['employee'].l10n_mx_edi_curp:
+            if len(values['employee'].l10n_mx_edi_curp) < 18:
                 msgs.append(_("• El CURP del empleado no debe tener menos de 18 caracteres."))
-            if not self.__pattern.match(values['customer'].l10n_mx_edi_curp):
+            if not self.__pattern.match(values['employee'].l10n_mx_edi_curp):
                 msgs.append(_("• El CURP del empleado no es válido."))
         if not values['employee'].l10n_mx_edi_contract_regime_type_id:
             msgs.append(_("• EL Tipo de Régimen del empleado es requerido."))
@@ -1204,13 +1518,14 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             raise ValidationError('\n'.join(msgs))
 
     def _get_payslip_template(self, company_id):
-        if company_id.l10n_mx_stamped_version == 'version_3':
+        vat_c_len = False if len(company_id.vat) < 13 else True
+        if company_id.l10n_mx_stamped_version == 'version_3' and vat_c_len:
             if company_id.l10n_mx_edi_fiscal_regime != '601':
                 payslip_template = PAYSLIP_TEMPLATE
             else:
                 payslip_template = PAYSLIP_TEMPLATE_NOT_CURP
         else:
-            if company_id.l10n_mx_edi_fiscal_regime != '601':
+            if company_id.l10n_mx_edi_fiscal_regime != '601' and vat_c_len:
                 payslip_template = PAYSLIP_TEMPLATE_4
             else:
                 payslip_template = PAYSLIP_TEMPLATE_4_NOT_CURP
@@ -1238,14 +1553,14 @@ Content-Disposition: form-data; name="xml"; filename="xml"
 
         # -Check certificate
         certificate_ids = company_id.l10n_mx_edi_certificate_ids
-        certificate_id = certificate_ids.sudo().get_valid_certificate()
+        certificate_id = certificate_ids.sudo()._get_valid_certificate()
         if not certificate_id:
             error_log.append(_('No valid certificate found'))
 
         # -Check PAC
         if pac_name:
-            pac_test_env = company_id.l10n_mx_edi_pac_test_env
-            pac_password = company_id.l10n_mx_edi_pac_password
+            pac_test_env = company_id.sudo().l10n_mx_edi_pac_test_env
+            pac_password = company_id.sudo().l10n_mx_edi_pac_password
             if not pac_test_env and not pac_password:
                 error_log.append(_('No PAC credentials specified.'))
         else:
@@ -1267,7 +1582,7 @@ Content-Disposition: form-data; name="xml"; filename="xml"
             fields.Datetime.from_string(self.l10n_mx_expedition_date),
             time_payslip).strftime('%Y-%m-%dT%H:%M:%S')
         values['certificate_number'] = certificate_id.serial_number
-        values['certificate'] = certificate_id.sudo().get_data()[0]
+        values['certificate'] = certificate_id.sudo()._get_data()[0].decode('utf-8')
 
         # -Compute cfdi
 
@@ -1281,7 +1596,7 @@ Content-Disposition: form-data; name="xml"; filename="xml"
         cadena = self.l10n_mx_edi_generate_cadena(cfdi_xslt_cadena, tree)
 
         # Post append cadena
-        tree.attrib['Sello'] = certificate_id.sudo().get_encrypted_cadena(
+        tree.attrib['Sello'] = certificate_id.sudo()._get_encrypted_cadena(
             cadena)
 
         # Check with xsd
@@ -1423,10 +1738,17 @@ Content-Disposition: form-data; name="xml"; filename="xml"
         return amount_words.replace(" 0/", " 00/")
 
     def action_print_payslip(self):
+        if self.struct_id:
+            if self.struct_id.report_id:
+                return self.env.ref(self.struct_id.report_id.xml_id).report_action(self, config=False)
         if self.company_id.l10n_mx_payroll_receipt_format == 'sat_receipt':
             report_name = "hr_payroll.action_report_payslip"
         else:
             report_name = "erp_l10n_mx_hr_payroll_e8e_vauxo.action_report_payslip_other"
+        return self.env.ref(report_name).report_action(self, config=False)
+
+    def action_print_payslip_no_fiscal(self):
+        report_name = "erp_l10n_mx_hr_payroll_e8e_vauxo.action_report_payslip_receipt_nofiscal"
         return self.env.ref(report_name).report_action(self, config=False)
 
     @api.onchange('employee_id', 'struct_id', 'contract_id', 'date_from', 'date_to')
@@ -1441,15 +1763,71 @@ Content-Disposition: form-data; name="xml"; filename="xml"
                 self.l10n_mx_edi_payment_method_id = self.sudo().employee_id.l10n_mx_edi_payment_method_id.id
         if not work_entries.action_validate():
             raise ValidationError(_('There are conflicts in the work entry for this employee in the selected period.'))
-        super(HrPayslip, self). _onchange_employee()
+        # super(HrPayslip, self). _onchange_employee()
+
+    def action_send_email_payroll(self):
+        for slip in self.filtered(lambda p: p.state_sent == 'not_sent' and not p.sent):
+            if slip.employee_id and slip.employee_id.work_email:
+                template_mail = self.env.ref('erp_l10n_mx_hr_payroll_e8e_vauxo.email_template_payroll', False)
+                attaches = []
+
+                # attach_xml_id = self.env['ir.attachment'].search([
+                #     ('name', '=', slip.l10n_mx_cfdi_name),
+                #     ('res_id', '=', slip.id),
+                #     ('res_model', '=', slip._name)
+                # ], order='create_date desc, id desc', limit=1)
+                # if attach_xml_id:
+                #     attaches.append(attach_xml_id.id)
+
+                cfdi_values = slip._l10n_mx_edi_create_cfdi()
+                cfdi = cfdi_values.pop('cfdi', None)
+                ctx = self.env.context.copy()
+                ctx.pop('default_type', False)
+                name = 'MX-Payroll-3-3.xml' if slip.company_id.l10n_mx_stamped_version == 'version_3' else 'MX-Payroll-4-0.xml'
+                filename = ('%s-%s' % (slip.number, name)).replace('/', '')
+                encoding = 'utf-8'
+                data_xml = base64.encodebytes(cfdi)
+                attach_xml_id = self.env['ir.attachment'].with_context(ctx).create({
+                    'name': filename,
+                    'res_id': slip.id,
+                    'res_model': slip._name,
+                    'datas': data_xml.decode(encoding),
+                    'description': 'Mexican payroll',
+                })
+                if attach_xml_id:
+                    attaches.append(attach_xml_id.id)
+
+                pdf = self.env["ir.actions.report"].sudo().with_context(
+                    lang=self.env.user.lang)._render_qweb_pdf(
+            self.env.ref('hr_payroll.action_report_payslip').id,
+            res_ids=self.ids)[0]
+                if pdf:
+                    pdf_payslip = base64.b64encode(pdf)
+                    document_vals = {'name': 'Recibo de Nómina ' + slip.employee_id.name + '.pdf',
+                                     'datas': pdf_payslip,
+                                     'store_fname': 'Recibo de Nómina ' + slip.employee_id.name + '.pdf',
+                                     'res_model': slip._name,
+                                     'res_id': slip.id,
+                                     'type': 'binary', }
+                    attach_pdf_id = self.env['ir.attachment'].create(document_vals)
+                    if attach_pdf_id:
+                        attaches.append(attach_pdf_id.id)
+                if len(attaches) > 0:
+                    template_mail.write({'attachment_ids': [(6, 0, attaches)]})
+                    template_mail.send_mail(slip.id)
+                    slip.write({'sent': True, 'state_sent': 'sent'})
 
 
 class HrPayslipRun(models.Model):
     _inherit = 'hr.payslip.run'
 
     l10n_mx_stamped_version = fields.Selection(
-        [('version_3', 'Version 3.3'), ('version_4', 'Version 4.0')], string='Stamped version',
-        default='version_3', related='company_id.l10n_mx_stamped_version', compute_sudo=True)
+        [('version_3', 'Version 3.3'),
+         ('version_4', 'Version 4.0')],
+        string='Stamped version',
+        related='company_id.l10n_mx_stamped_version', compute_sudo=True)
+
+    state_sent = fields.Selection([('sent', 'Sent'), ('not_sent', 'Not Sent')], string='State Sent', default='not_sent')
 
     def action_payslips_done(self):
         self.ensure_one()
@@ -1486,6 +1864,60 @@ class HrPayslipRun(models.Model):
             res.onchange_template_id_wrapper()
             mail_composition |= res
         # send all
+
+    def send_email_payroll(self):
+        cron_id = self.env['ir.cron'].browse(self.env.ref('erp_l10n_mx_hr_payroll_e8e_vauxo.cron_send_mail_payroll').id)
+        slip_ids = self.slip_ids.search([('payslip_run_id', '=', self.id), ('state_sent', '=', 'not_sent'), ('sent', '=', False)])
+        if cron_id:
+            nextcall = (datetime.now() + timedelta(minutes=15))
+            cron_id.write({'active': True, 'numbercall': math.ceil(len(slip_ids) / 50), 'nextcall': nextcall})
+            # self.cron_send_mail_payroll()
+            self.write({'state_sent': 'sent'})
+
+    def cron_send_mail_payroll(self):
+        for slip in self.slip_ids.search([('payslip_run_id', '=', self.id), ('state_sent', '=', 'not_sent'), ('sent', '=', False)], limit=50):
+            if slip.employee_id and slip.employee_id.work_email:
+                template_mail = self.env.ref('erp_l10n_mx_hr_payroll_e8e_vauxo.email_template_payroll', False)
+                attaches = []
+
+                cfdi_values = slip._l10n_mx_edi_create_cfdi()
+                cfdi = cfdi_values.pop('cfdi', None)
+                ctx = self.env.context.copy()
+                ctx.pop('default_type', False)
+                name = 'MX-Payroll-3-3.xml' if slip.company_id.l10n_mx_stamped_version == 'version_3' else 'MX-Payroll-4-0.xml'
+                filename = ('%s-%s' % (slip.number, name)).replace('/', '')
+                encoding = 'utf-8'
+                data_xml = base64.encodebytes(cfdi)
+                attach_xml_id = self.env['ir.attachment'].with_context(ctx).create({
+                    'name': filename,
+                    'res_id': slip.id,
+                    'res_model': slip._name,
+                    'datas': data_xml.decode(encoding),
+                    'description': 'Mexican payroll',
+                })
+                if attach_xml_id:
+                    attaches.append(attach_xml_id.id)
+
+                pdf = self.env["ir.actions.report"].sudo().with_context(
+                    lang=self.env.user.lang)._render_qweb_pdf(
+                        self.env.ref('hr_payroll.action_report_payslip').id,
+                        res_ids=self.ids)[0]
+                if pdf:
+                    pdf_payslip = base64.b64encode(pdf)
+                    document_vals = {'name': 'Recibo de Nómina ' + slip.employee_id.name + '.pdf',
+                                     'datas': pdf_payslip,
+                                     'store_fname': 'Recibo de Nómina ' + slip.employee_id.name + '.pdf',
+                                     'res_model': slip._name,
+                                     'res_id': slip.id,
+                                     'type': 'binary', }
+                    attach_pdf_id = self.env['ir.attachment'].create(document_vals)
+                    if attach_pdf_id:
+                        attaches.append(attach_pdf_id.id)
+                if len(attaches) > 0:
+                    template_mail.write({'attachment_ids': [(6, 0, attaches)]})
+                    template_mail.send_mail(slip.id)
+                    slip.write({'sent': True, 'state_sent': 'sent'})
+
 
     @api.model
     def _cron_process_documents_sat_web_services(self):

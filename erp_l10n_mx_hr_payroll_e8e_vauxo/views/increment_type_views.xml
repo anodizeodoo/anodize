@@ -2,65 +2,60 @@
 <odoo>
     <data>
 
-<!--        <record id="increment_type_view_search" model="ir.ui.view">-->
-<!--            <field name="name">l10n.mx.increment.type.view.search</field>-->
-<!--            <field name="model">l10n.mx.increment.type</field>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <search>-->
-<!--                    <field name="name"/>-->
-<!--                </search>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="increment_type_view_search" model="ir.ui.view">
+            <field name="name">l10n.mx.increment.type.view.search</field>
+            <field name="model">l10n.mx.increment.type</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
 
-<!--        <record id="increment_type_view_tree" model="ir.ui.view">-->
-<!--            <field name="name">l10n.mx.increment.type.tree</field>-->
-<!--            <field name="model">l10n.mx.increment.type</field>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <tree>-->
-<!--                    <field name="name"/>-->
-<!--                </tree>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="increment_type_view_tree" model="ir.ui.view">
+            <field name="name">l10n.mx.increment.type.tree</field>
+            <field name="model">l10n.mx.increment.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
 
-<!--        <record id="view_increment_type_form" model="ir.ui.view">-->
-<!--            <field name="name">l10n.mx.increment.type.form</field>-->
-<!--            <field name="model">l10n.mx.increment.type</field>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <form>-->
-<!--                    <sheet>-->
-<!--                        <group>-->
-<!--                            <group>-->
-<!--                                <field name="name" required="1"/>-->
-<!--                            </group>-->
-<!--                            <group>-->
-<!--                            </group>-->
-<!--                        </group>-->
-<!--                    </sheet>-->
-<!--                </form>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="view_increment_type_form" model="ir.ui.view">
+            <field name="name">l10n.mx.increment.type.form</field>
+            <field name="model">l10n.mx.increment.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-<!--        <record id="increment_type_action" model="ir.actions.act_window">-->
-<!--            <field name="name">Increment type</field>-->
-<!--            <field name="type">ir.actions.act_window</field>-->
-<!--            <field name="res_model">l10n.mx.increment.type</field>-->
-<!--            <field name="view_mode">tree,form</field>-->
-<!--            <field name="help" type="html">-->
-<!--                <p class="o_view_nocontent">-->
-<!--                   No records found.-->
-<!--                </p>-->
-<!--            </field>-->
-<!--        </record>-->
+        <record id="increment_type_action" model="ir.actions.act_window">
+            <field name="name">Increment type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.mx.increment.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                   No records found.
+                </p>
+            </field>
+        </record>
 
-<!--        <menuitem id="menu_hr_payroll_processes"-->
-<!--                  name="Payroll Processes"-->
-<!--                  parent="hr_work_entry_contract.menu_hr_payroll_root"-->
-<!--                  sequence="70"/>-->
-
-<!--        <menuitem id="erp_l10n_mx_increment_type_menu"-->
-<!--                  sequence="30" name="Increment type"-->
-<!--                  parent="menu_hr_payroll_processes"-->
-<!--                  action="increment_type_action"/>-->
+        <menuitem id="erp_l10n_mx_increment_type_menu"
+                  sequence="30" name="Increment type"
+                  parent="erp_l10n_mx_hr_base.menu_hr_payroll_catalogs"
+                  action="increment_type_action"/>
 
     </data>
 </odoo>
