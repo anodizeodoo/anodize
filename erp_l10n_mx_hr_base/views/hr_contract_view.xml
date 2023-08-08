@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <<record model="ir.ui.view" id="view_hr_payroll_contract_form_inherit_l10n_mx">
+    <record model="ir.ui.view" id="view_hr_payroll_contract_form_inherit_l10n_mx">
         <field name="name">view.hr.contract.form.inherit.l10n_mx</field>
         <field name="model">hr.contract</field>
         <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
@@ -91,7 +91,6 @@
             </field>
         </field>
     </record>
-
     <record id="l10n_mx_payroll_job_risk_form_view" model="ir.ui.view">
         <field name="name">l10n_mx_payroll.job.risk.form.view</field>
         <field name="model">l10n_mx_edi.job.risk</field>
