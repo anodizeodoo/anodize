@@ -445,7 +445,7 @@
                 </div>
             </t>
         </xpath>
-        <xpath expr="//div[hasclass('page')]/p[hasclass('text-center')]" position="replace"/>
+<!--        <xpath expr="//div[hasclass('page')]/p[hasclass('text-center')]" position="replace"/>-->
         <xpath expr="//p[contains(@t-if, 'o.net_wage')]" position="replace"/>
         <xpath expr="//h2[@t-field='o.name']" position="replace"/>
         <xpath expr="//div[hasclass('page')]/div[@id='total']" position="replace"/>
