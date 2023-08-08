@@ -15,7 +15,7 @@
         "data/cron.xml",
         "data/increment_type_data.xml",
         "data/template_data.xml",
-        "views/hr_payslip_view.xml",
+        # "views/hr_payslip_view.xml",
         # "views/hr_payslip_sat_report.xml",
         # "views/hr_payslip_receipt_nonfiscal_report.xml",
         # "views/hr_payslip_other_report.xml",
