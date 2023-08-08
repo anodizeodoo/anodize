@@ -38,8 +38,8 @@
         "views/table_net_adjustments_views.xml",
         "views/schedule_pay_views.xml",
         "views/report_classifier_views.xml",
-        # "wizard/generate_report_views.xml",
-        # "reports/receipt_printing_report_pdf.xml",
+        "wizard/generate_report_views.xml",
+        "reports/receipt_printing_report_pdf.xml",
     ],
     "installable": True,
 }
