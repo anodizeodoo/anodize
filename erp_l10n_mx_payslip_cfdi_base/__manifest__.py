@@ -27,7 +27,7 @@
         "data/report_classifier_data.xml",
         "views/res_config_settings_views.xml",
         "views/hr_salary_rule_views.xml",
-        # "views/hr_contract_view.xml",
+        "views/hr_contract_view.xml",
         # "views/hr_payslip_view.xml",
         # "views/table_isr_views.xml",
         # "views/table_imss_views.xml",
