@@ -20,9 +20,11 @@ class HrContract(models.Model):
     _inherit = 'hr.contract'
 
     def _default_l10n_mx_number(self):
-        sequence_id = self.env['ir.sequence'].search([('code', '=', 'hr.contract.number')])
-        if sequence_id:
-            return sequence_id.get_next_char(sequence_id.number_next_actual)
+        # sequence_id = self.env['ir.sequence'].search([('code', '=', 'hr.contract.number')])
+        if self.env.user.company_id.l10n_mx_automatic_sequence_contracts:
+            contract_id_sequence = self.env.user.company_id.contract_id_sequence
+            if contract_id_sequence:
+                return contract_id_sequence.get_next_char(contract_id_sequence.number_next_actual)
         return False
 
     l10n_mx_holidays = fields.Integer(
