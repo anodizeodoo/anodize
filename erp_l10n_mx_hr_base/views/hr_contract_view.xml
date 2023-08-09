@@ -11,6 +11,9 @@
 <!--            <xpath expr="//field[@name='hr_responsible_id']" position="after">-->
 
 <!--            </xpath>-->
+            <field name="department_id" position="after">
+                <field name="l10n_mx_daily_salary_calculation" invisible="1"/>
+            </field>
             <field name="department_id" position="attributes">
                 <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
             </field>
@@ -83,9 +86,9 @@
                     </group>
                 </page>
             </xpath>
-            <field name="wage" position="before">
-                <field name="l10n_mx_daily_salary_calculation" invisible="1"/>
-            </field>
+<!--            <field name="wage" position="before">-->
+<!--                -->
+<!--            </field>-->
             <field name="wage" position="attributes">
                 <attribute name="attrs">{'required': [('l10n_mx_daily_salary_calculation', '!=', 'daily')]}</attribute>
             </field>
