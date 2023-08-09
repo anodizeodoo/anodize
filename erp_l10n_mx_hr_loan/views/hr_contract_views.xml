@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<!--    <record model="ir.ui.view" id="view_hr_payroll_contract_form_inherit">-->
-<!--        <field name="name">view.hr.contract.form.inherit</field>-->
-<!--        <field name="model">hr.contract</field>-->
-<!--        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>-->
-<!--        <field name="arch" type="xml">-->
-<!--            <xpath expr="//page[last()]" position="after">-->
-<!--                <page string="Loans">-->
-<!--                    <group string="Information FONACOT">-->
-<!--                        <group>-->
-<!--                            <field name="number_fonacot"/>-->
-<!--                        </group>-->
-<!--                        <group></group>-->
-<!--                    </group>-->
-<!--                    <field name="loan_ids" nolabel="1">-->
-<!--                        <tree editable="bottom">-->
-<!--                            <field name="loan_type_id" required="1" options='{"no_create": True, "no_open": True}'/>-->
-<!--                            <field name="rule_id" domain="[('is_loan', '=', True)]"/>-->
-<!--                            <field name="date_start" required="1"/>-->
-<!--                            <field name="date_end" required="1"/>-->
-<!--                            <field name="name" required="1"/>-->
-<!--                            <field name="company_currency_id" invisible="1"/>-->
-<!--                            <field name="credit_amount" required="1"/>-->
-<!--                            <field name="monthly_withhold" required="1"/>-->
-<!--                            <field name="payment_term" required="1"/>-->
-<!--                            <field name="payments_other_employers"/>-->
-<!--                            <field name="accumulated_amount_withheld" required="1"/>-->
-<!--                            <field name="residue"/>-->
-<!--                            <field name="active" widget="boolean_toggle"/>-->
-<!--                        </tree>-->
-<!--                    </field>-->
-<!--                </page>-->
-<!--            </xpath>-->
-<!--        </field>-->
-<!--    </record>-->
+    <record model="ir.ui.view" id="view_hr_payroll_contract_form_inherit">
+        <field name="name">view.hr.contract.form.inherit</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page string="Loans">
+                    <group string="Information FONACOT">
+                        <group>
+                            <field name="number_fonacot"/>
+                        </group>
+                        <group></group>
+                    </group>
+                    <field name="loan_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="loan_type_id" required="1" options='{"no_create": True, "no_open": True}'/>
+                            <field name="rule_id" domain="[('is_loan', '=', True)]"/>
+                            <field name="date_start" required="1"/>
+                            <field name="date_end" required="1"/>
+                            <field name="name" required="1"/>
+                            <field name="company_currency_id" invisible="1"/>
+                            <field name="credit_amount" required="1"/>
+                            <field name="monthly_withhold" required="1"/>
+                            <field name="payment_term" required="1"/>
+                            <field name="payments_other_employers"/>
+                            <field name="accumulated_amount_withheld" required="1"/>
+                            <field name="residue"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
 
     <record id="view_l10n_mx_loan_form" model="ir.ui.view">
         <field name="name">view.l10n_mx.loan.form</field>
