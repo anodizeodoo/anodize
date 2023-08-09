@@ -86,6 +86,9 @@
                     </group>
                 </page>
             </xpath>
+            <field name="wage" position="before">
+                <field name="l10n_mx_daily_salary_calculation" invisible="1"/>
+            </field>
             <field name="wage" position="attributes">
                 <attribute name="attrs">{'required': [('l10n_mx_daily_salary_calculation', '!=', 'daily')]}</attribute>
             </field>

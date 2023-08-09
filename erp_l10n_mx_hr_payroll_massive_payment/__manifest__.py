@@ -11,13 +11,6 @@
     'version': '16.0.1.0.0',
     "license": "AGPL-3",
     'depends': [
-        'base',
-        'hr',   
-        'hr_payroll',
-        'hr_work_entry_contract',
-        'erp_l10n_mx_hr_base',
-        "erp_l10n_mx_payslip_data",
-        "l10n_mx_edi_extended",
         'erp_l10n_mx_hr_payroll_e8e_vauxo',
         ],
     'data': [

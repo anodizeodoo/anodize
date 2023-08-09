@@ -1,14 +1,13 @@
 # coding: utf-8
 {
     "name": "Mexican Payslip CFDI",
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "author": "Soltein SA de CV",
     "category": "Localization",
     "website": "https://www.soltein.net",
     "license": "AGPL-3",
     "depends": [
         "erp_l10n_mx_payslip_data",
-        "l10n_mx_edi_extended",
     ],
     "data": [
         "security/ir.model.access.csv",

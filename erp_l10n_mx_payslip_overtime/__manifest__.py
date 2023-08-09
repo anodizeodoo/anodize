@@ -1,13 +1,12 @@
 # coding: utf-8
 {
     "name": "Mexican Payslip Extra Hours",
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "author": "Soltein SA de CV",
     "category": "Localization",
     "website": "https://www.soltein.net",
     "license": "AGPL-3",
     "depends": [
-        "hr_payroll",
         "erp_l10n_mx_hr_base",
     ],
     "data": [

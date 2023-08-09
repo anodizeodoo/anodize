@@ -7,11 +7,9 @@
     "website": "https://www.soltein.net",
     "license": "AGPL-3",
     "depends": [
-        "hr_contract",
-        "erp_hr_employee_sequence",
+        "hr_payroll_account",
         "hr_employee_lastnames",
-        "l10n_mx_edi_extended",
-        "hr_payroll",
+        "erp_hr_employee_sequence",
         "l10n_mx_edi_extended_40",
     ],
     "demo": [
