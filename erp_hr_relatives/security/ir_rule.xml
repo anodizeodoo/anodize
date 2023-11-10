@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<odoo noupdate="0">
-    <record model="ir.rule" id="hr_employee_relative_rule">
-        <field name="name">hr.employee.relative</field>
-        <field name="model_id" ref="model_hr_employee_relative"/>
-        <field name="domain_force">['|', ('active', '=', True), ('active', '=', False)]</field>
-        <field name="global" eval="True"/>
-    </record>
-</odoo>
