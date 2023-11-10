@@ -1,0 +1,931 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--START ISR Rate DAILY-->
+        <record id="l10n_mx_isr_rate_daily_1" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">0.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">21.20</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">0</field>
+            <field name="l10n_mx_isr_rate_percentage">1.92</field>
+        </record>
+        <record id="l10n_mx_isr_rate_daily_2" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">21.21</field>
+            <field name="l10n_mx_isr_rate_upper_limit">179.96</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">0.41</field>
+            <field name="l10n_mx_isr_rate_percentage">6.40</field>
+        </record>
+        <record id="l10n_mx_isr_rate_daily_3" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">179.97</field>
+            <field name="l10n_mx_isr_rate_upper_limit">316.27</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">10.57</field>
+            <field name="l10n_mx_isr_rate_percentage">10.88</field>
+        </record>
+        <record id="l10n_mx_isr_rate_daily_4" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">316.28</field>
+            <field name="l10n_mx_isr_rate_upper_limit">367.65</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">25.40</field>
+            <field name="l10n_mx_isr_rate_percentage">16.00</field>
+        </record>
+        <record id="l10n_mx_isr_rate_daily_5" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">367.66</field>
+            <field name="l10n_mx_isr_rate_upper_limit">440.18</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">33.62</field>
+            <field name="l10n_mx_isr_rate_percentage">17.92</field>
+        </record>
+        <record id="l10n_mx_isr_rate_daily_6" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">440.19</field>
+            <field name="l10n_mx_isr_rate_upper_limit">887.78</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">46.62</field>
+            <field name="l10n_mx_isr_rate_percentage">21.36</field>
+        </record>
+        <record id="l10n_mx_isr_rate_daily_7" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">887.79</field>
+            <field name="l10n_mx_isr_rate_upper_limit">1399.26</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">142.22</field>
+            <field name="l10n_mx_isr_rate_percentage">23.62</field>
+        </record>
+        <record id="l10n_mx_isr_rate_daily_8" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">1399.27</field>
+            <field name="l10n_mx_isr_rate_upper_limit">2671.42</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">262.52</field>
+            <field name="l10n_mx_isr_rate_percentage">30.00</field>
+        </record>
+        <record id="l10n_mx_isr_rate_daily_9" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">2671.43</field>
+            <field name="l10n_mx_isr_rate_upper_limit">3561.90</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">644.17</field>
+            <field name="l10n_mx_isr_rate_percentage">32.00</field>
+        </record>
+        <record id="l10n_mx_isr_rate_daily_10" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">3561.91</field>
+            <field name="l10n_mx_isr_rate_upper_limit">10685.69</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">929.12</field>
+            <field name="l10n_mx_isr_rate_percentage">34.00</field>
+        </record>
+        <record id="l10n_mx_isr_rate_daily_11" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">10685.70</field>
+            <field name="l10n_mx_isr_rate_upper_limit">10000000</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">3351.21</field>
+            <field name="l10n_mx_isr_rate_percentage">35.00</field>
+        </record>
+        <!-- END ISR Rate DAILY-->
+        <!--START ISR Subsidy Rate DAILY-->
+        <record id="l10n_mx_isr_subsidy_rate_daily_1" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">0.01</field>
+            <field name="l10n_mx_isr_subsidy_income_of">58.19</field>
+            <field name="l10n_mx_isr_subsidy_quantity">13.39</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_daily_2" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">58.20</field>
+            <field name="l10n_mx_isr_subsidy_income_of">87.28</field>
+            <field name="l10n_mx_isr_subsidy_quantity">13.38</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_daily_3" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">87.29</field>
+            <field name="l10n_mx_isr_subsidy_income_of">114.24</field>
+            <field name="l10n_mx_isr_subsidy_quantity">13.38</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_daily_4" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">114.25</field>
+            <field name="l10n_mx_isr_subsidy_income_of">116.38</field>
+            <field name="l10n_mx_isr_subsidy_quantity">12.92</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_daily_5" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">116.39</field>
+            <field name="l10n_mx_isr_subsidy_income_of">146.25</field>
+            <field name="l10n_mx_isr_subsidy_quantity">12.58</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_daily_6" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">146.26</field>
+            <field name="l10n_mx_isr_subsidy_income_of">155.17</field>
+            <field name="l10n_mx_isr_subsidy_quantity">11.65</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_daily_7" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">155.18</field>
+            <field name="l10n_mx_isr_subsidy_income_of">175.51</field>
+            <field name="l10n_mx_isr_subsidy_quantity">10.69</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_daily_8" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">175.52</field>
+            <field name="l10n_mx_isr_subsidy_income_of">204.76</field>
+            <field name="l10n_mx_isr_subsidy_quantity">9.69</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_daily_9" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">204.77</field>
+            <field name="l10n_mx_isr_subsidy_income_of">234.01</field>
+            <field name="l10n_mx_isr_subsidy_quantity">8.34</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_daily_10" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">234.02</field>
+            <field name="l10n_mx_isr_subsidy_income_of">242.84</field>
+            <field name="l10n_mx_isr_subsidy_quantity">7.16</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_daily_11" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">242.85</field>
+            <field name="l10n_mx_isr_subsidy_income_of">10000000</field>
+            <field name="l10n_mx_isr_subsidy_quantity">0.00</field>
+        </record>
+         <!-- END ISR Subsidy Rate DAILY-->
+        <!--START ISR Rate WEEKLY-->
+        <record id="l10n_mx_isr_rate_weekly_1" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">0.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">148.4</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">0</field>
+            <field name="l10n_mx_isr_rate_percentage">1.92</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_weekly_2" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">148.41</field>
+            <field name="l10n_mx_isr_rate_upper_limit">1259.72</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">2.87</field>
+            <field name="l10n_mx_isr_rate_percentage">6.4</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_weekly_3" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">1259.73</field>
+            <field name="l10n_mx_isr_rate_upper_limit">2213.89</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">73.99</field>
+            <field name="l10n_mx_isr_rate_percentage">10.88</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_weekly_4" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">2213.90</field>
+            <field name="l10n_mx_isr_rate_upper_limit">2573.55</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">173.8</field>
+            <field name="l10n_mx_isr_rate_percentage">16</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_weekly_5" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">2573.56</field>
+            <field name="l10n_mx_isr_rate_upper_limit">3081.26</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">235.34</field>
+            <field name="l10n_mx_isr_rate_percentage">17.92</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_weekly_6" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">3081.27</field>
+            <field name="l10n_mx_isr_rate_upper_limit">6214.46</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">326.34</field>
+            <field name="l10n_mx_isr_rate_percentage">21.36</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_weekly_7" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">6214.47</field>
+            <field name="l10n_mx_isr_rate_upper_limit">9794.82</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">995.54</field>
+            <field name="l10n_mx_isr_rate_percentage">23.52</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_weekly_8" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">9794.83</field>
+            <field name="l10n_mx_isr_rate_upper_limit">18699.94</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">1837.64</field>
+            <field name="l10n_mx_isr_rate_percentage">30</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_weekly_9" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">18699.95</field>
+            <field name="l10n_mx_isr_rate_upper_limit">24933.30</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">4509.19</field>
+            <field name="l10n_mx_isr_rate_percentage">32</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_weekly_10" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">24933.31</field>
+            <field name="l10n_mx_isr_rate_upper_limit">74799.83</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">6503.84</field>
+            <field name="l10n_mx_isr_rate_percentage">34</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_weekly_11" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">74799.84</field>
+            <field name="l10n_mx_isr_rate_upper_limit">10000000</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">23458.47</field>
+            <field name="l10n_mx_isr_rate_percentage">35</field>
+        </record>
+        <!-- END ISR Rate WEEKLY-->
+        <!--START ISR Subsidy Rate WEEKLY-->
+        <record id="l10n_mx_isr_subsidy_rate_weekly_1" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">0.01</field>
+            <field name="l10n_mx_isr_subsidy_income_of">407.33</field>
+            <field name="l10n_mx_isr_subsidy_quantity">93.73</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_weekly_2" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">407.34</field>
+            <field name="l10n_mx_isr_subsidy_income_of">610.96</field>
+            <field name="l10n_mx_isr_subsidy_quantity">93.66</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_weekly_3" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">610.97</field>
+            <field name="l10n_mx_isr_subsidy_income_of">799.68</field>
+            <field name="l10n_mx_isr_subsidy_quantity">93.66</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_weekly_4" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">799.69</field>
+            <field name="l10n_mx_isr_subsidy_income_of">814.66</field>
+            <field name="l10n_mx_isr_subsidy_quantity">90.44</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_weekly_5" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">814.67</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1023.75</field>
+            <field name="l10n_mx_isr_subsidy_quantity">88.06</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_weekly_6" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1023.76</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1086.19</field>
+            <field name="l10n_mx_isr_subsidy_quantity">81.55</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_weekly_7" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1086.20</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1228.57</field>
+            <field name="l10n_mx_isr_subsidy_quantity">74.83</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_weekly_8" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1228.58</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1433.32</field>
+            <field name="l10n_mx_isr_subsidy_quantity">67.83</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_weekly_9" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1433.33</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1638.07</field>
+            <field name="l10n_mx_isr_subsidy_quantity">58.38</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_weekly_10" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1638.08</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1699.88</field>
+            <field name="l10n_mx_isr_subsidy_quantity">50.12</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_weekly_11" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1699.89</field>
+            <field name="l10n_mx_isr_subsidy_income_of">10000000</field>
+            <field name="l10n_mx_isr_subsidy_quantity">0</field>
+        </record>
+        <!-- END ISR Subsidy Rate WEEKLY-->
+        <!--START ISR Rate DECENNIAL-->
+        <record id="l10n_mx_isr_rate_decennial_1" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">0.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">212</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">0</field>
+            <field name="l10n_mx_isr_rate_percentage">1.92</field>
+        </record>
+        <record id="l10n_mx_isr_rate_decennial_2" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">212.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">1799.60</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">4.10</field>
+            <field name="l10n_mx_isr_rate_percentage">6.40</field>
+        </record>
+        <record id="l10n_mx_isr_rate_decennial_3" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">1799.61</field>
+            <field name="l10n_mx_isr_rate_upper_limit">3162.70</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">105.70</field>
+            <field name="l10n_mx_isr_rate_percentage">10.88</field>
+        </record>
+        <record id="l10n_mx_isr_rate_decennial_4" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">3162.71</field>
+            <field name="l10n_mx_isr_rate_upper_limit">3676.50</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">254.00</field>
+            <field name="l10n_mx_isr_rate_percentage">16.00</field>
+        </record>
+        <record id="l10n_mx_isr_rate_decennial_5" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">3676.51</field>
+            <field name="l10n_mx_isr_rate_upper_limit">4401.80</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">336.20</field>
+            <field name="l10n_mx_isr_rate_percentage">17.92</field>
+        </record>
+        <record id="l10n_mx_isr_rate_decennial_6" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">4401.81</field>
+            <field name="l10n_mx_isr_rate_upper_limit">8877.80</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">466.20</field>
+            <field name="l10n_mx_isr_rate_percentage">21.36</field>
+        </record>
+        <record id="l10n_mx_isr_rate_decennial_7" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">8877.81</field>
+            <field name="l10n_mx_isr_rate_upper_limit">13992.60</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">1422.20</field>
+            <field name="l10n_mx_isr_rate_percentage">23.52</field>
+        </record>
+        <record id="l10n_mx_isr_rate_decennial_8" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">13992.61</field>
+            <field name="l10n_mx_isr_rate_upper_limit">26714.20</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">2625.20</field>
+            <field name="l10n_mx_isr_rate_percentage">30.00</field>
+        </record>
+        <record id="l10n_mx_isr_rate_decennial_9" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">26714.21</field>
+            <field name="l10n_mx_isr_rate_upper_limit">35619.00</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">6441.70</field>
+            <field name="l10n_mx_isr_rate_percentage">32.00</field>
+        </record>
+        <record id="l10n_mx_isr_rate_decennial_10" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">35619.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">106856.90</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">9291.20</field>
+            <field name="l10n_mx_isr_rate_percentage">34.00</field>
+        </record>
+        <record id="l10n_mx_isr_rate_decennial_11" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">106856.91</field>
+            <field name="l10n_mx_isr_rate_upper_limit">10000000</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">33512.10</field>
+            <field name="l10n_mx_isr_rate_percentage">35.00</field>
+        </record>
+        <!--END ISR Rate DECENNIAL-->
+        <!-- START ISR Subsidy Rate DECENNIAL-->
+        <record id="l10n_mx_isr_subsidy_rate_decennial_1" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">0.01</field>
+            <field name="l10n_mx_isr_subsidy_income_of">581.90</field>
+            <field name="l10n_mx_isr_subsidy_quantity">133.90</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_decennial_2" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">581.91</field>
+            <field name="l10n_mx_isr_subsidy_income_of">872.80</field>
+            <field name="l10n_mx_isr_subsidy_quantity">133.80</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_decennial_3" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">872.81</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1142.40</field>
+            <field name="l10n_mx_isr_subsidy_quantity">133.80</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_decennial_4" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1142.41</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1163.80</field>
+            <field name="l10n_mx_isr_subsidy_quantity">129.20</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_decennial_5" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1163.81</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1462.50</field>
+            <field name="l10n_mx_isr_subsidy_quantity">125.80</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_decennial_6" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1462.51</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1551.70</field>
+            <field name="l10n_mx_isr_subsidy_quantity">116.50</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_decennial_7" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1551.71</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1755.10</field>
+            <field name="l10n_mx_isr_subsidy_quantity">106.90</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_decennial_8" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1755.11</field>
+            <field name="l10n_mx_isr_subsidy_income_of">2047.60</field>
+            <field name="l10n_mx_isr_subsidy_quantity">96.90</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_decennial_9" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">2047.61</field>
+            <field name="l10n_mx_isr_subsidy_income_of">2340.10</field>
+            <field name="l10n_mx_isr_subsidy_quantity">83.40</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_decennial_10" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">2340.11</field>
+            <field name="l10n_mx_isr_subsidy_income_of">2428.40</field>
+            <field name="l10n_mx_isr_subsidy_quantity">71.60</field>
+        </record>
+        <record id="l10n_mx_isr_subsidy_rate_decennial_11" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">2428.41</field>
+            <field name="l10n_mx_isr_subsidy_income_of">10000000</field>
+            <field name="l10n_mx_isr_subsidy_quantity">0.00</field>
+        </record>
+        <!-- END ISR Subsidy Rate DECENNIAL-->
+        <!--START ISR Rate BIWEEKLY-->
+        <record id="l10n_mx_isr_rate_biweekly_1" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">0.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">318</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">0</field>
+            <field name="l10n_mx_isr_rate_percentage">1.92</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_biweekly_2" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">318.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">2699.40</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">6.15</field>
+            <field name="l10n_mx_isr_rate_percentage">6.4</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_biweekly_3" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">2699.41</field>
+            <field name="l10n_mx_isr_rate_upper_limit">4744.05</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">158.55</field>
+            <field name="l10n_mx_isr_rate_percentage">10.88</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_biweekly_4" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">4744.06</field>
+            <field name="l10n_mx_isr_rate_upper_limit">5514.75</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">381</field>
+            <field name="l10n_mx_isr_rate_percentage">16</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_biweekly_5" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">5514.76</field>
+            <field name="l10n_mx_isr_rate_upper_limit">6602.70</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">504.3</field>
+            <field name="l10n_mx_isr_rate_percentage">17.92</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_biweekly_6" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">6602.71</field>
+            <field name="l10n_mx_isr_rate_upper_limit">13316.70</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">699.3</field>
+            <field name="l10n_mx_isr_rate_percentage">21.36</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_biweekly_7" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">13316.71</field>
+            <field name="l10n_mx_isr_rate_upper_limit">20988.90</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">2133.30</field>
+            <field name="l10n_mx_isr_rate_percentage">23.52</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_biweekly_8" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">20988.91</field>
+            <field name="l10n_mx_isr_rate_upper_limit">40071.30</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">3937.80</field>
+            <field name="l10n_mx_isr_rate_percentage">30</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_biweekly_9" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">40071.31</field>
+            <field name="l10n_mx_isr_rate_upper_limit">53428.50</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">9662.55</field>
+            <field name="l10n_mx_isr_rate_percentage">32</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_biweekly_10" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">53428.51</field>
+            <field name="l10n_mx_isr_rate_upper_limit">160285.35</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">13936.80</field>
+            <field name="l10n_mx_isr_rate_percentage">34</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_biweekly_11" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">160285.36</field>
+            <field name="l10n_mx_isr_rate_upper_limit">10000000</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">50268.15</field>
+            <field name="l10n_mx_isr_rate_percentage">35</field>
+        </record>
+
+        <!--END ISR Rate BIWEEKLY-->
+        <!-- START ISR Subsidy Rate BIWEEKLY-->
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_1" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">0.01</field>
+            <field name="l10n_mx_isr_subsidy_income_of">872.85</field>
+            <field name="l10n_mx_isr_subsidy_quantity">200.85</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_2" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">872.86</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1309.20</field>
+            <field name="l10n_mx_isr_subsidy_quantity">200.7</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_3" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1309.21</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1713.60</field>
+            <field name="l10n_mx_isr_subsidy_quantity">200.7</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_4" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1713.61</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1745.70</field>
+            <field name="l10n_mx_isr_subsidy_quantity">193.8</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_5" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1745.71</field>
+            <field name="l10n_mx_isr_subsidy_income_of">2193.75</field>
+            <field name="l10n_mx_isr_subsidy_quantity">188.7</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_6" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">2193.76</field>
+            <field name="l10n_mx_isr_subsidy_income_of">2327.55</field>
+            <field name="l10n_mx_isr_subsidy_quantity">174.75</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_7" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">2327.56</field>
+            <field name="l10n_mx_isr_subsidy_income_of">2632.65</field>
+            <field name="l10n_mx_isr_subsidy_quantity">160.35</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_8" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">2632.66</field>
+            <field name="l10n_mx_isr_subsidy_income_of">3071.40</field>
+            <field name="l10n_mx_isr_subsidy_quantity">145.35</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_9" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">3071.41</field>
+            <field name="l10n_mx_isr_subsidy_income_of">3510.15</field>
+            <field name="l10n_mx_isr_subsidy_quantity">125.1</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_10" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">3510.16</field>
+            <field name="l10n_mx_isr_subsidy_income_of">3642.60</field>
+            <field name="l10n_mx_isr_subsidy_quantity">107.4</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_biweekly_11" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">3642.61</field>
+            <field name="l10n_mx_isr_subsidy_income_of">10000000</field>
+            <field name="l10n_mx_isr_subsidy_quantity">0</field>
+        </record>
+        <!-- END ISR Subsidy Rate BIWEEKLY-->
+        <!--START ISR Rate MONTHLY-->
+        <record id="l10n_mx_isr_rate_monthly_1" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">0.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">644.58</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">0</field>
+            <field name="l10n_mx_isr_rate_percentage">1.92</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_monthly_2" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">644.59</field>
+            <field name="l10n_mx_isr_rate_upper_limit">5470.92</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">12.38</field>
+            <field name="l10n_mx_isr_rate_percentage">6.4</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_monthly_3" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">5470.93</field>
+            <field name="l10n_mx_isr_rate_upper_limit">9614.66</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">321.26</field>
+            <field name="l10n_mx_isr_rate_percentage">10.88</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_monthly_4" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">9614.67</field>
+            <field name="l10n_mx_isr_rate_upper_limit">11176.62</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">772.1</field>
+            <field name="l10n_mx_isr_rate_percentage">16</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_monthly_5" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">11176.63</field>
+            <field name="l10n_mx_isr_rate_upper_limit">13381.47</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">1022.01</field>
+            <field name="l10n_mx_isr_rate_percentage">17.92</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_monthly_6" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">13381.48</field>
+            <field name="l10n_mx_isr_rate_upper_limit">26988.50</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">1417.12</field>
+            <field name="l10n_mx_isr_rate_percentage">21.36</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_monthly_7" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">26988.51</field>
+            <field name="l10n_mx_isr_rate_upper_limit">42537.58</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">4323.58</field>
+            <field name="l10n_mx_isr_rate_percentage">23.52</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_monthly_8" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">42537.59</field>
+            <field name="l10n_mx_isr_rate_upper_limit">81211.25</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">7980.73</field>
+            <field name="l10n_mx_isr_rate_percentage">30</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_monthly_9" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">81211.26</field>
+            <field name="l10n_mx_isr_rate_upper_limit">108281.67</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">19528.83</field>
+            <field name="l10n_mx_isr_rate_percentage">32</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_monthly_10" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">108281.68</field>
+            <field name="l10n_mx_isr_rate_upper_limit">324845.01</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">28245.36</field>
+            <field name="l10n_mx_isr_rate_percentage">34</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_monthly_11" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">324845.02</field>
+            <field name="l10n_mx_isr_rate_upper_limit">10000000</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">101876.90</field>
+            <field name="l10n_mx_isr_rate_percentage">35</field>
+        </record>
+        <!--END ISR Rate MONTHLY-->
+        <!-- START ISR Subsidy Rate MONTHLY-->
+        <record id="l10n_mx_isr_subsidy_rate_monthly_1" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">0.01</field>
+            <field name="l10n_mx_isr_subsidy_income_of">1768.96</field>
+            <field name="l10n_mx_isr_subsidy_quantity">407.02</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_monthly_2" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">1768.97</field>
+            <field name="l10n_mx_isr_subsidy_income_of">2653.38</field>
+            <field name="l10n_mx_isr_subsidy_quantity">406.83</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_monthly_3" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">2653.39</field>
+            <field name="l10n_mx_isr_subsidy_income_of">3472.84</field>
+            <field name="l10n_mx_isr_subsidy_quantity">406.62</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_monthly_4" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">3472.85</field>
+            <field name="l10n_mx_isr_subsidy_income_of">3537.87</field>
+            <field name="l10n_mx_isr_subsidy_quantity">392.77</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_monthly_5" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">3537.88</field>
+            <field name="l10n_mx_isr_subsidy_income_of">4446.15</field>
+            <field name="l10n_mx_isr_subsidy_quantity">382.46</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_monthly_6" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">4446.16</field>
+            <field name="l10n_mx_isr_subsidy_income_of">4717.18</field>
+            <field name="l10n_mx_isr_subsidy_quantity">354.23</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_monthly_7" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">4717.19</field>
+            <field name="l10n_mx_isr_subsidy_income_of">5335.42</field>
+            <field name="l10n_mx_isr_subsidy_quantity">324.87</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_monthly_8" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">5335.43</field>
+            <field name="l10n_mx_isr_subsidy_income_of">6224.67</field>
+            <field name="l10n_mx_isr_subsidy_quantity">294.63</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_monthly_9" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">6224.68</field>
+            <field name="l10n_mx_isr_subsidy_income_of">7113.90</field>
+            <field name="l10n_mx_isr_subsidy_quantity">253.54</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_monthly_10" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">7113.91</field>
+            <field name="l10n_mx_isr_subsidy_income_of">7382.33</field>
+            <field name="l10n_mx_isr_subsidy_quantity">217.61</field>
+        </record>
+
+        <record id="l10n_mx_isr_subsidy_rate_monthly_11" model="l10n.mx.table.isr.subsidy.rate">
+            <field name="l10n_mx_isr_subsidy_income_from">7382.34</field>
+            <field name="l10n_mx_isr_subsidy_income_of">10000000</field>
+            <field name="l10n_mx_isr_subsidy_quantity">0</field>
+        </record>
+        <!-- END ISR Subsidy Rate MONTHLY-->
+        <!--START ISR Rate ANNUAL-->
+        <record id="l10n_mx_isr_rate_annual_1" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">0.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">7735.00</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">0</field>
+            <field name="l10n_mx_isr_rate_percentage">1.92</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_annual_2" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">7735.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">65651.07</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">148.51</field>
+            <field name="l10n_mx_isr_rate_percentage">6.4</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_annual_3" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">65651.08</field>
+            <field name="l10n_mx_isr_rate_upper_limit">115375.90</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">3855.14</field>
+            <field name="l10n_mx_isr_rate_percentage">10.88</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_annual_4" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">115375.91</field>
+            <field name="l10n_mx_isr_rate_upper_limit">134119.41</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">9265.20</field>
+            <field name="l10n_mx_isr_rate_percentage">16</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_annual_5" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">134119.42</field>
+            <field name="l10n_mx_isr_rate_upper_limit">160577.65</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">12264.16</field>
+            <field name="l10n_mx_isr_rate_percentage">17.92</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_annual_6" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">160577.66</field>
+            <field name="l10n_mx_isr_rate_upper_limit">323862.00</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">17005.47</field>
+            <field name="l10n_mx_isr_rate_percentage">21.36</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_annual_7" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">323862.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">510451.00</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">51883.01</field>
+            <field name="l10n_mx_isr_rate_percentage">23.52</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_annual_8" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">510451.01</field>
+            <field name="l10n_mx_isr_rate_upper_limit">974535.03</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">95768.74</field>
+            <field name="l10n_mx_isr_rate_percentage">30</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_annual_9" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">974535.04</field>
+            <field name="l10n_mx_isr_rate_upper_limit">1299380.04</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">234993.95</field>
+            <field name="l10n_mx_isr_rate_percentage">32</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_annual_10" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">1299380.05</field>
+            <field name="l10n_mx_isr_rate_upper_limit">3898140.12</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">338944.34</field>
+            <field name="l10n_mx_isr_rate_percentage">34</field>
+        </record>
+
+        <record id="l10n_mx_isr_rate_annual_11" model="l10n.mx.table.isr.rate">
+            <field name="l10n_mx_isr_rate_lower_limit">3898140.13</field>
+            <field name="l10n_mx_isr_rate_upper_limit">100000000</field>
+            <field name="l10n_mx_isr_rate_fixed_fee">1222522.76</field>
+            <field name="l10n_mx_isr_rate_percentage">35</field>
+        </record>
+        <!--END ISR Rate ANNUAL-->
+        <!--ISR TABLE DAILY-->
+        <record id="table_isr_daily" model="l10n.mx.table.isr">
+            <field name="l10n_mx_isr_year" eval="str(datetime.now().year)"/>
+            <field name="l10n_mx_isr_type">DAILY</field>
+            <field name="l10n_mx_isr_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_1')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_2')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_3')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_4')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_5')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_6')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_7')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_8')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_9')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_10')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_daily_11'))]"/>
+
+            <field name="l10n_mx_isr_subsidy_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_1')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_2')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_3')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_4')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_5')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_6')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_7')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_8')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_9')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_10')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_daily_11'))]"/>
+        </record>
+        <!--ISR TABLE WEEKLY-->
+        <record id="table_isr_weekly" model="l10n.mx.table.isr">
+            <field name="l10n_mx_isr_year" eval="str(datetime.now().year)"/>
+            <field name="l10n_mx_isr_type">WEEKLY</field>
+            <field name="l10n_mx_isr_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_1')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_2')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_3')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_4')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_5')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_6')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_7')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_8')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_9')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_10')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_weekly_11'))]"/>
+
+            <field name="l10n_mx_isr_subsidy_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_1')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_2')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_3')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_4')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_5')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_6')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_7')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_8')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_9')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_10')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_weekly_11'))]"/>
+        </record>
+        <!--ISR TABLE DECENNIAL-->
+        <record id="table_isr_decennial" model="l10n.mx.table.isr">
+            <field name="l10n_mx_isr_year" eval="str(datetime.now().year)"/>
+            <field name="l10n_mx_isr_type">DECENNIAL</field>
+            <field name="l10n_mx_isr_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_1')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_2')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_3')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_4')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_5')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_6')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_7')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_8')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_9')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_10')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_decennial_11'))]"/>
+
+            <field name="l10n_mx_isr_subsidy_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_1')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_2')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_3')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_4')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_5')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_6')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_7')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_8')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_9')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_10')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_decennial_11'))]"/>
+        </record>
+
+        <!--ISR TABLE BIWEEKLY-->
+        <record id="table_isr_biweekly" model="l10n.mx.table.isr">
+            <field name="l10n_mx_isr_year" eval="str(datetime.now().year)"/>
+            <field name="l10n_mx_isr_type">BIWEEKLY</field>
+            <field name="l10n_mx_isr_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_1')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_2')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_3')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_4')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_5')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_6')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_7')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_8')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_9')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_10')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_biweekly_11'))]"/>
+
+            <field name="l10n_mx_isr_subsidy_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_1')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_2')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_3')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_4')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_5')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_6')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_7')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_8')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_9')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_10')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_biweekly_11')),
+                                                              ]"/>
+        </record>
+
+        <!--ISR TABLE MONTHLY-->
+        <record id="table_isr_monthly" model="l10n.mx.table.isr">
+            <field name="l10n_mx_isr_year" eval="str(datetime.now().year)"/>
+            <field name="l10n_mx_isr_type">MONTHLY</field>
+            <field name="l10n_mx_isr_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_1')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_2')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_3')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_4')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_5')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_6')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_7')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_8')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_9')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_10')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_monthly_11'))]"/>
+
+            <field name="l10n_mx_isr_subsidy_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_1')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_2')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_3')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_4')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_5')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_6')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_7')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_8')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_9')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_10')),
+                                                              (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_subsidy_rate_monthly_11'))]"/>
+        </record>
+
+        <!--ISR TABLE ANNUAL-->
+        <record id="table_isr_annual" model="l10n.mx.table.isr">
+            <field name="l10n_mx_isr_year" eval="str(datetime.now().year)"/>
+            <field name="l10n_mx_isr_type">ANNUAL</field>
+            <field name="l10n_mx_isr_rate_ids" eval="[(4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_1')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_2')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_3')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_4')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_5')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_6')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_7')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_8')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_9')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_10')),
+                                                      (4, ref('erp_l10n_mx_payslip_cfdi_base.l10n_mx_isr_rate_annual_11'))]"/>
+        </record>
+
+
+    </data>
+</odoo>

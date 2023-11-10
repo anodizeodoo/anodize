@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--FUMP loader Form-->
+        <record id="hr_fump_loader_view_form" model="ir.ui.view">
+            <field name="name">hr.fump.loader.form</field>
+            <field name="model">hr.fump.loader</field>
+            <field name="arch" type="xml">
+                <form string="Fump loader">
+                    <header>
+                        <button name="action_load_file"
+                                string="Cargar Archivo de Sincronización"
+                                type="object"
+                                states="draft"
+                                class="oe_highlight"/>
+
+                        <button name="action_sync_up"
+                                string="Sincronizar"
+                                type="object"
+                                states="xlsx_loaded"
+                                class="oe_highlight"/>
+
+                        <button name="action_loan_fump"
+                                string="Generar los FUMP"
+                                type="object"
+                                states="synchronized"
+                                class="oe_highlight"/>
+
+                        <button name="action_draft"
+                                string="Cambiar a Borrador"
+                                type="object"
+                                states="xlsx_loaded,synchronized,gen_fump"
+                                class="oe_highlight"
+                                confirm="Se eliminan los registros importados pero no se deshacen las actualizaciones de registros ya existentes"/>
+
+                        <button name="action_unlink_imported_only_fump"
+                                string="Eliminar Fump"
+                                help="Se eliminan los Fump importados"
+                                type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('state', '!=', 'gen_fump')]}"/>
+
+<!--                        <button name="action_unlink_imported_fump"-->
+<!--                                string="Eliminar FUMP Importados"-->
+<!--                                type="object"-->
+<!--                                attrs="{'invisible': [('imported_fumps', '=', 0)]}"-->
+<!--                                groups="hr.group_hr_user"/>-->
+
+                        <button name="action_view_import_errors"
+                            attrs="{'invisible':[('fump_data_errors','!=',True)]}"
+                            string="Ver Errores"
+                            type="object"
+                            class="oe_highlight"/>
+
+                        <field name="state"
+                               widget="statusbar"
+                               statusbar_visible="draft,xlsx_loaded,synchronized,gen_fump"/>
+                    </header>
+                    <sheet>
+                        <group name="aux_fields" invisible="1">
+                            <field name="fump_data_errors" widget="boolean_toggle"/>
+                        </group>
+
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Ej: Fump 2022/04/01"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="user_id" readonly="1"/>
+                                <field name="date" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="file"
+                                       filename="file_name"
+                                       placeholder="Choose a file to import..."
+                                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="file_name" invisible="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                            </group>
+                            <group>
+                                <field name="fump_file"
+                                       filename="fump_file_name"
+                                       placeholder="Choose a file to import..."
+                                       attrs="{'invisible': [('state', 'not in', ['synchronized','gen_fump'])]}"/>
+                                <field name="fump_file_name" invisible="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="imported_fumps" readonly="1" attrs="{'invisible': [('state', '!=', 'gen_fump')]}"/>
+                                <button name="action_view_imported_fumps"
+                                        string="Ver Fump"
+                                        icon="fa-eye text-success"
+                                        help="Se muestras los Fump importados"
+                                        type="object"
+                                        attrs="{'invisible': [('state', '!=', 'gen_fump')]}"/>
+                                <field name="synchronized_employees" readonly="1" attrs="{'invisible': [('state', 'not in', ['synchronized','gen_fump'])]}"/>
+                                <button name="action_view_synchronized_employees"
+                                        string="Ver Empleados Sincronizados"
+                                        icon="fa-eye text-success"
+                                        help="Se muestras los empleados sincronizados"
+                                        type="object"
+                                        attrs="{'invisible': [('state', 'not in', ['synchronized','gen_fump'])]}"/>
+                                <field name="synchronized_contract" readonly="1" attrs="{'invisible': [('state', 'not in', ['synchronized','gen_fump'])]}"/>
+                                <button name="action_view_synchronized_contracts"
+                                        string="Ver Contratos Sincronizados"
+                                        icon="fa-eye text-success"
+                                        help="Se muestras los contratos sincronizados"
+                                        type="object"
+                                        attrs="{'invisible': [('state', 'not in', ['synchronized','gen_fump'])]}"/>
+                            </group>
+                        </group>
+                        <group string="Descargar Archivo de Ejemplo">
+                            <group>
+                                <ul>
+                                    <li>
+                                        Plantilla de Fump (.XLSX)
+                                        <a href="/erp_l10n_mx_hr_fump/static/src/xls/Extracto_contratos_y_nombramientos.xlsx"
+                                           class="ml4"
+                                           download="Extracto_contratos_y_nombramientos.xlsx">
+                                            <i class="fa fa-download mr4"/>
+                                            Descargar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </group>
+                            <group>
+                                <ul>
+                                    <li>
+                                        Plantilla de Sincronización (.XLSX)
+                                        <a href="/erp_l10n_mx_hr_fump/static/src/xls/kardex_Sueldos_y_Honorarios.xlsx"
+                                           class="ml4"
+                                           download="kardex_Sueldos_y_Honorarios.xlsx">
+                                            <i class="fa fa-download mr4"/>
+                                            Descargar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_fump_loader_tree" model="ir.ui.view">
+            <field name="name">hr.fump.loader.tree</field>
+            <field name="model">hr.fump.loader</field>
+            <field name="arch" type="xml">
+                <tree string="fump Loader">
+                    <field name="file_name"/>
+                    <field name="fump_file_name"/>
+                    <field name="user_id"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hr_fump_loader_filter" model="ir.ui.view">
+            <field name="name">hr.fump.loader.filter</field>
+            <field name="model">hr.fump.loader</field>
+            <field name="arch" type="xml">
+                <search string="Search">
+                    <field name="user_id"/>
+                    <filter string="My Import" name="my_import" domain="[('user_id', '=', uid)]"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_user" string="User" context="{'group_by':'user_id'}"/>
+                        <separator/>
+                        <filter name="group_date" string="Date" context="{'group_by':'date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--Errores encontrados en la importación de los Fump-->
+        <record id="hr_fump_import_error_view_tree" model="ir.ui.view">
+            <field name="name">hr.fump.import.error.tree</field>
+            <field name="model">hr.fump.import.error</field>
+            <field name="arch" type="xml">
+                <tree edit="0" create="0" delete="0">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_fump_import_error_view_filters" model="ir.ui.view">
+            <field name="name">hr.fump.import.error.search</field>
+            <field name="model">hr.fump.import.error</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="hr_fump_import_error_view_form" model="ir.ui.view">
+            <field name="name">hr.fump.import.error.form</field>
+            <field name="model">hr.fump.import.error</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group col="4">
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="hr_fump_loader_action" model="ir.actions.act_window">
+            <field name="name">Sincronización de RRHH</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.fump.loader</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

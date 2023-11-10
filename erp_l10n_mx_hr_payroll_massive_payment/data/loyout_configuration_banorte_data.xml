@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="0">
+
+    <record id="layout_configuration_banorte_01" model="layout.configuration">
+        <field name="column_name">Tipo de Operacion</field>
+        <field name="column_length">2</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">04</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="layout_configuration_banorte_02" model="layout.configuration">
+        <field name="column_name">Clave ID</field>
+        <field name="column_length">13</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="layout_configuration_banorte_03" model="layout.configuration">
+        <field name="column_name">Cuenta Origen</field>
+        <field name="column_length">20</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="layout_configuration_banorte_04" model="layout.configuration">
+        <field name="column_name">Cuenta Destino</field>
+        <field name="column_length">20</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">4</field>
+    </record>
+
+    <record id="layout_configuration_banorte_05" model="layout.configuration">
+        <field name="column_name">Importe</field>
+        <field name="column_length">14</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">5</field>
+    </record>
+
+    <record id="layout_configuration_banorte_06" model="layout.configuration">
+        <field name="column_name">Referencia</field>
+        <field name="column_length">10</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">6</field>
+    </record>
+
+    <record id="layout_configuration_banorte_07" model="layout.configuration">
+        <field name="column_name">Descripcion</field>
+        <field name="column_length">30</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">7</field>
+    </record>
+
+    <record id="layout_configuration_banorte_08" model="layout.configuration">
+        <field name="column_name">Moneda Origen</field>
+        <field name="column_length">1</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">1</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">8</field>
+    </record>
+
+    <record id="layout_configuration_banorte_09" model="layout.configuration">
+        <field name="column_name">Moneda Destino</field>
+        <field name="column_length">1</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">1</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">9</field>
+    </record>
+
+    <record id="layout_configuration_banorte_10" model="layout.configuration">
+        <field name="column_name">RFC Ordenante</field>
+        <field name="column_length">13</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">SSJ970331PM5</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="layout_configuration_banorte_11" model="layout.configuration">
+        <field name="column_name">IVA</field>
+        <field name="column_length">14</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">11</field>
+    </record>
+
+    <record id="layout_configuration_banorte_12" model="layout.configuration">
+        <field name="column_name">Email Beneficiario</field>
+        <field name="column_length">39</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">12</field>
+    </record>
+
+    <record id="layout_configuration_banorte_13" model="layout.configuration">
+        <field name="column_name">Fecha de Aplicacion</field>
+        <field name="column_length">8</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">13</field>
+    </record>
+
+    <record id="layout_configuration_banorte_14" model="layout.configuration">
+        <field name="column_name">Instruccion del Pago</field>
+        <field name="column_length">70</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">SSJAL PAGO</field>
+        <field name="use_default_char" eval="True"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_072_BANORTE"/>
+        <field name="sequence">14</field>
+    </record>
+
+    <record id='l10n_mx.acc_bank_072_BANORTE' model='res.bank'>
+        <field name="has_report" eval="True"/>
+        <field name="code_bank_report" eval="'banorte'"/>
+        <field name="layout_configuration_ids" eval="[(4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_01')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_02')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_03')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_04')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_05')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_06')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_07')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_08')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_09')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_10')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_11')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_12')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_13')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_banorte_14')),
+                                                       ]"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="hr_salary_rule_view_form_inh_l10n_mx">
+        <field name="name">hr.salary.rule.form.inh.l10n_mx</field>
+        <field name="model">hr.salary.rule</field>
+        <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='code']" position="after">
+                <field name="l10n_mx_sat_key_id"
+                       options="{'no_create_edit': True, 'no_create': 1}"/>
+                <field name="l10n_mx_code"  invisible="1"/>
+            </xpath>
+            <group name="main_details" position="after">
+                <group>
+                    <group string="Configuration for ISR/IMSS calculation">
+                        <field name="l10n_mx_isr" widget="toggle_button"/>
+                        <field name="l10n_mx_imss" widget="toggle_button"/>
+                        <field name="l10n_mx_percep_grav_isr" widget="toggle_button"/>
+                    </group>
+                    <group></group>
+                </group>
+            </group>
+            <field name="struct_id" position="after">
+                <field name="l10n_mx_visibility_automatic_isr" invisible="1"/>
+                <field name="l10n_mx_automatic_isr"
+                        widget="boolean_toggle"
+                       attrs="{'invisible': [('l10n_mx_visibility_automatic_isr', '=', False)]}"/>
+            </field>
+            <field name="code" position="attributes">
+                <attribute name="attrs">{'readonly': [('l10n_mx_visibility_automatic_isr', '=', True)]}</attribute>
+            </field>
+            <xpath expr="//notebook/page[last()]" position="after">
+                <page string="ISR decreases" attrs="{'invisible': [('code', '!=', 'AUX_ISR')]}">
+                    <field name="rule_aux_isr_ids">
+                        <tree editable="bottom">
+                            <field name="rule_id"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Report classifier">
+                    <field name="rule_report_classifier_ids">
+                        <tree editable="bottom">
+                            <field name="report_classifier_id" options="{'no_create': True, 'no_create_edit': True}"/>
+                            <field name="sequence"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//group[@name='general_conditions']/group[3]" position="attributes">
+                <attribute name="attrs">{'invisible': [('l10n_mx_automatic_isr', '=', True)]}</attribute>
+            </xpath>
+            <xpath expr="//group[@name='general_conditions']/group[4]" position="attributes">
+                <attribute name="attrs">{'invisible': [('l10n_mx_automatic_isr', '=', True)]}</attribute>
+            </xpath>
+            <field name="active" position="after">
+                <field name="is_total_deduction" widget="boolean_toggle"/>
+                <field name="l10n_mx_sum_total" widget="boolean_toggle"/>
+                <field name="is_net_adjustments" widget="boolean_toggle" invisible="1"/>
+                <field name="table_net_adjustments_id" invisible="1"/>
+            </field>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_salary_rule_list_inh">
+        <field name="name">hr.salary.rule.list.inh</field>
+        <field name="model">hr.salary.rule</field>
+        <field name="inherit_id" ref="hr_payroll.hr_salary_rule_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='code']" position="after">
+                <field name="l10n_mx_sat_key_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_hr_employee_grade_form_inh_l10n_mx">
+        <field name="name">hr.employee.grade.form.inh.l10n_mx</field>
+        <field name="model">hr.payroll.structure</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_employee_grade_form"/>
+        <field name="arch" type="xml">
+            <field name="country_id" position="after">
+                <field name="l10n_mx_payslip_type"/>
+            </field>
+            <field name="journal_id" position="after">
+                <field name="l10n_mx_stamp_payroll" widget="boolean_toggle"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_salary_rule_category_form_inh_l10n_mx">
+        <field name="name">hr.salary.rule.category.form.inh.l10n_mx</field>
+        <field name="model">hr.salary.rule.category</field>
+        <field name="inherit_id" ref="hr_payroll.hr_salary_rule_category_form"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="report_classifier_id" options="{'no_create': True, 'no_create_edit': True}"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_payroll_structure_type_view_form_inherit">
+        <field name="name">hr.payroll.structure.type.form.inherit</field>
+        <field name="model">hr.payroll.structure.type</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payroll_structure_type_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header name="header">
+                    <button name="generate_periods" type="object" string="Generate Periods" class="oe_highlight"/>
+                </header>
+            </xpath>
+            <xpath expr="//div[@class='oe_title']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <field name="country_id" position="before">
+                <field name="code"/>
+                <field name="name" placeholder="Por ejemplo, empleado"/>
+                <field name="l10n_mx_payroll_schedule_pay_id" />
+                <field name="default_schedule_pay" position="move"/>
+                <field name="date_start" required="1"/>
+                <field name="date_end" required="1"/>
+                <field name="weekday" attrs="{'invisible': [('default_schedule_pay', 'not in', ('decennial', 'weekly'))], 'required': [('default_schedule_pay', 'in', ('decennial', 'weekly'))]}"/>
+                <field name="l10n_mx_table_isr_id" options="{'no_create': True, 'no_create_edit': True}" required="1"/>
+            </field>
+            <field name="default_schedule_pay" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+            <field name="default_resource_calendar_id" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+            <field name="country_id" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+            <xpath expr="//sheet/group" position="after">
+                <notebook>
+                    <page name='periods' string="Periods">
+                        <field name="periods_ids" nolabel="1">
+                            <tree create="0" delete="0" editable="0">
+                                <field name="order"/>
+                                <field name="date_start"/>
+                                <field name="date_end"/>
+                                <field name="days" optional="show"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

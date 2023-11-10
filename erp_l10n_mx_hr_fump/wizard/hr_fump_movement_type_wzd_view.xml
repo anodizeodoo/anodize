@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		<record id="erp_hr_fump_movement_type_wzd_view_form" model="ir.ui.view">
+			<field name="name">hr.fump.movement.type.wzd.form</field>
+			<field name="model">hr.fump.movement.type.wzd</field>
+			<field name="arch" type="xml">
+				<form string="Fump Movement Type Wizard">
+                    <group>
+                        <group>
+                            <field name="date_expedition"/>
+                            <field name="employee_id" options="{'no_create_edit':1}" attrs="{'invisible': [('employee_id','=',False)]}" readonly="1" force_save="1"/>
+                        </group>
+                        <group>
+                            <label for="date_from" string="Vigencia"/>
+                               <div class="o_row">
+                                    <field name="date_from" class="oe_inline" required="1"/>
+                                    <span class="oe_inline">
+                                        -
+                                    </span>
+                                    <field name="date_to" class="oe_inline"/>
+                               </div>
+                            <field name="contract_id" options="{'no_create_edit':1}" attrs="{'readonly': [('contract_id','!=',False)]}" force_save="1" domain="[('employee_id','=',employee_id)]"/>
+                            <field name="holiday_id" options="{'no_create_edit':1}" attrs="{'invisible': [('holiday_id','=',False)]}" readonly="1" force_save="1"/>
+                            <field name="movement_type_id" options="{'no_create': True, 'no_create_edit': True}"/>
+                        </group>
+                    </group>
+                   <group colspan="4" col="4" string="Otros Detalles">
+                       <field name="rhs" widget="radio"/>
+                       <field name="country_id" options="{'no_create': True, 'no_create_edit': True}"/>
+                       <field name="state_id" options="{'no_create': True, 'no_create_edit': True}"/>
+                       <field name="city_id" options="{'no_create': True, 'no_create_edit': True}"/>
+                       <field name="company_id"
+                              options="{'no_create': True, 'no_create_edit': True}"
+                              groups="base.group_multi_company"/>
+                   </group>
+                   <footer>
+                        <div>
+                            <button name="btn_save" string="Salvar" type="object" class="oe_highlight"/> o
+                            <button special="cancel" string="Cerrar" class="oe_link"/>
+                        </div>
+                   </footer>
+				</form>
+			</field>
+		</record>
+        
+	</data>
+</odoo>

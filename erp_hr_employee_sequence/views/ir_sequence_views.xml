@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="erp_hr_employee_sequence_hr_view_ir_sequence_form" model="ir.actions.act_window">
+            <field name="name">Employee Sequence</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">ir.sequence</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('code', '=', 'hr.employee.number')]</field>
+            <field name="filter" eval="True"/>
+        </record>
+
+        <menuitem id="erp_hr_employee_hr_main_sequence_menu"
+                  sequence="2" name="Secuencias"
+                  parent="hr.menu_human_resources_configuration"
+                  groups="hr.group_hr_manager"
+        />
+
+        <menuitem id="erp_hr_employee_hr_ir_sequence_menu"
+                  sequence="25" name="Secuencias de empleados"
+                  parent="erp_hr_employee_sequence.erp_hr_employee_hr_main_sequence_menu"
+                  action="erp_hr_employee_sequence.erp_hr_employee_sequence_hr_view_ir_sequence_form"
+                  groups="hr.group_hr_manager"
+        />
+
+    </data>
+</odoo>

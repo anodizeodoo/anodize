@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_contract_category_form_view" model="ir.ui.view">
+            <field name="name">hr.contract.category.form</field>
+            <field name="model">hr.contract.category</field>
+            <field name="arch" type="xml">
+                <form string="Category">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" name="action_employees_views" icon="fa-users">
+                                <field string="Employees" name="count_employee" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="name"/>
+                                <field name="amount_salary_day" widget="Monetary"/>
+                                <field name="active" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" options="{'open_attachments': True}"/>
+                        <field name="message_ids"/>
+                        <field name="activity_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_contract_category_tree_view" model="ir.ui.view">
+            <field name="name">hr.contract.category.tree</field>
+            <field name="model">hr.contract.category</field>
+            <field name="arch" type="xml">
+                <tree string="Category">
+                    <field name="code"/>
+                    <field name="name" string="Category"/>
+                    <field name="amount_salary_day" widget="Monetary" string="Category"/>
+                    <field name="active" widget="boolean_toggle" string="Status"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_contract_category_search_view" model="ir.ui.view">
+            <field name="name">hr.contract.category.search</field>
+            <field name="model">hr.contract.category</field>
+            <field name="arch" type="xml">
+                <search string="Category">
+                    <group expand="1" string="Group By">
+                        <filter string="Status" name="active" domain="[]"
+                                context="{'group_by':'active'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="hr_contract_category_act_window" model="ir.actions.act_window">
+            <field name="name">Category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.contract.category</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Add new Category Contract.
+                </p>
+            </field>
+        </record>
+    </data>
+
+</odoo>

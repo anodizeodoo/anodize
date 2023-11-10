@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="0">
+
+    <record id="layout_configuration_bajio_01" model="layout.configuration">
+        <field name="column_name">Tipo de registro</field>
+        <field name="column_length">2</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">02</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="layout_configuration_bajio_02" model="layout.configuration">
+        <field name="column_name">Numero de Secuencia</field>
+        <field name="column_length">7</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">2</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="layout_configuration_bajio_03" model="layout.configuration">
+        <field name="column_name">Tipo de cuenta del emisor</field>
+        <field name="column_length">2</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">40</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="layout_configuration_bajio_04" model="layout.configuration">
+        <field name="column_name">Numero de cuenta del emisor</field>
+        <field name="column_length">20</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">4</field>
+    </record>
+
+    <record id="layout_configuration_bajio_05" model="layout.configuration">
+        <field name="column_name">Codigo de divisa</field>
+        <field name="column_length">2</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">01</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">5</field>
+    </record>
+
+    <record id="layout_configuration_bajio_06" model="layout.configuration">
+        <field name="column_name">Banco receptor</field>
+        <field name="column_length">5</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">6</field>
+    </record>
+
+    <record id="layout_configuration_bajio_07" model="layout.configuration">
+        <field name="column_name">Importe de la operacion</field>
+        <field name="column_length">15</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">7</field>
+    </record>
+
+    <record id="layout_configuration_bajio_08" model="layout.configuration">
+        <field name="column_name">Fecha de Aplicacion</field>
+        <field name="column_length">8</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">8</field>
+    </record>
+
+    <record id="layout_configuration_bajio_09" model="layout.configuration">
+        <field name="column_name">Medio de pago SPI, TEF, Local</field>
+        <field name="column_length">3</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">9</field>
+    </record>
+
+    <record id="layout_configuration_bajio_10" model="layout.configuration">
+        <field name="column_name">Tipo de cuenta receptor</field>
+        <field name="column_length">2</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">40</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="layout_configuration_bajio_11" model="layout.configuration">
+        <field name="column_name">Numero de cuenta receptor</field>
+        <field name="column_length">20</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">11</field>
+    </record>
+
+    <record id="layout_configuration_bajio_12" model="layout.configuration">
+        <field name="column_name">FILLER</field>
+        <field name="column_length">9</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">000000000</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">12</field>
+    </record>
+
+    <record id="layout_configuration_bajio_13" model="layout.configuration">
+        <field name="column_name">Alias</field>
+        <field name="column_length">15</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">alias</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">13</field>
+    </record>
+
+    <record id="layout_configuration_bajio_14" model="layout.configuration">
+        <field name="column_name">Importe del IVA de la Operacion</field>
+        <field name="column_length">15</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="True"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">14</field>
+    </record>
+
+    <record id="layout_configuration_bajio_15" model="layout.configuration">
+        <field name="column_name">Referencia</field>
+        <field name="column_length">250</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">15</field>
+    </record>
+
+    <record id="layout_configuration_bajio_16" model="layout.configuration">
+        <field name="column_name">Referencia SPEI</field>
+        <field name="column_length">7</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_030_BAJIO"/>
+        <field name="sequence">16</field>
+    </record>
+
+    <record id='l10n_mx.acc_bank_030_BAJIO' model='res.bank'>
+        <field name="has_report" eval="True"/>
+        <field name="code_bank_report" eval="'bajio'"/>
+        <field name="layout_configuration_ids" eval="[(4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_01')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_02')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_03')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_04')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_05')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_06')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_07')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_08')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_09')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_10')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_11')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_12')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_13')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_14')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_15')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bajio_16')),
+                                                       ]"/>
+    </record>
+
+</odoo>

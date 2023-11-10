@@ -1,0 +1,417 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* erp_l10n_mx_hr_payroll_massive_payment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-09 21:48+0000\n"
+"PO-Revision-Date: 2022-12-09 16:25-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__massive_payroll_wizard__bank_selection__banbajio
+msgid "Banbajio"
+msgstr "Banbajio"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__massive_payroll_wizard__bank_selection__bancomer
+msgid "Bancomer"
+msgstr "Bancomer"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_hr_payslip__bank_id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__bank_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "Bank"
+msgstr "Banco"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_hr_payslip__bank_account_id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__res_partner_bank_id
+msgid "Bank Account"
+msgstr "Cuenta de banco"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__massive_payroll_wizard__bank_selection__banorte
+msgid "Banorte"
+msgstr "Banorte"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__massive_payroll_wizard__bank_selection__banregio
+msgid "Banregio"
+msgstr "Banregio"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_massive_payroll_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_payroll_massive_payment.action_masive_payroll_payment_act_window
+msgid "Click to add new massive payroll payment"
+msgstr "Haga clic para añadir un nuevo pago masivo de nóminas"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "Date"
+msgstr "Fecha"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__date_start
+msgid "Date From"
+msgstr "Fecha de"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__date_end
+msgid "Date To"
+msgstr "A"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "Date end"
+msgstr "Hasta"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "Date start"
+msgstr "Desde"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_hr_payslip__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre en pantalla"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,help:erp_l10n_mx_hr_payroll_massive_payment.field_hr_payslip__bank_account_id
+msgid "Employee bank salary account"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__file_generate
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__file_generate
+msgid "File"
+msgstr "Archivo"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__file_generate_bool
+msgid "File Generate Bool"
+msgstr "Archivo generado Bool"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__file_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__file_name
+msgid "File Name"
+msgstr "Nombre del Archivo"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__type_file
+msgid "File Output"
+msgstr "Archivo de Salida"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_payroll_massive_payment.action_massive_payroll
+msgid "Generate Massive Payroll"
+msgstr "Generar pago Masivo de nomina"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_massive_payroll_form
+msgid "Generate txt payroll"
+msgstr "Generar txt nomina"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "Group By"
+msgstr "Agrupar por "
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__hr_paylip_run_id
+msgid "Hr Payslip"
+msgstr "Nomina RH"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model,name:erp_l10n_mx_hr_payroll_massive_payment.model_masive_payroll_payment
+msgid "Hr Payslip Massive Payment View"
+msgstr "Vista de Pago Masivo de Nomina de RH "
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_hr_payslip__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__account_journal_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "Journal"
+msgstr "Diario"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_hr_payslip____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Ultima actualizacion por"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualizacion el"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_form
+msgid "Load Payslips"
+msgstr "Cargar Nómina"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_payroll_massive_payment.menu_hr_masive_payroll_payment
+msgid "Masive payroll payment"
+msgstr "Pago Masivo de Nómina"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_form
+msgid "Massive Payment"
+msgstr "Pago Masivo"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_payroll_massive_payment.action_masive_payroll_payment_act_window
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__masive_payroll_payment_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_payroll_massive_payment.menu_item_masive_payroll_payment
+msgid "Massive Payroll Payment"
+msgstr "Pago Masivo de Nómina"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: code:addons/erp_l10n_mx_hr_payroll_massive_payment/wizard/payroll_masive.py:0
+#, python-format
+msgid "Method not implemented"
+msgstr "Metodo no Implementado"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__masive_payroll_payment__state__new
+msgid "New"
+msgstr "Nuevo"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: code:addons/erp_l10n_mx_hr_payroll_massive_payment/wizard/payroll_masive.py:0
+#, python-format
+msgid "No bank selected"
+msgstr "No se ha seleccionado un banco"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: code:addons/erp_l10n_mx_hr_payroll_massive_payment/wizard/payroll_masive.py:0
+#, python-format
+msgid "No payslip in this run"
+msgstr "No hay nomina por cargar"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model,name:erp_l10n_mx_hr_payroll_massive_payment.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Nómina"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_form
+msgid "Paylips to pay"
+msgstr "Nominas a pagar"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__l10n_mx_payment_date
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "Payment Date"
+msgstr "Fecha de pago"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__hr_paylip_run_id
+msgid "Payslip Run"
+msgstr "Lote"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__payslip_ids
+msgid "Payslips"
+msgstr "Nominas"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_form
+msgid "Period"
+msgstr "Periodo"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_massive_payroll_form
+msgid "Process"
+msgstr "Procesar"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "Run"
+msgstr "Accion"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__structure_id
+msgid "Salary Structure"
+msgstr "Estructura Salarial"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__massive_payroll_wizard__bank_selection__santander
+msgid "Santander"
+msgstr "santander"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,help:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__l10n_mx_payment_date
+msgid ""
+"Save the payment date that will be added on all payslip created with this "
+"batch."
+msgstr ""
+"Guardar fecha de pago que sera agregada en todas las nominas creadas"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_massive_payroll_wizard__bank_selection
+msgid "Select bank"
+msgstr "Seleccionar banco"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_form
+msgid "Set conciliate"
+msgstr "Conciliar"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_form
+msgid "Set paid"
+msgstr "Pagar"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_form
+msgid "Set validated"
+msgstr "Validar"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "State"
+msgstr "Estado"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__state
+msgid "Status"
+msgstr "Estado"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "Structure"
+msgstr "Estructura"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__total_amount
+msgid "Total Amount"
+msgstr "Total"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model,name:erp_l10n_mx_hr_payroll_massive_payment.model_massive_payroll_wizard
+msgid "allow generate archive txt with all payroll"
+msgstr "Permite generar multiples archivos en base a un lote"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__masive_payroll_payment__state__conciliate
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "conciliate"
+msgstr "Conciliado"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "conciliate massive payroll payment"
+msgstr "Pago masivo de nomina conciliado"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_payroll_massive_payment.field_masive_payroll_payment__date
+msgid "date"
+msgstr "Fecha"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_form
+msgid "masive_payroll_payment_form"
+msgstr "Vista formulario pago masivo de nomina"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "masive_payroll_payment_search"
+msgstr "Vista busqueda pago masivo de nomina"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_tree
+msgid "masive_payroll_payment_tree"
+msgstr "Vista Lista pago masivo de nomina"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "new"
+msgstr "Nuevo"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "new massive payroll payment"
+msgstr "Pago masivo de nomina nuevo"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__masive_payroll_payment__state__paid
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "paid"
+msgstr "Pagado"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "paid massive payroll payment"
+msgstr "Pago masivo de nomina pagado"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__massive_payroll_wizard__type_file__txt
+msgid "txt"
+msgstr "TXT(texto)"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__masive_payroll_payment__state__validated
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "validated"
+msgstr "Validado"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_payroll_massive_payment.view_masive_payroll_payment_search
+msgid "validated massive payroll payment"
+msgstr "Pago masivo de nomina validado"
+
+#. module: erp_l10n_mx_hr_payroll_massive_payment
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_payroll_massive_payment.selection__massive_payroll_wizard__type_file__xls
+msgid "xls"
+msgstr "XLS(excel)"

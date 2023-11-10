@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="0">
+
+    <record id="layout_configuration_santander_01" model="layout.configuration">
+        <field name="column_name">Codigo loyout</field>
+        <field name="column_length">5</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">LTX05</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="layout_configuration_santander_02" model="layout.configuration">
+        <field name="column_name">Cuenta de cargo</field>
+        <field name="column_length">18</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="layout_configuration_santander_03" model="layout.configuration">
+        <field name="column_name">Cuenta de abono</field>
+        <field name="column_length">20</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="layout_configuration_santander_04" model="layout.configuration">
+        <field name="column_name">Banco recepcion</field>
+        <field name="column_length">5</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">4</field>
+    </record>
+
+    <record id="layout_configuration_santander_05" model="layout.configuration">
+        <field name="column_name">Beneficiario</field>
+        <field name="column_length">40</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">5</field>
+    </record>
+
+    <record id="layout_configuration_santander_06" model="layout.configuration">
+        <field name="column_name">Sucursal</field>
+        <field name="column_length">4</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">0100</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">6</field>
+    </record>
+
+    <record id="layout_configuration_santander_07" model="layout.configuration">
+        <field name="column_name">Importe</field>
+        <field name="column_length">18</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">7</field>
+    </record>
+
+    <record id="layout_configuration_santander_08" model="layout.configuration">
+        <field name="column_name">Plaza banxico</field>
+        <field name="column_length">5</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">01001</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">8</field>
+    </record>
+
+    <record id="layout_configuration_santander_09" model="layout.configuration">
+        <field name="column_name">Concepto</field>
+        <field name="column_length">40</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">9</field>
+    </record>
+
+    <record id="layout_configuration_santander_10" model="layout.configuration">
+        <field name="column_name">Referencia Ordenante</field>
+        <field name="column_length">7</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="layout_configuration_santander_11" model="layout.configuration">
+        <field name="column_name">Email Beneficiario</field>
+        <field name="column_length">40</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">11</field>
+    </record>
+
+    <record id="layout_configuration_santander_12" model="layout.configuration">
+        <field name="column_name">Forma de Aplicacion</field>
+        <field name="column_length">1</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">1</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">12</field>
+    </record>
+
+    <record id="layout_configuration_santander_13" model="layout.configuration">
+        <field name="column_name">Fecha de Aplicacion</field>
+        <field name="column_length">8</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_014_SANTANDER"/>
+        <field name="sequence">13</field>
+    </record>
+
+    <record id='l10n_mx.acc_bank_014_SANTANDER' model='res.bank'>
+        <field name="has_report" eval="True"/>
+        <field name="code_bank_report" eval="'santander'"/>
+        <field name="layout_configuration_ids" eval="[(4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_01')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_02')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_03')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_04')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_05')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_06')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_07')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_08')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_09')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_10')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_11')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_12')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_santander_13')),
+                                                       ]"/>
+    </record>
+
+</odoo>

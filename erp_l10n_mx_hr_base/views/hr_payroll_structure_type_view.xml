@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_payroll_structure_type_view_inherit_view_base" model="ir.ui.view">
+            <field name="name">hr.payroll.structure.type.inherit.form.base</field>
+            <field name="model">hr.payroll.structure.type</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payroll_structure_type_view_form"/>
+            <field name="arch" type="xml">
+                <field name="default_schedule_pay" position="before">
+                    <field name="contract_type_id" string="Contract type"/>
+                </field>
+                <field name="default_schedule_pay" position="after">
+                    <field name="type_of_benefit_id" string="Benefit type"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

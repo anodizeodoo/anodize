@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_scholarship_registration_view" model="ir.ui.view">
+            <field name="name">hr.scholarship.registration.form</field>
+            <field name="model">hr.scholarship.registration</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm_registration" string="Registration" type="object" class="btn btn-primary" states="validated"/>
+                        <button name="back_to_draft" string="Back To Draft" type="object" states="validated"/>
+                        <button name="action_confirm_validate" string="Validate" type="object" class="btn btn-primary" states="draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,validated,loaded"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="amortization_date"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="payslip_run_id"/>
+                            </group>
+                            <group>
+                                <field name="active_all" widget="boolean_toggle"/>
+                                <field name="unactive_all" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                        <field name="line_registration_ids" nolabel="1">
+                            <tree string="Line Registration" editable="bottom" force_safe="1">
+                                <field name="number_employee" readonly="1" force_safe="1"/>
+                                <field name="employee_id"  force_safe="1"/>
+                                <field name="contract_id" force_safe="1"/>
+                                <field name="scholarship_id"  force_safe="1"/>
+                                <field name="relationship_id"   force_safe="1"/>
+                                <field name="sequence"   force_safe="1"/>
+                                <field class="text-info" decoration-bf="1" name="grade_id" force_safe="1"/>
+                                <field class="text-info"  decoration-bf="1" name="qualification" force_safe="1"/>
+                                <field  class="text-info" decoration-bf="1" name="amount" widget="Monetary"/>
+                                <field class="text-info" decoration-bf="1" name="amount2" widget="Monetary"/>
+                                <field class="text-info" decoration-bf="1" name="observations" />
+                                <field  widget="badge" name="state"  decoration-info="1" readonly="1"/>
+                                <field name="active" widget="boolean_toggle" attrs="{'readonly': [('state', 'not in', ['draft','validated'])]}"/>
+                                <field name="create_uid" readonly="1"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_scholarship_registration_line_tree" model="ir.ui.view">
+            <field name="name">hr.scholarship.registration.line.tree</field>
+            <field name="model">hr.scholarship.registration.line</field>
+            <field name="arch" type="xml">
+                <tree create="0">
+                    <field name="amortization_date"/>
+                    <field name="lote_id"/>
+                    <field name="number_employee"/>
+                    <field name="employee_id"/>
+                    <field name="contract_id"/>
+                    <field name="scholarship_id"/>
+                    <field name="grade_id"/>
+                    <field name="qualification"/>
+                    <field name="amount"/>
+                    <field name="amount2"/>
+                    <field name="observations"/>
+                    <field name="state" options="{'classes': {'draft': 'default','validated': 'warnig' ,'loaded': 'success'}}"/>
+                    <field name="active" widget="boolean_toggle" attrs="{'readonly': [('state', 'not in', ['draft','validated'])]}"/>
+                    <field name="create_uid"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_scholarship_registration_tree" model="ir.ui.view">
+            <field name="name">hr.scholarship.registration.tree</field>
+            <field name="model">hr.scholarship.registration</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="amortization_date"/>
+                    <field name="payslip_run_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_scholarship_registration_act_window" model="ir.actions.act_window">
+            <field name="name">Scholarship Registration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.scholarship.registration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_scholarship_registration_tree')}),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('hr_scholarship_registration_view')})]"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here you can Add a new Scholarship Registration.
+                </p>
+            </field>
+        </record>
+
+        <record id="hr_scholarship_registration_line_act_window" model="ir.actions.act_window">
+            <field name="name">Scholarship Registration Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.scholarship.registration.line</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" eval="hr_scholarship_registration_line_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here you can Add a new Scholarship Registration Line.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

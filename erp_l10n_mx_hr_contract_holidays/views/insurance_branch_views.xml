@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="insurance_branch_view_tree" model="ir.ui.view">
+            <field name="name">insurance.branch.view.tree</field>
+            <field name="model">l10n.mx.insurance.branch</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="insurance_branch_view_form" model="ir.ui.view">
+            <field name="name">insurance.branch.view.form</field>
+            <field name="model">l10n.mx.insurance.branch</field>
+            <field name="arch" type="xml">
+                <form string="Insurance branch">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                            </group>
+                            <group>
+                                <field name="code" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="insurance_branch_action" model="ir.actions.act_window">
+            <field name="name">Insurance branch</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.mx.insurance.branch</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                   No records found.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+            id="menu_disabilities_configuration"
+            name="Disabilities"
+            parent="hr_holidays.menu_hr_holidays_configuration"
+            sequence="50"/>
+
+        <menuitem
+            id="menu_action_insurance_branch"
+            action="insurance_branch_action"
+            name="Insurance branch"
+            parent="erp_l10n_mx_hr_contract_holidays.menu_disabilities_configuration"
+            sequence="10"/>
+
+    </data>
+</odoo>
