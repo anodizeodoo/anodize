@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+<record id="erp_fump_hr_employee_fump_view_form" model="ir.ui.view">
+            <field name="name">erp.fump.hr.employee.fump.view.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name='birthday' position="after">
+                    <field name="confirm_movement" widget="boolean_toggle"/>
+                    <field name="fump_ids" invisible="1"/>
+                </field>
+                <xpath expr="//sheet" position="before">
+    				<header>
+    					<button name="btn_change"
+                                string="Confirmar Modificación"
+                                attrs="{'invisible':[('confirm_movement','!=',True)]}"
+                                type="object" class="oe_highlight" groups="hr.group_hr_user"/>
+    				</header>
+    			</xpath>
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="action_view_fump" type="object" class="oe_stat_button"
+                        icon="fa-cogs" attrs="{'invisible': [('fump_ids', '=', [])]}" groups="hr.group_hr_user">
+                        <field name="fump_count" widget="statinfo" string="Movimientos" />
+                    </button>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

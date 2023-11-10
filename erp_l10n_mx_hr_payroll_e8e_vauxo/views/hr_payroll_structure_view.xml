@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="hr_payroll_structure_form_inherit_l10n_mx">
+        <field name="name">hr.payroll.structure.inherit.l10n_mx</field>
+        <field name="model">hr.payroll.structure</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_employee_grade_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='report_id']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='report_id']" position="after">
+                <field name="template_id" domain="[('model', '=', 'hr.payslip')]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

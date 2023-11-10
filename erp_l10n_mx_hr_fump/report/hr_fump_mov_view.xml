@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="paperformat_fump" model="report.paperformat">
+            <field name="name">FORMATO UNICO DE MOVIMIENTO DE PERSONAL</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">297</field>
+            <field name="page_width">210</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">10</field>
+            <field name="margin_bottom">13</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report id="action_report_fump"
+                model="hr.fump"
+                string="FORMATO UNICO DE MOVIMIENTO DE PERSONAL"
+                report_type="qweb-html"
+                name="erp_l10n_mx_hr_fump.report_mov_fump"
+                file="erp_l10n_mx_hr_fump.report_mov_fump"
+                paperformat="erp_l10n_mx_hr_fump.paperformat_fump"
+                />
+
+        <template id="report_mov_fump">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="container">
+                        <div class="page">
+                            <table border="0" cellspacing="0" class="table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td style="border:solid 1px" align="left" colspan="22" height="18" valign="bottom"><br></br></td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td style="border:solid 1px" align="center" bgcolor="#C0C0C0" colspan="8" valign="bottom"><b><font face="Arial" size="2">VIGENCIA</font></b></td>
+                                        <td style="border:solid 1px" align="center" colspan="19" valign="bottom"><b><font face="Arial" size="2">OPERACIÓN</font></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:solid 1px" align="left" colspan="3" height="76" rowspan="4" valign="bottom"><br></br></td>
+                                        <td width="50%" style="border:solid 1px" align="right" colspan="19" valign="bottom"><b><font face="Arial" size="2">FORMATO UNICO DE MOVIMIENTO DE PERSONAL</font></b></td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="bottom"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="bottom"><font face="Arial" size="1">AÑO</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="bottom"><font face="Arial" size="1">MES</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="bottom"><font face="Arial" size="1">DIA</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="10" valign="bottom"><font face="Arial" size="1">No. DE DOCUMENTO/ No. DE EMPLEADO</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="5" valign="middle"><font face="Arial" size="1">LOTE</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="4" valign="middle"><font face="Arial" size="1">QNA.</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="19" valign="bottom"><br></br></td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="bottom"><font face="Arial" size="1">DEL</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="bottom">
+                                            <font face="Arial" size="1"><t t-esc="o.get_year(o.date_from)"/></font>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="bottom">
+                                            <font face="Arial" size="1"><t t-esc="o.get_month(o.date_from)"/></font>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="bottom">
+                                            <font face="Arial" size="1"><t t-esc="o.get_day(o.date_from)"/></font>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="10" rowspan="2"  valign="middle">
+                                            <span t-field="o.company_employee"/>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="5" rowspan="2" valign="bottom"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="4" rowspan="2" valign="bottom"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:solid 1px" align="right" colspan="19" rowspan="2" valign="bottom"><b><font face="Arial" size="2">UNIDAD EXPEDIDORA: <span t-field="o.company_id"/></font></b></td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="bottom"><font face="Arial" size="1">AL</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="bottom">
+                                            <font face="Arial" size="1"><t t-esc="o.get_year(o.date_to)"/></font>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="2" sdnum="23562;0;@" valign="bottom">
+                                            <font face="Arial" size="1"><t t-esc="o.get_month(o.date_to)"/></font>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="2" sdnum="23562;0;@" valign="bottom">
+                                            <font face="Arial" size="1"><t t-esc="o.get_day(o.date_to)"/></font>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="8" rowspan="2" valign="middle"><font face="Arial" size="1">TIPO DE MOVIMIENTO</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="3" rowspan="2" valign="middle"><font face="Arial" size="1">CODIGO</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="7" rowspan="2" valign="bottom"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="3" rowspan="2" valign="middle"><font face="Arial" size="1">NUM. DE NOMINA</font></td>
+                                        <td align="center" rowspan="2" valign="bottom"><br></br></td>
+                                        <td style="border:solid 1px" align="left" colspan="5" rowspan="2" valign="middle"><font face="Arial" size="1">TIPO DE TRABAJADOR</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" colspan="3" height="40" rowspan="2" valign="bottom"><br></br></td>
+                                        <td width="12%" align="left" colspan="10" valign="bottom"><b><font face="Arial" size="1">LUGAR Y FECHA DE EXPEDICIÓN:</font></b></td>
+                                        <td align="center" colspan="8" valign="bottom">
+                                            <font face="Arial" size="1"><span t-field="o.state_id.name"/>-<span t-field="o.date_expedition"/></font>
+                                        </td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="18" valign="bottom"><br></br></td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td align="left" colspan="8" valign="bottom"><br></br></td>
+                                        <td align="left" rowspan="10" valign="bottom"><br></br></td>
+                                        <td align="left" colspan="9" valign="bottom"><br></br></td>
+                                        <td align="left" colspan="3" valign="bottom"><font face="Arial" size="1">REF. FED.</font></td>
+                                        <td align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td align="left" rowspan="11" valign="bottom"><br></br></td>
+                                        <td align="left" colspan="3" valign="bottom"><font face="Arial" size="1">BASE</font></td>
+                                        <td align="center" sdnum="23562;0;@" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <font face="Arial" size="1">01</font>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="15%" style="border:solid 1px" align="center" colspan="5" height="18" valign="top"><font face="Arial" size="1">NUM. AUTORIZACION</font></td>
+                                        <td align="left" colspan="8" valign="bottom"><br></br></td>
+                                        <td align="left" rowspan="8" valign="bottom"><br></br></td>
+                                        <td align="left" colspan="7" valign="bottom"><br></br></td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td align="left" colspan="8" valign="bottom"><font face="Arial" size="1">NUEVO INGRESO</font></td>
+                                        <td align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'NUEVO INGRESO'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'NUEVO INGRESO'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="7" valign="bottom"><font face="Arial" size="1">BAJA</font></td>
+                                        <td align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'BAJA'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'BAJA'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">SALUD MENTAL</font></td>
+                                        <td align="left" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">CONFIANZA</font></td>
+                                        <td align="center" sdnum="23562;0;@" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <font face="Arial" size="1">02</font>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-left:solid 1px;border-right:solid 1px" width="15%" align="left" colspan="5" rowspan="2" valign="middle"><br></br></td>
+                                        <td style="border-top:solid 1px" width="5%" align="left" colspan="3" valign="bottom"><font face="Arial" size="1">CARNET</font></td>
+                                        <td width="15%" style="border-bottom:solid 1px;border-top:solid 1px;border-right:solid 1px" align="center" colspan="5" valign="middle">
+                                            <span t-field="o.employee_carnet"/>
+                                        </td>
+                                        <td style="border-left:solid 1px;border-top:solid 1px" width="5%" align="center" colspan="2" rowspan="2" valign="bottom"><font face="Arial" size="1">N. DE CTA</font></td>
+                                        <td width="15%" style="border-bottom:solid 1px;border-right:solid 1px;border-top:solid 1px" align="center" colspan="6" rowspan="2" sdnum="23562;0;@" valign="bottom">
+                                            <span t-field="o.bank_account"/>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">REINGRESO</font></td>
+                                        <td width="5%" align="center" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'REINGRESO'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'REINGRESO'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">REANUDACION DE LABORES</font></td>
+                                        <td width="5%"  align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'REANUDACION DE LABORES'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'REANUDACION DE LABORES'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">D.I.F.</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">HONORARIOS</font></td>
+                                        <td width="5%" align="center" sdnum="23562;0;@" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <font face="Arial" size="1">03</font>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="3" valign="bottom"><font face="Arial" size="1">ESCOLARIDAD</font></td>
+                                        <td style="border-bottom:solid 1px;border-right:solid 1px" align="center" colspan="5" valign="middle">
+                                            <span t-field="o.certificate"/>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">PROMOCION</font></td>
+                                        <td width="5%"  align="center" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'PROMOCION'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'PROMOCION'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">LICENCIA</font></td>
+                                        <td width="5%" align="center" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'LICENCIA'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'LICENCIA'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">GOB.EDO.</font></td>
+                                        <td width="5%"  align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">INTERINO</font></td>
+                                        <td width="5%" align="center" sdnum="23562;0;@" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <font face="Arial" size="1">04</font>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-left:solid 1px;border-right:solid 1px;border-bottom:solid 1px" align="left" colspan="5" valign="middle"><br></br></td>
+                                        <td width="5%" align="left" colspan="3" valign="bottom"><font face="Arial" size="1">CED. PROF.</font></td>
+                                        <td width="15%" style="border-bottom:solid 1px;border-right:solid 1px" align="center" colspan="5" valign="middle"><br></br></td>
+                                        <td style="border-left:solid 1px" width="5%" align="center" colspan="2" rowspan="2" valign="bottom"><font face="Arial" size="1">SEG. SOCIAL</font></td>
+                                        <td width="15%" style="border-bottom:solid 1px;border-right:solid 1px" align="center" colspan="6" rowspan="2" valign="bottom">
+                                            <span t-field="o.ssnid"/>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">AUMENTO</font></td>
+                                        <td width="5%" align="center" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'AUMENTO'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'AUMENTO'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">CAMBIO RADICACION SUELDOS</font></td>
+                                        <td width="5%"  align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'CAMBIO RADICACION SUELDOS'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'CAMBIO RADICACION SUELDOS'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">ADMON.</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">PROVISIONAL</font></td>
+                                        <td width="5%" align="center" sdnum="23562;0;@" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <font face="Arial" size="1">06</font>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-left:solid 1px" align="left" height="18" valign="bottom"><font face="Arial" size="1">TITULO:</font></td>
+                                        <td style="border-bottom:solid 1px" align="left" width="15%" valign="middle"><br></br></td>
+                                        <td style="border-right:solid 1px" align="left" colspan="3" valign="middle"><br></br></td>
+                                        <td align="left" colspan="3" valign="middle"><br></br></td>
+                                        <td align="left" colspan="5" style="border-right:solid 1px" valign="middle"><font face="Arial" size="1"></font></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">DISMINUCION</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'DISMINUCION'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'DISMINUCION'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">PRIMA QUINCENAL</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'PRIMA QUINCENAL'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'PRIMA QUINCENAL'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">EVENTUAL</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">LISTA DE RAYA</font></td>
+                                        <td width="5%" align="center" sdnum="23562;0;@" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <font face="Arial" size="1">07</font>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-left:solid 1px;border-right:solid 1px" align="left" colspan="5" height="10" valign="middle"><br></br></td>
+                                        <td align="left" colspan="2"  valign="bottom"><font face="Arial" size="1">R.H.S.</font></td>
+                                        <td align="center" rowspan="2" sdnum="23562;" sdval="1" valign="middle"><font face="Arial" size="1">1</font></td>
+                                        <td rowspan="2" align="center" valign="middle">
+                                            <div height="20%" width="100%" style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="center" rowspan="2" sdnum="23562;" sdval="1" valign="middle"><font face="Arial" size="1">2</font></td>
+                                        <td rowspan="2" align="center" valign="middle">
+                                            <div height="20%" width="100%" style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="center" rowspan="2" sdnum="23562;" sdval="1" valign="middle"><font face="Arial" size="1">3</font></td>
+                                        <td style="border-right:solid 1px" rowspan="2" align="center" valign="middle">
+                                            <div height="20%" width="100%" style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td style="border-left:solid 1px" align="center" colspan="2"  rowspan="2" valign="top"><font face="Arial" size="1">CTA. SAR</font></td>
+                                        <td style="border-bottom:solid 1px;border-right:solid 1px" align="center" colspan="6" valign="top">
+                                            <span t-field="o.sinid"/>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">PENSION ALIMENTICIA</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'PENSION ALIMENTICIA'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'PENSION ALIMENTICIA'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">DATOS PERSONALES</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'DATOS PERSONALES'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'DATOS PERSONALES'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">NIVELACION</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">INTERNO</font></td>
+                                        <td width="5%" align="center" sdnum="23562;0;@" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <font face="Arial" size="1">08</font>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-left:solid 1px" align="left" height="18" valign="bottom"><font face="Arial" size="1">OTROS</font></td>
+                                        <td style="border-bottom:solid 1px" align="left" width="15%" valign="middle"><br></br></td>
+                                        <td style="border-right:solid 1px" align="left" colspan="3" valign="middle"><br></br></td>
+                                        <td align="left" colspan="3" valign="middle"><br></br></td>
+                                        <td style="border-right:solid 1px" align="left" colspan="6" valign="middle"><br/></td>
+			                            <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">GRAVIDEZ</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'GRAVIDEZ'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'GRAVIDEZ'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="7" valign="middle"><font face="Arial" size="1">AYUDAS CULTURALES C-36</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'AYUDAS CULTURALES C-36'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'AYUDAS CULTURALES C-36'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">COMPENSACION</font></td>
+                                        <td width="5%" align="left" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">RESIDENTE</font></td>
+                                        <td width="5%" align="center" sdnum="23562;0;@" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <font face="Arial" size="1">09</font>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-left:solid 1px;border-right:solid 1px;border-bottom:solid 1px" width="15%" align="center" colspan="5" height="18" valign="top"><br></br></td>
+                                        <td style="border-right:solid 1px;border-bottom:solid 1px" align="left" colspan="8" valign="bottom"><br></br></td>
+                                        <td style="border-left:solid 1px;border-bottom:solid 1px;" align="left" rowspan="8" valign="bottom"><br></br></td>
+                                        <td style="border-right:solid 1px;border-bottom:solid 1px;" align="left" colspan="7" valign="bottom"><br></br></td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td align="left" colspan="7" valign="bottom"><font face="Arial" size="1">BASIFICACION</font></td>
+                                        <td align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'BASIFICACION'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'BASIFICACION'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="7" valign="bottom"><font face="Arial" size="1">ALTA/BAJA MED. RIESGO C-34</font></td>
+                                        <td align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <t t-if="o.movement_type_name == 'ALTA/BAJA MED. RIESGO C-34'"><font face="Arial">X</font></t>
+                                                <t t-if="o.movement_type_name != 'ALTA/BAJA MED. RIESGO C-34'"><font face="Arial"><br></br></font></t>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">PAC</font></td>
+                                        <td align="left" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="bottom"><br></br></td>
+                                        <td align="left" colspan="3" valign="middle"><font face="Arial" size="1">PASANTE</font></td>
+                                        <td align="center" sdnum="23562;0;@" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <font face="Arial" size="1">11</font>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table border="0" cellspacing="0" class="table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td align="left" colspan="22" height="14" valign="middle"><br></br></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="left" valign="middle"><font face="Arial" size="1">SEXO</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="3" valign="middle"><font face="Arial" size="1">EDO. CIVIL </font></td>
+                                        <td style="border:solid 1px" align="center" colspan="3" valign="middle"><font face="Arial" size="1">TIPO DE ACTA.</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="9" valign="middle"><font face="Arial" size="2">CEDULA DE IDENTIFICACION</font></td>
+                                        <td align="left" colspan="6" valign="middle"><br></br></td>
+                                        <td align="left" colspan="4" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:solid 1px" align="center" bgcolor="#C0C0C0" colspan="22" rowspan="2" valign="middle"><b><font face="Arial" size="2">DATOS PERSONALES</font></b></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" rowspan="2" align="center"  valign="middle">
+                                            <t t-if="o.gender == 'Femenino'"><font face="Arial">F X</font></t>
+                                            <t t-if="o.gender != 'Femenino'"><font face="Arial">F</font></t>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" valign="middle">
+                                            <t t-if="o.marital == 'SOLTERO'"><font face="Arial" size="1">1 XX</font></t>
+                                            <t t-if="o.marital != 'SOLTERO'"><font face="Arial" size="1">1</font></t>
+                                        </td>
+                                        <td align="left" colspan="2" valign="middle"><font face="Arial" size="1">SOLTERO</font></td>
+                                        <td style="border:solid 1px" align="center" sdnum="23562;" sdval="1" valign="middle"><font face="Arial" size="1">1</font></td>
+                                        <td style="border-right:solid 1px" align="left" colspan="2" valign="middle"><font face="Arial" size="1">ACTA NAC.</font></td>
+                                        <td align="left" colspan="9" valign="bottom"><font face="Arial" size="1">C.U.R.P.</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="10" valign="middle"><font face="Arial" size="1">FECHA DE INGRESO</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" valign="middle">
+                                            <t t-if="o.marital == 'CASADO'"><b><font face="Arial" size="1">2 XX</font></b></t>
+                                            <t t-if="o.marital != 'CASADO'"><b><font face="Arial" size="1">2</font></b></t>
+                                        </td>
+                                        <td align="left" colspan="2" valign="middle"><font face="Arial" size="1">CASADO</font></td>
+                                        <td style="border:solid 1px" align="center" sdnum="23562;" sdval="2" valign="middle"><font face="Arial" size="1">2</font></td>
+                                        <td style="border-right:solid 1px" align="left" colspan="2" valign="middle"><font face="Arial" size="1">C.R.I.P.</font></td>
+                                        <td align="left" colspan="8" valign="middle">
+                                            <font face="Arial" size="1"><span t-field="o.employee_curp"/></font>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" valign="middle"><font face="Arial" size="1">GOB. FED.</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="5" valign="middle"><font face="Arial" size="1">SRIA. DE SALUD</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:solid 1px" align="center" colspan="7" height="15" valign="top"><font face="Arial" size="1">FILIACION</font></td>
+                                        <td width="50%" style="border:solid 1px" valign="top" colspan="15"><font face="Arial" size="1">NOMBRE</font></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" rowspan="2" valign="middle">
+                                            <t t-if="o.gender == 'Masculino'"><font face="Arial" size="1">M X</font></t>
+                                            <t t-if="o.gender != 'Masculino'"><font face="Arial">M</font></t>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" sdnum="23562;" sdval="3" valign="middle">
+                                            <t t-if="o.marital == 'VIUDO'"><b><font face="Arial" size="1">3 XX</font></b></t>
+                                            <t t-if="o.marital != 'VIUDO'"><b><font face="Arial" size="1">3</font></b></t>
+                                        </td>
+                                        <td align="left" colspan="2" valign="middle"><font face="Arial" size="1">VIUDO</font></td>
+                                        <td style="border:solid 1px" align="center" sdnum="23562;" sdval="3" valign="middle"><font face="Arial" size="1">3</font></td>
+                                        <td style="border-right:solid 1px" align="left" colspan="2" valign="middle"><font face="Arial" size="1">DOC. MIGRAT.</font></td>
+                                        <td align="left" colspan="10" valign="middle"><font size="1">DOCTO. PROB.</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" rowspan="3" valign="middle"><t t-esc="o.get_year(o.employee_id.create_date)"/></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" rowspan="3" valign="middle"><t t-esc="o.get_month(o.employee_id.create_date)"/></td>
+                                        <td style="border:solid 1px" align="center" rowspan="3" valign="middle"><t t-esc="o.get_day(o.employee_id.create_date)"/></td>
+                                        <td style="border:solid 1px" align="center" rowspan="3" colspan="2" valign="middle"><t t-esc="o.get_year(o.employee_id.create_date)"/></td>
+                                        <td style="border:solid 1px" align="center" rowspan="3" valign="middle"><t t-esc="o.get_month(o.employee_id.create_date)"/></td>
+                                        <td style="border:solid 1px" align="center" rowspan="3" colspan="2"  valign="middle"><t t-esc="o.get_day(o.employee_id.create_date)"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:solid 1px" align="center" colspan="7" rowspan="3" valign="middle">
+                                            <span t-field="o.employee_filiation"/>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="15" rowspan="3" valign="middle">
+                                            <span t-field="o.employee_name"/>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" sdnum="23562;" sdval="4" valign="middle">
+                                            <t t-if="o.marital == 'DIVORC'"><b><font face="Arial" size="1">4 XX</font></b></t>
+                                            <t t-if="o.marital != 'DIVORC'"><b><font face="Arial" size="1">4</font></b></t>
+                                        </td>
+                                        <td align="left" colspan="2" valign="middle"><font face="Arial" size="1">DIVORC.</font></td>
+                                        <td style="border:solid 1px" align="center" sdnum="23562;" sdval="4" valign="middle"><font face="Arial" size="1">4</font></td>
+                                        <td style="border-right:solid 1px" align="left" colspan="2" valign="middle"><font face="Arial" size="1">CARTA DE NATURALIZACION</font></td>
+                                        <td align="center" colspan="10" valign="bottom"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" sdnum="23562;" sdval="5" valign="middle">
+                                            <t t-if="o.marital == 'OTRO'"><b><font face="Arial" size="1">5 XX</font></b></t>
+                                            <t t-if="o.marital != 'OTRO'"><b><font face="Arial" size="1">5</font></b></t>
+                                        </td>
+                                        <td align="left" colspan="2" valign="middle"><font face="Arial" size="1">OTRO.</font></td>
+                                        <td style="border-right:solid 1px" align="left" valign="middle"><br></br></td>
+                                        <td colspan="2" align="left" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="6" valign="middle"><br></br></td>
+                                        <td align="left" colspan="10" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:solid 1px" align="center" colspan="3" height="61" rowspan="4" valign="top"><font face="Arial" size="1">DOMICILIO</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="19" rowspan="4" valign="middle">
+                                            <span t-field="o.address_home"/>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border-top:solid 1px" align="left" colspan="13" valign="middle"><font face="Arial" size="1">LUGAR DE NACIMIENTO Y NACIONALIDAD</font></td>
+                                        <td style="border-top:solid 1px" align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="5" valign="middle"><font face="Arial" size="1">DIAS LABORADOS AÑO</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="4" valign="middle"><font face="Arial" size="1">DIAS LABORADOS</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="5" valign="middle"><font face="Arial" size="1">DIAS LABORADOS</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="center" colspan="3" rowspan="2" valign="middle"><font face="Arial" size="1">MEXICANA </font></td>
+                                        <td style="border:solid 1px" align="center" rowspan="2" valign="middle">
+                                            <t t-if="o.employee_country == 'Mexicana'"><b><font face="Arial" size="1">XX</font></b></t>
+                                            <t t-if="o.employee_country != 'Mexicana'"><br></br></t>
+                                        </td>
+                                        <td align="center" colspan="3" rowspan="2" valign="middle"><font face="Arial" size="1">MEXICANA POR NAT.</font></td>
+                                        <td colspan="2" style="border:solid 1px" align="center" rowspan="2" valign="middle">
+                                            <t t-if="o.employee_country == 'Mexicana'"><b><font face="Arial" size="1">XX</font></b></t>
+                                            <t t-if="o.employee_country != 'Mexicana'"><br></br></t>
+                                        </td>
+                                        <td align="center" colspan="3" rowspan="2" valign="middle"><font face="Arial" size="1">EXTRANJERO</font></td>
+                                        <td colspan="2" style="border:solid 1px" align="center" rowspan="2" valign="middle">
+                                            <t t-if="o.employee_country == 'Mexicana'"><b><font face="Arial" size="1">XX</font></b></t>
+                                            <t t-if="o.employee_country != 'Mexicana'"><br></br></t>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="5" rowspan="3" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="4" rowspan="3" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="5" rowspan="3" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td align="left" colspan="12" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:solid 1px" align="center" colspan="3" height="34" rowspan="2" valign="top"><font face="Arial" size="1">ADSCRIPCION</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="11" rowspan="2" valign="middle">
+                                            <span/>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="5" rowspan="2" valign="middle"><font face="Arial" size="1">CLAVE DEL CENTRO DE RESPONSABILIDAD</font></td>
+                                        <td id="clave_clue" style="border:solid 1px" align="center" colspan="3" rowspan="2" valign="middle"><font face="Arial" size="1"></font></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td width="16%" style="border:solid 1px" align="center" colspan="7" valign="middle"><font face="Arial" size="1">HORARIO ASIGNADO</font></td>
+                                        <td width="16%" style="border:solid 1px" align="center" colspan="11" valign="middle"><font face="Arial" size="1">TIPO DE SERVICIO</font></td>
+                                        <td width="16%" style="border:solid 1px" align="center" colspan="9" valign="middle"><font face="Arial" size="1">TABULADOR</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td width="4%" align="center" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td width="4%" align="left" valign="middle"><font face="Arial" size="1">8 HORAS</font></td>
+                                        <td align="left" colspan="2" valign="middle"><br></br></td>
+                                        <td width="4%" align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td width="4%" align="left" colspan="2" valign="middle"><font face="Arial" size="1">POR H.S.M.</font></td>
+                                        <td width="4%" align="center" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td width="4%" align="left" colspan="4" valign="middle"><font face="Arial" size="1">SUPERIOR</font></td>
+                                        <td width="4%" align="center" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td width="4%" align="left" colspan="5" valign="middle"><font face="Arial" size="1">RAMA M.P.A.</font></td>
+                                        <td width="8%" style="border:solid 1px" align="center" colspan="2" valign="middle"><font face="Arial" size="1">NIVEL</font></td>
+                                        <td width="8%" style="border:solid 1px" align="center" colspan="7" valign="middle"><font face="Arial" size="1">RANGO</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" colspan="14" height="34" rowspan="2" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="5" rowspan="2" valign="middle">
+                                            <span/>
+                                        </td>
+                                        <td id="clue_code" style="border:solid 1px" align="center" colspan="3" rowspan="2" valign="middle">
+                                            <br/>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td width="4%" align="center" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td width="4%" align="left" valign="middle"><font face="Arial" size="1">7 HORAS</font></td>
+                                        <td align="left" colspan="2" valign="middle"><br></br></td>
+                                        <td width="4%" align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td width="4%" align="left" colspan="2" valign="middle"><font face="Arial" size="1">OTRO TIPO</font></td>
+                                        <td width="4%" align="center" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td width="4%" align="left" colspan="4" valign="middle"><font face="Arial" size="1">M. MEDIO</font></td>
+                                        <td width="4%" align="center" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td width="4%" align="left" colspan="5" valign="middle"><font face="Arial" size="1">ADMVA.</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" rowspan="2" valign="middle"><br></br></td>
+                                        <td colspan="3" style="border:solid 1px" align="center" rowspan="2" valign="middle"><br></br></td>
+                                        <td colspan="2" style="border:solid 1px" align="center" rowspan="2" valign="middle"><br></br></td>
+                                        <td colspan="2" style="border:solid 1px" align="center" rowspan="2" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td width="4%" align="center" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td width="4%" align="left" valign="middle"><font face="Arial" size="1">6 HORAS</font></td>
+                                        <td align="left" colspan="2" valign="middle"><br></br></td>
+                                        <td width="4%" align="center" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="2" valign="middle"><br></br></td>
+                                        <td width="4%" align="center" valign="middle">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td width="4%" align="left" colspan="4" valign="middle"><font face="Arial" size="1">APOYO</font></td>
+                                        <td width="4%" align="center" valign="bottom">
+                                            <div style="border:solid 1px">
+                                                <br/>
+                                            </div>
+                                        </td>
+                                        <td align="left" colspan="5" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="15%" style="border:solid 1px" align="center" colspan="3" height="17" valign="top"><font face="Arial" size="1">ACT. PRIORITARIA</font></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="3" valign="top"><font face="Arial" size="1">U. RESPONS.</font></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="4" valign="top"><font face="Arial" size="1">PARTIDA</font></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="5" valign="top"><font face="Arial" size="1">PUESTO</font></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="5" valign="top"><font face="Arial" size="1">PROYECTO</font></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="2" valign="top"><font face="Arial" size="1">N° DE PUESTO</font></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="20" valign="middle"><font face="Arial" size="1">NOMBRE DEL PUESTO</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="9" valign="middle"><font face="Arial" size="1">CATEGORIA</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="15%" style="border:solid 1px" align="center" colspan="3" height="26" valign="top"><br></br></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="3" valign="top"><br></br></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="4" valign="top"><br></br></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="5" valign="top"><br></br></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="5" valign="top"><br></br></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="2" sdnum="23562;0;@" valign="top"><br></br></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="20" valign="middle">
+                                            <span t-field="o.job"/>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="9" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="50%" style="border:solid 1px" align="center" bgcolor="#C0C0C0" colspan="22" height="23" valign="middle"><b><font face="Arial" size="2">ANTECEDENTES</font></b></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="middle"><font face="Arial" size="1">% S.S.</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;0&quot; &quot;%" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="19" valign="middle"><font face="Arial" size="1"><br></br></font></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="15%" style="border:solid 1px" align="left" colspan="3" height="29" valign="middle"><font face="Arial" size="1">CLAVE ANTERIOR</font></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="3" valign="middle"><br></br></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="3" valign="middle"><br></br></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="3" valign="middle"><br></br></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="4" valign="middle"><br></br></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="3" valign="middle"><br></br></td>
+                                        <td width="6%" style="border:solid 1px" align="center" colspan="3" valign="middle"><br></br></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="8" valign="middle"><font face="Arial" size="1">PARTIDA PRESUPUESTAL</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" valign="middle"><font face="Arial" size="1">ACTUALES</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="7" valign="middle"><font face="Arial" size="1">INCREMENTO O DISMINUCION</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" valign="middle"><font face="Arial" size="1">ACORDADAS</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="3" height="23" valign="bottom"><font face="Arial" size="1">ADSCRIPCION</font></td>
+                                        <td style="border-bottom:solid 1px" align="left" colspan="19" valign="middle"><br></br></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" sdnum="23562;" sdval="1103" valign="middle"><font face="Arial" size="1">1103</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle">
+                                            <t t-if="o.change_wage == True">
+                                                <span t-field="o.previous_salary"/>
+                                            </t>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="7" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle">
+                                            <span t-field="o.wage"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" colspan="7" height="29" rowspan="2" valign="middle"><br></br></td>
+                                        <td align="center" colspan="9" rowspan="2" valign="middle"><font face="Arial" size="1">CLAVE DEL CENTRO DE RESPONSABILIDAD</font></td>
+                                        <td align="center" colspan="6" rowspan="2" valign="middle"><br></br></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" sdnum="23562;" sdval="1302" valign="middle"><font face="Arial" size="1">1302</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="7" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" sdnum="23562;" sdval="1201" valign="middle"><font face="Arial" size="1">1201</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="7" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="15" height="23" valign="middle"><b><font face="Arial" size="1">DATOS DEL SUSTITUIDO</font></b></td>
+                                        <td style="border:solid 1px" height="23" align="center" colspan="7" valign="middle"><b><font face="Arial" size="1">No. DE DOCUMENTO/ No. DE EMPLEADO</font></b></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" sdnum="23562;" sdval="1302" valign="middle"><font face="Arial" size="1">1302</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="7" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="2" height="23" valign="bottom"><font face="Arial" size="1">NOMBRE:</font></td>
+                                        <td style="border-bottom:solid 1px"  align="left" colspan="13" valign="bottom"><br></br></td>
+                                        <td width="10%" style="border:solid 1px" align="left" rowspan="2" valign="bottom"><font face="Arial" size="1">MOTIVO:</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" rowspan="2" valign="middle"><br></br></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px"  align="center" colspan="2" sdnum="23562;" sdval="1308" valign="middle"><font face="Arial" size="1">1308</font></td>
+                                        <td style="border:solid 1px"  align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px"  align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px"  align="center" colspan="7" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px"  align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="2" height="21" valign="bottom"><font face="Arial" size="1">FILIACION:</font></td>
+                                        <td style="border-bottom:solid 1px" align="left" colspan="13" valign="bottom"><br></br></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="8" valign="middle"><font color="#000000">TOTALES</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><b><font face="Arial"></font></b></td>
+                                        <td style="border:solid 1px" align="center" colspan="7" sdnum="23562;0;\$#.##0,00" valign="middle"><b><font face="Arial"></font></b></td>
+                                        <td style="border:solid 1px" align="center" colspan="6" sdnum="23562;0;\$#.##0,00" valign="middle"><b><font face="Arial"></font></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="2" height="22" valign="bottom"><font face="Arial" size="1">EFECTOS DEL:</font></td>
+                                        <td style="border-bottom:solid 1px" align="center" colspan="5" sdnum="23562;0;@" valign="bottom"><br></br></td>
+                                        <td align="center" valign="bottom"><font face="Arial" size="3">AL</font></td>
+                                        <td style="border-bottom:solid 1px" align="center" colspan="7" valign="bottom"><br></br></td>
+                                        <td width="10%" style="border:solid 1px" align="left" valign="bottom"><font face="Arial" size="1">QNA. DE APLICACIÓN</font></td>
+                                        <td style="border:solid 1px" align="left" colspan="6" valign="middle"><br></br></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" bgcolor="#C0C0C0" colspan="27" rowspan="2" valign="middle"><b><font face="Arial" size="2">JUSTIFICACION Y/O MOTIVOS DEL MOVIMIENTO</font></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="15" height="6" valign="middle"><br></br></td>
+                                        <td align="center" colspan="7" valign="middle"><br></br></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:solid 1px" width="15%" align="center" colspan="4" height="24" valign="middle"><font color="#000000" face="Arial" size="2">TIPO DE LICENCIA</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="2" valign="middle"><font color="#000000" face="Arial" size="2">DIAS</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="16" valign="middle"><font color="#000000" face="Arial" size="2">MOTIVO</font></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="27" rowspan="5" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="3" height="15" valign="middle"><font face="Arial" size="1">CON SUELDO</font></td>
+                                        <td align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <br/><![CDATA[&nbsp;&nbsp;]]>
+                                            </div>
+                                        </td>
+                                        <td style="border:solid 1px" align="center" colspan="2" rowspan="4" valign="middle"><br></br></td>
+                                        <td style="border:solid 1px" align="center" colspan="16" rowspan="4" valign="middle"><br></br></td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="3" height="15" valign="middle"><font face="Arial" size="1">A MEDIO SUELDO</font></td>
+                                        <td align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <br/><![CDATA[&nbsp;&nbsp;]]>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="3" height="15" valign="middle"><font face="Arial" size="1">SIN SUELDO</font></td>
+                                        <td align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <br/><![CDATA[&nbsp;&nbsp;]]>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" colspan="3" height="28" valign="middle"><font face="Arial" size="1">PRE-PENSIONARIA</font></td>
+                                        <td align="center" valign="bottom">
+                                            <div width="5%" style="border:solid 1px">
+                                                <br/><![CDATA[&nbsp;&nbsp;]]>
+                                            </div>
+                                        </td>
+                                        <td align="left" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:solid 1px" align="center" colspan="13" height="16" valign="middle"><font face="Arial" size="2">PROPONE</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="12" valign="middle"><font face="Arial" size="2">REVISO</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="13" valign="middle"><font face="Arial" size="2">AUTORIZO</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="12" valign="middle"><font face="Arial" size="2">AUTORIZO</font></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" colspan="13" height="20" valign="middle"><br></br></td>
+                                        <td align="center" colspan="12" valign="middle"><br></br></td>
+                                        <td align="center" colspan="13" valign="middle"><br></br></td>
+                                        <td align="center" colspan="12" valign="middle"><br></br></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border:solid 1px" align="center" colspan="13" height="32" valign="middle"><font color="#000000" size="2">DIRECTOR DE UNIDAD </font></td>
+                                        <td style="border:solid 1px" align="center" colspan="12" valign="middle"><font color="#000000" face="Arial" size="2">COORDINACION DE COMPENSACIONES</font></td>
+                                        <td style="border:solid 1px" align="center" colspan="13" valign="middle"><font color="#000000" face="Arial" size="2"></font></td>
+                                        <td style="border:solid 1px" align="center" colspan="12" valign="middle"><font color="#000000" face="Arial" size="2"></font></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" colspan="50" height="56" valign="middle"><i><font color="#000000" face="Century Gothic">Los documentos anexos al presente contienen datos personales, por lo cual la transferencia se realiza única y exclusivamente para que éstos sean utilizados para el ejercicio de sus facultades propias, compatibles o análogas que tengan la misma finalidad que motivó el tratamiento inicial de los mismos, debiendo adoptar las medidas de seguridad necesarias para su protección y evitar daño, pérdida, alteración, destrucción o su uso, acceso o tratamiento no autorizado. Todo lo anterior de conformidad a lo dispuesto en la Ley de Protección de Datos Personales en Posesión de Sujetos Obligados del Estado de Jalisco y sus Municipios.</font></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>

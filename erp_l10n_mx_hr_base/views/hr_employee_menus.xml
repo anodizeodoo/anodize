@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="menu_mx_hr_employee_catalogs"
+                  name="Catálogos"
+                  parent="hr.menu_hr_root"
+                  sequence="96"/>
+
+    <menuitem id="menu_hr_payroll_catalogs"
+                  name="Catalogs"
+                  parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root"
+                  sequence="75"/>
+
+    <record id="hr.menu_config_employee" model="ir.ui.menu">
+        <field name="parent_id" ref="erp_l10n_mx_hr_base.menu_mx_hr_employee_catalogs"/>
+        <field name="sequence" eval="1"/>
+    </record>
+
+    <record id="hr_payroll.menu_hr_salary_configuration" model="ir.ui.menu">
+        <field name="parent_id" ref="erp_l10n_mx_hr_base.menu_hr_payroll_catalogs"/>
+        <field name="sequence" eval="1"/>
+    </record>
+
+    <menuitem id="erp_l10n_mx_hr_employee_type_menu"
+                  sequence="50" name="Clasificador de Empleados"
+                  parent="hr.menu_config_employee"
+                  action="erp_l10n_mx_hr_base.hr_mx_employee_type_action"/>
+
+    <menuitem id="mx_menu_hr_department_kanban"
+                name="Departamentos"
+                sequence="1"
+                action="hr.hr_department_kanban_action"
+                parent="hr.menu_hr_department_kanban"/>
+
+    <record id="hr.menu_view_hr_job" model="ir.ui.menu">
+        <field name="parent_id" ref="hr.menu_hr_department_kanban"/>
+        <field name="sequence" eval="2"/>
+    </record>
+
+    <menuitem id="menu_mx_hr_employee_processes"
+              name="Procesos"
+              parent="hr.menu_hr_root"
+              sequence="90"/>
+
+    <menuitem id="erp_l10n_mx_payrolls_schedule_pay_menu"
+                  sequence="10" name="Schedule Pay"
+                  parent="erp_l10n_mx_hr_base.menu_hr_payroll_catalogs"
+                  action="erp_l10n_mx_hr_base.schedule_pay_action"/>
+
+    <menuitem
+                id="menu_config_contract_catalogs"
+                name="Contract"
+                parent="erp_l10n_mx_hr_base.menu_mx_hr_employee_catalogs"
+                groups="hr.group_hr_manager"
+                sequence="4"/>
+
+    <menuitem id="erp_l10n_mx_hr_contract_type_menu"
+                  sequence="5" name="Contract type"
+                  parent="erp_l10n_mx_hr_base.menu_config_contract_catalogs"
+                  action="erp_l10n_mx_hr_base.hr_contract_type_action"/>
+
+    <menuitem id="erp_l10n_mx_type_benefit_menu"
+                  sequence="10" name="Types of Benefits"
+                  parent="erp_l10n_mx_hr_base.menu_config_contract_catalogs"
+                  action="erp_l10n_mx_hr_base.type_benefit_action"/>
+
+
+</odoo>

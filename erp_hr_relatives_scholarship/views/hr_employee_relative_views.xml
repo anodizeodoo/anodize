@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_employee_view_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="erp_hr_relatives.hr_employee_view_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='relative_ids']" position="attributes">
+                    <attribute name="context">{'active_test': False}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='relative_ids']/tree/field[@name='name']" position="after">
+                    <field name="scholarship_grade_id"/>
+                </xpath>
+                <xpath expr="//field[@name='relative_ids']/tree/field[@name='notes']" position="after">
+                    <field name="active" widget="boolean_toggle"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

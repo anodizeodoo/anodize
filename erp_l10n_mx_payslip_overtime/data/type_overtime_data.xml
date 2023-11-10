@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="0">
+        <record id="type_overtime_01" model="hr.type.overtime">
+            <field name="code">HES</field>
+            <field name="name">Hora Extra Simple</field>
+        </record>
+        <record id="type_overtime_02" model="hr.type.overtime">
+            <field name="code">HED</field>
+            <field name="name">Hora Extra Doble</field>
+        </record>
+        <record id="type_overtime_03" model="hr.type.overtime">
+            <field name="code">HET</field>
+            <field name="name">Hora Extra Triple</field>
+        </record>
+    </data>
+</odoo>

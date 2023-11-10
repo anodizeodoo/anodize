@@ -1,0 +1,152 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* erp_hr_relatives
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-12 19:21+0000\n"
+"PO-Revision-Date: 2022-12-12 13:27-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__age
+msgid "Age"
+msgstr "Edad"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__create_uid
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative_relation__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__create_date
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative_relation__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__date_of_birth
+msgid "Date of Birth"
+msgstr "Fecha de nacimiento"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__display_name
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative_relation__display_name
+msgid "Display Name"
+msgstr "Nombre en pantalla"
+
+#. module: erp_hr_relatives
+#: model:ir.model,name:erp_hr_relatives.model_hr_employee
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__employee_id
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: erp_hr_relatives
+#: model_terms:ir.ui.view,arch_db:erp_hr_relatives.hr_employee_relative_view_tree
+msgid "Employee Relatives"
+msgstr "Familiares de los empleados"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__gender
+msgid "Gender"
+msgstr "Sexo"
+
+
+#. module: erp_hr_relatives
+#: model:ir.model,name:erp_hr_relatives.model_hr_employee_relative
+msgid "HR Employee Relative"
+msgstr "Familiar"
+
+#. module: erp_hr_relatives
+#: model:ir.model,name:erp_hr_relatives.model_hr_employee_relative_relation
+msgid "HR Employee Relative Relation"
+msgstr "Relación del familiar del empleado"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee__id
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__id
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative_relation__id
+msgid "ID"
+msgstr "id"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__job
+msgid "Job"
+msgstr "Puesto de trabajo"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative____last_update
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative_relation____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__write_uid
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative_relation__write_uid
+msgid "Last Updated by"
+msgstr "Ultima actualizacion por"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__write_date
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative_relation__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields.selection,name:erp_hr_relatives.selection__hr_employee_relative__gender__male
+msgid "Male"
+msgstr "Hombre"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__notes
+msgid "Notes"
+msgstr "Notas"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields.selection,name:erp_hr_relatives.selection__hr_employee_relative__gender__other
+msgid "Other"
+msgstr "Otro"
+
+#. module: erp_hr_relatives
+#: model:hr.employee.relative.relation,name:erp_hr_relatives.relation_parent
+msgid "Parent"
+msgstr "Padre"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__partner_id
+msgid "Partner"
+msgstr "Contacto"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__phone_number
+msgid "Phone Number"
+msgstr "Numero de telefono"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative__relation_id
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee_relative_relation__name
+msgid "Relation"
+msgstr "Parentesco"
+
+#. module: erp_hr_relatives
+#: model:ir.model.fields,field_description:erp_hr_relatives.field_hr_employee__relative_ids
+#: model_terms:ir.ui.view,arch_db:erp_hr_relatives.hr_employee_view_form
+msgid "Relatives"
+msgstr "Familiares"

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--Hr Fump -->
+
+        <record id="erp_view_hr_fump_form" model="ir.ui.view">
+            <field name="name">ERP HR Fump Form</field>
+            <field name="model">hr.fump</field>
+            <field name="arch" type="xml">
+                <form string="Movimiento de Empleado">
+                   <sheet>
+                       <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="Ej: Fump 2022/05/06" required="1"/>
+                            </h1>
+                        </div>
+                       <group>
+                           <group>
+                               <field name="date_expedition"/>
+                               <field name="employee_id"
+                                      required="1"
+                                      options="{'no_create': True, 'no_create_edit': True}"/>
+                               <field name="contract_id"
+                                      options="{'no_create': True, 'no_create_edit': True}"
+                                      domain="[('employee_id', '=', employee_id), ('state', '=', 'open')]"
+                                      attrs="{'invisible': [('employee_id', '=', False)]}"/>
+                               <field name="company_id"
+                                      options="{'no_create': True, 'no_create_edit': True}"
+                                      groups="base.group_multi_company"/>
+                           </group>
+                           <group>
+                               <label for="date_from" string="Vigencia"/>
+                               <div class="o_row">
+                                    <field name="date_from" class="oe_inline" required="1"/>
+                                    <span class="oe_inline">
+                                        -
+                                    </span>
+                                    <field name="date_to" class="oe_inline"/>
+                               </div>
+                               <field name="holiday_id"
+                                      options="{'no_create': True, 'no_create_edit': True}"
+                                      attrs="{'invisible': [('holiday_id','=',False)]}"/>
+                               <field name="movement_type_id"
+                                      required="1"
+                                      options="{'no_create': True, 'no_create_edit': True}"/>
+                               <field name="movement_type_type" invisible="1"/>
+                           </group>
+                       </group>
+                       <notebook>
+                           <page name="employee" string="Datos de empleado">
+                               <group>
+                                   <group>
+                                       <field name="employee_name"/>
+                                       <field name="employee_curp"/>
+                                       <field name="employee_carnet"/>
+                                       <field name="employee_filiation"/>
+                                       <field name="certificate"/>
+                                       <field name="ssnid"/>
+                                       <field name="sinid"/>
+                                   </group>
+                                   <group>
+                                       <field name="address_home"/>
+                                       <field name="company_employee"/>
+                                       <field name="gender"/>
+                                       <field name="marital"/>
+                                       <field name="place_of_birth"/>
+                                       <field name="employee_country"/>
+                                       <field name="bank_account"/>
+                                   </group>
+                               </group>
+                           </page>
+                           <page name="contract" string="Datos de contrato">
+                               <group colspan="4" col="4">
+                                   <field name="previous_job"/>
+                                   <field name="job" string="Puesto de trabajo vigente"/>
+                                   <field name="previous_salary" string="Salario anterior"/>
+                                   <field name="wage" string="Salario vigente"/>
+                                   <field name="change_wage" invisible="1" widget="boolean_toggle"/>
+                               </group>
+                           </page>
+                           <page name="other_data" string="Otros detalles">
+                               <group colspan="4" col="4">
+                                   <field name="rhs" widget="radio"/>
+                                   <field name="country_id"
+                                          options="{'no_create': True, 'no_create_edit': True}"/>
+                                   <field name="state_id" options="{'no_create': True, 'no_create_edit': True}"/>
+                                   <field name="city_id" options="{'no_create': True, 'no_create_edit': True}"/>
+                               </group>
+                           </page>
+                       </notebook>
+                   </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+               </form>
+          </field>
+        </record>
+
+        <record id="view_hr_fump_tree" model="ir.ui.view">
+			<field name="name">ERP HR Fump Tree</field>
+			<field name="model">hr.fump</field>
+			<field name="arch" type="xml">
+				<tree string="Movimiento de Empleado">
+					<field name="name" />
+                    <field name="employee_id" />
+                    <field name="contract_id" />
+                    <field name="previous_job" />
+                    <field name="job" />
+                    <field name="previous_salary" />
+                    <field name="wage" />
+                    <field name="previous_department" />
+                    <field name="department" />
+					<field name="date_expedition" />
+                    <field name="date_from" />
+                    <field name="date_to" />
+                    <field name="movement_type_id" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_hr_fump_search" model="ir.ui.view">
+			<field name="name">Hr Fump</field>
+			<field name="model">hr.fump</field>
+			<field name="arch" type="xml">
+				<search string="Movimiento de Empleado">
+                    <field name="name" />
+                    <field name="date_expedition" />
+                    <field name="date_from" />
+                    <field name="date_to" />
+                    <field name="movement_type_id" />
+                    <field name="employee_id" />
+                    <field name="contract_id" />
+                    <separator/>
+                    <field name="employee_id" filter_domain="[('employee_id', 'ilike', self)]"/>
+                    <field name="contract_id" filter_domain="[('contract_id', 'ilike', self)]"/>
+                    <!-- Groups -->
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Fecha"
+                                name="group_by_date"
+                                domain="[]"
+                                context="{'group_by': 'date_expedition'}"/>
+                        <filter string="Empleado"
+                                name="group_by_employee"
+                                domain="[]"
+                                context="{'group_by': 'employee_id'}"/>
+                        <filter string="Contrato"
+                                name="group_by_contract"
+                                domain="[]"
+                                context="{'group_by': 'contract_id'}"/>
+                    </group>
+				</search>
+			</field>
+		</record>
+
+		<record id="action_hr_fump" model="ir.actions.act_window">
+			<field name="name">Movimiento de Empleado</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hr.fump</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+    </data>
+</odoo>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="hr_payroll.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='hr_payroll_localization']" position="inside">
+                <div class="col-12 col-lg-6 o_setting_box" title="The parameters to configure the Payroll Receipt Format.">
+                    <div class="o_setting_left_pane"/>
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Payroll Receipt Format</span>
+                        <div class="text-muted">
+                            Select Payslip
+                        </div>
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label for="l10n_mx_payroll_receipt_format" class="col-lg-3 o_light_label"/>
+                                <field name="l10n_mx_payroll_receipt_format"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 o_setting_box" title="The email default.">
+                    <div class="o_setting_left_pane">
+                        <field name="l10n_mx_sent_email_bol"  no_label="1"/>
+                    </div>
+
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Correo electrónico para entrega de Recibos de Nómina</span>
+                        <div class="text-muted">
+                            Los empleados recibirán desde este correo electrónico sus recibos de nómina.
+                        </div>
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label for="l10n_mx_sent_email" class="col-lg-3 o_light_label"/>
+                                <field name="l10n_mx_sent_email"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+
+            <xpath expr="//div[@id='hr_payroll_localization']" position="after">
+                <h2>Categorías de reglas salariales</h2>
+                <div class="row mt16 o_settings_container" id="cat_rules">
+                    <div class="col-12 col-lg-6 o_setting_box" title="Categorias de Reglas Predeterminadas">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Categorias de Reglas Predeterminadas</span>
+                            <div class="text-muted"></div>
+
+                                <div class="row mt16">
+                                    <label for="category_perception_mx_taxed_id" class="col-lg-3 o_light_label"/>
+                                    <field name="category_perception_mx_taxed_id"
+                                           options='{"no_create": True, "no_open": True}'/>
+                                    <label for="category_perception_mx_exempt_id" class="col-lg-3 o_light_label"/>
+                                    <field name="category_perception_mx_exempt_id"
+                                           options='{"no_create": True, "no_open": True}'/>
+                                    <label for="category_deduction_mx_id" class="col-lg-3 o_light_label"/>
+                                    <field name="category_deduction_mx_id"
+                                           options='{"no_create": True, "no_open": True}'/>
+                                    <label for="category_other_mx_id" class="col-lg-3 o_light_label"/>
+                                    <field name="category_other_mx_id" options='{"no_create": True, "no_open": True}'/>
+                                    <label for="category_aux_mx_id" class="col-lg-3 o_light_label"/>
+                                    <field name="category_aux_mx_id" options='{"no_create": True, "no_open": True}'/>
+                                    <label for="category_comp_mx_id" class="col-lg-3 o_light_label"/>
+                                    <field name="category_comp_mx_id" options='{"no_create": True, "no_open": True}'/>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" title="Grupos de Categorias de Reglas">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Grupos de Categorias de Reglas</span>
+                            <div class="text-muted"></div>
+
+                                <div class="row mt16">
+                                    <label for="category_perception_mx_taxed_ids" class="col-lg-5 o_light_label"/>
+                                    <field name="category_perception_mx_taxed_ids" widget="many2many_tags"/>
+                                    <label for="category_perception_mx_exempt_ids" class="col-lg-5 o_light_label"/>
+                                    <field name="category_perception_mx_exempt_ids" widget="many2many_tags"/>
+                                    <label for="category_deduction_mx_ids" class="col-lg-5 o_light_label"/>
+                                    <field name="category_deduction_mx_ids" widget="many2many_tags"/>
+                                    <label for="category_other_mx_ids" class="col-lg-5 o_light_label"/>
+                                    <field name="category_other_mx_ids" widget="many2many_tags"/>
+                                    <label for="category_aux_mx_ids" class="col-lg-5 o_light_label"/>
+                                    <field name="category_aux_mx_ids" widget="many2many_tags"/>
+                                    <label for="category_comp_mx_ids" class="col-lg-5 o_light_label"/>
+                                    <field name="category_comp_mx_ids" widget="many2many_tags"/>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+
+
+
+        </field>
+    </record>
+</odoo>

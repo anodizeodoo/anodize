@@ -1,0 +1,16 @@
+<odoo>
+	<data>
+    	<menuitem name="Scholarship Registration"
+				  id="hr_scholarship_registration_menu"
+				  parent="erp_l10n_mx_hr_base.menu_mx_hr_employee_processes"
+				  action="hr_scholarship_registration_act_window"
+				  sequence="12"
+		/>
+		<menuitem name="Report Scholarship"
+				  id="hr_scholarship_registration_wizard_menu"
+				  parent="hr.hr_menu_hr_reports"
+				  action="hr_scholarship_registration_wizard_act_window"
+				  sequence="100"
+		/>
+	</data>
+</odoo>

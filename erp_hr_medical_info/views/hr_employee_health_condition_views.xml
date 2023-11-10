@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- VIEWS: "hr employee health condition views"  
+
+        - Model·········: hr.employee.health.condition
+        - _rec_name·····: name
+        - Domain········: []
+        - Context·······: \{}
+        - Parent menu ··: hr.menu_human_resources_configuration
+        - View priority·: 20    
+        - Sequence····..: 10
+        - Action help···: Allow to manage the health conditions
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Tree view for "hr.employee.health.condition" -->
+    <record id="view_hr_employee_health_condition_tree" model="ir.ui.view">
+        <field name="name">view.hr.employee.health.condition.tree</field>
+        <field name="model">hr.employee.health.condition</field>
+        <field name="type">tree</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="20" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <tree string="hr_employee_health_condition_tree" create="true" delete="true" edit="true">
+                <field name="employee_id" />
+                <field name="type_id" />
+                <field name="severity_id" />
+                <field name="notes" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view for "hr.employee.health.condition" -->
+    <record id="view_hr_employee_health_condition_form" model="ir.ui.view">
+        <field name="name">view.hr.employee.health.condition.form</field>
+        <field name="model">hr.employee.health.condition</field>
+        <field name="type">form</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="20" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <form string="hr_employee_health_condition_form" create="true" delete="true" edit="true">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="employee_id" class="oe_edit_only" />
+                        <h1>
+                            <field name="employee_id" class="oe_inline" 
+                        options="{'no_create': True, 'no_edit': True, 'no_delete': True}" />
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="type_id" 
+                        options="{'no_create': True, 'no_edit': True, 'no_delete': True}" />
+                        <field name="severity_id" 
+                        options="{'no_create': True, 'no_edit': True, 'no_delete': True}"/>
+                        <field name="notes" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search view for "hr.employee.health.condition" -->
+    <record id="view_hr_employee_health_condition_search" model="ir.ui.view">
+        <field name="name">view.hr.employee.health.condition.search</field>
+        <field name="model">hr.employee.health.condition</field>
+        <field name="type">search</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="20" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <search string="hr_employee_health_condition_search">
+                <field name="employee_id" />
+                <field name="type_id" />
+                <field name="severity_id" />
+                <field name="notes" />
+                <group expand="0" string="Group By">
+                    <filter string="Type" name="groupby_run" domain="[]" context="{'group_by': 'type_id'}"/>
+                    <filter string="Severity" name="group_by_structure" domain="[]" context="{'group_by': 'severity_id'}"/>
+                    <filter string="Employee" name="group_by_employee" domain="[]" context="{'group_by': 'employee_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Main window action for "hr.employee.health.condition" -->
+    <record id="action_hr_employee_health_condition_act_window" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">hr employee health condition views</field>
+        <field name="res_model">hr.employee.health.condition</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+        <field name="domain">[]</field>
+        <field name="context">\{}</field>
+        <field name="search_view_id" ref="view_hr_employee_health_condition_search" />
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add new hr employee health condition views
+            </p><p>
+                Allow to mana
+            </p>
+        </field>
+    </record>
+
+    <!-- Main menu for "hr.employee.health.condition" -->
+    <record id="menu_hr_employee_health_condition" model="ir.ui.menu" >
+        <field name="name">hr employee health condition</field>
+        <field name="sequence" eval="20" />
+        <field name="action" ref="action_hr_employee_health_condition_act_window" />
+        <field name="parent_id" ref="hr.menu_human_resources_configuration" />
+    </record>
+        
+</odoo>

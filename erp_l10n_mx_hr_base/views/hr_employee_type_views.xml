@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="mx_employee_type_view_search" model="ir.ui.view">
+            <field name="name">l10n.mx.hr.employee.type.view.search</field>
+            <field name="model">l10n.mx.hr.employee.type</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="mx_employee_type_view_tree" model="ir.ui.view">
+            <field name="name">l10n.mx.hr.employee.type.tree</field>
+            <field name="model">l10n.mx.hr.employee.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_mx_employee_type_form" model="ir.ui.view">
+            <field name="name">l10n.mx.hr.employee.type.form</field>
+            <field name="model">l10n.mx.hr.employee.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="active" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <field name="code" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_mx_employee_type_action" model="ir.actions.act_window">
+            <field name="name">Clasificador de Empleados</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.mx.hr.employee.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                   No records found.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

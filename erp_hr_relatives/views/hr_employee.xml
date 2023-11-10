@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="hr_employee_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.view.form.inherit.relatives</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <field name="spouse_complete_name" position="replace"/>
+            <field name="spouse_birthdate" position="replace"/>
+            <field name="children" position="replace"/>
+            <xpath expr="//notebook" position="inside">
+                <page string="Relatives" name="relatives" groups="base.group_user">
+                    <field name="relative_ids" nolabel="1" context="{'active_test': False}">
+                        <tree string="Employee Relatives" editable="bottom">
+                            <field name="relation_id"
+                                   options="{'no_create': True, 'no_edit': True, 'no_delete': True}"/>
+                            <field name="name"/>
+                            <field name="partner_id"
+                                   options="{'no_create': True, 'no_edit': True, 'no_delete': True}"/>
+                            <field name="gender"/>
+                            <field name="date_of_birth"/>
+                            <field name="age" readonly="1"/>
+                            <field name="phone_number"/>
+                            <field name="profession_id"
+                                   options="{'no_create': True, 'no_edit': True, 'no_delete': True}"/>
+                            <field name="notes"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

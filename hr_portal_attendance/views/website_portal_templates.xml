@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_home_menu_attendance" name="Portal layout : attendance menu entries"
+              inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'attendance'" class="breadcrumb-item">
+                Attendances
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_attendance" name="Portal My Attendance" customize_show="True"
+              inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Your Attendances</t>
+                <t t-set="url" t-value="'/my/attendances'"/>
+                <t t-set="placeholder_count" t-value="'attendance_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="display_attendances" name="Display Attendance">
+        <t t-call="portal.portal_layout">
+            <style>
+                #myInput {
+                background-position: 10px 10px;
+                background-repeat: no-repeat;
+                width: 100%;
+                font-size: 16px;
+                padding: 12px 20px 12px 40px;
+                border: 1px solid #ddd;
+                margin-bottom: 12px;
+                }
+            </style>
+            <h3 class="page-header">
+                Your Attendances
+            </h3>
+            <div class="row">
+                <div class="form-group">
+                    <t t-if="not no_check_out_attendances">
+                        <div class="col-sm-6">
+                            <h1 class="mb8">
+                                <span t-field="user_id.name"/>
+                            </h1>
+                            <h3 class="mt8 mb24">¡Welcome!</h3>
+                            <h3>
+                                <a t-attf-href="/my/sign_in_attendance" class="btn btn-lg btn-primary">
+                                    Click to Check In
+                                    <span class="fa btn-primary o_hr_attendance_sign_in_out_icon fa-sign-out fa-sign-in "/>
+                                </a>
+                            </h3>
+                        </div>
+                    </t>
+                    <t t-if="no_check_out_attendances">
+                        <div class="col-sm-6">
+                            <h1 class="mb8">
+                                <span t-field="user_id.name"/>
+                            </h1>
+                            <h3 class="mt8 mb24">¡Welcome!</h3>
+                            <h3>
+                                <a t-attf-href="/my/sign_out_attendance" class="btn btn-lg btn-primary">
+                                    Click to Check Out
+                                    <span class="fa btn-primary o_hr_attendance_sign_in_out_icon fa-sign-out fa-sign-in "/>
+                                </a>
+                            </h3>
+                        </div>
+                    </t>
+                </div>
+            </div>
+            <table id="attendance_table" class="table table-hover" width="100%">
+                <thead>
+                    <tr class="active">
+                        <th width="25%">Check In Datetime</th>
+                        <th width="25%">Check Out Datetime</th>
+                    </tr>
+                </thead>
+                <t t-foreach="attendances" t-as="attendance">
+                    <tr>
+                        <td width="15%">
+                            <span t-field="attendance.check_in"/>
+                        </td>
+                        <td width="15%">
+                            <span t-field="attendance.check_out"/>
+                        </td>
+                    </tr>
+                </t>
+            </table>
+        </t>
+    </template>
+
+    <template id="sign_in_attendance">
+        <!--<t t-call="website.layout">-->
+        <t t-call="portal.portal_layout">
+            <div id="wrap">
+                <div class="oe_structure oe_empty">
+                    <div class="container text-success oe_subdescription">
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="alert alert-success">
+                                    You have successfully check in.
+                                    <i class="fa fa-thumbs-o-up fa-2x">
+                                    </i>
+
+                                    <p>
+                                        <h5>Check In Datetime:
+                                            <t t-esc='datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")'/>
+                                        </h5>
+                                    </p>
+                                </div>
+                                <div>
+                                    <a t-attf-href="/my/attendances" class="btn btn-lg btn-primary">
+                                        <span class="fa fa-long-arrow-left"/>
+                                        Go Back
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="sign_out_attendance">
+        <!--<t t-call="website.layout">-->
+        <t t-call="portal.portal_layout">
+            <div id="wrap">
+                <div class="oe_structure oe_empty">
+                    <div class="container text-success oe_subdescription">
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="alert alert-success">
+                                    You have successfully check out.
+                                    <i class="fa fa-thumbs-o-up fa-2x">
+                                    </i>
+                                    <p>
+                                        <h5>Check Out Datetime:
+                                            <t t-esc='datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")'/>
+                                        </h5>
+                                    </p>
+                                </div>
+                                <div>
+                                    <a t-attf-href="/my/attendances" class="btn btn-lg btn-primary">
+                                        <span class="fa fa-long-arrow-left"/>
+                                        Go Back
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="not_allowed_attendance" name="Access Denied">
+        <!--<t t-call="website.layout">-->
+        <t t-call="portal.portal_layout">
+            <div id="wrap">
+                <div class="oe_structure"/>
+                <div class="container">
+                    <h1>You are not Allowed This Document</h1>
+                    <div>
+                        <a t-attf-href="/my/home" class="btn btn-lg btn-primary">
+                            Back
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+</odoo>

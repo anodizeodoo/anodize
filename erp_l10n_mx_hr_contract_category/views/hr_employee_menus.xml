@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="erp_l10n_mx_category_contract_menu"
+              sequence="15" name="Category Contract"
+              parent="erp_l10n_mx_hr_base.menu_config_contract_catalogs"
+              action="erp_l10n_mx_hr_contract_category.hr_contract_category_act_window"/>
+
+</odoo>

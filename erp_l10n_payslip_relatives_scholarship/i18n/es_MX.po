@@ -1,0 +1,405 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* erp_l10n_payslip_relatives_scholarship
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e-20231011\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-16 13:50+0000\n"
+"PO-Revision-Date: 2023-10-16 13:50+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_payslip__active_rule_sh
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_salary_rule__active_rule_sh
+msgid "Active for Scholarship"
+msgstr "Activar para Becas"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__amortization_date
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__amortization_date
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Amortization Date"
+msgstr "Fecha de Amortización"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_wizard__date_from
+msgid "Amortization Date From"
+msgstr "Fecha de Amortización Desde:"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_wizard__date_to
+msgid "Amortization Date To"
+msgstr "Fecha de Amortización Hasta:"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__amount
+msgid "Amount"
+msgstr "Importe"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__amount2
+msgid "Amount2"
+msgstr "Importe2"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_view
+msgid "Back To Draft"
+msgstr "Retornar a Borrador"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_wizard__create_uid
+msgid "Created by"
+msgstr "Usuario"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__create_date
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__create_date
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__contract_id
+msgid "Current Contract"
+msgstr "Contrato"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,help:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__contract_id
+msgid "Current contract of the employee"
+msgstr "Contrato del Empleado"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,help:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__struct_id
+msgid ""
+"Defines the rules that have to be applied to this payslip, according to the "
+"contract chosen. If the contract is empty, this field isn't mandatory "
+"anymore and all the valid rules of the structures of the employee's "
+"contracts will be applied."
+msgstr "Se aplicarán los contratos."
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__unactive_all
+msgid "Desmarcar todos"
+msgstr "Desmarcar todos"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__display_name
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__display_name
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields.selection,name:erp_l10n_payslip_relatives_scholarship.selection__hr_scholarship_registration__state__draft
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__employee_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#. odoo-python
+#: code:addons/erp_l10n_payslip_relatives_scholarship/wizards/hr_scholarship_registration_wizard.py:0
+#, python-format
+msgid "Error: invalid date"
+msgstr "Error: Fecha invalida"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_wizard_form
+msgid "Generate PDF"
+msgstr "Generar PDF"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_wizard_form
+msgid "Generate XLS"
+msgstr "Generar XLS"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__grade_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Grade"
+msgstr "Grado"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.actions.act_window,help:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_line_act_window
+msgid "Here you can Add a new Scholarship Registration Line."
+msgstr "Aquí puede agregar una nueva línea de registro de becas."
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.actions.act_window,help:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_act_window
+msgid "Here you can Add a new Scholarship Registration."
+msgstr "Aquí puede Agregar un nuevo Registro de Beca."
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model,name:erp_l10n_payslip_relatives_scholarship.model_hr_scholarship_registration
+msgid "Hr Scholarship Registration"
+msgstr "Hr Registro de Beca"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model,name:erp_l10n_payslip_relatives_scholarship.model_hr_scholarship_registration_line
+msgid "Hr Scholarship Registration Line"
+msgstr "Hr Registro de Beca en la Línea"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model,name:erp_l10n_payslip_relatives_scholarship.model_hr_scholarship_registration_wizard
+msgid "Hr Scholarship Registration Wizard"
+msgstr "Hr Registro de Becas en Ventana"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__id
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__id
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration____last_update
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line____last_update
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__write_date
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__write_date
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__line_registration_ids
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_view
+msgid "Line Registration"
+msgstr "Línea de Registro"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields.selection,name:erp_l10n_payslip_relatives_scholarship.selection__hr_scholarship_registration__state__loaded
+msgid "Loaded"
+msgstr "Cargado"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Logo"
+msgstr "Logo"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__lote_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Lote"
+msgstr "Lote"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__payslip_run_id
+msgid "Lotes"
+msgstr "Lotes"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__active_all
+msgid "Marcar todos"
+msgstr "Marcar Todos"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#. odoo-python
+#: code:addons/erp_l10n_payslip_relatives_scholarship/wizards/hr_scholarship_registration_wizard.py:0
+#: code:addons/erp_l10n_payslip_relatives_scholarship/wizards/hr_scholarship_registration_wizard.py:0
+#, python-format
+msgid "No results in the search."
+msgstr "No hay resultados en la búsqueda."
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__number_employee
+msgid "No. Employee"
+msgstr "#Empleado"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Number Employee"
+msgstr "#Empleado"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__observations
+msgid "Observations"
+msgstr "Observación"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Page: <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr ""
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model,name:erp_l10n_payslip_relatives_scholarship.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Recibo de nómina"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__name
+msgid "Payslip Name"
+msgstr "Nombre(Payslip)"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__qualification
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Qualification"
+msgstr "Calificación"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_view
+msgid "Registration"
+msgstr "Cargar Recibos"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__relationship_id
+msgid "Relationship"
+msgstr "Parentesco"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.actions.act_window,name:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_wizard_act_window
+#: model:ir.actions.report,name:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_pdf_report
+#: model:ir.actions.report,name:erp_l10n_payslip_relatives_scholarship.hr_scholarship_xlsx_report
+#: model:ir.ui.menu,name:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_wizard_menu
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_wizard_form
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Report Scholarship"
+msgstr "Reporte de Becas"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model,name:erp_l10n_payslip_relatives_scholarship.model_hr_salary_rule
+msgid "Salary Rule"
+msgstr "Regla salarial"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#. odoo-python
+#: code:addons/erp_l10n_payslip_relatives_scholarship/models/hr_scholarship_registration_line.py:0
+#, python-format
+msgid "Salary Slip"
+msgstr "Nómina"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_payslip__scholarship_registration_id
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__scholarship_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "Scholarship"
+msgstr "Becado"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.actions.act_window,name:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_act_window
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__scholarship_registration_id
+#: model:ir.ui.menu,name:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_menu
+msgid "Scholarship Registration"
+msgstr "Registro de Beca"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.actions.act_window,name:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_line_act_window
+msgid "Scholarship Registration Line"
+msgstr "Registro de Beca en la Linea"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__struct_id
+msgid "Structure"
+msgstr "Estructura"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#. odoo-python
+#: code:addons/erp_l10n_payslip_relatives_scholarship/models/hr_scholarship_registration.py:0
+#, python-format
+msgid "The employee %s does not have Family."
+msgstr "El Empleado %s no tiene Familia"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#. odoo-python
+#: code:addons/erp_l10n_payslip_relatives_scholarship/models/hr_scholarship_registration.py:0
+#: code:addons/erp_l10n_payslip_relatives_scholarship/models/hr_scholarship_registration_line.py:0
+#, python-format
+msgid "The employee %s has not an active contract."
+msgstr "El Empleado %s no tiene Contrato"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#. odoo-python
+#: code:addons/erp_l10n_payslip_relatives_scholarship/models/hr_salary.py:0
+#, python-format
+msgid ""
+"There's no contract set on payslip %s for %s. Check that there is at least a"
+" contract set on the employee form."
+msgstr "No hay ningún contrato establecido en el recibo de sueldo %s para %s. Compruebe que haya al menos un"
+"contrato establecido en el formulario del empleado"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "User"
+msgstr "Usuario"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "VAT:"
+msgstr "VAT"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.hr_scholarship_registration_view
+msgid "Validate"
+msgstr "Validar"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields.selection,name:erp_l10n_payslip_relatives_scholarship.selection__hr_scholarship_registration__state__validated
+msgid "Validated"
+msgstr "Validada"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "amount"
+msgstr "Importe"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "amount2"
+msgstr "Importe2"
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model,name:erp_l10n_payslip_relatives_scholarship.model_report_erp_hr_relatives_scholarship_hr_scholarship_xlsx_report
+msgid "report.erp_hr_relatives_scholarship.hr_scholarship_xlsx_report"
+msgstr ""
+
+#. module: erp_l10n_payslip_relatives_scholarship
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration__state
+#: model:ir.model.fields,field_description:erp_l10n_payslip_relatives_scholarship.field_hr_scholarship_registration_line__state
+#: model_terms:ir.ui.view,arch_db:erp_l10n_payslip_relatives_scholarship.print_employee_scholarship
+msgid "state"
+msgstr "Estado"

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_hr_payroll_contract_form_inherit_l10n_mx" model="ir.ui.view">
+        <field name="name">view.hr.contract.form.inherit.l10n_mx</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='l10n_mx_type_benefit_id']" position="after">
+                    <field name="category_id"
+                               options="{'no_create': True, 'no_create_edit': True}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_contract_view_form_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.form.inherit</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="after">
+                    <field name="status_not_apply" invisible="1"/>
+                    <widget name="web_ribbon" title="For Apply M.D.S" bg_color="bg-danger" attrs="{'invisible': [('status_not_apply', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_payroll_contract_form_inherit_l10n_mx_inherit" model="ir.ui.view">
+        <field name="name">hr.payroll.contract.form.inherit.l10n.mx</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="erp_l10n_mx_hr_payroll_e8e_vauxo.view_hr_payroll_contract_form_inherit_l10n_mx"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='history_salary_employee_ids']/tree//field[@name='date']" position="after">
+                    <field name="category_id"/>
+                    <field name="contract_id_wage" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>

@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- VIEWS: "Hr employee blood type vies"
+
+        - Model·········: hr.employee.blood.type
+        - _rec_name·····: name
+        - Domain········: []
+        - Context·······: \{}
+        - Parent menu ··: hr.menu_human_resources_configuration
+        - View priority·: 16    
+        - Sequence····..: 10
+        - Action help···: allow to manage the blood types
+    - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <!-- Tree view for "hr.employee.blood.type" -->
+    <record id="view_hr_employee_blood_type_tree" model="ir.ui.view">
+        <field name="name">view.hr.employee.blood.type.tree</field>
+        <field name="model">hr.employee.blood.type</field>
+        <field name="type">tree</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <tree string="hr_employee_blood_type_tree" create="true" delete="true" edit="true">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form view for "hr.employee.blood.type" -->
+    <record id="view_hr_employee_blood_type_form" model="ir.ui.view">
+        <field name="name">view.hr.employee.blood.type.form</field>
+        <field name="model">hr.employee.blood.type</field>
+        <field name="type">form</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <form string="hr_employee_blood_type_form" create="true" delete="true" edit="true">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" class="oe_inline"
+                                placeholder="name" />
+                        </h1>
+                    </div>
+                    <group>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search view for "hr.employee.blood.type" -->
+    <record id="view_hr_employee_blood_type_search" model="ir.ui.view">
+        <field name="name">view.hr.employee.blood.type.search</field>
+        <field name="model">hr.employee.blood.type</field>
+        <field name="type">search</field>
+        <field name="mode">primary</field>
+        <field name="priority" eval="16" />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <search string="hr_employee_blood_type_search">
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Main window action for "hr.employee.blood.type" -->
+    <record id="action_hr_employee_blood_type_act_window" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">hr employee blood type views</field>
+        <field name="res_model">hr.employee.blood.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+        <field name="domain">[]</field>
+        <field name="context">\{}</field>
+        <field name="search_view_id" ref="view_hr_employee_blood_type_search" />
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add new hr employee blood type views
+            </p><p>
+                allow to manage the blood types
+            </p>
+        </field>
+    </record>
+
+    <!-- Main menu for "hr.employee.blood.type" -->
+    <record id="menu_hr_employee_blood_type" model="ir.ui.menu" >
+        <field name="name">blood type</field>
+        <field name="sequence" eval="20" />
+        <field name="action" ref="action_hr_employee_blood_type_act_window" />
+        <field name="parent_id" ref="hr.menu_human_resources_configuration" />
+    </record>
+
+</odoo>

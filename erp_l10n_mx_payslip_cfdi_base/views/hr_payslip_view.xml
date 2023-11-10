@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_hr_payslip_form_l10n_mx">
+        <field name="name">view.hr.payslip.form.l10n_mx</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <field name="employee_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="contract_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="struct_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <field name="payslip_run_id" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_create_edit': True}</attribute>
+            </field>
+            <xpath expr="//notebook" position="before">
+                <group string="Informacion Fiscal" name="mx_info" states="verify,done,cancel">
+                    <group>
+                        <label for="l10n_mx_pac_status" states="verify,done,cancel"/>
+                        <div class="o_row">
+                            <field name="l10n_mx_pac_status" states="verify,done,cancel"/>
+                        </div>
+                        <label for="l10n_mx_sat_status" states="verify,done,cancel"/>
+                        <div class="o_row" name="sat_status">
+                            <field name="l10n_mx_sat_status" states="verify,done,cancel"/>
+                        </div>
+                    </group>
+                    <group states="verify,done,cancel">
+                        <field name="l10n_mx_origin"/>
+                        <field name="l10n_mx_cancel_reason" readonly="1"
+                               attrs="{'invisible': [('l10n_mx_cancel_reason', '=', False)]}"/>
+                        <field name="l10n_mx_foliosustitucion_cancel" readonly="1"
+                               attrs="{'invisible': [('l10n_mx_foliosustitucion_cancel', '=', False)]}"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='contract_id']" position="before">
+                <field name="l10n_mx_payment_date"/>
+            </xpath>
+
+            <xpath expr='//notebook' position="inside">
+                <page string="CFDI Information" name="cfdi">
+                    <group string="Retirement / Indemnity">
+                        <field name="l10n_mx_extra_node_ids" nolabel="1">
+                            <tree string="Retirement / Indemnity" editable="bottom">
+                                <field name="node"/>
+                                <field name="amount_total"/>
+                                <field name="amount_daily" attrs="{'readonly': [('node', '!=', 'retirement')]}"/>
+                                <field name="service_years" attrs="{'readonly': [('node', '!=', 'separation')]}"/>
+                                <field name="last_salary" attrs="{'readonly': [('node', '!=', 'separation')]}"/>
+                                <field name="accumulable_income"/>
+                                <field name="non_accumulable_income"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Actions or Titles">
+                        <group>
+                            <field name="l10n_mx_action_title_ids" nolabel="1">
+                                <tree string="Actions or Titles" editable="bottom">
+                                    <field name="category_id"
+                                           options="{'no_create': True, 'no_create_edit': True}"/>
+                                    <field name="market_value"/>
+                                    <field name="price_granted"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </group>
+                    <group string="Extra Other Payments">
+                        <group string="Compensation Balances in favor">
+                            <group>
+                                <field name="l10n_mx_balance_favor"/>
+                                <field name="l10n_mx_comp_year"/>
+                                <field name="l10n_mx_remaining"/>
+                            </group>
+                        </group>
+                    </group>
+                    <group string="SNCF Entity">
+                        <group>
+                            <field name="l10n_mx_source_resource"/>
+                            <field name="l10n_mx_amount_sncf"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//button[@name='action_payslip_cancel']" position="attributes">
+                <attribute name="states">draft,hr_check,confirm,verify,done</attribute>
+            </xpath>
+
+            <field name="struct_id" position="after">
+                <field name="l10n_mx_payslip_type"/>
+            </field>
+
+            <page name="salary_computation" position="after">
+                <page string="Infonavit">
+                    <group string="Information credits Infonavit">
+                        <group>
+                            <field name="l10n_mx_payroll_infonavit_active" widget="boolean_toggle"/>
+                            <field name="l10n_mx_payroll_infonavit_credit_number"
+                                   options="{'format': 0}"
+                                   attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_description" attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_date_start" attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_date_register" attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_type" attrs="{'required': [('l10n_mx_payroll_infonavit_active', '=', True)], 'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name='l10n_mx_payroll_infonavit_rate' attrs="{'invisible':[('l10n_mx_payroll_infonavit_type', '=', False)], 'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Loans">
+                    <group string="Information FONACOT">
+                        <group>
+                            <field name="number_fonacot"/>
+                        </group>
+                        <group></group>
+                    </group>
+                    <field name="loan_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="loan_type_id" required="1"/>
+                            <field name="date_start" required="1"/>
+                            <field name="date_end" required="1"/>
+                            <field name="name" required="1"/>
+                            <field name="company_currency_id" invisible="1"/>
+                            <field name="credit_amount" required="1"/>
+                            <field name="monthly_withhold" required="1"/>
+                            <field name="payment_term" required="1"/>
+                            <field name="payments_other_employers"/>
+                            <field name="accumulated_amount_withheld" required="1"/>
+                            <field name="residue"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </tree>
+                    </field>
+                </page>
+            </page>
+
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="view_hr_payslip_mx_tree_inherit">
+        <field name="name">view.hr.mx.payslip.tree.inherit</field>
+        <field name="model">hr.payslip</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="/tree/field[@name='state']" position="after">
+                <field name="l10n_mx_pac_status"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_hr_payslip_mx_filter_base_inherit">
+        <field name="name">view.hr.mx.payslip.filter.base.inherit</field>
+        <field name="model">hr.payslip</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payslip_run_id']" position="after">
+                <filter string="O-Ordinary Payroll" name="ordinary_payroll" domain="[('l10n_mx_payslip_type', '=', 'O')]"/>
+                <filter string="E-Extraordinary" name="extraordinary_payroll" domain="[('l10n_mx_payslip_type', '=', 'E')]"/>
+                <separator/>
+                <filter string="PAC: To sign" name="to_sign" domain="[('l10n_mx_pac_status', '=', 'to_sign')]"/>
+                <filter string="PAC: Retry" name="retry" domain="[('l10n_mx_pac_status', '=', 'retry')]"/>
+                <filter string="PAC: Signed" name="signed" domain="[('l10n_mx_pac_status', '=', 'signed')]"/>
+                <filter string="With CFDI Errors" name="w_mx_errors" domain="[('l10n_mx_edi_error', '!=', False), ('l10n_mx_pac_status', '!=', 'signed')]"/>
+                <separator/>
+                <filter string="PAC: To cancel" name="to_cancel" domain="['|',('l10n_mx_pac_status', '=', 'to_cancel'), ('l10_mx_cancel_pending', '=', True)]"/>
+                <filter string="PAC: Cancelled" name="cancelled" domain="[('l10n_mx_pac_status', '=', 'cancelled')]"/>
+                <separator/>
+                <filter string="SAT: State not defined" name="none" domain="[('l10n_mx_sat_status', '=', 'none')]"/>
+                <filter string="SAT: Not Synced Yet" name="undefined" domain="[('l10n_mx_sat_status', '=', 'undefined')]"/>
+                <filter string="SAT: Not Found" name="not_found" domain="[('l10n_mx_sat_status', '=', 'not_found')]"/>
+                <filter string="SAT: Cancelled" name="cancelled" domain="[('l10n_mx_sat_status', '=', 'cancelled')]"/>
+                <filter string="SAT: Valid" name="valid" domain="[('l10n_mx_sat_status', '=', 'valid')]"/>
+                <separator/>
+            </xpath>
+            <xpath expr="//filter[@name='done']" position="after">
+                <filter string="Cancel" name="cancel" domain="[('state', '=', 'cancel')]" help="Cancelled Slips"/>
+            </xpath>
+            <xpath expr="//filter[@name='group_by_company_id']" position="after">
+                <filter string="PAC status" name="g_l10n_mx_pac_status" context="{'group_by': 'l10n_mx_pac_status'}"/>
+                <filter string="SAT status" name="g_l10n_mx_sat_status" context="{'group_by': 'l10n_mx_sat_status'}"/>
+                <filter string="SAT Cancellation Reason" name="g_l10n_mx_cancel_reason" context="{'group_by': 'l10n_mx_cancel_reason'}"/>
+            </xpath>
+            <filter name="group_by_employee_id" position="after">
+                <filter string="Contract" name="contract_id" context="{'group_by': 'contract_id'}"/>
+                <filter string="Struct" name="struct_id" context="{'group_by': 'struct_id'}"/>
+                <filter string="Payment Date" name="l10n_mx_payment_date" context="{'group_by': 'l10n_mx_payment_date'}"/>
+                <filter string="Type of payroll" name="l10n_mx_payslip_type" context="{'group_by': 'l10n_mx_payslip_type'}"/>
+            </filter>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_hr_payslip_run_form_inherit_l10n_mx">
+        <field name="name">view.hr.payslip.run.form.inherit.l10n_mx</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="before">
+                <field name="l10n_mx_payment_date"/>
+                <field name="l10n_mx_productivity_bonus"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mx_hr_payslip_run_filter_cfdi" model="ir.ui.view">
+        <field name="name">mx.cfdi.hr.payslip.run.search</field>
+        <field name="model">hr.payslip.run</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payslip_run_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='done_filter']" position="after">
+                <separator/>
+                <filter string="With CFDI Errors" name="w_mx_errors"
+                        domain="[('slip_ids.l10n_mx_edi_error', '!=', False), ('slip_ids.l10n_mx_pac_status', '!=', 'signed')]"/>
+                <separator/>
+            </xpath>
+        </field>
+    </record>
+
+   <record id="mx_base_hr_payslip_run_tree" model="ir.ui.view">
+        <field name="name">hr.payslip.run.tree</field>
+        <field name="model">hr.payslip.run</field>
+       <field name="inherit_id" ref="hr_payroll.hr_payslip_run_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="l10n_mx_edi_error_count" invisible="1"/>
+                <field name="payslip_count" invisible="1"/>
+                <button type="object" name="action_open_payslips"
+                        class="text-info"
+                        string="See payslips" icon="fa-book" attrs="{'invisible': [('payslip_count', '=', 0)]}"/>
+                <button type="object" string="CFDI Errors" name="l10n_mx_edi_action_see_errors"
+                        class="text-warning"
+                        attrs="{'column_invisible': [('l10n_mx_edi_error_count', '=', 0)], 'invisible': [('l10n_mx_edi_error_count', '=', 0)]}"
+                        icon="fa-bug"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="payslip_cancel_02_reason_action_server" model="ir.actions.server">
+        <field name="name">Cancel: Comprobante emitido con errores sin relación</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                 records.cancel_02_reason()
+        </field>
+    </record>
+
+    <record id="payslip_cancel_03_reason_action_server" model="ir.actions.server">
+        <field name="name">Cancel: No se llevó a cabo la operación</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                 records.cancel_03_reason()
+        </field>
+    </record>
+
+    <record id="payslip_cancel_04_reason_action_server" model="ir.actions.server">
+        <field name="name">Cancel: Operación nominativa relacionada en la factura global</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_model_id" ref="hr_payroll.model_hr_payslip"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                 records.cancel_04_reason()
+        </field>
+    </record>
+
+
+
+
+</odoo>

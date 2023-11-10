@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_scholarship_grade_form" model="ir.ui.view">
+            <field name="name">hr.scholarship.grade.form</field>
+            <field name="model">hr.scholarship.grade</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group name="year">
+                                <field name="year"/>
+                            </group>
+                            <group name="partner_id">
+                                <field name="partner_id"/>
+                            </group>
+                            <group name="date_capture">
+                                <field name="date_capture"/>
+                            </group>
+                            <group name="code">
+                                <field name="code"/>
+                            </group>
+                            <group>
+                                <field name="active" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <field name="grade"/>
+                                <field name="qualification"/>
+                                <field name="amount"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_scholarship_grade_view" model="ir.ui.view">
+            <field name="name">hr.scholarship.grade.tree</field>
+            <field name="model">hr.scholarship.grade</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="grade"/>
+                    <field name="amount"/>
+                    <field name="year"/>
+                    <field name="date_capture"/>
+                    <field name="partner_id"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_scholarship_grade_act_window" model="ir.actions.act_window">
+            <field name="name">Scholarship Grade</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.scholarship.grade</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here you can Add a new grade
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

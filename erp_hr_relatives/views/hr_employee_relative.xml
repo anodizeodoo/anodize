@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="hr_employee_relative_view_tree" model="ir.ui.view">
+        <field name="name">hr.employee.relative.view.tree</field>
+        <field name="model">hr.employee.relative</field>
+        <field name="arch" type="xml">
+            <tree string="Employee Relatives" editable="bottom">
+                <field name="relation_id"
+                       options="{'no_create': True, 'no_edit': True, 'no_delete': True}"/>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="gender"/>
+                <field name="date_of_birth"/>
+                <field name="age" readonly="1"/>
+                <field name="phone_number"/>
+                <field name="profession_id"
+                                   options="{'no_create': True, 'no_edit': True, 'no_delete': True}"/>
+                <field name="notes"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

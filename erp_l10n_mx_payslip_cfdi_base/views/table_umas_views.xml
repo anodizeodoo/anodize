@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="table_umas_view_tree" model="ir.ui.view">
+            <field name="name">table.umas.view.tree</field>
+            <field name="model">l10n.mx.table.umas</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date_start"/>
+                    <field name="value_uma"/>
+                    <field name="status" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="table_umas_view_form" model="ir.ui.view">
+            <field name="name">table.umas.view.form</field>
+            <field name="model">l10n.mx.table.umas</field>
+            <field name="arch" type="xml">
+                <form string="Table UMAS">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="year"/>
+                                <field name="date_start"/>
+                            </group>
+                            <group>
+                                <field name="status" widget="boolean_toggle"/>
+                                <field name="value_uma"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="table_umas_action" model="ir.actions.act_window">
+            <field name="name">UMAS</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.mx.table.umas</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                   No records found.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+            id="menu_action_table_umas"
+            action="table_umas_action"
+            name="UMAS"
+            parent="erp_l10n_mx_hr_contract_holidays.menu_table_configuration"
+            sequence="30"/>
+
+    </data>
+</odoo>

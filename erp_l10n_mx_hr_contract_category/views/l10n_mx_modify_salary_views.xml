@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="modify_salary_view_tree_inherit" model="ir.ui.view">
+            <field name="name">modify.salary.view.tree</field>
+            <field name="model">l10n.mx.modify.salary</field>
+            <field name="inherit_id" ref="erp_l10n_mx_hr_payroll_e8e_vauxo.modify_salary_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='application_date']" position="after">
+                    <field name="date_day"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_modify_salary_form_inherit" model="ir.ui.view">
+            <field name="name">modify.salary.view.form</field>
+            <field name="model">l10n.mx.modify.salary</field>
+            <field name="inherit_id" ref="erp_l10n_mx_hr_payroll_e8e_vauxo.view_modify_salary_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group[1]" position="before">
+                    <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" name="action_employees_search" icon="fa-search">
+                                search
+                            </button>
+                        </div>
+                </xpath>
+                <xpath expr="//field[@name='salary_employee_ids']/tree/field[@name='contract_id']" position="after">
+                    <field name="contract_id_wage"/>
+                </xpath>
+
+                <xpath expr="//field[@name='salary_employee_ids']/tree/field[@name='state']" position="after">
+                    <field name="category_id" class="text-info" decoration-bf="1"/>
+                    <field name="wage_manual" class="text-info" decoration-bf="1"/>
+                </xpath>
+                <xpath expr="//field[@name='salary_employee_ids']/tree/field[@name='integration_factor']" position="attributes">
+                    <attribute name="decoration-bf">1</attribute>
+                    <attribute name="class">text-info</attribute>
+                </xpath>
+                <xpath expr="//field[@name='salary_employee_ids']/tree/field[@name='l10n_mx_payroll_daily_salary_new']" position="attributes">
+                    <attribute name="decoration-bf">1</attribute>
+                    <attribute name="class">text-info</attribute>
+                </xpath>
+                <xpath expr="//field[@name='salary_employee_ids']/tree/field[@name='l10n_mx_payroll_integrated_salary_new']" position="attributes">
+                    <attribute name="decoration-bf">1</attribute>
+                    <attribute name="class">text-info</attribute>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="l10n_mx_salary_employee_view_tree2" model="ir.ui.view">
+            <field name="name">l10n.mx.salary.employee.tree</field>
+            <field name="model">l10n.mx.salary.employee</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="apply" widget="toggle_button"/>
+                    <field name="contract_id" optional="show" readonly="1"/>
+                    <field name="employee_id" optional="show" readonly="1"/>
+                    <field name="job_id" optional="show" readonly="1"/>
+                    <field name="department_id" optional="show" readonly="1"/>
+                    <field name="state" widget="badge" decoration-info="state == 'open'" optional="show"/>
+                    <field name="category_id" class="text-info" decoration-bf="1"/>
+                    <field name="wage_manual" class="text-info" decoration-bf="1"/>
+                    <field name="l10n_mx_payroll_daily_salary" optional="show" readonly="1"/>
+                    <field name="l10n_mx_payroll_integrated_salary" optional="show" readonly="1"/>
+                    <field name="type_salary" optional="show"/>
+                    <field name="l10n_mx_date_imss" optional="show"/>
+                    <field name="l10n_mx_antiquity" optional="show"/>
+                    <field name="l10n_mx_holidays" optional="show"/>
+                    <field name="l10n_mx_vacation_bonus" optional="show"/>
+                    <field name="l10n_mx_christmas_bonus" optional="show"/>
+                    <field name="integration_factor" optional="show"/>
+                    <field name="l10n_mx_payroll_daily_salary_new" optional="show"/>
+                    <field name="l10n_mx_payroll_integrated_salary_new" optional="show"/>
+                    <field name="state_app" widget='badge' decoration-muted="state_app == 'draft'" decoration-success="state_app == 'apply'"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="l10n_mx_salary_employee_search" model="ir.ui.view">
+            <field name="name">l10n.mx.salary.employee.search</field>
+            <field name="model">l10n.mx.salary.employee</field>
+            <field name="arch" type="xml">
+                <search string="Search Invoice">
+                    <field name="employee_id" string="Employee"/>
+                    <field name="contract_id" string="Contract"/>
+                    <field name="job_id"/>
+                    <field name="department_id"/>
+                    <field name="state" string="Status"/>
+                    <field name="category_id" string="Category"/>
+                    <field name="wage_manual"/>
+                    <field name="l10n_mx_payroll_daily_salary"/>
+                    <field name="l10n_mx_payroll_integrated_salary"/>
+                    <field name="type_salary"/>
+                    <field name="l10n_mx_date_imss"/>
+                    <field name="l10n_mx_antiquity"/>
+                    <field name="l10n_mx_holidays"/>
+                    <field name="l10n_mx_vacation_bonus"/>
+                    <field name="l10n_mx_christmas_bonus"/>
+                    <field name="integration_factor"/>
+                    <field name="l10n_mx_payroll_daily_salary_new"/>
+                    <field name="l10n_mx_payroll_integrated_salary_new"/>
+                    <field name="state_app"/>
+               </search>
+            </field>
+        </record>
+
+        <record id="action_l10n_mx_salary_employee_view_tree2" model="ir.actions.act_window">
+            <field name="name">Modifcación de Salario</field>
+            <field name="res_model">l10n.mx.salary.employee</field>
+            <field name="view_id" ref="l10n_mx_salary_employee_view_tree2"/>
+        </record>
+    </data>
+
+</odoo>
