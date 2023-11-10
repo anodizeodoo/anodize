@@ -52,14 +52,9 @@
             </field>
         </record>
 
-        <menuitem id="menu_hr_payroll_processes"
-                  name="Payroll Processes"
-                  parent="hr_work_entry_contract.menu_hr_payroll_root"
-                  sequence="70"/>
-
         <menuitem id="erp_l10n_mx_increment_type_menu"
                   sequence="30" name="Increment type"
-                  parent="menu_hr_payroll_processes"
+                  parent="erp_l10n_mx_hr_base.menu_hr_payroll_catalogs"
                   action="increment_type_action"/>
 
     </data>

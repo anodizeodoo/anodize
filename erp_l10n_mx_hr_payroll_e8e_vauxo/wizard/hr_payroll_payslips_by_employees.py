@@ -36,7 +36,8 @@ class HrPayslipEmployees(models.TransientModel):
         contracts = employees._get_contracts(
             payslip_run.date_start, payslip_run.date_end, states=['open', 'close']
         ).filtered(lambda c: c.active)
-        contracts._generate_work_entries(payslip_run.date_start, payslip_run.date_end)
+        for contract in contracts:
+            contract._generate_work_entries(payslip_run.date_start, payslip_run.date_end)
         work_entries = self.env['hr.work.entry'].search([
             ('date_start', '<=', payslip_run.date_end),
             ('date_stop', '>=', payslip_run.date_start),
@@ -70,7 +71,7 @@ class HrPayslipEmployees(models.TransientModel):
         payslip_values = [dict(default_values, **{
             'name': 'Payslip - %s' % (contract.employee_id.name),
             'employee_id': contract.employee_id.id,
-            'credit_note': payslip_run.credit_note,
+            # 'credit_note': payslip_run.credit_note,
             'payslip_run_id': payslip_run.id,
             'date_from': payslip_run.date_start,
             'date_to': payslip_run.date_end,
@@ -86,6 +87,14 @@ class HrPayslipEmployees(models.TransientModel):
 
         payslips.compute_sheet()
         payslip_run.state = 'verify'
+        for rec in payslip_run.slip_ids:
+            # traer funciones de la accion aqui
+            c_id = rec.sudo().contract_id.id
+            e_id = rec.sudo().struct_id.id
+            rec.write({'contract_id': c_id, 'struct_id': e_id})
+            rec._compute_contract_id()
+            rec._compute_struct_id()
+            rec.compute_sheet()
 
         return {
             'type': 'ir.actions.act_window',

@@ -54,7 +54,7 @@
                     </p>
                     <p class="m-0">
                         <strong>Lugar fecha y hora de emisor:</strong>
-                        <span t-esc="company.sudo().partner_id.zip"/>
+                        <span t-esc="company.partner_id.zip"/>
                     </p>
                     <p class="m-0">
                         <strong>Efecto del comprobante:</strong>
@@ -189,7 +189,7 @@
             </div>
         </xpath>
 
-        <xpath expr="//div[hasclass('page')]/table[2]" position="replace">
+        <xpath expr="//table[@t-if='o.struct_id not in [holiday_attest_n, holiday_attest_n1]']" position="replace">
             <div>
                 <h3>Conceptos</h3>
             </div>
@@ -205,13 +205,15 @@
                 </thead>
                 <tbody>
                     <tr t-foreach="o.sudo().line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="line">
-                        <td><span t-field="line.code"/></td>
-                        <td><span t-field="line.name"/></td>
-                        <td><span t-field="line.quantity"/></td>
-                        <td><span t-esc="line.amount"
-                              t-esc-options='{"widget": "monetary", "display_currency": company.sudo().currency_id}'/></td>
-                        <td><span t-esc="line.total"
-                            t-esc-options='{"widget": "monetary", "display_currency": company.sudo().currency_id}'/></td>
+                        <t t-if="line.amount != 0 and line.total != 0">
+                            <td><span t-field="line.code"/></td>
+                            <td><span t-field="line.name"/></td>
+                            <td><span t-field="line.quantity"/></td>
+                            <td><span t-esc="line.amount"
+                                  t-esc-options='{"widget": "monetary", "display_currency": company.sudo().currency_id}'/></td>
+                            <td><span t-esc="line.total"
+                                t-esc-options='{"widget": "monetary", "display_currency": company.sudo().currency_id}'/></td>
+                        </t>
                     </tr>
                 </tbody>
             </table>
@@ -230,15 +232,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <t t-foreach="o.get_cfdi_perceptions_data()['perceptions']" t-as="perception">
-                        <tr>
-                            <td><span t-esc="perception.sudo().name"/></td>
-                            <td><span t-esc="perception.sudo().code"/></td>
-                            <td><span t-esc="perception.sudo().name"/></td>
-                            <td class="text-right"><span t-esc="perception.sudo().total if perception.category_id == o.get_cfdi_perceptions_data()['category_taxed'] else 0.0"/></td>
-                            <td class="text-right"><span t-esc="perception.sudo().total if perception.category_id == o.get_cfdi_perceptions_data()['category_exempt'] else 0.0"/></td>
-                        </tr>
+                    <t t-set="total_perception" t-value="0.00"/>
+                    <t t-set="total_importeexento" t-value="0.00"/>
+                    <t t-set="total_importegravado" t-value="0.00"/>
+                    <t t-if="o.l10n_mx_cfdi_uuid">
+                        <t t-foreach="o.get_sat_perceptions_data_xml()" t-as="perception">
+                            <tr>
+                                <td><span t-esc="perception['clave']"/></td>
+                                <td><span t-esc="perception['code']"/></td>
+                                <td><span t-esc="perception['concepto']"/></td>
+                                <td class="text-right"><span t-esc="'%.2f'% perception['importegravado']"/></td>
+                                <td class="text-right"><span t-esc="'%.2f'% perception['importeexento']"/></td>
+                                <t t-set="total_importeexento" t-value="total_importeexento + perception['importeexento']"/>
+                                <t t-set="total_importegravado" t-value="total_importegravado + perception['importegravado']"/>
+                            </tr>
+
+                        </t>
                     </t>
+                    <t t-else="">
+                        <t t-foreach="o.get_cfdi_perceptions_data()['perceptions']" t-as="perception">
+                            <tr>
+                                <td><span t-esc="perception.sudo().name"/></td>
+                                <td><span t-esc="perception.sudo().code"/></td>
+                                <td><span t-esc="perception.sudo().name"/></td>
+                                <td class="text-right"><span t-esc="perception.sudo().total if perception.category_id == o.get_cfdi_perceptions_data()['category_taxed'] else 0.0"/></td>
+                                <td class="text-right"><span t-esc="perception.sudo().total if perception.category_id == o.get_cfdi_perceptions_data()['category_exempt'] else 0.0"/></td>
+                            </tr>
+                        </t>
+                    </t>
+
                 </tbody>
             </table>
             <div>
@@ -253,11 +275,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><span t-esc="o.get_cfdi_perceptions_data()['total_salaries']"/></td>
-                        <td class="text-right"><span t-esc="o.get_cfdi_perceptions_data()['total_exempt']"/></td>
-                        <td class="text-right"><span t-esc="o.get_cfdi_perceptions_data()['total_taxed']"/></td>
+                    <t t-if="o.l10n_mx_cfdi_uuid">
+                        <tr>
+                            <t t-set="total" t-value="total_importegravado + total_importeexento"/>
+                        <td><span t-esc="total"/></td>
+                            <td class="text-right"><span t-esc="total_importeexento"/></td>
+                        <td class="text-right"><span t-esc="total_importegravado"/></td>
+
                     </tr>
+                    </t>
+                    <t t-else="">
+                        <tr>
+                            <td><span t-esc="o.get_cfdi_perceptions_data()['total_salaries']"/></td>
+                            <td class="text-right"><span t-esc="o.get_cfdi_perceptions_data()['total_exempt']"/></td>
+                            <td class="text-right"><span t-esc="o.get_cfdi_perceptions_data()['total_taxed']"/></td>
+                        </tr>
+                    </t>
                 </tbody>
             </table>
             <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;"/>
@@ -274,6 +307,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <t t-if="o.l10n_mx_cfdi_uuid">
+                        <t t-foreach="o.get_sat_deductions_data_xml()" t-as="deduction">
+                            <tr>
+                                <td><span t-esc="deduction['clave']"/></td>
+                                <td><span t-esc="deduction['code']"/></td>
+                                <td><span t-esc="deduction['concepto']"/></td>
+                                <td class="text-right"><span t-esc="'%.2f'% deduction['importe']"/></td>
+                            </tr>
+
+                        </t>
+                    </t>
+                    <t t-else="">
                     <t t-foreach="o.get_cfdi_deductions_data()['deductions']" t-as="deduction">
                         <tr>
                             <td><span t-esc="deduction.sudo().name"/></td>
@@ -281,6 +326,7 @@
                             <td><span t-esc="deduction.sudo().name"/></td>
                             <td class="text-right"><span t-esc="'%.2f' % abs(deduction.sudo().total)"/></td>
                         </tr>
+                    </t>
                     </t>
                 </tbody>
             </table>
@@ -296,10 +342,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                     <t t-if="o.l10n_mx_cfdi_uuid">
+                         <t t-foreach="o.get_sat_total_deductions_data_xml()" t-as="deduction1">
+                             <tr>
+                                 <td class="text-right"><span t-esc="deduction1['totaldeducciones']"/></td>
+                                 <td class="text-right"><span t-esc="deduction1['totalimpuestosretenidos']"/></td>
+                            </tr>
+                         </t>
+                     </t>
+                    <t t-else="">
                     <tr>
                         <td class="text-right"><span t-esc="o.get_cfdi_deductions_data()['total_other_deductions']"/></td>
                         <td class="text-right"><span t-esc="o.get_cfdi_deductions_data()['total_taxes_withheld']"/></td>
                     </tr>
+                    </t>
                 </tbody>
             </table>
             <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;"/>
@@ -315,11 +371,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <t t-if="o.l10n_mx_cfdi_uuid">
+                         <t t-foreach="o.get_sat_totals_data_xml()" t-as="totals">
+                             <tr>
+                                 <td class="text-right"><span t-esc="'%.2f' % totals['totalpercepciones']"/></td>
+                                 <td class="text-right"><span t-esc="'%.2f' % totals['totalotrospagos']"/></td>
+                                 <td class="text-right"><span t-esc="'%.2f' % totals['totaldeducciones']"/></td>
+                            </tr>
+                         </t>
+                     </t>
+                    <t t-else="">
                     <tr>
                         <td class="text-right"><span t-esc="o.get_cfdi_perceptions_data()['total_perceptions']"/></td>
                         <td class="text-right"><span t-esc="o.get_cfdi_other_payments_data()['total_other']"/></td>
                         <td class="text-right"><span t-esc="'%.2f' % o.get_cfdi_deductions_data()['total_deductions']"/></td>
                     </tr>
+                    </t>
                 </tbody>
             </table>
             <t t-if="o.l10n_mx_cfdi_uuid">
@@ -378,7 +445,7 @@
                 </div>
             </t>
         </xpath>
-        <xpath expr="//div[hasclass('page')]/p[hasclass('text-center')]" position="replace"/>
+<!--        <xpath expr="//div[hasclass('page')]/p[hasclass('text-center')]" position="replace"/>-->
         <xpath expr="//p[contains(@t-if, 'o.net_wage')]" position="replace"/>
         <xpath expr="//h2[@t-field='o.name']" position="replace"/>
         <xpath expr="//div[hasclass('page')]/div[@id='total']" position="replace"/>

@@ -18,15 +18,25 @@
 
     <template id='l10n_mx_edi_report_payslip_other'>
         <t t-call="web.html_container">
-        <t t-foreach="docs" t-as="o">
             <t t-call="web.external_layout">
-                <t t-set="o" t-value="o.with_context(lang=o.sudo().employee_id.address_home_id.lang or o.env.lang)"/>
-                <div class="page">
-                    <div class="row" style="background-color: rgb(211, 211, 211); border: 2px solid black; padding: 10px;">
-                        <div class="col-9">
+                <t t-set="o" t-value="o.with_context(lang=o.env.lang)"/>
+                <t t-if="o.l10n_mx_cfdi_uuid">
+                <!--New global variables-->
+                    <t t-set="xml" t-value="o.l10n_mx_edi_get_xml_etree()"/>
+                    <t t-set="tfd" t-value="o.l10n_mx_edi_get_tfd_etree(xml)"/>
+                    <t t-set="payroll" t-value="o.l10n_mx_edi_get_payroll_etree(xml)"/>
+                    <t t-set="tfd_original_string" t-value="o._get_l10n_mx_edi_cadena()"/>
+                </t>
+                <div class="page" style="font-size: 12px">
+                    <div class="row" style="font-size: 16px">
+                        <div class="col-12">
                             <p class="m-0">
                                 <strong><span class="text-uppercase" t-esc="o.sudo().company_id.name"/></strong>
                             </p>
+                        </div>
+                    </div>
+                    <div class="row" style="background-color: rgb(211, 211, 211); padding: 10px; border-radius: 1em">
+                        <div class="col-4">
                             <p class="m-0">
                                 <strong>RFC:</strong>
                                 <span t-field="o.sudo().company_id.vat"/>
@@ -40,17 +50,23 @@
                                 <span t-field="o.sudo().company_id.l10n_mx_edi_fiscal_regime"/>
                             </p>
                             <p class="m-0">
-                                <strong>Expedition place:</strong>
+                                <strong>Expedition place: </strong>
                                 <span t-field="o.sudo().company_id.zip"/> <span t-field="o.sudo().company_id.state_id.name"/>
                             </p>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
+                             <p class="m-0">
+                                <strong>Payslip type:</strong>
+                                <span t-field="o.sudo().l10n_mx_payslip_type"/>
+                            </p>
+                        </div>
+                        <div class="col-4">
                             <p class="m-0">
-                                <br/>
+                                <strong><span t-field="o.sudo().number"/></strong>
                             </p>
                             <p class="m-0">
                                 <strong>Date:</strong>
-                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%B/%Y')"/>
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d/%m/%Y')"/>
                             </p>
                             <p class="m-0">
                                 <strong>Hour:</strong>
@@ -59,65 +75,10 @@
                         </div>
                     </div>
 
-                    <div class="row" style="margin-top:5px;">
-                        <div class="col-6" style="border: 2px solid black;">
-                            <p class="m-0">
-                                <strong><span t-field="o.sudo().number"/> -  <span t-field="o.sudo().employee_id"/></strong>
-                            </p>
-                            <p class="m-0">
-                                <strong>RFC:</strong>
-                                <span t-field="o.sudo().employee_id.l10n_mx_edi_rfc"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>CURP:</strong>
-                                <span t-field="o.sudo().employee_id.l10n_mx_edi_curp"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Start date Labor Relationship:</strong>
-                                <span t-field="o.sudo().contract_id.date_start"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Contract type:</strong>
-                                <span t-field="o.sudo().employee_id.category_ids"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Zip:</strong>
-                                <span t-field="o.sudo().employee_id.zip"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Type Regimen:</strong>
-                                <span t-field="o.sudo().employee_id.l10n_mx_edi_contract_regime_type_id.name"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Working day:</strong>
-                                <span t-field="o.sudo().employee_id.category_ids"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>NSS:</strong>
-                                <span t-field="o.sudo().employee_id.ssnid"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Type of Salary:</strong>
-                                <span t-field="o.sudo().contract_id.type_salary"/>
-                            </p>
-
-                        </div>
-                        <div class="col-6" style="border: 2px solid black;">
-                            <p class="m-0">
-                                <strong>Exercise: <span t-esc="o.sudo().l10n_mx_payment_date.year"/></strong>
-                            </p>
-                            <p class="m-0">
-                                <strong>Period:</strong>
-<!--                                <span t-field="o.contract_id.structure_type_id.default_schedule_pay"/>-->
-                                <span t-field="o.sudo().date_from"/>-<span t-field="o.sudo().date_to"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Pay days:</strong>
-                                <span t-esc="sum(o.sudo().worked_days_line_ids.mapped('number_of_days'))"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Payment date:</strong>
-                                <span t-field="o.sudo().l10n_mx_payment_date"/>
+                    <div class="row" style="margin-top:5px;border-bottom: 1px solid grey;">
+                        <div class="col-4" >
+                            <p class="m-0" >
+                                <strong><span t-field="o.sudo().employee_id"/></strong>
                             </p>
                             <p class="m-0">
                                 <strong>Job:</strong>
@@ -128,16 +89,74 @@
                                 <span t-field="o.sudo().contract_id.department_id"/>
                             </p>
                             <p class="m-0">
+                                <strong>RFC:</strong>
+                                <span t-field="o.sudo().employee_id.l10n_mx_edi_rfc"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>CURP:</strong>
+                                <span t-field="o.sudo().employee_id.l10n_mx_edi_curp"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>NSS:</strong>
+                                <span t-field="o.sudo().employee_id.ssnid"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Zip:</strong>
+                                <span t-field="o.sudo().employee_id.zip"/>
+                            </p>
+                        </div>
+                        <div class="col-4" >
+                             <p class="m-0">
+                                <strong>Start date Labor Relationship:</strong>
+                                <span t-field="o.sudo().contract_id.date_start"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Contract type:</strong>
+                                <span t-field="o.sudo().contract_id.l10n_mx_payroll_contract_type_id.name"/>
+                            </p>
+
+                            <p class="m-0">
+                                <strong>Type Regimen:</strong>
+                                <span t-field="o.sudo().employee_id.l10n_mx_edi_contract_regime_type_id.name"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Type of Salary:</strong>
+                                <span t-field="o.sudo().contract_id.type_salary"/>
+                            </p>
+                         </div>
+                        <div class="col-4" >
+                            <!--<p class="m-0">
+                                <strong>Exercise: <span t-esc="o.sudo().l10n_mx_payment_date.year"/></strong>
+                            </p>-->
+                            <p class="m-0">
+                                <strong>Period:</strong>
+<!--                                <span t-field="o.contract_id.structure_type_id.default_schedule_pay"/>-->
+                                <t t-if="o.sudo().payslip_run_id">
+                                    <span t-field="o.sudo().payslip_run_id.date_start"/>-<span t-field="o.sudo().payslip_run_id.date_end"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-field="o.sudo().date_from"/>-<span t-field="o.sudo().date_to"/>
+                                </t>
+                            </p>
+                            <p class="m-0">
+                                <strong>Pay days:</strong>
+                                <span t-esc="sum(o.sudo().worked_days_line_ids.mapped('number_of_days'))"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Payment date:</strong>
+                                <span t-field="o.sudo().l10n_mx_payment_date"/>
+                            </p>
+                            <p class="m-0">
+                                <strong>Working day:</strong>
+                                <span t-field="o.sudo().employee_id.category_ids"/>
+                            </p>
+                            <p class="m-0">
                                 <strong>SBC:</strong>
                                 <span t-field="o.sudo().contract_id.l10n_mx_payroll_integrated_salary" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
                             </p>
                             <p class="m-0">
                                 <strong>SD:</strong>
                                 <span t-field="o.sudo().contract_id.l10n_mx_payroll_daily_salary" t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Payslip type:</strong>
-                                <span t-field="o.sudo().l10n_mx_payslip_type"/>
                             </p>
                         </div>
                     </div>
@@ -152,147 +171,227 @@
 <!--                    </div>-->
 
                     <div class="row" style="margin-top:5px;">
-                        <div class="col-6" style="border: 2px solid black;">
-                            <table class="table table-sm" style="margin-top:3px;">
+                        <div class="col-6" >
+                            <table  class="table table-sm" style="margin-top:3px;border-radius: 15px 15px 15px 15px;border-collapse: separate">
                                 <thead>
-                                    <tr style="background-color: rgb(211, 211, 211);">
-                                        <th colspan="4" class="text-center">Perceptions</th>
+                                    <tr style="background-color: rgb(211, 211, 211);color:black;">
+                                        <th colspan="4" class="text-center" style="border-radius: 15px 15px 0px 0px;">Perceptions</th>
                                     </tr>
-                                    <tr style="background-color: rgb(211, 211, 211);">
-                                        <th  style="width: 15%;">Concept</th>
-                                        <th  style="width: 15%;">Code</th>
-                                        <th  style="width: 55%;">Description</th>
-                                        <th  class="text-right" style="width: 15%;">Value</th>
+                                    <tr style="background-color: rgb(211, 211, 211);color:black;font-size:10px;">
+                                        <th  style="width: 15%;">Clave int</th>
+                                        <th  style="width: 15%;">Clave SAT</th>
+                                        <th  style="width: 55%;">Concepto</th>
+                                        <th  class="text-right" style="width: 15%;">Importe</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <t t-set="total_perception" t-value="0.00"/>
-                                    <t t-foreach="o.get_cfdi_perceptions_data()['perceptions']" t-as="perception">
+                                    <t t-if="o.l10n_mx_cfdi_uuid">
+                                        <t t-foreach="o.get_cfdi_perceptions_data_xml()" t-as="perception">
+                                            <tr>
+                                                <td><span t-esc="perception['clave']"/></td>
+                                                <td><span t-esc="perception['code']"/></td>
+                                                <td><span t-esc="perception['concepto']"/></td>
+                                                <td class="text-left">
+                                                    <span t-esc="perception['total']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                    <t t-set="total_line" t-value="perception['total']"/>
+                                                    <t t-set="total_perception" t-value="total_perception + total_line"/>
+                                                </td>
+                                            </tr>
+                                        </t>
                                         <tr>
-                                            <td><span t-esc="perception.sudo().code"/></td>
-                                            <td><span t-esc="perception.sudo().salary_rule_id.l10n_mx_sat_key_id.l10n_mx_sat_code"/></td>
-                                            <td><span t-esc="perception.sudo().name"/></td>
-                                            <td class="text-right">
-                                                <span t-esc="'%.2f'% perception.sudo().total"/>
-                                                <t t-set="total_perception" t-value="total_perception + perception.total"/>
-                                            </td>
+                                            <td colspan="3" class="text-center"><strong>Total Perceptions</strong></td>
+                                            <td class="text-right"><span t-esc="total_perception" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
+                                    </tr>
+
+                                    </t>
+                                    <t t-else="">
+                                        <t t-foreach="o.get_cfdi_perceptions_data()['perceptions']" t-as="perception">
+                                            <tr>
+                                                <td><span t-esc="perception.sudo().code"/></td>
+                                                <td><span t-esc="perception.sudo().salary_rule_id.l10n_mx_sat_key_id.l10n_mx_sat_code"/></td>
+                                                <td><span t-esc="perception.sudo().name"/></td>
+                                                <td class="text-right">
+                                                    <span t-esc="'%.2f'% perception.sudo().total"/>
+                                                    <t t-set="total_perception" t-value="total_perception + perception.total"/>
+                                                </td>
                                         </tr>
                                     </t>
                                     <tr>
                                         <td colspan="3" class="text-center"><strong>Total Perceptions</strong></td>
                                         <td class="text-right"><span t-esc="'%.2f'% total_perception"/></td>
                                     </tr>
+                                    </t>
+
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-6" style="border: 2px solid black;">
-                            <table class="table table-sm" style="margin-top:3px;">
+                        <div class="col-6" >
+                            <table class="table table-sm" style="margin-top:3px;border-radius: 15px 15px 15px 15px;border-collapse: separate">
                                 <thead>
-                                    <tr style="background-color: rgb(211, 211, 211);">
-                                        <th colspan="4" class="text-center">Deductions</th>
+                                    <tr style="background-color: rgb(211, 211, 211);color: black;">
+                                        <th colspan="4" class="text-center" style="border-radius: 15px 15px 0px 0px;">Deductions</th>
                                     </tr>
-                                    <tr style="background-color: rgb(211, 211, 211);">
-                                       <th  style="width: 15%;">Concept</th>
-                                        <th  style="width: 15%;">Code</th>
-                                        <th  style="width: 55%;">Description</th>
-                                        <th  class="text-right" style="width: 15%;">Value</th>
+                                    <tr style="background-color: rgb(211, 211, 211);color:black;font-size:10px;">
+                                       <th  style="width: 15%;">Clave int</th>
+                                        <th  style="width: 15%;">Clave SAT</th>
+                                        <th  style="width: 55%;">Concepto</th>
+                                        <th  class="text-left" style="width: 15%;">Importe</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <t t-set="total_deductions" t-value="0.00"/>
-                                    <t t-foreach="o.get_cfdi_deductions_data()['deductions']" t-as="deduction">
+                                    <t t-if="o.l10n_mx_cfdi_uuid">
+                                        <t t-foreach="o.get_cfdi_deductions_data_xml()" t-as="deduction">
+                                            <tr>
+                                                <td><span t-esc="deduction['clave']"/></td>
+                                                <td><span t-esc="deduction['code']"/></td>
+                                                <td><span t-esc="deduction['concepto']"/></td>
+                                                <td class="text-left">
+                                                    <span t-esc="deduction['importe']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                    <t t-set="total_deductions" t-value="total_deductions + float('%.2f' % abs(deduction['importe']))"/>
+                                                </td>
+                                            </tr>
+                                        </t>
                                         <tr>
-                                            <td><span t-esc="deduction.code"/></td>
-                                            <td><span t-esc="deduction.salary_rule_id.l10n_mx_sat_key_id.l10n_mx_sat_code"/></td>
-                                            <td><span t-esc="deduction.name"/></td>
-                                            <td class="text-right">
-                                                <span t-esc="'%.2f' % abs(deduction.total)"/>
-                                                <t t-set="total_deductions" t-value="total_deductions + float('%.2f' % abs(deduction.total))"/>
-                                            </td>
+                                            <td colspan="3" class="text-center"><strong>Total Perceptions</strong></td>
+                                            <td class="text-right"><span t-esc="total_deductions" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
                                         </tr>
                                     </t>
-                                    <tr>
-                                        <td colspan="3" class="text-center"><strong>Total Deductions</strong></td>
-                                        <td class="text-right"><span t-esc="'%.2f' % abs(total_deductions)"/></td>
-                                    </tr>
+                                    <t t-else="">
+                                        <t t-foreach="o.get_cfdi_deductions_data()['deductions']" t-as="deduction">
+                                            <tr>
+                                                <td><span t-esc="deduction.code"/></td>
+                                                <td><span t-esc="deduction.salary_rule_id.l10n_mx_sat_key_id.l10n_mx_sat_code"/></td>
+                                                <td><span t-esc="deduction.name"/></td>
+                                                <td class="text-right">
+                                                    <span t-esc="'%.2f' % abs(deduction.total)"/>
+<!--                                                <t t-set="total_deductions" t-value="total_deductions + float('%.2f' % abs(deduction.total))"/>-->
+                                                </td>
+                                            </tr>
+                                        </t>
+                                        <tr>
+                                            <td colspan="3" class="text-center"><strong>Total Deductions</strong></td>
+                                            <td class="text-right"><span t-esc="'%.2f' % abs(o.get_cfdi_deductions_data()['total_deductions'])"/></td>
+                                        </tr>
+                                    </t>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                     <div class="row" style="margin-top:5px;">
-                        <div class="col-6" style="border: 2px solid black;">
+                        <t t-if="o.l10n_mx_cfdi_uuid">
+                            <t t-set="Total_dict" t-value="o.get_sat_total_deductions_data_xml()"/>
+                        </t>
+                        <div class="col-6" >
+
+                        </div>
+                        <div class="col-6 text-right">
+                            <p class="m-0">
+                                <strong>Subtotal </strong>
+                                <t t-if="o.l10n_mx_cfdi_uuid">
+                                    <span t-esc="Total_dict[0]['subtotal']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-esc="subtotal" />
+                                </t>
+                            </p>
+                            <p class="m-0">
+                                <strong>Descuentos</strong>
+                                <t t-if="o.l10n_mx_cfdi_uuid">
+                                    <span t-esc="Total_dict[0]['discount']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                </t>
+                                <t t-else="">
+                                    <t t-set="discount" t-value="o.get_cfdi_deductions_data()['total_other_deductions'] if o.get_cfdi_deductions_data()['total_other_deductions'] else 0.00"/>
+                                    <span t-esc="discount" />
+                                </t>
+                            </p>
+                            <p class="m-0">
+                                <strong>Retenciones</strong>
+                                <t t-if="o.l10n_mx_cfdi_uuid">
+                                    <span t-esc="Total_dict[0]['totalimpuestosretenidos']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                </t>
+                                <t t-else="">
+                                <t t-set="retention" t-value="o.get_cfdi_deductions_data()['total_taxes_withheld'] if o.get_cfdi_deductions_data()['total_taxes_withheld'] else 0.00"/>
+                                <span t-esc="retention"/>
+                                </t>
+                            </p>
+                            <p class="m-0">
+                                <strong>Total </strong>
+                                <t t-if="o.l10n_mx_cfdi_uuid">
+                                    <span t-esc="Total_dict[0]['total']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                    <t t-set="total" t-value="Total_dict[0]['total']"/>
+                                </t>
+                                <t t-else="">
+                                <t t-set="total" t-value="sum(o.sudo().line_ids.filtered(lambda r: r.salary_rule_id.l10n_mx_sum_total).mapped('total'))"/>
+                                <span t-esc="'%.2f' % total"/>
+                                </t>
+                            </p>
+                            <p class="m-0">
+                                <strong>Neto del recibo </strong>
+                                <t t-if="o.l10n_mx_cfdi_uuid">
+                                    <span t-esc="Total_dict[0]['total']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                </t>
+                                <t t-else="">
+                                <span t-esc="'%.2f' % total"/>
+                                </t>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:5px;border-bottom:1px solid grey" >
+                        <div class="col-6" >
                             <p class="m-0">
                                 <strong>Total Perceptions plus other payments:</strong>
                                 <t t-set="subtotal" t-value="float(o.get_cfdi_perceptions_data()['total_perceptions'] + o.get_cfdi_other_payments_data()['total_other'])"/>
-                                <span t-esc="subtotal"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Way to pay:</strong>
-                                <span t-field="o.sudo().l10n_mx_edi_payment_method_id"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Payment method:</strong>
-                                <span t-field="o.sudo().l10n_mx_payment_method"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Issued from:</strong>
-                                <span/>
-                            </p>
-                        </div>
-                        <div class="col-6 text-right" style="border: 2px solid black;">
-                            <p class="m-0">
-                                <strong>Subtotal $</strong>
-                                <span t-esc="subtotal"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Discounts $</strong>
-                                <t t-set="discount" t-value="o.get_cfdi_deductions_data()['total_other_deductions'] if o.get_cfdi_deductions_data()['total_other_deductions'] else 0.00"/>
-                                <span t-esc="discount"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Retentions $</strong>
-                                <t t-set="retention" t-value="o.get_cfdi_deductions_data()['total_taxes_withheld'] if o.get_cfdi_deductions_data()['total_taxes_withheld'] else 0.00"/>
-                                <span t-esc="retention"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Total $</strong>
-                                <t t-set="total" t-value="subtotal - float(discount)  - float(retention)"/>
-                                <span t-esc="'%.2f' % total"/>
-                            </p>
-                            <p class="m-0">
-                                <strong>Net of Receipt $</strong>
-                                <span t-esc="'%.2f' % total"/>
+                                <t t-if="o.l10n_mx_cfdi_uuid">
+                                    <span t-esc="Total_dict[0]['subtotal']" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-esc="subtotal" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                </t>
                             </p>
                         </div>
                     </div>
-                    <div class="row" style="margin-top:5px;">
-                        <div class="col-12" style="border: 2px solid black;">
+                    <div class="row" style="margin-top:5px;font-size:9px;">
+                        <div class="col-12">
                             <p class="m-0">
-                                <strong>Amount with letters:</strong>
-                                <span t-esc="o.amount_to_text(total)"/>
+                                <strong>Importe: </strong><span t-esc="o.amount_to_text(total)" style="color:grey" /> |
+                                <strong>Método de pago: </strong><t t-if="o.sudo().l10n_mx_payment_method =='PUE'"><span style="color:grey">PUE</span></t><t t-if="o.sudo().l10n_mx_payment_method == 'PPD'"><span style="color:grey">PPD</span></t> |
+                                <strong>Banco: </strong><span t-esc="o.bank_id.name" style="color:grey"/> |
+                                <strong>Cuenta: </strong><span t-esc="o.bank_account_id.acc_number" style="color:grey"/> |
+                                <strong>Forma de pago: </strong><span t-esc="o.l10n_mx_edi_payment_method_id.name" style="color:grey"/>
+
                            </p>
                         </div>
                     </div>
 
-                    <div class="row" style="margin-top:5px;">
-                        <div class="col-8" style="border: 2px solid black;">
+                    <div class="row" style="margin-top:3.5em;">
+                        <div class="col-8 text-center">
                             <p class="m-0">
-                                <span>The corresponding XML file was made available to me and I received from the
-                                    aforementioned company the net amount to which this document refers, being in
-                                    accordance with the earnings and deductions specified in it.</span>
+                                <span>Recibí pago del patrón  </span>
+                                <span class="text-uppercase" t-esc="o.sudo().company_id.name"/>
+                                <span>, la cantidad que ampara el presente recibo por concepto de salario, incluyendo en éste pago séptimos días y demás prestaciones legales a que tengo derecho, manifestando mi conformidad con los importes y conceptos descritos en el mismo, sin que por periodo que se ampara se me adeude cantidad alguna.</span>
                            </p>
-
                         </div>
-                        <div class="col-4" style="border: 2px solid black;">
-                            <p class="m-0">
-                                <strong>Employee's signature:</strong>
-                                <span></span>
-                            </p>
+                        <div class="col-4 text-center" style="font-size:10px;">
+                            <div class="row">
+                            </div>
+                            <div class="row" style="padding-top:50px;margin-bottom:0px;">
+                                 <div class="col-12">
+                                     <span>_________________________________</span>
+                                 </div>
+                            </div>
+                            <div class="row" style="padding:0px;margin-top:0px;">
+                                <div class="col-12" style="padding:0px;margin-top:0px;">
+                                    <span><strong>Firma del empleado</strong></span>
+                                 </div>
+                            </div>
                         </div>
                     </div>
+
                     <t t-if="o.sudo().l10n_mx_cfdi_uuid and xml">
-                        <div class="row" id='complement' style="margin-top:5px;" t-if="xml">
+                        <div class="row" id='complement' style="margin-top:2em;font-size: 20px;" t-if="xml">
                             <div class="barcode col-3" t-if="xml">
                                 <t t-set="sello" t-value="xml.get('Sello', 'No identificado')[-8:]"/>
                                 <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=180&amp;height=180' % quote_plus(
@@ -333,7 +432,7 @@
                                     <span> | Certification Date:</span> <span t-esc="tfd.get('FechaTimbrado', '').replace('T', ' ')"/>
                                     <span> | Fiscal Folio:</span> <span t-esc="tfd.get('UUID', '')"/>
                                 </div>
-                                <div class="digital-stamp-content text-center">
+                                <div class="digital-stamp-content text-center" style="font-size:14px">
                                     <strong>This document is a printed representation of a CFDI</strong>
                                 </div>
                             </div>
@@ -342,14 +441,11 @@
                 </div>
             </t>
         </t>
-    </t>
     </template>
 
     <template id="report_payslip_other_lang">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="o">
-                <t t-call="erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other" t-lang="o.employee_id.sudo().address_home_id.lang"/>
-            </t>
+        <t t-foreach="docs" t-as="o">
+            <t t-call="erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_payslip_other" t-lang="o.employee_id.sudo().address_home_id.lang"/>
         </t>
     </template>
 

@@ -9,17 +9,17 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     def _get_return_without_accent(self, word):
-        word = re.sub(r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1",
-                      normalize("NFD", word),
+        word = re.sub(r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1", normalize("NFD", word),
                       0, re.I)
         word = normalize('NFC', word)
         return word
 
-    @api.model
-    def create(self, vals):
-        if vals.get('name') and vals.get('employee'):
-            vals.update({'name': self._get_return_without_accent(vals.get('name')).upper()})
-        return super(ResPartner, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('name') and vals.get('employee'):
+                vals.update({'name': self._get_return_without_accent(vals.get('name')).upper()})
+        return super(ResPartner, self).create(vals_list)
 
     def write(self, vals):
         employees_partners = self.sudo().filtered(lambda s: s.employee)
@@ -30,3 +30,4 @@ class ResPartner(models.Model):
     def action_update_partner_name(self):
         for record in self.filtered(lambda s: s.employee):
             record.name = self._get_return_without_accent(record.name).upper()
+

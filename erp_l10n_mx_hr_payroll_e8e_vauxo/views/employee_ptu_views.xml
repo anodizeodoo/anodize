@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="employee_ptu_search_view" model="ir.ui.view">
+            <field name="name">employee.ptu.search</field>
+            <field name="model">l10n.mx.employee.ptu</field>
+            <field name="arch" type="xml">
+                <search string="Employee PTU">
+                    <field name="employee_id"/>
+                    <group expand="1" string="Group By">
+                        <filter
+                            string="Year"
+                            name="group_by_year"
+                            context="{'group_by': 'date_year'}"
+                        />
+                        <filter
+                            string="Struct"
+                            name="group_by_struct"
+                            context="{'group_by': 'struct_id'}"
+                        />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="employee_ptu_view_tree" model="ir.ui.view">
+            <field name="name">l10n.mx.employee.ptu.tree</field>
+            <field name="model">l10n.mx.employee.ptu</field>
+            <field name="arch" type="xml">
+                <tree create="0" edit="0">
+                    <field name="registration_number"/>
+                    <field name="employee_id"/>
+                    <field name="type"/>
+                    <field name="l10n_mx_payroll_contract_type_id"/>
+                    <field name="number_of_days"/>
+                    <field name="salary_accrued"/>
+                    <field name="salary"/>
+                    <field name="salary3_month"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="employee_ptu_action" model="ir.actions.act_window">
+            <field name="name">Employee PTU</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.mx.employee.ptu</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{'search_default_group_by_year': 1, 'search_default_group_by_struct': 1}</field>
+        </record>
+
+        <menuitem id="erp_l10n_mx_employee_ptu_menu"
+                  sequence="50" name="Employee PTU"
+                  parent="menu_hr_payroll_processes"
+                  action="employee_ptu_action"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id='l10n_mx_edi_report_receipt_nofiscal'>
+        <t t-call="web.external_layout">
+            <div class="page">
+                <div class="oe_structure"/>
+                <div class="row">
+                    <div class="col-6">
+                        <h3>RECIBO DE NOMINA</h3>
+                    </div>
+                    <div class="col-6">
+                        <h3>
+                            <span class="text-uppercase" t-esc="o.sudo().company_id.name"/>
+                        </h3>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-6">
+                        <p>
+                            <strong>Nombre:</strong>
+                            <span t-esc="o.employee_id.name"/>
+                            <br/>
+                            <strong>Puesto:</strong>
+                            <span t-esc="o.employee_id.job_id.name"/>
+                        </p>
+                    </div>
+                    <div class="col-6">
+                        <p>
+                            <strong>Periodo:</strong>
+                            <span t-field="o.date_from"/>-
+                            <span t-field="o.date_to"/>
+                        </p>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="text-center" style="padding: 10px; border: 1px solid; border-radius: 1em;">
+                            PERCEPCIONES
+                        </div>
+                        <table style="width: 100%;margin-top:3px;">
+                            <thead>
+                                <tr>
+                                    <th width="70%">
+                                        <b>Concepto</b>
+                                    </th>
+                                    <th width="30%" class="text-end">
+                                        <b>Importe</b>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="total_perception" t-value="0.00"/>
+                                    <t t-foreach="o.get_cfdi_perceptions_data()['perceptions']" t-as="perception">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="perception.sudo().name"/>
+                                            </td>
+                                            <td class="text-end">
+                                                <span t-esc="'%.2f'% perception.sudo().total"/>
+                                                <t t-set="total_perception"
+                                                   t-value="total_perception + perception.total"/>
+                                            </td>
+                                        </tr>
+                                    <tr>
+                                        <td class="text-end" style="border-top: 1px solid #091124;">
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td class="text-end" style="border-top: 1px solid #091124;">
+                                            <span t-esc="'%.2f'% total_perception"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-center" style="padding: 10px; border: 1px solid; border-radius: 1em;">
+                            DEDUCCIONES
+                        </div>
+                        <table style="width: 100%;margin-top:3px;">
+                            <thead>
+                                <tr>
+                                    <th width="70%">
+                                        <b>Concepto</b>
+                                    </th>
+                                    <th width="30%" class="text-end">
+                                        <b>Importe</b>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="total_deductions" t-value="0.00"/>
+                                <t t-if="o.l10n_mx_cfdi_uuid">
+                                    <t t-foreach="o.get_cfdi_deductions_data_xml()" t-as="deduction">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="deduction['concepto']"/>
+                                            </td>
+                                            <td class="text-left">
+                                                <span t-esc="deduction['importe']"
+                                                      t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                                <t t-set="total_deductions"
+                                                   t-value="total_deductions + float('%.2f' % abs(deduction['importe']))"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr>
+                                        <td class="text-end" style="border-top: 1px solid #091124;">
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td class="text-end" style="border-top: 1px solid #091124;">
+                                            <span t-esc="total_deductions"
+                                                  t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <t t-else="">
+                                    <t t-foreach="o.get_cfdi_deductions_data()['deductions']" t-as="deduction">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="deduction.name"/>
+                                            </td>
+                                            <td class="text-end">
+                                                <span t-esc="'%.2f' % abs(deduction.total)"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr>
+                                        <td class="text-end" style="border-top: 1px solid #091124;">
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td class="text-end" style="border-top: 1px solid #091124;">
+                                            <span t-esc="'%.2f' % abs(o.get_cfdi_deductions_data()['total_deductions'])"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br/>
+                <div class="row" style="margin-top:5px;border-bottom:1px solid grey">
+                    <div class="col-12 text-right">
+                        <p class="m-0">
+                            <strong>Total a pagar:</strong>
+                            <t t-set="subtotal"
+                               t-value="float(o.get_cfdi_perceptions_data()['total_perceptions'] + o.get_cfdi_other_payments_data()['total_other'])"/>
+                                <span t-esc="subtotal"
+                                      t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                        </p>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-12" style="border: 1px solid; border-radius: 1em;text-align: right;">
+                        <br/>
+                        <br/>
+                        <p>_________________________________
+                            <br/>
+                            FIRMA DEL TRABAJADOR
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_payslip_receipt_nofiscal">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="erp_l10n_mx_hr_payroll_e8e_vauxo.l10n_mx_edi_report_receipt_nofiscal"
+                   t-lang="o.employee_id.sudo().address_home_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>
