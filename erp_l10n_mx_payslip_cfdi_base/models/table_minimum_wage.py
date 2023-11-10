@@ -10,9 +10,9 @@ class TableMinimumWage(models.Model):
     _description = 'Minimum wage'
     _rec_name = 'date_effective'
 
-    date_effective = fields.Date(string='Effective date')
-    zone_a = fields.Float(string='Zone A')
-    zone_b = fields.Float(string='Zone B')
-    zone_c = fields.Float(string='Zone C')
-    status = fields.Boolean(string='Status')
-    year = fields.Char(string='Year', default=lambda self: str(fields.Date.today().year))
+    date_effective = fields.Date(string='Effective date', index=True)
+    zone_a = fields.Float(string='Zone A', index=True)
+    zone_b = fields.Float(string='Zone B', index=True)
+    zone_c = fields.Float(string='Zone C', index=True)
+    status = fields.Boolean(string='Status', index=True)
+    year = fields.Char(string='Year', default=lambda self: str(fields.Date.today().year), index=True)

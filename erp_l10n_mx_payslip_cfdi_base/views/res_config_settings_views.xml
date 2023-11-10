@@ -30,6 +30,17 @@
                     </div>
                 </div>
 
+                <div class="col-12 col-lg-6 o_setting_box" title="Workplace FONACOT">
+                    <div class="o_setting_left_pane"/>
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Workplace FONACOT</span>
+                        <div class="row mt16">
+                            <label for="work_fonacot" class="col-lg-3 o_light_label"/>
+                            <field name="work_fonacot"/>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-12 col-lg-6 o_setting_box" title="The parameters to configure the Payroll Stamped version.">
                     <div class="o_setting_left_pane"/>
                     <div class="o_setting_right_pane">

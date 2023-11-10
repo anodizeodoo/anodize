@@ -31,15 +31,14 @@
                                 <field name="l10n_mx_imss_active" widget="boolean_toggle"/>
                             </group>
                         </group>
-                        <group string="Line IMSS">
-                            <field name="l10n_mx_imss_line_ids" nolabel="1">
-                                <tree editable="bottom" default_order="id">
-                                    <field name="l10n_mx_imss_line_name"/>
-                                    <field name="l10n_mx_imss_line_employee"/>
-                                    <field name="l10n_mx_imss_line_pattern"/>
-                                </tree>
-                            </field>
-                        </group>
+                        <separator string="Line IMSS"/>
+                        <field name="l10n_mx_imss_line_ids" nolabel="1">
+                            <tree editable="bottom" default_order="id">
+                                <field name="l10n_mx_imss_line_name"/>
+                                <field name="l10n_mx_imss_line_employee"/>
+                                <field name="l10n_mx_imss_line_pattern"/>
+                            </tree>
+                        </field>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>

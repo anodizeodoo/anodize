@@ -55,7 +55,7 @@
                   action="sat_keys_action"
                   name="SAT grouping code"
                   parent="erp_l10n_mx_hr_base.menu_hr_payroll_catalogs"
-                  sequence="5"/>
+                  sequence="10"/>
 
     </data>
 </odoo>

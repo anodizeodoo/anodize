@@ -33,7 +33,8 @@
                                 <field name="l10n_mx_isr_year" required="1"/>
                             </group>
                         </group>
-                        <group string="Rate ISR">
+<!--                        <group string="Rate ISR">-->
+                            <separator string="Rate ISR"/>
                             <field name="l10n_mx_isr_rate_ids" nolabel="1">
                                 <tree editable="bottom" default_order="l10n_mx_isr_rate_percentage,id">
                                     <field name="l10n_mx_isr_rate_lower_limit"/>
@@ -42,8 +43,9 @@
                                     <field name="l10n_mx_isr_rate_percentage"/>
                                 </tree>
                             </field>
-                        </group>
-                        <group string="Subsidy Rate">
+<!--                        </group>-->
+<!--                        <group string="Subsidy Rate">-->
+                            <separator string="Subsidy Rate"/>
                             <field name="l10n_mx_isr_subsidy_rate_ids" nolabel="1">
                                 <tree editable="bottom">
                                     <field name="l10n_mx_isr_subsidy_income_from"/>
@@ -51,7 +53,7 @@
                                     <field name="l10n_mx_isr_subsidy_quantity"/>
                                 </tree>
                             </field>
-                        </group>
+<!--                        </group>-->
                     </sheet>
                 </form>
             </field>

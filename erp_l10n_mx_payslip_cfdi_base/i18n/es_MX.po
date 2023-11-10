@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0+e-20220114\n"
+"Project-Id-Version: Odoo Server 15.0+e-20220404\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-15 13:34+0000\n"
-"PO-Revision-Date: 2022-07-15 13:34+0000\n"
+"POT-Creation-Date: 2022-07-19 12:46+0000\n"
+"PO-Revision-Date: 2022-07-19 12:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -34,6 +34,11 @@ msgstr "<span class=\"o_form_label\">Nómina mexicana</span>"
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.res_config_settings_view_form_inherit_l10n_mx_payslip
 msgid "<span class=\"o_form_label\">Stamped Settings</span>"
 msgstr "<span class=\"o_form_label\">Configuración de Timbrado</span>"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.res_config_settings_view_form_inherit_l10n_mx_payslip
+msgid "<span class=\"o_form_label\">Workplace FONACOT</span>"
+msgstr "<span class=\"o_form_label\">Centro de Trabajo FONACOT</span>"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__l10n_mx_table_isr__l10n_mx_isr_type__annual
@@ -78,35 +83,40 @@ msgstr ""
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_102
 msgid ""
-"Ajuste a pagos por gratificaciones, primas, compensaciones, recompensas u otros a extrabajadores derivados de jubilación en parcialidades, gravados"
+"Ajuste a pagos por gratificaciones, primas, compensaciones, recompensas u "
+"otros a extrabajadores derivados de jubilación en parcialidades, gravados"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_104
 msgid ""
-"Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación en parcialidades derivados de la ejecución de una resolución judicial o "
-"de un laudo exentos"
+"Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación "
+"en parcialidades derivados de la ejecución de una resolución judicial o de "
+"un laudo exentos"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_103
 msgid ""
-"Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación en parcialidades derivados de la ejecución de una resolución judicial o "
-"de un laudo gravados"
+"Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación "
+"en parcialidades derivados de la ejecución de una resolución judicial o de "
+"un laudo gravados"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_106
 msgid ""
-"Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación en una sola exhibición derivados de la ejecución de una resolución "
-"judicial o de un laudo exentos"
+"Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación "
+"en una sola exhibición derivados de la ejecución de una resolución judicial "
+"o de un laudo exentos"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_105
 msgid ""
-"Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación en una sola exhibición derivados de la ejecución de una resolución "
-"judicial o de un laudo gravados"
+"Ajuste a pagos que se realicen a extrabajadores que obtengan una jubilación "
+"en una sola exhibición derivados de la ejecución de una resolución judicial "
+"o de un laudo gravados"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -201,7 +211,8 @@ msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_31
-msgid "Ajuste en Contribuciones a Cargo del Trabajador Pagadas por el Patrón Exento"
+msgid ""
+"Ajuste en Contribuciones a Cargo del Trabajador Pagadas por el Patrón Exento"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -266,32 +277,43 @@ msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_72
-msgid "Ajuste en Ingresos en acciones o títulos valor que representan bienes Exento"
+msgid ""
+"Ajuste en Ingresos en acciones o títulos valor que representan bienes Exento"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_73
-msgid "Ajuste en Ingresos en acciones o títulos valor que representan bienes Gravado"
+msgid ""
+"Ajuste en Ingresos en acciones o títulos valor que representan bienes "
+"Gravado"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_69
-msgid "Ajuste en Jubilaciones, pensiones o haberes de retiro en parcialidades Exento"
+msgid ""
+"Ajuste en Jubilaciones, pensiones o haberes de retiro en parcialidades "
+"Exento"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_70
-msgid "Ajuste en Jubilaciones, pensiones o haberes de retiro en parcialidades Gravado"
+msgid ""
+"Ajuste en Jubilaciones, pensiones o haberes de retiro en parcialidades "
+"Gravado"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_65
-msgid "Ajuste en Jubilaciones, pensiones o haberes de retiro en una sola exhibición Exento "
+msgid ""
+"Ajuste en Jubilaciones, pensiones o haberes de retiro en una sola "
+"exhibición Exento "
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_66
-msgid "Ajuste en Jubilaciones, pensiones o haberes de retiro en una sola exhibición Gravado"
+msgid ""
+"Ajuste en Jubilaciones, pensiones o haberes de retiro en una sola "
+"exhibición Gravado"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -306,7 +328,9 @@ msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_79
-msgid "Ajuste en Pagos distintos a los listados y que no deben considerarse como ingreso por sueldos, salarios o ingresos asimilados."
+msgid ""
+"Ajuste en Pagos distintos a los listados y que no deben considerarse como "
+"ingreso por sueldos, salarios o ingresos asimilados."
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -331,12 +355,14 @@ msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_26
-msgid "Ajuste en Participación de los Trabajadores en las Utilidades PTU Exento"
+msgid ""
+"Ajuste en Participación de los Trabajadores en las Utilidades PTU Exento"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_27
-msgid "Ajuste en Participación de los Trabajadores en las Utilidades PTU Gravado"
+msgid ""
+"Ajuste en Participación de los Trabajadores en las Utilidades PTU Gravado"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -421,7 +447,8 @@ msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_71
-msgid "Ajuste en Subsidio para el empleo (efectivamente entregado al trabajador)"
+msgid ""
+"Ajuste en Subsidio para el empleo (efectivamente entregado al trabajador)"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -491,13 +518,21 @@ msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_47
-msgid "Alimentación diferentes a los establecidos en el Art 94 último párrafo LISR"
+msgid ""
+"Alimentación diferentes a los establecidos en el Art 94 último párrafo LISR"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_other_6
-msgid "Alimentos en bienes (Servicios de comedor y comida) Art 94 último párrafo LISR"
+msgid ""
+"Alimentos en bienes (Servicios de comedor y comida) Art 94 último párrafo "
+"LISR"
 msgstr ""
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__generate_report_wizard__stamped_receipts__all
+msgid "All"
+msgstr "Todos"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_hr_employee_loan
@@ -551,8 +586,12 @@ msgstr "Archivo Generado"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_cfdi_string
-msgid "Attribute \"cfdi_cadena_original\" returned by PAC request when is stamped the CFDI, this attribute is used on report."
+msgid ""
+"Attribute \"cfdi_cadena_original\" returned by PAC request when is stamped "
+"the CFDI, this attribute is used on report."
 msgstr ""
+"Atributo “cfdi_cadena_original” devuelto por solicitud del PAC cuando se "
+"estampa el CFDI, este atributo se utiliza en el reporte."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_20
@@ -617,7 +656,7 @@ msgstr "Errores CFDI"
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_form_l10n_mx
 msgid "CFDI Information"
-msgstr "Información CFDI"
+msgstr "Información del CFDI"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_origin
@@ -705,11 +744,15 @@ msgstr "Código"
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_salary_rule__l10n_mx_code
 msgid ""
-"Code defined by the company to this record, could not be related with the SAT catalog. Must be used to indicate the attribute \"Clave\" in the "
-"payslip lines, if this is empty will be used the value in the field \"Code\"."
+"Code defined by the company to this record, could not be related with the "
+"SAT catalog. Must be used to indicate the attribute \"Clave\" in the "
+"payslip lines, if this is empty will be used the value in the field \"Code"
+"\"."
 msgstr ""
-"Código definido por la empresa para este registro, no se pudo relacionar con el catálogo del SAT. Se debe utilizar para indicar el atributo “Clave” "
-"en las líneas del recibo de sueldo, si este está vacío se utilizará el valor del campo “Código”."
+"Código definido por la empresa para este registro, no se pudo relacionar "
+"con el catálogo del SAT. Se debe utilizar para indicar el atributo “Clave” "
+"en las líneas del recibo de sueldo, si este está vacío se utilizará el "
+"valor del campo “Código”."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_28
@@ -752,6 +795,11 @@ msgid "Configure data to Mexican payroll."
 msgstr "Configuración para la nómina Mexicana"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_mx_filter_base_inherit
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_9
 msgid "Contribuciones a Cargo del Trabajador Pagadas por el Patrón"
 msgstr ""
@@ -783,6 +831,11 @@ msgid "Created on"
 msgstr "Creado el"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payroll_infonavit_credit_number
+msgid "Credit number"
+msgstr "Número de Crédito"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_13
 msgid "Cuotas Sindicales Pagadas por el Patrón"
 msgstr ""
@@ -799,7 +852,9 @@ msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_18
-msgid "Cuotas para la constitución y fomento de sociedades cooperativas y de cajas de ahorro"
+msgid ""
+"Cuotas para la constitución y fomento de sociedades cooperativas y de cajas "
+"de ahorro"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -818,20 +873,49 @@ msgid "DECENNIAL"
 msgstr "DECENAL"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure_type__default_schedule_pay__daily
+msgid "Daily"
+msgstr "Diario"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payroll_infonavit_date_register
+msgid "Date Register"
+msgstr "Fecha de registro"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umas__date_start
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umi__date_start
 msgid "Date Start"
 msgstr "Fecha de inicio"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payroll_infonavit_date_start
+msgid "Date Start Aplication"
+msgstr "Fecha de inicio de aplicación"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_generate_report_wizard__date_end
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure_type__date_end
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure_type_periods__date_end
 msgid "Date end"
 msgstr "Fecha Final"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_generate_report_wizard__date_start
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure_type__date_start
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure_type_periods__date_start
 msgid "Date start"
 msgstr "Fecha Inicial"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure_type_periods__days
+msgid "Days"
+msgstr "Días"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure_type__default_schedule_pay__decennial
+msgid "Decennial"
+msgstr "Decenial"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__l10n_mx_sat_keys__l10n_mx_sat_classification__deduction
@@ -848,6 +932,10 @@ msgstr "Departamento Final"
 msgid "Department start"
 msgstr "Departamento Inicial"
 
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payroll_infonavit_description
+msgid "Description"
+msgstr "Descripción"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_6
@@ -855,16 +943,8 @@ msgid "Descuento por incapacidad"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_contract__display_name
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_employee__display_name
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_employee_loan__display_name
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure__display_name
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_action_titles__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_extra_perception__display_name
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_run__display_name
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_salary_rule__display_name
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_payroll_schedule_pay__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_sat_keys__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr_rate__display_name
@@ -872,14 +952,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_minimum_wage__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umas__display_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umi__display_name
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_company__display_name
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "Nombre en pantalla"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure__l10n_mx_payslip_type__e
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payslip__l10n_mx_payslip_type__e
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_mx_filter_base_inherit
 msgid "E-Extraordinary"
 msgstr "E-Extraordinaria"
 
@@ -944,6 +1023,11 @@ msgid "This is your file:"
 msgstr "Este es tu archivo:"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure_type__weekday__3
+msgid "Thursday"
+msgstr "Jueves"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_form_l10n_mx
 msgid "Extra Other Payments"
 msgstr "Otros Pagos"
@@ -994,6 +1078,11 @@ msgid "For income from"
 msgstr "Para Ingresos de"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure_type__weekday__4
+msgid "Friday"
+msgstr "Viernes"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: code:addons/erp_l10n_mx_payslip_cfdi_base/wizard/generate_report.py:0
 #: model:ir.actions.act_window,name:erp_l10n_mx_payslip_cfdi_base.action_generate_report_wizard
 #: model:ir.ui.menu,name:erp_l10n_mx_payslip_cfdi_base.menu_generate_report_wizard
@@ -1005,6 +1094,11 @@ msgstr "Reporte de Nómina General"
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.generate_report_wizard_form
 msgid "Generate"
 msgstr "Generar"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.hr_payroll_structure_type_view_form_inherit
+msgid "Generate Periods"
+msgstr "Generar Periodos"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_generate_report_wizard
@@ -1027,6 +1121,11 @@ msgid "Habitación"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__has_message
+msgid "Has Message"
+msgstr "Tiene un mensaje"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_19
 msgid "Horas extra"
 msgstr ""
@@ -1037,16 +1136,8 @@ msgid "How many EDIs are in error for this move ?"
 msgstr "¿Cuántos EDI están con error para este movimiento?"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_contract__id
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_employee__id
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_employee_loan__id
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure__id
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_action_titles__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_extra_perception__id
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_run__id
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_salary_rule__id
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_payroll_schedule_pay__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_sat_keys__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr_rate__id
@@ -1054,8 +1145,6 @@ msgstr "¿Cuántos EDI están con error para este movimiento?"
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_minimum_wage__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umas__id
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umi__id
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_company__id
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_config_settings__id
 msgid "ID"
 msgstr ""
 
@@ -1063,6 +1152,16 @@ msgstr ""
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_salary_rule__l10n_mx_imss
 msgid "IMSS"
 msgstr ""
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payroll_infonavit_type
+msgid "INFONAVIT discount"
+msgstr "Descuento INFONAVIT"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payroll_infonavit_type
+msgid "INFONAVIT discount type that is calculated in the employee's payslip"
+msgstr "Tipo de descuento INFONAVIT que se calcula en el recibo de pago del empleado"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.actions.act_window,name:erp_l10n_mx_payslip_cfdi_base.table_isr_action
@@ -1123,7 +1222,8 @@ msgstr "Disminusiones al ISR"
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__message_needaction
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__message_unread
 msgid "If checked, new messages require your attention."
-msgstr "Si se encuentra seleccionado, hay nuevos mensajes que requieren tu atención."
+msgstr ""
+"Si se encuentra seleccionado, hay nuevos mensajes que requieren tu atención."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__message_has_error
@@ -1134,58 +1234,76 @@ msgstr "Si se encuentra seleccionado, algunos mensajes tienen error de envío."
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_action_title_ids
 msgid ""
-"If the payslip have perceptions with code 045, assign here the values to the attribute in XML, use the perception type to indicate if apply to exempt "
-"or taxed."
+"If the payslip have perceptions with code 045, assign here the values to "
+"the attribute in XML, use the perception type to indicate if apply to "
+"exempt or taxed."
 msgstr ""
-"Si la nómina tiene percepciones con el código 045, asigne aquí los valores al atributo en XML, utilice el tipo de percepción para indicar si aplica "
+"Si la nómina tiene percepciones con el código 045, asigne aquí los valores "
+"al atributo en XML, utilice el tipo de percepción para indicar si aplica "
 "exento o gravado."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_extra_node_ids
 msgid ""
-"If the payslip have perceptions with code in 022, 023 or 025,must be created a record with data that will be assigned in the node "
-"\"SeparacionIndemnizacion\", or if the payslip have perceptions with code in 039 or 044 must be created a record with data that will be assigned in "
+"If the payslip have perceptions with code in 022, 023 or 025,must be "
+"created a record with data that will be assigned in the node "
+"\"SeparacionIndemnizacion\", or if the payslip have perceptions with code "
+"in 039 or 044 must be created a record with data that will be assigned in "
 "the node \"JubilacionPensionRetiro\". Only must be created a record by node."
 msgstr ""
-"Si las nóminas tienen percepciones con código en 022, 023 o 025, se debe crear un registro con datos que serán asignados en el nodo "
-"“SeparacionIndemnizacion”, o si las boletas tienen percepciones con código en 039 o 044 se debe crear un registro con datos que serán asignados en el "
+"Si las nóminas tienen percepciones con código en 022, 023 o 025, se debe "
+"crear un registro con datos que serán asignados en el nodo "
+"“SeparacionIndemnizacion”, o si las boletas tienen percepciones con código "
+"en 039 o 044 se debe crear un registro con datos que serán asignados en el "
 "nodo “JubilacionPensionRetiro”. Solo se debe crear un registro por nodo."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_balance_favor
 msgid ""
-"If the payslip include other payments, and one of this records have the code 004 is need add the balance in favor to assign in node "
+"If the payslip include other payments, and one of this records have the "
+"code 004 is need add the balance in favor to assign in node "
 "\"CompensacionSaldosAFavor\"."
 msgstr ""
-"Si la nómina incluye otros pagos, y uno de estos registros tiene el código 004, se debe agregar el saldo a favor para asignar en el nodo "
+"Si la nómina incluye otros pagos, y uno de estos registros tiene el código "
+"004, se debe agregar el saldo a favor para asignar en el nodo "
 "“CompensacionSaldosAFavor”."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_remaining
 msgid ""
-"If the payslip include other payments, and one of this records have the code 004 is need add the remaining to assign in node "
+"If the payslip include other payments, and one of this records have the "
+"code 004 is need add the remaining to assign in node "
 "\"CompensacionSaldosAFavor\"."
 msgstr ""
-"Si la nómina incluye otros pagos, y uno de estos registros tiene el código 004, es necesario agregar el resto para asignar en el nodo "
+"Si la nómina incluye otros pagos, y uno de estos registros tiene el código "
+"004, es necesario agregar el resto para asignar en el nodo "
 "“CompensacionSaldosAFavor”."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_comp_year
 msgid ""
-"If the payslip include other payments, and one of this records have the code 004 is need add the year to assign in node \"CompensacionSaldosAFavor\"."
+"If the payslip include other payments, and one of this records have the "
+"code 004 is need add the year to assign in node \"CompensacionSaldosAFavor"
+"\"."
 msgstr ""
-"Si la nómina incluye otros pagos, y uno de estos registros tiene el código 004 es necesario agregar el año a asignar en el nodo "
+"Si la nómina incluye otros pagos, y uno de estos registros tiene el código "
+"004 es necesario agregar el año a asignar en el nodo "
 "“CompensacionSaldosAFavor”."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_extra_perception__amount_total
 msgid ""
-"If will be used in the node \"JubilacionPensionRetiro\" and will be used to one perception with code \"039\", will be used to the attribute "
-"\"TotalUnaExhibicion\", if will be used to one perception with code \"044\", will be used to the attribute \"TotalParcialidad\". If will be used in "
-"the node \"SeparacionIndemnizacion\" will be used in attribute \"TotalPagado\""
+"If will be used in the node \"JubilacionPensionRetiro\" and will be used to "
+"one perception with code \"039\", will be used to the attribute "
+"\"TotalUnaExhibicion\", if will be used to one perception with code "
+"\"044\", will be used to the attribute \"TotalParcialidad\". If will be "
+"used in the node \"SeparacionIndemnizacion\" will be used in attribute "
+"\"TotalPagado\""
 msgstr ""
-"Si se utilizará en el nodo “JubilacionPensionRetiro” y se utilizará para una percepción con código “039”, se utilizará para el atributo "
-"“TotalUnaExhibicion”, si se utilizará para una percepción con código “044”, se utilizará para el atributo “TotalParcialidad”. Si se usará en el nodo "
+"Si se utilizará en el nodo “JubilacionPensionRetiro” y se utilizará para "
+"una percepción con código “039”, se utilizará para el atributo "
+"“TotalUnaExhibicion”, si se utilizará para una percepción con código “044”, "
+"se utilizará para el atributo “TotalParcialidad”. Si se usará en el nodo "
 "“SeparacionIndemnizacion” se usará en el atributo “TotalPagado”"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -1196,15 +1314,19 @@ msgstr ""
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_origin
 msgid ""
-"In some cases the payroll must be regenerated to fix data in it. In that cases is necessary this field filled, the format is: \n"
+"In some cases the payroll must be regenerated to fix data in it. In that "
+"cases is necessary this field filled, the format is: \n"
 "04|UUID1, UUID2, ...., UUIDn.\n"
 "Example:\n"
-"\"04|89966ACC-0F5C-447D-AEF3-3EED22E711EE,89966ACC-0F5C-447D-AEF3-3EED22E711EE\""
+"\"04|89966ACC-0F5C-447D-AEF3-3EED22E711EE,89966ACC-0F5C-447D-"
+"AEF3-3EED22E711EE\""
 msgstr ""
-"En algunos casos se debe regenerar la nómina para fijar datos en ella. En esos casos es necesario llenar este campo, el formato es: \n"
+"En algunos casos se debe regenerar la nómina para fijar datos en ella. En "
+"esos casos es necesario llenar este campo, el formato es: \n"
 "04|UUID1, UUID2, …., UUIDn.\n"
 "Ejemplo:\n"
-"“04|89966ACC-0F5C-447D-AEF3-3EED22E711EE,89966ACC-0F5C-447D-AEF3-3EED22E711EE”"
+"“04|89966ACC-0F5C-447D-AEF3-3EED22E711EE,89966ACC-0F5C-447D-"
+"AEF3-3EED22E711EE”"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_25
@@ -1218,8 +1340,12 @@ msgstr "Indique a qué percepción se agregarán estos atributos en el nodo XML"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_extra_perception__node
-msgid "Indicate what is the record purpose, if will be used to add in node \"JubilacionPensionRetiro\" or in \"SeparacionIndemnizacion\""
-msgstr "Indique cuál es el propósito del registro, si se utilizará para agregar en el nodo “JubilacionPensionRetiro” o en “SeparacionIndemnizacion”"
+msgid ""
+"Indicate what is the record purpose, if will be used to add in node "
+"\"JubilacionPensionRetiro\" or in \"SeparacionIndemnizacion\""
+msgstr ""
+"Indique cuál es el propósito del registro, si se utilizará para agregar en "
+"el nodo “JubilacionPensionRetiro” o en “SeparacionIndemnizacion”"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_res_company__l10n_mx_uma
@@ -1236,13 +1362,39 @@ msgstr "Indica el UMI actual en México"
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_res_company__l10n_mx_minimum_wage
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_res_config_settings__l10n_mx_minimum_wage
-msgid "Indicates the current daily amount of the general minimum wage in Mexico"
+msgid ""
+"Indicates the current daily amount of the general minimum wage in Mexico"
 msgstr "Indica el monto diario actual del salario mínimo general en México"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_form_l10n_mx
+msgid "Infonavit"
+msgstr ""
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payroll_infonavit_active
+msgid "Infonavit Active"
+msgstr "Activar Infonavit"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payroll_infonavit_rate
+msgid "Infonavit rate"
+msgstr "Tasa Infonavit"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_form_l10n_mx
 msgid "Informacion Fiscal"
 msgstr "Información Fiscal"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_form_l10n_mx
+msgid "Information FONACOT"
+msgstr "Información FONACOT"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_form_l10n_mx
+msgid "Information credits Infonavit"
+msgstr "Información de Crédito Infonavit"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_46
@@ -1297,7 +1449,7 @@ msgstr "Dejarlo vacío para utilizar la fecha actual."
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10_mx_cancel_pending
 msgid "L10 Mx Cancel Pending"
-msgstr "Pendiente de cancelación"
+msgstr "SAT Motivo de cancelación"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_salary_rule__l10n_mx_visibility_automatic_isr
@@ -1305,16 +1457,8 @@ msgid "L10N Mx Visibility Automatic Isr"
 msgstr "Visibilidad Automática de ISR"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_contract____last_update
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_employee____last_update
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_employee_loan____last_update
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure____last_update
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_action_titles____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_extra_perception____last_update
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_run____last_update
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_salary_rule____last_update
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_payroll_schedule_pay____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_sat_keys____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr_rate____last_update
@@ -1322,8 +1466,6 @@ msgstr "Visibilidad Automática de ISR"
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_minimum_wage____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umas____last_update
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_umi____last_update
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_company____last_update
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_config_settings____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
@@ -1369,6 +1511,12 @@ msgstr "Línea IMSS"
 #: code:addons/erp_l10n_mx_payslip_cfdi_base/models/hr_employee.py:0
 #, python-format
 msgid "Loan Payslips"
+msgstr "Préstamos"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__loan_ids
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_form_l10n_mx
+msgid "Loans"
 msgstr "Préstamos"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -1436,6 +1584,11 @@ msgid "Mixed income"
 msgstr "Ingresos mixtos"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure_type__weekday__0
+msgid "Monday"
+msgstr "Lunes"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_report_classifier__name
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_sat_keys__l10n_mx_sat_name
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_imss__l10n_mx_imss_name
@@ -1474,9 +1627,19 @@ msgid "Not Found"
 msgstr "No Encontrado"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__generate_report_wizard__stamped_receipts__not_stamped
+msgid "Not Stamped"
+msgstr "Sin Timbrar"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payslip__l10n_mx_sat_status__undefined
 msgid "Not Synced Yet"
 msgstr "No Sincronizado Aún"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__number_fonacot
+msgid "Number FONACOT"
+msgstr "Número FONACOT"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__message_needaction_counter
@@ -1511,6 +1674,7 @@ msgstr "Número de mensajes sin leer"
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure__l10n_mx_payslip_type__o
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payslip__l10n_mx_payslip_type__o
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_mx_filter_base_inherit
 msgid "O-Ordinary Payroll"
 msgstr "O-Nómina Ordinaria"
 
@@ -1523,6 +1687,11 @@ msgstr ""
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__l10n_mx_sat_keys__l10n_mx_sat_classification__other
 msgid "Other payments"
 msgstr "Otros Pagos"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure_type_periods__order
+msgid "Order"
+msgstr "Orden"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_4
@@ -1592,7 +1761,9 @@ msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_other_10
-msgid "Pagos distintos a los listados y que no deben considerarse como ingreso por sueldos, salarios o ingresos asimilados"
+msgid ""
+"Pagos distintos a los listados y que no deben considerarse como ingreso por "
+"sueldos, salarios o ingresos asimilados"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -1602,7 +1773,9 @@ msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_51
-msgid "Pagos por gratificaciones, primas, compensaciones, recompensas u otros a extrabajadores derivados de jubilación en parcialidades"
+msgid ""
+"Pagos por gratificaciones, primas, compensaciones, recompensas u otros a "
+"extrabajadores derivados de jubilación en parcialidades"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -1613,13 +1786,16 @@ msgstr ""
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_52
 msgid ""
-"Pagos que se realicen a extrabajadores que obtengan una jubilación en parcialidades derivados de la ejecución de resoluciones judicial o de un laudo"
+"Pagos que se realicen a extrabajadores que obtengan una jubilación en "
+"parcialidades derivados de la ejecución de resoluciones judicial o de un "
+"laudo"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_53
 msgid ""
-"Pagos que se realicen a extrabajadores que obtengan una jubilación en una sola exhibición derivados de la ejecución de resoluciones judicial o de un "
+"Pagos que se realicen a extrabajadores que obtengan una jubilación en una "
+"sola exhibición derivados de la ejecución de resoluciones judicial o de un "
 "laudo"
 msgstr ""
 
@@ -1646,8 +1822,14 @@ msgstr "Percepción extra de nómina"
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payment_date
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_run__l10n_mx_payment_date
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_mx_filter_base_inherit
 msgid "Payment Date"
 msgstr "Fecha de pago"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_generate_report_wizard__l10n_mx_edi_payment_method_ids
+msgid "Payment Way"
+msgstr "Forma de Pago"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_company__l10n_mx_stamp_receipt
@@ -1723,6 +1905,21 @@ msgid "Perception"
 msgstr "Percepción"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: code:addons/erp_l10n_mx_payslip_cfdi_base/wizard/generate_report.py:0
+#: model:ir.actions.act_window,name:erp_l10n_mx_payslip_cfdi_base.action_perceptions_deductions_report_wizard
+#: model:ir.ui.menu,name:erp_l10n_mx_payslip_cfdi_base.menu_perceptions_deductions_report_wizard
+#, python-format
+msgid "Perceptions and Deductions Report"
+msgstr "Reporte de Percepciones y Deducciones"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_hr_payroll_structure_type_periods
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure_type__periods_ids
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.hr_payroll_structure_type_view_form_inherit
+msgid "Periods"
+msgstr "Periodos"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_49
 msgid "Premios por asistencia"
 msgstr ""
@@ -1764,7 +1961,9 @@ msgstr "Bono de Productividad"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_deductions_9
-msgid "Préstamos provenientes del Fondo Nacional de la Vivienda para los Trabajadores"
+msgid ""
+"Préstamos provenientes del Fondo Nacional de la Vivienda para los "
+"Trabajadores"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -1778,6 +1977,30 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.table_isr_view_form
 msgid "Rate ISR"
 msgstr "Tarifa ISR"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.ui.menu,name:erp_l10n_mx_payslip_cfdi_base.menu_receipt_report_wizard
+msgid "Receipt"
+msgstr "Recibos"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.actions.act_window,name:erp_l10n_mx_payslip_cfdi_base.action_receipt_printing_report_wizard
+#: model:ir.actions.report,name:erp_l10n_mx_payslip_cfdi_base.action_receipt_printing_report_pdf
+#: model:ir.ui.menu,name:erp_l10n_mx_payslip_cfdi_base.menu_receipt_printing_report_wizard
+msgid "Receipt Printing"
+msgstr "Impresión de Recibos"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: code:addons/erp_l10n_mx_payslip_cfdi_base/wizard/generate_report.py:0
+#, python-format
+msgid "Receipt Printing Report"
+msgstr "Impresión de Recibos"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: code:addons/erp_l10n_mx_payslip_cfdi_base/wizard/generate_report.py:0
+#, python-format
+msgid "Receipt Printing.pdf"
+msgstr "Impresión de Recibos.pdf"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_4
@@ -1806,12 +2029,15 @@ msgstr "Se refiere al estado de la boleta de pago en el sistema del SAT."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_other_1
-msgid "Reintegro de ISR pagado en exceso (siempre que no haya sido enterado al SAT)"
+msgid ""
+"Reintegro de ISR pagado en exceso (siempre que no haya sido enterado al SAT)"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_other_5
-msgid "Reintegro de ISR retenido en exceso de ejercicio anterior (siempre que no haya sido enterado al SAT)"
+msgid ""
+"Reintegro de ISR retenido en exceso de ejercicio anterior (siempre que no "
+"haya sido enterado al SAT)"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -1926,6 +2152,8 @@ msgstr "Regla de salario"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_hr_payroll_structure
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_generate_report_wizard__struct_id
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_generate_report_wizard__struct_ids
 msgid "Salary Structure"
 msgstr "Estructura salarial"
 
@@ -1936,8 +2164,10 @@ msgstr "Almacena la fecha de pago que se agregará en el CFDI."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_run__l10n_mx_payment_date
-msgid "Save the payment date that will be added on all payslip created with this batch."
-msgstr "Guarde la fecha de pago que se agregará en todos los recibos de pago creados con este lote."
+msgid ""
+"Save the payment date that will be added on all payslip created with this "
+"batch."
+msgstr "Almacena la fecha de pago que se agregará en el CFDI."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_l10n_mx_payroll_schedule_pay
@@ -1972,7 +2202,7 @@ msgstr "Enviado"
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payslip_extra_perception__node__separation
 msgid "SeparacionIndemnizacion"
-msgstr ""
+msgstr "Separación Indemnización"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_sat_keys__sequence
@@ -1995,6 +2225,16 @@ msgid "Source Resource"
 msgstr "Fuente del Recurso"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__generate_report_wizard__stamped_receipts__stamped
+msgid "Stamped"
+msgstr "Timbrados"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_generate_report_wizard__stamped_receipts
+msgid "Stamped Receipts"
+msgstr "Recibos Timbrados"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_company__l10n_mx_stamped_version
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_config_settings__l10n_mx_stamped_version
 msgid "Stamped version"
@@ -2003,7 +2243,7 @@ msgstr "Versión de Timbrado"
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_sat_keys__l10n_mx_sat_date_start
 msgid "Start Date of Validity"
-msgstr "Fecha Inicio de Vigencia "
+msgstr "Fecha Inicio de Vigencia"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payslip__l10n_mx_sat_status__none
@@ -2019,14 +2259,15 @@ msgid "Status"
 msgstr "Estatus"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
-#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_generate_report_wizard__struct_id
-msgid "Salary Structure"
-msgstr "Estructura Salarial"
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_mx_filter_base_inherit
+msgid "Struct"
+msgstr "Estructura"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_other_8
 msgid ""
-"Subsidio efectivamente entregado que no correspondía (Aplica sólo cuando haya ajuste al cierre de mes en relación con el Apéndice 7 de la guía de "
+"Subsidio efectivamente entregado que no correspondía (Aplica sólo cuando "
+"haya ajuste al cierre de mes en relación con el Apéndice 7 de la guía de "
 "llenado de nómina)"
 msgstr ""
 
@@ -2062,6 +2303,7 @@ msgid "Sueldos, Salarios  Rayas y Jornales"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure_type__l10n_mx_table_isr_id
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr_rate__l10n_mx_table_isr_id
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr_subsidy_rate__l10n_mx_table_isr_id
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.table_isr_view_form
@@ -2107,7 +2349,8 @@ msgstr "Los parámetros para configurar la versión de Nómina Timbrada."
 #: code:addons/erp_l10n_mx_payslip_cfdi_base/models/hr_payslip.py:0
 #, python-format
 msgid "The payment period in the contract %s must have to which ISR belongs."
-msgstr "El periodo de pago en el contrato %s debe tener a que ISR pertenece."
+msgstr ""
+"El periodo de pago en el contrato %s debe tener al cual pertenece el ISR."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_time_payslip
@@ -2125,6 +2368,11 @@ msgid "To sign"
 msgstr "Para firmar"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure_type__weekday__1
+msgid "Tuesday"
+msgstr "Martes"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr__l10n_mx_isr_type
 msgid "Type"
 msgstr "Tipo"
@@ -2132,18 +2380,21 @@ msgstr "Tipo"
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure__l10n_mx_payslip_type
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_payslip_type
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_mx_filter_base_inherit
 msgid "Type of payroll"
 msgstr "Tipo de Nómina"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.actions.act_window,name:erp_l10n_mx_payslip_cfdi_base.table_umas_action
-#: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_l10n_mx_table_umas model:ir.ui.menu,name:erp_l10n_mx_payslip_cfdi_base.menu_action_table_umas
+#: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_l10n_mx_table_umas
+#: model:ir.ui.menu,name:erp_l10n_mx_payslip_cfdi_base.menu_action_table_umas
 msgid "UMAS"
 msgstr ""
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.actions.act_window,name:erp_l10n_mx_payslip_cfdi_base.table_umi_action
-#: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_l10n_mx_table_umi model:ir.ui.menu,name:erp_l10n_mx_payslip_cfdi_base.menu_action_table_umi
+#: model:ir.model,name:erp_l10n_mx_payslip_cfdi_base.model_l10n_mx_table_umi
+#: model:ir.ui.menu,name:erp_l10n_mx_payslip_cfdi_base.menu_action_table_umi
 msgid "UMI"
 msgstr ""
 
@@ -2170,11 +2421,15 @@ msgstr "Limite Superior"
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_source_resource
 msgid ""
-"Used in XML to identify the source of the resource used for the payment of payroll of the personnel that provides or performs a subordinate or "
-"assimilated personal service to salaries in the dependencies. This value will be set in the XML attribute \"OrigenRecurso\" to node \"EntidadSNCF\"."
+"Used in XML to identify the source of the resource used for the payment of "
+"payroll of the personnel that provides or performs a subordinate or "
+"assimilated personal service to salaries in the dependencies. This value "
+"will be set in the XML attribute \"OrigenRecurso\" to node \"EntidadSNCF\"."
 msgstr ""
-"Utilizado en XML para identificar la fuente del recurso utilizado para el pago de la nómina del personal que presta o realiza un servicio personal "
-"subordinado o asimilado a los salarios en las dependencias. Este valor se establecerá en el atributo XML “OrigenRecurso” al nodo “EntidadSNCF”."
+"Utilizado en XML para identificar la fuente del recurso utilizado para el "
+"pago de la nómina del personal que presta o realiza un servicio personal "
+"subordinado o asimilado a los salarios en las dependencias. Este valor se "
+"establecerá en el atributo XML “OrigenRecurso” al nodo “EntidadSNCF”."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_extra_perception__accumulable_income
@@ -2184,18 +2439,30 @@ msgstr "Usado en ambos nodos, cada registro debe tener valor para cada uno."
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_extra_perception__amount_daily
-msgid "Used when will be added in node \"JubilacionPensionRetiro\", to be used in attribute \"MontoDiario\""
-msgstr "Usado cuando se agregará en el nodo “JubilacionPensionRetiro”, para ser usado en el atributo “MontoDiario”"
+msgid ""
+"Used when will be added in node \"JubilacionPensionRetiro\", to be used in "
+"attribute \"MontoDiario\""
+msgstr ""
+"Usado cuando se agregará en el nodo “JubilacionPensionRetiro”, para ser "
+"usado en el atributo “MontoDiario”"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_extra_perception__service_years
-msgid "Used when will be added in node \"SeparacionIndemnizacion\", to be used in attribute \"NumAñosServicio\""
-msgstr "Usado cuando se agregará en el nodo “Separacion Indemnizacion”, para ser usado en el atributo “NumAñosServicio”"
+msgid ""
+"Used when will be added in node \"SeparacionIndemnizacion\", to be used in "
+"attribute \"NumAñosServicio\""
+msgstr ""
+"Usado cuando se agregará en el nodo “Separacion Indemnizacion”, para ser "
+"usado en el atributo “NumAñosServicio”"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_extra_perception__last_salary
-msgid "Used when will be added in node \"SeparacionIndemnizacion\", to be used in attribute \"UltimoSueldoMensOrd\""
-msgstr "Usado cuando se agregará en el nodo “Separacion Indemnizacion”, para ser usado en el atributo “UltimoSueldoMensOrd”"
+msgid ""
+"Used when will be added in node \"SeparacionIndemnizacion\", to be used in "
+"attribute \"UltimoSueldoMensOrd\""
+msgstr ""
+"Usado cuando se agregará en el nodo “Separacion Indemnizacion”, para ser "
+"usado en el atributo “UltimoSueldoMensOrd”"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:l10n.mx.sat.keys,l10n_mx_sat_name:erp_l10n_mx_payslip_cfdi_base.l10n_mx_sat_keys_perception_29
@@ -2268,27 +2535,43 @@ msgid "Website communication history"
 msgstr "Historial de comunicaciones del sitio web"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_cfdi_base.selection__hr_payroll_structure_type__weekday__2
+msgid "Wednesday"
+msgstr "Miercoles"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payroll_structure_type__weekday
+msgid "Weekday"
+msgstr "Día de la Semana"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_action_titles__price_granted
 msgid ""
-"When perception type is 045 this value must be assigned in the line. Will be used in node \"AccionesOTitulos\" to the attribute \"PrecioAlOtorgarse\""
+"When perception type is 045 this value must be assigned in the line. Will "
+"be used in node \"AccionesOTitulos\" to the attribute \"PrecioAlOtorgarse\""
 msgstr ""
-"145 / 5,000\n"
-"Resultados de traducción\n"
-"Cuando el tipo de percepción es 045 se debe asignar este valor en la línea. Se utilizará en el nodo “AccionesOTitulos” al atributo “PrecioAlOtorgarse”"
+"Cuando el tipo de percepción es 045 se debe asignar este valor en la línea. "
+"Se utilizará en el nodo “AccionesOTitulos” al atributo “PrecioAlOtorgarse”"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip_action_titles__market_value
-msgid "When perception type is 045 this value must be assigned in the line. Will be used in node \"AccionesOTitulos\" to the attribute \"ValorMercado\""
+msgid ""
+"When perception type is 045 this value must be assigned in the line. Will "
+"be used in node \"AccionesOTitulos\" to the attribute \"ValorMercado\""
 msgstr ""
-"Cuando el tipo de percepción es 045 se debe asignar este valor en la línea. Se utilizará en el nodo “AccionesOTitulos” al atributo “ValorMercado”"
+"Cuando el tipo de percepción es 045 se debe asignar este valor en la línea. "
+"Se utilizará en el nodo “AccionesOTitulos” al atributo “ValorMercado”"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,help:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_amount_sncf
 msgid ""
-"When the attribute in \"Source Resource\" is \"IM\" this attribute must be added to set in the XML attribute \"MontoRecursoPropio\" in node "
-"\"EntidadSNCF\", and must be less that \"TotalPercepciones\" + \"TotalOtrosPagos\""
+"When the attribute in \"Source Resource\" is \"IM\" this attribute must be "
+"added to set in the XML attribute \"MontoRecursoPropio\" in node "
+"\"EntidadSNCF\", and must be less that \"TotalPercepciones\" + "
+"\"TotalOtrosPagos\""
 msgstr ""
-"Cuando el atributo en Source Resource  es  IM  este atributo debe ser agregado para establecerse en el atributo MontoRecursoPropio en el nodo "
+"Cuando el atributo en Source Resource  es  IM  este atributo debe ser "
+"agregado para establecerse en el atributo MontoRecursoPropio en el nodo "
 "EntidadSNCF, y debe ser menor que TotalPercepciones, TotalOtrosPagos"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
@@ -2296,6 +2579,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.view_hr_payslip_mx_filter_base_inherit
 msgid "With CFDI Errors"
 msgstr "Con errores en CFDI"
+
+#. module: erp_l10n_mx_payslip_cfdi_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_company__work_fonacot
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_res_config_settings__work_fonacot
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_cfdi_base.res_config_settings_view_form_inherit_l10n_mx_payslip
+msgid "Workplace FONACOT"
+msgstr "Centro de Trabajo FONACOT"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_hr_payslip__l10n_mx_comp_year
@@ -2309,7 +2599,7 @@ msgstr "Año"
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_imss__l10n_mx_imss_year
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_isr__l10n_mx_isr_year
 msgid "Years"
-msgstr "Año"
+msgstr "Años"
 
 #. module: erp_l10n_mx_payslip_cfdi_base
 #: model:ir.model.fields,field_description:erp_l10n_mx_payslip_cfdi_base.field_l10n_mx_table_minimum_wage__zone_a

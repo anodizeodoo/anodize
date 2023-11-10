@@ -96,6 +96,48 @@
                 <field name="l10n_mx_payslip_type"/>
             </field>
 
+            <page name="salary_computation" position="after">
+                <page string="Infonavit">
+                    <group string="Information credits Infonavit">
+                        <group>
+                            <field name="l10n_mx_payroll_infonavit_active" widget="boolean_toggle"/>
+                            <field name="l10n_mx_payroll_infonavit_credit_number"
+                                   options="{'format': 0}"
+                                   attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_description" attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_date_start" attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_date_register" attrs="{'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name="l10n_mx_payroll_infonavit_type" attrs="{'required': [('l10n_mx_payroll_infonavit_active', '=', True)], 'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                            <field name='l10n_mx_payroll_infonavit_rate' attrs="{'invisible':[('l10n_mx_payroll_infonavit_type', '=', False)], 'readonly': [('l10n_mx_payroll_infonavit_active', '=', False)]}"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="Loans">
+                    <group string="Information FONACOT">
+                        <group>
+                            <field name="number_fonacot"/>
+                        </group>
+                        <group></group>
+                    </group>
+                    <field name="loan_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="loan_type_id" required="1"/>
+                            <field name="date_start" required="1"/>
+                            <field name="date_end" required="1"/>
+                            <field name="name" required="1"/>
+                            <field name="company_currency_id" invisible="1"/>
+                            <field name="credit_amount" required="1"/>
+                            <field name="monthly_withhold" required="1"/>
+                            <field name="payment_term" required="1"/>
+                            <field name="payments_other_employers"/>
+                            <field name="accumulated_amount_withheld" required="1"/>
+                            <field name="residue"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </tree>
+                    </field>
+                </page>
+            </page>
+
         </field>
     </record>
 
@@ -119,6 +161,8 @@
         <field name="inherit_id" ref="hr_payroll.view_hr_payslip_filter"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='payslip_run_id']" position="after">
+                <filter string="O-Ordinary Payroll" name="ordinary_payroll" domain="[('l10n_mx_payslip_type', '=', 'O')]"/>
+                <filter string="E-Extraordinary" name="extraordinary_payroll" domain="[('l10n_mx_payslip_type', '=', 'E')]"/>
                 <separator/>
                 <filter string="PAC: To sign" name="to_sign" domain="[('l10n_mx_pac_status', '=', 'to_sign')]"/>
                 <filter string="PAC: Retry" name="retry" domain="[('l10n_mx_pac_status', '=', 'retry')]"/>
@@ -138,11 +182,17 @@
             <xpath expr="//filter[@name='done']" position="after">
                 <filter string="Cancel" name="cancel" domain="[('state', '=', 'cancel')]" help="Cancelled Slips"/>
             </xpath>
-            <xpath expr="//filter[@name='company_id']" position="after">
+            <xpath expr="//filter[@name='group_by_company_id']" position="after">
                 <filter string="PAC status" name="g_l10n_mx_pac_status" context="{'group_by': 'l10n_mx_pac_status'}"/>
                 <filter string="SAT status" name="g_l10n_mx_sat_status" context="{'group_by': 'l10n_mx_sat_status'}"/>
                 <filter string="SAT Cancellation Reason" name="g_l10n_mx_cancel_reason" context="{'group_by': 'l10n_mx_cancel_reason'}"/>
             </xpath>
+            <filter name="group_by_employee_id" position="after">
+                <filter string="Contract" name="contract_id" context="{'group_by': 'contract_id'}"/>
+                <filter string="Struct" name="struct_id" context="{'group_by': 'struct_id'}"/>
+                <filter string="Payment Date" name="l10n_mx_payment_date" context="{'group_by': 'l10n_mx_payment_date'}"/>
+                <filter string="Type of payroll" name="l10n_mx_payslip_type" context="{'group_by': 'l10n_mx_payslip_type'}"/>
+            </filter>
         </field>
     </record>
 
@@ -151,7 +201,7 @@
         <field name="model">hr.payslip.run</field>
         <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='credit_note']" position="before">
+            <xpath expr="//field[@name='company_id']" position="before">
                 <field name="l10n_mx_payment_date"/>
                 <field name="l10n_mx_productivity_bonus"/>
             </xpath>

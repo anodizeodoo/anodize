@@ -11,17 +11,17 @@ class SatKeys(models.Model):
     _description = 'SAT keys'
     _rec_name = 'l10n_mx_sat_name'
 
-    l10n_mx_sat_code = fields.Char(string='Code')
-    l10n_mx_sat_name = fields.Char(string='Name', translate=True)
+    l10n_mx_sat_code = fields.Char(string='Code', index=True)
+    l10n_mx_sat_name = fields.Char(string='Name', translate=True, index=True)
     l10n_mx_sat_classification = fields.Selection([
         ('perception', 'Perception'),
         ('deduction', 'Deduction'),
         ('other', 'Other payments')
-    ], string="Classification")
-    l10n_mx_sat_date_start = fields.Date(string='Start Date of Validity')
-    l10n_mx_sat_date_end = fields.Date(string='End of Validity Date')
-    active = fields.Boolean('Active', default=True)
-    sequence = fields.Integer('Sequence', default=10)
+    ], string="Classification", index=True)
+    l10n_mx_sat_date_start = fields.Date(string='Start Date of Validity', index=True)
+    l10n_mx_sat_date_end = fields.Date(string='End of Validity Date', index=True)
+    active = fields.Boolean('Active', default=True, index=True)
+    sequence = fields.Integer('Sequence', default=10, index=True)
 
     def name_get(self):
         res = []

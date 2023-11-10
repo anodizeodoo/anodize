@@ -13,16 +13,18 @@
             <group name="main_details" position="after">
                 <group>
                     <group string="Configuration for ISR/IMSS calculation">
-                        <field name="l10n_mx_isr"/>
-                        <field name="l10n_mx_imss"/>
-                        <field name="l10n_mx_percep_grav_isr"/>
+                        <field name="l10n_mx_isr" widget="toggle_button"/>
+                        <field name="l10n_mx_imss" widget="toggle_button"/>
+                        <field name="l10n_mx_percep_grav_isr" widget="toggle_button"/>
                     </group>
                     <group></group>
                 </group>
             </group>
             <field name="struct_id" position="after">
                 <field name="l10n_mx_visibility_automatic_isr" invisible="1"/>
-                <field name="l10n_mx_automatic_isr" attrs="{'invisible': [('l10n_mx_visibility_automatic_isr', '=', False)]}"/>
+                <field name="l10n_mx_automatic_isr"
+                        widget="boolean_toggle"
+                       attrs="{'invisible': [('l10n_mx_visibility_automatic_isr', '=', False)]}"/>
             </field>
             <field name="code" position="attributes">
                 <attribute name="attrs">{'readonly': [('l10n_mx_visibility_automatic_isr', '=', True)]}</attribute>
@@ -44,6 +46,19 @@
                     </field>
                 </page>
             </xpath>
+            <xpath expr="//group[@name='general_conditions']/group[3]" position="attributes">
+                <attribute name="attrs">{'invisible': [('l10n_mx_automatic_isr', '=', True)]}</attribute>
+            </xpath>
+            <xpath expr="//group[@name='general_conditions']/group[4]" position="attributes">
+                <attribute name="attrs">{'invisible': [('l10n_mx_automatic_isr', '=', True)]}</attribute>
+            </xpath>
+            <field name="active" position="after">
+                <field name="is_total_deduction" widget="boolean_toggle"/>
+                <field name="l10n_mx_sum_total" widget="boolean_toggle"/>
+                <field name="is_net_adjustments" widget="boolean_toggle" invisible="1"/>
+                <field name="table_net_adjustments_id" invisible="1"/>
+            </field>
+
         </field>
     </record>
 
@@ -67,7 +82,7 @@
                 <field name="l10n_mx_payslip_type"/>
             </field>
             <field name="journal_id" position="after">
-                <field name="l10n_mx_stamp_payroll"/>
+                <field name="l10n_mx_stamp_payroll" widget="boolean_toggle"/>
             </field>
         </field>
     </record>
@@ -80,6 +95,55 @@
             <field name="parent_id" position="after">
                 <field name="report_classifier_id" options="{'no_create': True, 'no_create_edit': True}"/>
             </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_payroll_structure_type_view_form_inherit">
+        <field name="name">hr.payroll.structure.type.form.inherit</field>
+        <field name="model">hr.payroll.structure.type</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payroll_structure_type_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header name="header">
+                    <button name="generate_periods" type="object" string="Generate Periods" class="oe_highlight"/>
+                </header>
+            </xpath>
+            <xpath expr="//div[@class='oe_title']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <field name="country_id" position="before">
+                <field name="code"/>
+                <field name="name" placeholder="Por ejemplo, empleado"/>
+                <field name="l10n_mx_payroll_schedule_pay_id" />
+                <field name="default_schedule_pay" position="move"/>
+                <field name="date_start" required="1"/>
+                <field name="date_end" required="1"/>
+                <field name="weekday" attrs="{'invisible': [('default_schedule_pay', 'not in', ('decennial', 'weekly'))], 'required': [('default_schedule_pay', 'in', ('decennial', 'weekly'))]}"/>
+                <field name="l10n_mx_table_isr_id" options="{'no_create': True, 'no_create_edit': True}" required="1"/>
+            </field>
+            <field name="default_schedule_pay" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+            <field name="default_resource_calendar_id" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+            <field name="country_id" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+            <xpath expr="//sheet/group" position="after">
+                <notebook>
+                    <page name='periods' string="Periods">
+                        <field name="periods_ids" nolabel="1">
+                            <tree create="0" delete="0" editable="0">
+                                <field name="order"/>
+                                <field name="date_start"/>
+                                <field name="date_end"/>
+                                <field name="days" optional="show"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
         </field>
     </record>
 

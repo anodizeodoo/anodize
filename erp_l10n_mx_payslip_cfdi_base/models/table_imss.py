@@ -14,11 +14,11 @@ class TableImss(models.Model):
     def _get_years(self):
         return [(str(x), str(x)) for x in range(datetime.now().year + 1, 2000, -1)]
 
-    l10n_mx_imss_code = fields.Char(string='Code', tracking=True)
-    l10n_mx_imss_name = fields.Char(string='Name', tracking=True)
-    l10n_mx_imss_year = fields.Selection(string='Years', selection=_get_years, default=str(datetime.now().year), tracking=True)
-    l10n_mx_imss_active = fields.Boolean(string='Status', default=True, tracking=True)
-    l10n_mx_imss_line_ids = fields.One2many('l10n.mx.table.imss.line', 'l10n_mx_table_imss_id', string='Line IMSS')
+    l10n_mx_imss_code = fields.Char(string='Code', tracking=True, index=True)
+    l10n_mx_imss_name = fields.Char(string='Name', tracking=True, index=True)
+    l10n_mx_imss_year = fields.Selection(string='Years', selection=_get_years, default=str(datetime.now().year), tracking=True, index=True)
+    l10n_mx_imss_active = fields.Boolean(string='Status', default=True, tracking=True, index=True)
+    l10n_mx_imss_line_ids = fields.One2many('l10n.mx.table.imss.line', 'l10n_mx_table_imss_id', string='Line IMSS', index=True)
 
     def write(self, vals):
         if vals.get('l10n_mx_imss_line_ids', False):
@@ -44,6 +44,10 @@ class TableImss(models.Model):
                 self.message_post(body=_(message))
         return super(TableImss, self).write(vals)
 
+    def _valid_field_parameter(self, field, name):
+        # I can't even
+        return name == 'tracking' or super()._valid_field_parameter(field, name)
+
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
         self.ensure_one()
@@ -67,8 +71,8 @@ class TableImssLine(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Line IMSS'
 
-    l10n_mx_table_imss_id = fields.Many2one('l10n.mx.table.imss', string='Table IMSS', tracking=True)
-    l10n_mx_imss_line_name = fields.Char(string='Name', tracking=True)
-    l10n_mx_imss_line_employee = fields.Float(string='% Employee', digits=(12, 4), tracking=True)
-    l10n_mx_imss_line_pattern = fields.Float(string='% Pattern', digits=(12, 4), tracking=True)
+    l10n_mx_table_imss_id = fields.Many2one('l10n.mx.table.imss', string='Table IMSS', tracking=True, index=True)
+    l10n_mx_imss_line_name = fields.Char(string='Name', tracking=True, index=True)
+    l10n_mx_imss_line_employee = fields.Float(string='% Employee', digits=(12, 4), tracking=True, index=True)
+    l10n_mx_imss_line_pattern = fields.Float(string='% Pattern', digits=(12, 4), tracking=True, index=True)
 
