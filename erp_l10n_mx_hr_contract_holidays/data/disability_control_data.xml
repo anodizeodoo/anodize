@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1" >
+    <data>
+        <record id="disability_control_1" model="l10n.mx.disability.control">
+            <field name="code">0</field>
+            <field name="name">Ninguna</field>
+        </record>
+        <record id="disability_control_2" model="l10n.mx.disability.control">
+            <field name="code">1</field>
+            <field name="name">Única</field>
+        </record>
+        <record id="disability_control_3" model="l10n.mx.disability.control">
+            <field name="code">2</field>
+            <field name="name">Inicial</field>
+        </record>
+        <record id="disability_control_4" model="l10n.mx.disability.control">
+            <field name="code">3</field>
+            <field name="name">Subsecuente</field>
+        </record>
+        <record id="disability_control_5" model="l10n.mx.disability.control">
+            <field name="code">4</field>
+            <field name="name">Altamedica o ST-2</field>
+        </record>
+        <record id="disability_control_6" model="l10n.mx.disability.control">
+            <field name="code">5</field>
+            <field name="name">Valuación o ST-3</field>
+        </record>
+        <record id="disability_control_7" model="l10n.mx.disability.control">
+            <field name="code">6</field>
+            <field name="name">Defunción o ST-3</field>
+        </record>
+        <record id="disability_control_8" model="l10n.mx.disability.control">
+            <field name="code">7</field>
+            <field name="name">Prenatal</field>
+        </record>
+        <record id="disability_control_9" model="l10n.mx.disability.control">
+            <field name="code">8</field>
+            <field name="name">Enlace</field>
+        </record>
+        <record id="disability_control_10" model="l10n.mx.disability.control">
+            <field name="code">9</field>
+            <field name="name">Postnatal</field>
+        </record>
+    </data>
+</odoo>

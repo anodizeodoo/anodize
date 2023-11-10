@@ -339,7 +339,7 @@ class HRPayroll(TransactionCase):
         payroll = self.create_payroll()
         payroll.employee_id.l10n_mx_edi_is_assimilated = True
         payroll.employee_id.l10n_mx_edi_contract_regime_type_id.code = '09'
-        payroll.contract_id.l10n_mx_edi_contract_type = '99'
+        payroll.contract_id.l10n_mx_edi_contract_type_id.code = '99'
         payroll.compute_sheet()
         payroll.action_payslip_done()
         self.assertEqual(payroll.l10n_mx_edi_pac_status, 'signed',

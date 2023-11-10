@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1" >
+    <data>
+        <record id="type_considered_1" model="hr.leave.type.considered">
+            <field name="code">TI001</field>
+            <field name="name">Ausencia</field>
+        </record>
+        <record id="type_considered_2" model="hr.leave.type.considered">
+            <field name="code">TI002</field>
+            <field name="name">Incapacidad</field>
+        </record>
+        <record id="type_considered_3" model="hr.leave.type.considered">
+            <field name="code">TI003</field>
+            <field name="name">Vacaciones</field>
+        </record>
+    </data>
+</odoo>

@@ -49,7 +49,7 @@
         <menuitem
             id="menu_table_configuration"
             name="Tables"
-            parent="hr_work_entry_contract.menu_hr_payroll_configuration"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"
             sequence="100"/>
 
         <menuitem

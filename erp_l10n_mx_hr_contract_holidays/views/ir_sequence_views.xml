@@ -12,8 +12,8 @@
         </record>
 
         <menuitem id="erp_l10n_mx_hr_contract_holidays_ir_sequence_menu"
-                  sequence="25" name="Sequence Contract"
-                  parent="hr.menu_human_resources_configuration_employee"
+                  sequence="26" name="Sequence Contract"
+                  parent="erp_hr_employee_sequence.erp_hr_employee_hr_main_sequence_menu"
                   action="erp_l10n_mx_hr_contract_holidays.contract_view_ir_sequence_form"/>
 
     </data>

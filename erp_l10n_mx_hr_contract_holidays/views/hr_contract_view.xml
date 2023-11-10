@@ -5,6 +5,18 @@
         <field name="model">hr.contract</field>
         <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button string="Nuevo" name="button_new" states="renovate" type="object" class="btn-primary"/>
+                <button string="Cancelado" name="button_cancel" states="open,renovate" type="object" class="btn-primary"/>
+                <button string="Vencido" name="button_close" states="renovate" type="object" class="btn-primary"/>
+                <button string="Actualizar Fecha de Alta IMSS" name="button_modify_date_imss" attrs="{'invisible': [('state', 'in', ('draft', 'cancel', 'close'))]}" type="object" class="btn-primary" confirm="Está seguro de modificar la Fecha de Alta de IMSS, ya que afectara la antigüedad del empleado."/>
+            </xpath>
+            <!--<field name="state" position="before">
+                <button string="Nuevo" name="button_new" states="renovate" type="object" class="btn-primary"/>
+                <button string="Cancelado" name="button_cancel" states="open,renovate" type="object" class="btn-primary"/>
+                <button string="Vencido" name="button_close" states="renovate" type="object" class="btn-primary"/>
+                <button string="Actualizar Fecha de Alta IMSS" name="button_modify_date_imss" attrs="{'invisible': [('state', 'in', ('draft', 'cancel', 'close'))]}" type="object" class="btn-primary" confirm="Está seguro de modificar la Fecha de Alta de IMSS, ya que afectara la antigüedad del empleado."/>
+            </field>-->
             <field name="name" position="before">
                 <field name="l10n_mx_automatic_sequence_contracts" invisible="1"/>
                 <field name="l10n_mx_number" attrs="{'invisible': [('l10n_mx_automatic_sequence_contracts', '=', False)]}" readonly="1"/>
@@ -12,12 +24,67 @@
             <field name="name" position="attributes">
                 <attribute name="attrs">{'invisible': [('l10n_mx_automatic_sequence_contracts', '=', True)], 'required': [('l10n_mx_automatic_sequence_contracts', '=', False)]}</attribute>
 			</field>
-            <field name="date_start" position="after">
-                <field name="l10n_mx_date_imss"/>
-            </field>
-            <field name="date_end" position="before">
-                <field name="l10n_mx_antiquity"/>
-            </field>
+<!--            <field name="structure_type_id" position="replace"/>-->
+<!--            <field name="structure_type_id" position="replace"/>-->
+<!--            <xpath expr="//page[@name='information']/group[@name='salary_info']" position="before">-->
+<!--                <group>-->
+<!--                    <group>-->
+<!--                        <field name="structure_type_id" groups="!hr_contract.group_hr_contract_manager" domain="['|', ('country_id', '=', False), ('country_id', '=', company_country_id)]" options="{'no_open': True, 'no_create': True}"/>-->
+<!--                        <field name="structure_type_id" groups="hr_contract.group_hr_contract_manager" domain="['|', ('country_id', '=', False), ('country_id', '=', company_country_id)]"/>-->
+<!--                    </group>-->
+<!--                </group>-->
+<!--            </xpath>-->
+<!--            <field name="date_start" position="after">-->
+<!--                <field name="l10n_mx_date_imss" attrs="{'readonly': [('state', '!=', 'draft')]}"/>-->
+<!--            </field>-->
+<!--            <field name="date_end" position="before">-->
+<!--                <field name="l10n_mx_antiquity"/>-->
+<!--            </field>-->
+            <xpath expr="//page[last()]" position="after">
+                <page string="Holidays">
+                    <field name="contract_holidays_ids" nolabel="1">
+                        <tree create="0" edit="0" delete="0">
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="holiday_status_id"/>
+                            <field name="days_assigned"/>
+                            <field name="days_enjoyed"/>
+                            <field name="days_available"/>
+                            <field name="state" widget="badge" decoration-info="state == 'validate'" decoration-warning="state == 'refuse'" string="Estado"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Absences">
+                    <group>
+                        <group>
+                            <field name="work_days"/>
+                        </group>
+                        <group>
+                            <field name="total_disabilities"/>
+                            <field name="total_unexcused_absences"/>
+                            <field name="total_discounted_days_ptu"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <field name="date_start" position="replace"/>
+            <field name="date_end" position="replace"/>
+            <group name="notes_group" position="before">
+                <group>
+                    <group string="Términos del Contrato">
+                        <field name="l10n_mx_date_imss" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        <field name="date_start" position="move"/>
+                        <field name="date_end" position="move"/>
+                        <field name="date_end_period"/>
+                    </group>
+                    <group col="4">
+                        <field name="l10n_mx_antiquity_other"/>
+                        <field name="l10n_mx_antiquity_other_days"/>
+                        <field name="l10n_mx_antiquity"/>
+                        <field name="l10n_mx_antiquity_days"/>
+                    </group>
+                </group>
+            </group>
         </field>
     </record>
 
@@ -26,17 +93,33 @@
         <field name="model">hr.contract</field>
         <field name="inherit_id" ref="erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx"/>
         <field name="arch" type="xml">
+            <field name="l10n_mx_type_benefit_id" position="before">
+                <field name="structure_type_id" position="move"/>
+            </field>
+            <field name="l10n_mx_payroll_daily_salary" position="before">
+                <field name="hourly_wage"/>
+            </field>
             <group name="mx_info" position="inside">
-                <group>
-                    <label for="l10n_mx_holidays"/>
-                    <div class="o_row">
-                        <field name="l10n_mx_holidays"/>
-                        <!--<button name="action_update_l10n_mx_holidays" type="object" string="Update" class="oe_link"/>-->
-                    </div>
-                    <field name="l10n_mx_vacation_bonus" readonly="0"/>
-                    <field name="l10n_mx_christmas_bonus" readonly="0"/>
-                </group>
+                <label for="l10n_mx_holidays"/>
+                <div class="o_row">
+                    <field name="l10n_mx_holidays"/>
+                    <!--<button name="action_update_l10n_mx_holidays" type="object" string="Update" class="oe_link"/>-->
+                </div>
+                <field name="l10n_mx_vacation_bonus" readonly="0"/>
+                <field name="l10n_mx_christmas_bonus" readonly="0"/>
             </group>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_contract_holidays_view_search_inherit">
+        <field name="name">hr.contract.holidays.view.search.inherit</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="erp_l10n_mx_hr_base.hr_contract_view_search_inherit"/>
+        <field name="arch" type="xml">
+            <filter name='group_schedule_pay' position="after">
+                <filter string="IMSS discharge date" name='group_l10n_mx_date_imss' domain="[]" context="{'group_by': 'l10n_mx_date_imss'}"/>
+            </filter>
+
         </field>
     </record>
 </odoo>
