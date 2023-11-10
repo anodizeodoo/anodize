@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_erp_l10n_mx_hr_payroll_massive_payment,erp_l10n_mx_hr_payroll_massive_payment_global,model_masive_payroll_payment,base.group_user,1,1,1,1
-access_erp_l10n_mx_hr_payroll_massive_payment_wizard,erp_l10n_mx_hr_payroll_massive_payment_wizard,model_massive_payroll_wizard,base.group_user,1,1,1,1
