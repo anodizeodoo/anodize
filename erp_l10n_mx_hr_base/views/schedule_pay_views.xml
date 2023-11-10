@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="schedule_pay_view_search" model="ir.ui.view">
+            <field name="name">l10n.mx.payroll.schedule.pay.view.search</field>
+            <field name="model">l10n.mx.payroll.schedule.pay</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="schedule_pay_view_tree" model="ir.ui.view">
+            <field name="name">l10n.mx.payroll.schedule.pay.tree</field>
+            <field name="model">l10n.mx.payroll.schedule.pay</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="day_payment"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_schedule_pay_form" model="ir.ui.view">
+            <field name="name">l10n.mx.payroll.schedule.pay.form</field>
+            <field name="model">l10n.mx.payroll.schedule.pay</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                            </group>
+                            <group>
+                                <field name="code" required="1"/>
+                                <field name="day_payment"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="schedule_pay_action" model="ir.actions.act_window">
+            <field name="name">Schedule Pay</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">l10n.mx.payroll.schedule.pay</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent">
+                   No records found.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_hr_payroll_catalogs"
+                  name="Catalogs"
+                  parent="hr_work_entry_contract.menu_hr_payroll_root"
+                  sequence="75"/>
+
+        <menuitem id="erp_l10n_mx_payrolls_schedule_pay_menu"
+                  sequence="10" name="Schedule Pay"
+                  parent="menu_hr_payroll_catalogs"
+                  action="schedule_pay_action"/>
+
+    </data>
+</odoo>

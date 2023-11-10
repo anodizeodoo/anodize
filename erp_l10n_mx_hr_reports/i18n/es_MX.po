@@ -1,0 +1,101 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* erp_l10n_mx_hr_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20220114\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-24 20:48+0000\n"
+"PO-Revision-Date: 2022-05-24 20:48+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: erp_l10n_mx_hr_reports
+#: model:ir.actions.report,print_report_name:erp_l10n_mx_hr_reports.payroll_banking_dispersion_banregio
+msgid "'BANKING DISPERSION BANREGIO - %s' % object.name"
+msgstr "'DISPERSION BANCARIA BANREGIO - %s' % object.name"
+
+#. module: erp_l10n_mx_hr_reports
+#: model:ir.actions.report,name:erp_l10n_mx_hr_reports.payroll_banking_dispersion_banregio
+msgid "BANKING DISPERSION BANREGIO TXT"
+msgstr "DISPERSION BANCARIA BANREGIO TXT"
+
+#. module: erp_l10n_mx_hr_reports
+#: code:addons/erp_l10n_mx_hr_reports/report/payslip_xlsx_report.py:0
+#, python-format
+msgid "Cuenta"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_reports
+#: model:ir.actions.server,name:erp_l10n_mx_hr_reports.action_print_banking_dispersion_banregio
+msgid "Descargar TXT"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_reports
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_reports.field_hr_payslip_run__display_name
+msgid "Display Name"
+msgstr "Nombre en pantalla"
+
+#. module: erp_l10n_mx_hr_reports
+#: code:addons/erp_l10n_mx_hr_reports/report/payslip_xlsx_report.py:0
+#, python-format
+msgid "Empleado"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_reports
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_reports.action_allpaysliplines
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_reports.menu_allpaysliplines
+msgid "Full Payroll Report"
+msgstr "Informe de nómina completo"
+
+#. module: erp_l10n_mx_hr_reports
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_reports.field_hr_payslip_run__id
+msgid "ID"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_reports
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_reports.field_hr_payslip_run____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: erp_l10n_mx_hr_reports
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_reports.pivot_payslip_lines
+msgid "Monthly Payslips"
+msgstr "Recibos de pago mensuales"
+
+#. module: erp_l10n_mx_hr_reports
+#: code:addons/erp_l10n_mx_hr_reports/report/payslip_xlsx_report.py:0
+#, python-format
+msgid "Monto"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_reports
+#: code:addons/erp_l10n_mx_hr_reports/report/payslip_xlsx_report.py:0
+#, python-format
+msgid "Nómina"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_reports
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_reports.pivot_payslip_lines
+msgid "Payslip"
+msgstr "Nómina"
+
+#. module: erp_l10n_mx_hr_reports
+#: model:ir.model,name:erp_l10n_mx_hr_reports.model_hr_payslip_run
+msgid "Payslip Batches"
+msgstr "Lotes de recibos de nómina"
+
+#. module: erp_l10n_mx_hr_reports
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_reports.pivot_payslip_lines
+msgid "Payslip Line Name"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_reports
+#: model:ir.actions.report,name:erp_l10n_mx_hr_reports.payslip_xlsx
+msgid "Payslip to XLSX"
+msgstr "Nómina a XLSX"

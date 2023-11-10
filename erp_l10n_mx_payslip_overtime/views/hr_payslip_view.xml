@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_hr_payslip_form_l10n_mx">
+        <field name="name">view.hr.payslip.form.l10n_mx</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='input_line_ids']" position="after">
+                <separator string="Extra Hours"/>
+                <field name="l10n_mx_overtime_line_ids" colspan="4" nolabel="1">
+                    <tree string="Extra Hours" editable="bottom">
+                        <field name="name"/>
+                        <field name="days"/>
+                        <field name="hours"/>
+                        <field name="overtime_type"/>
+                        <field name="amount"/>
+                    </tree>
+                    <form string="Extra Hours">
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="days"/>
+                            <field name="hours"/>
+                            <field name="overtime_type"/>
+                            <field name="amount"/>
+                        </group>
+                    </form>
+                </field>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

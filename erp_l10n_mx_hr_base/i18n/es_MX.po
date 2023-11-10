@@ -1,0 +1,942 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* erp_l10n_mx_hr_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-12 23:59+0000\n"
+"PO-Revision-Date: 2022-12-12 18:01-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_base.selection__hr_employee__l10n_mx_payment_method__ppd
+msgid "(PPD) Pago en parcialidades o diferido"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_base.selection__hr_employee__l10n_mx_payment_method__pue
+msgid "(PUE) Pago en una sola exhibición"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.res_config_settings_view_form_inherit
+msgid "<span class=\"o_form_label\">Employer Registry</span>"
+msgstr "<span class=“o_form_label”>Registro de Empleador</span>"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "Address"
+msgstr "Dirección"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_afore_number
+msgid "Afore Number"
+msgstr "Número de Afore"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__age
+msgid "Age"
+msgstr "Edad"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model,name:erp_l10n_mx_hr_base.model_l10n_mx_payroll_employer_registration
+msgid "Allow define all the employer registration from the company"
+msgstr "Permite definir los registros patronales de cada compañía"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_food_voucher
+msgid "Amount to be paid in food voucher each payment period."
+msgstr "Cantidad a pagar en vales de despensa cada período de pago."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__antiquity
+msgid "Antiquity"
+msgstr "Antiguedad"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_attachment_count
+msgid "Attachment Count"
+msgstr "Cantidad de Adjuntos"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_attendance_bonus
+msgid "Attendance bonus"
+msgstr "Bono de asistencia"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__bank_id
+msgid "Bank"
+msgstr "Banco"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_employee_form_inherit_l10n_mx
+msgid "Bank data"
+msgstr "Datos Bancarios"
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_06
+msgid "Bimonthly"
+msgstr "Bimestral"
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_03
+msgid "Biweekly"
+msgstr "Catorcenal"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__bonus_days
+msgid "Bonus Days"
+msgstr "Bono de Navidad"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__zip
+msgid "C.P"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_clabe
+msgid "CLABE"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_curp
+msgid "CURP"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_base.menu_hr_payroll_catalogs
+msgid "Catalogs"
+msgstr "Catálogos"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__country_enforce_cities
+msgid "Check this box to ensure every address created in that country has a 'City' chosen in the list of the country's cities."
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__city
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "City"
+msgstr "Ciudad"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__city_id
+msgid "City of Address"
+msgstr "Dirección"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__code
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__code
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type__code
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay__code
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__code
+msgid "Code"
+msgstr "Código"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__code
+msgid "Code assigned by the SAT for this job risk."
+msgstr "Código definido por el SAT para este riesgo de trabajo."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__l10n_mx_edi_colony_code
+msgid "Colony Code"
+msgstr "Código de Colonia"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "Colony Code..."
+msgstr "Código de Colonia…"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__l10n_mx_edi_colony
+msgid "Colony Name"
+msgstr "Colonia"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "Colony..."
+msgstr "Colonia…"
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_08
+msgid "Commission"
+msgstr "Comisión"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model,name:erp_l10n_mx_hr_base.model_res_company
+msgid "Companies"
+msgstr "Empresas"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx
+msgid "Concepts"
+msgstr "Conceptos"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx
+msgid "Concepts related to Salary Rules"
+msgstr "Conceptos relacionados a las Reglas Salariales"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model,name:erp_l10n_mx_hr_base.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de configuración"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.res_config_settings_view_form_inherit
+msgid "Configure your SAT Employer Registry."
+msgstr "Configura tu Registro de Empleadores SAT."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_base.menu_config_contract_catalogs
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model,name:erp_l10n_mx_hr_base.model_l10n_mx_edi_contract_regime_type model:ir.model,name:erp_l10n_mx_hr_base.model_l10n_mx_payroll_contract_type
+msgid "Contract Type"
+msgstr "Tipo de Contrato"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_base.hr_contract_type_action
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_contract_type_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_base.erp_l10n_mx_hr_contract_type_menu
+msgid "Contract type"
+msgstr "Tipo de Contrato"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__country_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "Country"
+msgstr "País"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__create_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__create_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_credit_number
+msgid "Credit number"
+msgstr "Número de Crédito"
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_01
+msgid "Daily"
+msgstr "Diario"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_daily_salary
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_daily_salary_manual
+msgid "Daily Salary"
+msgstr "Salario Diario"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__date_end
+msgid "Date End"
+msgstr "Fecha de baja"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_date_register
+msgid "Date Register"
+msgstr "Fecha de registro"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__date_start
+msgid "Date Start"
+msgstr "Fecha de alta"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_date_start
+msgid "Date Start Aplication"
+msgstr "Fecha de inicio de aplicación"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay__day_payment
+msgid "Day Payment"
+msgstr "Día de Pago"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__day_month
+msgid "Days for month"
+msgstr "Días por mes"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__day_year
+msgid "Days for years"
+msgstr "Días por Años"
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_10
+msgid "Decennial"
+msgstr "Decenal"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: erp_l10n_mx_hr_base
+#: code:addons/erp_l10n_mx_hr_base/models/hr_contract.py:0
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_base.selection__hr_contract__l10n_mx_payroll_infonavit_type__discount_factor
+#, python-format
+msgid "Discount Factor"
+msgstr "Factor Descuento"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_res_company__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Nombre en pantalla"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__street_number2
+msgid "Door"
+msgstr "Puerta"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model,name:erp_l10n_mx_hr_base.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model,name:erp_l10n_mx_hr_base.model_hr_contract
+msgid "Employee Contract"
+msgstr "Contrato del empleado"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__name
+msgid "Employer Register"
+msgstr "Registro patronal"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_base.action_employer_registration
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_employer_registration_id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_res_company__l10n_mx_edi_employer_registration_id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_res_config_settings__l10n_mx_edi_employer_registration_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_base.grp_employer_registration model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_tree
+msgid "Employer Registration"
+msgstr "Registro Patronal"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__country_enforce_cities
+msgid "Enforce Cities"
+msgstr "Aplicar ciudades"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_family_medical_unit
+msgid "Family Medical Unit"
+msgstr "Unidad Medica Familiar"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.res_config_settings_view_form_inherit
+msgid "Fields required to configure the MX CFDI."
+msgstr "Campos requeridos para configurar la MX CFDI."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__filtered_banks
+msgid "Filtered Banks"
+msgstr "Bancos filtrados"
+
+#. module: erp_l10n_mx_hr_base
+#: code:addons/erp_l10n_mx_hr_base/models/hr_contract.py:0
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_base.selection__hr_contract__l10n_mx_payroll_infonavit_type__fixed_amount
+#, python-format
+msgid "Fixed amount"
+msgstr "Monto Fijo"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_food_voucher
+msgid "Food Voucher Amount"
+msgstr "Vales de Despensa"
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_04
+msgid "Fortnightly"
+msgstr "Quincenal"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_funeral_expenses_bonus
+msgid "Funeral expenses"
+msgstr "Gastos Funerales"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_gasoline_voucher
+msgid "Gasoline Vouchers"
+msgstr "Vales de Gasolina"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__holidays
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__holidays2
+msgid "Holidays"
+msgstr "Días de Vacaciones"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__street_number
+msgid "House"
+msgstr "Casa"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_res_company__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_res_config_settings__id
+msgid "ID"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_type
+msgid "INFONAVIT discount"
+msgstr "Descuento INFONAVIT"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_type
+msgid "INFONAVIT discount type that is calculated in the employee's payslip"
+msgstr "Tipo de descuento INFONAVIT que se calcula en el recibo de pago del empleado"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_needaction
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado hay nuevos mensajes que requieren su atención."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_has_error
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_employer_registration_id
+msgid "If the company has multiple employer registration, define the correct for this employee."
+msgstr "Si la empresa tiene registro de empleador múltiple, defina el correcto para este empleado."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_attendance_bonus
+msgid "If the company offers attendance bonus, indicate the bonus amount by payment period."
+msgstr "En caso de que la empresa ofrezca bono de asistencia, indicar el monto del bono por periodo de pago."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_punctuality_bonus
+msgid "If the company offers punctuality bonus, indicate the bonus amount by payment period."
+msgstr "Si la empresa ofrece bono de puntualidad, indicar el monto del bono por periodo de pago."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_is_assimilated
+msgid "If this employee is assimilated, must be used this option, to get the correct rules on their payslips"
+msgstr "Si este empleado es asimilado, debe utilizar esta opción, para obtener las reglas correctas en sus recibos de pago."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_curp
+msgid ""
+"In Mexico, the Single Code of Population Registration (CURP) is a unique alphanumeric code of 18 characters used to officially identify both residents and Mexican "
+"citizens throughout the country."
+msgstr ""
+"En México, la Clave Única de Registro de Población (CURP) es un código alfanumérico único de 18 caracteres que se utiliza para identificar oficialmente tanto a "
+"los residentes como a los ciudadanos mexicanos en todo el país."
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx
+msgid "Infonavit"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_active
+msgid "Infonavit Active"
+msgstr "Activar Infonavit"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_rate
+msgid "Infonavit rate"
+msgstr "Tasa Infonavit"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx
+msgid "Informacion Fiscal"
+msgstr "Información Fiscal"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_employee_form_inherit_l10n_mx
+msgid "Información Fiscal"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_hr_payroll_contract_form_inherit_l10n_mx
+msgid "Information credits Infonavit"
+msgstr "Información de Crédito Infonavit"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_integrated_salary
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_integrated_salary_manual
+msgid "Integrated Salary"
+msgstr "Salario Integrado"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__integration_factor
+msgid "Integration Factor"
+msgstr "Factor Integración"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_is_assimilated
+msgid "Is assimilated?"
+msgstr "¿Es asimilado?"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_risk_rank
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__job_risk_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.l10n_mx_payroll_job_risk_form_view
+msgid "Job Risk"
+msgstr "Riesgo de trabajo"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__name
+msgid "Job risk provided by the SAT."
+msgstr "Riesgo de trabajo proporcionado por el SAT"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_res_company____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__write_uid
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__write_date
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjuntos principales"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_05
+msgid "Monthly"
+msgstr "Mensual"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employee_tree
+msgid "NSS"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_contract_type__name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_schedule_pay__name
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_base.contract_regime_type_action
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_base.hr_contract_type_action model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_base.schedule_pay_action
+#: model_terms:ir.actions.act_window,help:erp_l10n_mx_hr_base.type_benefit_action
+msgid "No records found."
+msgstr "Registros no encontrados"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__l10n_mx_edi_colony_code
+msgid ""
+"Note: Only use this field if this partner is the company address or if it is a branch office.\n"
+"Colony code that will be used in the CFDI with the external trade as Emitter colony. It must be a code from the SAT catalog."
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: erp_l10n_mx_hr_base
+#: code:addons/erp_l10n_mx_hr_base/models/hr_contract.py:0
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_base.selection__hr_contract__l10n_mx_payroll_infonavit_type__vsm
+#, python-format
+msgid "Number of minimum wages"
+msgstr "Cantidad de salarios mínimos"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leídos"
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_99
+msgid "Other"
+msgstr "Otro"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_payment_method
+msgid "Payment method"
+msgstr "Método de pago"
+
+#. module: erp_l10n_mx_hr_base
+#: code:addons/erp_l10n_mx_hr_base/models/hr_contract.py:0 model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__percentage
+#: model:ir.model.fields.selection,name:erp_l10n_mx_hr_base.selection__hr_contract__l10n_mx_payroll_infonavit_type__percentage
+#, python-format
+msgid "Percentage"
+msgstr "Porcentaje"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_edi_job_risk__percentage
+msgid "Percentage for this risk, is used in the payroll rules."
+msgstr "Porcentaje para este riesgo, es utilizado en las reglas salariales."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_punctuality_bonus
+msgid "Punctuality bonus"
+msgstr "Bono de Puntualidad"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_rfc
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.res_partner_view_form_private
+msgid "RFC"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_09
+msgid "Raised price"
+msgstr "Precio alzado"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_contract_regime_type_id
+msgid "Regime Type"
+msgstr "Tipo de Régimen"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_base.contract_regime_type_action model:ir.ui.menu,name:erp_l10n_mx_hr_base.erp_l10n_mx_hr_regime_type_menu
+msgid "Regime type"
+msgstr "Tipo de Régimen"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_restaurant_voucher
+msgid "Restaurant Vouchers"
+msgstr "Vales Restaurante"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_base.schedule_pay_action model:ir.model,name:erp_l10n_mx_hr_base.model_l10n_mx_payroll_schedule_pay
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_schedule_pay_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_base.erp_l10n_mx_payrolls_schedule_pay_menu
+msgid "Schedule Pay"
+msgstr "Periodo de Pago"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_school_support_bonus
+msgid "School support"
+msgstr "Apoyo Escolar"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__state_id
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "State"
+msgstr "Estado"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__active
+msgid "Status"
+msgstr "Estatus"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__street
+msgid "Street"
+msgstr "Calle"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__street_name
+msgid "Street Name"
+msgstr "Calle"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "Street Name..."
+msgstr "Calle"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__street2
+msgid "Street2"
+msgstr "Entre Calle"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_syndicated
+msgid "Syndicated"
+msgstr "Sindicalizado"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_rfc
+msgid "The Tax Identification Number. Complete it if the contact is subjected to government taxes. Used in some legal statements."
+msgstr "El Número de Identificación Fiscal. Complételo si el contacto está sujeto a impuestos gubernamentales. Se utiliza en algunas declaraciones legales."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__total_days
+msgid "Total days"
+msgstr "Total de Días"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_transportation_bonus
+msgid "Transportation"
+msgstr "Transporte"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__type_benefit_id
+msgid "Type of Benefits"
+msgstr "Tipo de Prestación"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.actions.act_window,name:erp_l10n_mx_hr_base.type_benefit_action model:ir.model,name:erp_l10n_mx_hr_base.model_l10n_mx_type_benefit
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_type_benefit_id
+#: model:ir.ui.menu,name:erp_l10n_mx_hr_base.erp_l10n_mx_type_benefit_menu
+msgid "Types of Benefits"
+msgstr "Tipo de Prestación"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model,name:erp_l10n_mx_hr_base.model_l10n_mx_type_benefit_line
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit__type_benefit_line_ids
+msgid "Types of Benefits line"
+msgstr "Lineas de Tipo de Prestación"
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_07
+msgid "Unit work"
+msgstr "Unidad obra"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes por leer"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Cantidad de mensajes sin leer"
+
+#. module: erp_l10n_mx_hr_base
+#: code:addons/erp_l10n_mx_hr_base/models/hr_employee.py:0
+#, python-format
+msgid "Unrecognized field %s in street format."
+msgstr "Campo %s no reconocido en formato de calle."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.actions.server,name:erp_l10n_mx_hr_base.action_update_employee_name
+msgid "Update employee name"
+msgstr "Actualizar Nombres de Empleados"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_integrated_salary
+msgid ""
+"Used in the CFDI to express the salary that is integrated with the payments made in cash by daily quota, gratuities, perceptions, room, premiums, commissions, "
+"benefits in kind and any other quantity or benefit that is delivered to the worker by his work, Pursuant to Article 84 of the Federal Labor Law. (Used to "
+"calculate compensation)."
+msgstr ""
+"\"Usado en el CFDI para expresar el salario que se integra con los pagos \"\n"
+"\"realizados en efectivo por cuota diaria, propinas, percepciones, habitación,\"\n"
+"\" primas, comisiones en especie y cualquier otra cantidad o beneficio que le \"\n"
+"\"sea entregado al trabajador por su trabajo, De conformidad al artículo 84 de\"\n"
+"\" la Ley Federal del Trabajo. (Usado para calcular la compensación).\""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_risk_rank
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__job_risk_id
+msgid ""
+"Used in the XML to express the key according to the Class in which the employers must register, according to the activities carried out by their workers, as "
+"provided in article 196 of the Regulation on Affiliation Classification of Companies, Collection and Inspection, or in accordance with the regulations Of the "
+"Social Security Institute of the worker."
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_employee__l10n_mx_edi_syndicated
+msgid "Used in the XML to indicate if the worker is associated with a union. If it is omitted, it is assumed that it is not associated with any union."
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model,name:erp_l10n_mx_hr_base.model_l10n_mx_edi_job_risk
+msgid "Used to define the percent of each job risk."
+msgstr "Utilizado para definir el porcentaje de cada riesgo de trabajo."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_sdi_variable
+msgid ""
+"Used when the salary type is mixed or variable. This value is integrated by the sum of perceptions in the previous two months and divided by the number of days "
+"worked. Also, it affects the integrated salary value."
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_type_benefit_line__vacation_cousin
+msgid "Vacation cousin (%)"
+msgstr "Bono de vacaciones"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_edi_contract_regime_type__date
+msgid "Validity start date"
+msgstr "Fecha inicio de vigencia"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_infonavit_rate
+msgid ""
+"Value to be deducted in the employee's payment for the INFONAVIT concept.This depends on the INFONAVIT discount type as follows: \n"
+"- If the type is percentage, then the value of this field can be 1 - 100 \n"
+"- If the type is number of minimum wages, the value of this field may be 1 - 25, since it is \n"
+"- If the type is a fixed story, the value of this field must be greater than zero. In addition, the amount of this deduction must correspond to the payment period."
+msgstr ""
+"Valor a descontar en el pago del trabajador por concepto INFONAVIT. Depende del tipo de descuento INFONAVIT así:\n"
+"- Si el tipo es porcentaje, entonces el valor de este campo puede ser 1 - 100\n"
+"- Si el tipo es número de salarios mínimos, el valor de este campo puede ser 1 - 25, ya que es\n"
+"- Si el tipo es un piso fijo, el valor de este campo debe ser mayor que cero. Además, el importe de esta deducción debe corresponder al periodo de pago."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__name
+msgid "Value to set in the \"RegistroPatronal\" attribute."
+msgstr "Valor a configurar en el atributo \"RegistroPatronal\"."
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_hr_contract__l10n_mx_payroll_sdi_variable
+msgid "Variable SDI"
+msgstr "SDI Variable"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,help:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicación del sitio web"
+
+#. module: erp_l10n_mx_hr_base
+#: model:l10n.mx.payroll.schedule.pay,name:erp_l10n_mx_hr_base.schedule_pay_02
+msgid "Weekly"
+msgstr "Semanalmente"
+
+#. module: erp_l10n_mx_hr_base
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_hr_base.view_employer_registration_form
+msgid "ZIP"
+msgstr ""
+
+#. module: erp_l10n_mx_hr_base
+#: model:ir.model.fields,field_description:erp_l10n_mx_hr_base.field_l10n_mx_payroll_employer_registration__zip
+msgid "Zip"
+msgstr ""

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="cfdi_reason_cancelation_sat_form">
+        <field name="name">cfdi.reason.payslip.cancelation.form</field>
+        <field name="model">cfdi.reason.payslip.cancelation</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Motivo de cancelación">
+                <sheet>
+                    <group> 
+                        <field name="l10n_mx_cancel_reason"/>
+                        <field name="l10n_mx_foliosustitucion_cancel"
+                               attrs="{'required':[('l10n_mx_cancel_reason', '=', '01')], 'invisible':[('l10n_mx_cancel_reason', '!=', '01')]}" />
+                    </group>
+                </sheet>
+                <footer>
+                	<button name="confirm" string="Confirmar" type="object" class="oe_highlight"/>
+                    <button special="cancel" string="Cancelar"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cfdi_reason_cancelation_sat_wizard">
+        <field name="name">Motivo de cancelacion SAT</field>
+        <field name="res_model">cfdi.reason.payslip.cancelation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="cfdi_reason_cancelation_sat_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

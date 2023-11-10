@@ -1,0 +1,161 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* erp_l10n_mx_payslip_overtime
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20210119\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-21 02:58+0000\n"
+"PO-Revision-Date: 2022-01-20 21:06-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__amount
+msgid "Amount"
+msgstr "Importe"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,help:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__amount
+msgid "Amount paid for overtime"
+msgstr "Cantidad pagada por horas extras"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__days
+msgid "Days"
+msgstr "Días"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip__display_name
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__display_name
+msgid "Display Name"
+msgstr "Nombre en pantalla"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_overtime.selection__hr_payslip_overtime__overtime_type__01
+msgid "Double"
+msgstr "Doble"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model_terms:ir.ui.view,arch_db:erp_l10n_mx_payslip_overtime.view_hr_payslip_form_l10n_mx
+msgid "Extra Hours"
+msgstr "Horas Extras"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip__l10n_mx_overtime_line_ids
+msgid "Extra hours"
+msgstr "Horas Extras"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__hours
+msgid "Hours"
+msgstr "Horas"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip__id
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__id
+msgid "ID"
+msgstr "ID"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip____last_update
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,help:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__days
+msgid "Number of days in which the employee performed overtime in the period"
+msgstr "Número de días en que el empleado hizo horas extras en el período"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,help:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__hours
+msgid "Number of overtime hours worked in the period"
+msgstr "Número de horas extras trabajadas en el período"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model,name:erp_l10n_mx_payslip_overtime.model_hr_payslip
+msgid "Pay Slip"
+msgstr "Nómina"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model,name:erp_l10n_mx_payslip_overtime.model_hr_payslip_overtime
+msgid "Pay Slip overtime"
+msgstr "Pago de horas extras"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__payslip_id
+msgid "Payslip"
+msgstr "Nómina"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,help:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__payslip_id
+msgid "Payslip related."
+msgstr "Nómina relacionada."
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_overtime.selection__hr_payslip_overtime__overtime_type__03
+msgid "Simples"
+msgstr "Simples"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: code:addons/erp_l10n_mx_payslip_overtime/models/hr_payslip.py:0
+#, python-format
+msgid "The field hours in the overtime section cannot have value 0."
+msgstr "El campo horas en la sección Horas Extras no puede tener valor 0."
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields.selection,name:erp_l10n_mx_payslip_overtime.selection__hr_payslip_overtime__overtime_type__02
+msgid "Triples"
+msgstr "Triples"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,field_description:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__overtime_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,help:erp_l10n_mx_payslip_overtime.field_hr_payslip__l10n_mx_overtime_line_ids
+msgid ""
+"Used in XML like optional node to express the extra hours applicable by "
+"employee."
+msgstr ""
+"Usado en el XML como nodo opcional para expresar las horas extras "
+"aplicables por el empleado."
+
+#. module: erp_l10n_mx_payslip_overtime
+#: model:ir.model.fields,help:erp_l10n_mx_payslip_overtime.field_hr_payslip_overtime__overtime_type
+msgid "Used to express the type of payment of the hours extra."
+msgstr "Se usa para expresar el tipo de pago de las horas extra."
