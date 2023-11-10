@@ -57,15 +57,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_hr_payroll_catalogs"
-                  name="Catalogs"
-                  parent="hr_work_entry_contract.menu_hr_payroll_root"
-                  sequence="75"/>
-
-        <menuitem id="erp_l10n_mx_payrolls_schedule_pay_menu"
-                  sequence="10" name="Schedule Pay"
-                  parent="menu_hr_payroll_catalogs"
-                  action="schedule_pay_action"/>
 
     </data>
 </odoo>

@@ -8,6 +8,6 @@ class ContractRegimeType(models.Model):
     _name = "l10n.mx.edi.contract.regime.type"
     _description = "Contract Type"
 
-    name = fields.Char(string='Name')
-    code = fields.Char(string='Code')
-    date = fields.Date(string='Validity start date')
+    name = fields.Char(string='Name', index=True)
+    code = fields.Char(string='Code', index=True)
+    date = fields.Date(string='Validity start date', index=True)

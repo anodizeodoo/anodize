@@ -8,5 +8,5 @@ class HrContractType(models.Model):
     _name = "l10n.mx.payroll.contract.type"
     _description = "Contract Type"
 
-    name = fields.Char(string='Name')
-    code = fields.Char(string='Code')
+    name = fields.Char(string='Name', index=True)
+    code = fields.Char(string='Code', index=True)

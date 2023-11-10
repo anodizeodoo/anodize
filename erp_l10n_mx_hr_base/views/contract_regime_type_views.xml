@@ -60,7 +60,7 @@
 
         <menuitem id="erp_l10n_mx_hr_regime_type_menu"
                   sequence="30" name="Regime type"
-                  parent="hr.menu_human_resources_configuration_employee"
+                  parent="hr.menu_config_employee"
                   action="erp_l10n_mx_hr_base.contract_regime_type_action"/>
 
     </data>

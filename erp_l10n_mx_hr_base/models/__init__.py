@@ -10,3 +10,4 @@ from . import res_company
 from . import res_config_settings
 from . import type_benefit
 from . import schedule_pay
+from . import hr_payroll_structure_type

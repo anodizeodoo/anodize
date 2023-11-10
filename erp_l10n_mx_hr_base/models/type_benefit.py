@@ -13,10 +13,10 @@ class TypeBenefit(models.Model):
     _name = "l10n.mx.type.benefit"
     _description = "Types of Benefits"
 
-    name = fields.Char(string='Name')
-    code = fields.Char(string='Code')
-    day_year = fields.Integer(string='Days for years')
-    day_month = fields.Integer(string='Days for month')
+    name = fields.Char(string='Name', index=True)
+    code = fields.Char(string='Code', index=True)
+    day_year = fields.Integer(string='Days for years', index=True)
+    day_month = fields.Float(string='Days for month', index=True)
     type_benefit_line_ids = fields.One2many('l10n.mx.type.benefit.line',
                                             'type_benefit_id', 'Types of Benefits line')
 
@@ -41,15 +41,15 @@ class TypeBenefitLine(models.Model):
     _name = "l10n.mx.type.benefit.line"
     _description = "Types of Benefits line"
 
-    type_benefit_id = fields.Many2one('l10n.mx.type.benefit', 'Type of Benefits')
-    antiquity = fields.Integer(string='Antiquity')
-    holidays = fields.Integer(string='Holidays')
+    type_benefit_id = fields.Many2one('l10n.mx.type.benefit', 'Type of Benefits', index=True)
+    antiquity = fields.Integer(string='Antiquity', index=True)
+    holidays = fields.Integer(string='Holidays', index=True)
     vacation_cousin = fields.Integer(string='Vacation cousin (%)')
     bonus_days = fields.Integer(string='Bonus Days')
     holidays2 = fields.Float(string='Holidays', compute='_compute_holidays2')
     total_days = fields.Float(string='Total days', compute='_compute_total_days')
     integration_factor = fields.Float(string='Integration Factor',
-                                      compute='_compute_integration_factor', digits=(16, 9))
+                                      compute='_compute_integration_factor', digits=(16, 4))
 
     @api.depends('holidays', 'vacation_cousin')
     def _compute_holidays2(self):

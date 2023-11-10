@@ -42,19 +42,19 @@
                                 <field name="day_month"/>
                             </group>
                         </group>
-                        <group>
+<!--                        <group>-->
                             <field name="type_benefit_line_ids" nolabel="1">
                                 <tree editable="bottom">
                                     <field name="antiquity"/>
                                     <field name="holidays"/>
                                     <field name="vacation_cousin"/>
                                     <field name="bonus_days"/>
-                                    <field name="holidays2"/>
-                                    <field name="total_days"/>
+                                    <field name="holidays2" invisible="1"/>
+                                    <field name="total_days" invisible="1"/>
                                     <field name="integration_factor"/>
                                 </tree>
                             </field>
-                        </group>
+<!--                        </group>-->
                     </sheet>
                 </form>
             </field>
@@ -71,11 +71,6 @@
                 </p>
             </field>
         </record>
-
-        <menuitem id="erp_l10n_mx_type_benefit_menu"
-                  sequence="10" name="Types of Benefits"
-                  parent="erp_l10n_mx_hr_base.menu_config_contract_catalogs"
-                  action="erp_l10n_mx_hr_base.type_benefit_action"/>
 
     </data>
 </odoo>

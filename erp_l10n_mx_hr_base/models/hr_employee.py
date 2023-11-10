@@ -32,7 +32,7 @@ class L10nMxPayrollEmployerRegistration(models.Model):
 
     name = fields.Char(string="Employer Register",
         help='Value to set in the "RegistroPatronal" attribute.',
-        tracking=True)
+        tracking=True, index=True)
     job_risk_id = fields.Many2one(
         'l10n_mx_edi.job.risk', 'Job Risk',
         help='Used in the XML to express the key according to the Class in '
@@ -42,45 +42,56 @@ class L10nMxPayrollEmployerRegistration(models.Model):
         'and Inspection, or in accordance with the regulations Of the Social '
         'Security Institute of the worker.',
         required=True,
-        tracking=True)
-    date_start = fields.Date(string='Date Start', tracking=True)
-    date_end = fields.Date(string='Date End', tracking=True)
-    active = fields.Boolean('Status', default=True, tracking=True)
+        tracking=True, index=True)
+    date_start = fields.Date(string='Date Start', tracking=True, index=True)
+    date_end = fields.Date(string='Date End', tracking=True, index=True)
+    active = fields.Boolean('Status', default=True, tracking=True, index=True)
 
     # Address fields
     street_name = fields.Char(
         'Street Name', compute='_compute_street_data',
         inverse='_inverse_street_data',
-        store=True, tracking=True)
-    street = fields.Char(tracking=True)
-    street2 = fields.Char(tracking=True)
-    zip = fields.Char(change_default=True, tracking=True)
-    city = fields.Char(tracking=True)
+        store=True, tracking=True, index=True)
+    street = fields.Char(tracking=True, index=True)
+    street2 = fields.Char(tracking=True, index=True)
+    zip = fields.Char(change_default=True, tracking=True, index=True)
+    city = fields.Char(tracking=True, index=True)
     state_id = fields.Many2one("res.country.state",
                                string='State',
                                ondelete='restrict',
                                domain="[('country_id', '=?', country_id)]",
-                               tracking=True)
+                               tracking=True, index=True)
     country_id = fields.Many2one('res.country',
                                  string='Country',
                                  ondelete='restrict',
-                                 tracking=True)
+                                 tracking=True, index=True)
     street_number = fields.Char(
-        'House', compute='_compute_street_data', inverse='_inverse_street_data', store=True)
+        'House',
+        compute='_compute_street_data', inverse='_inverse_street_data',
+        store=True, index=True)
     street_number2 = fields.Char(
-        'Door', compute='_compute_street_data', inverse='_inverse_street_data', store=True)
-    country_enforce_cities = fields.Boolean(related='country_id.enforce_cities', readonly=True)
-    city_id = fields.Many2one('res.city', string='City of Address', tracking=True)
+        'Door', compute='_compute_street_data',
+        inverse='_inverse_street_data',
+        store=True, index=True)
+    country_enforce_cities = fields.Boolean(related='country_id.enforce_cities',
+                                            readonly=True, compute_sudo=True)
+    city_id = fields.Many2one('res.city', string='City of Address', tracking=True, index=True)
 
     l10n_mx_edi_colony = fields.Char(
-        string="Colony Name", tracking=True)
+        string="Colony Name", tracking=True, index=True)
     l10n_mx_edi_colony_code = fields.Char(
         string="Colony Code",
-        tracking = True,
+        tracking=True,
+        index=True,
         help="Note: Only use this field if this partner is the company address or if it is a branch office.\n"
              "Colony code that will be used in the CFDI with the external trade as Emitter colony. It must be a code "
              "from the SAT catalog.")
 
+    @api.constrains('name')
+    def _check_name(self):
+        for rec in self:
+            if rec.name and not rec.name.isalnum():
+                raise ValidationError(_('The Name field must only contain alphanumeric characters (letters and numbers, but no special characters).'))
 
     @api.onchange('country_id')
     def _onchange_country_id(self):
@@ -98,7 +109,7 @@ class L10nMxPayrollEmployerRegistration(models.Model):
         has been touched"""
         street_fields = self._get_street_fields()
         for regpat in self:
-            street_format = (regpat.country_id.street_format or
+            street_format = (regpat.country_id.address_format or
                 '%(street_number)s/%(street_number2)s %(street_name)s')
             previous_field = None
             previous_pos = 0
@@ -235,7 +246,7 @@ class HrEmployee(models.Model):
     l10n_mx_edi_syndicated = fields.Boolean(
         'Syndicated', help='Used in the XML to indicate if the worker is '
         'associated with a union. If it is omitted, it is assumed that it is '
-        'not associated with any union.', tracking=True)
+        'not associated with any union.', tracking=True, index=True)
     l10n_mx_edi_risk_rank = fields.Many2one(
         'l10n_mx_edi.job.risk', 'Job Risk',
         help='Used in the XML to express the key according to the Class in '
@@ -243,52 +254,72 @@ class HrEmployee(models.Model):
         'carried out by their workers, as provided in article 196 of the '
         'Regulation on Affiliation Classification of Companies, Collection '
         'and Inspection, or in accordance with the regulations Of the Social '
-        'Security Institute of the worker.', tracking=True)
+        'Security Institute of the worker.', tracking=True, index=True)
+    percentage = fields.Float(related='l10n_mx_edi_risk_rank.percentage', compute_sudo=True)
     l10n_mx_edi_contract_regime_type_id = fields.Many2one('l10n.mx.edi.contract.regime.type',
-                                                          tracking=True,
+                                                          tracking=True, index=True,
                                                           string='Regime Type')
+
+    l10n_mx_edi_employee_type_id = fields.Many2one('l10n.mx.hr.employee.type',
+                                                          tracking=True,
+                                                          index=True,
+                                                          string='Clasificador de Empleado')
+
     l10n_mx_edi_is_assimilated = fields.Boolean(
         'Is assimilated?',
         tracking=True,
+        index = True,
         help='If this employee is assimilated, must be '
         'used this option, to get the correct rules on their payslips')
     l10n_mx_edi_employer_registration_id = fields.Many2one(
         'l10n_mx_payroll.employer.registration', 'Employer Registration',
         tracking=True,
+        index=True,
         help='If the company has multiple employer registration, define the '
         'correct for this employee.')
-    l10n_mx_edi_rfc = fields.Char(related='address_home_id.vat',
-                                  string='RFC',
-                                  readonly=False,
-                                  store=True,
-                                  compute_sudo=True)
-    l10n_mx_edi_curp = fields.Char(related='address_home_id.l10n_mx_edi_curp',
-                                   string='CURP',
-                                   readonly=False,
-                                   store=True,
-                                   compute_sudo=True)
-    l10n_mx_edi_family_medical_unit = fields.Char(string='Family Medical Unit', tracking=True)
-    l10n_mx_edi_afore_number = fields.Char(string='Afore Number', tracking=True)
+    l10n_mx_edi_rfc = fields.Char(string='RFC', index=True, size=13)
+    l10n_mx_edi_curp = fields.Char(string='CURP', index=True)
+    l10n_mx_edi_family_medical_unit = fields.Char(string='Family Medical Unit', tracking=True, index=True)
+    l10n_mx_edi_afore_number = fields.Char(string='Afore Number', tracking=True, index=True)
     l10n_mx_payment_method = fields.Selection([('PUE', '(PUE) Pago en una sola exhibición'),
                                                ('PPD', '(PPD) Pago en parcialidades o diferido')],
                                               tracking=True,
-                                               default='PUE', string="Payment method")
+                                              index=True,
+                                              default='PUE',
+                                              string="Payment method")
 
-    zip = fields.Char(string='C.P', related='address_home_id.zip', compute_sudo=True)
+    zip = fields.Char(string='C.P', index=True)
+    email = fields.Char(string='Email', index=True)
+    phone_employee = fields.Char(string='Phone', index=True)
     age = fields.Char('Age', compute="_compute_age")
-    bank_id = fields.Many2one('res.bank', string='Bank', tracking=True)
-    l10n_mx_edi_clabe = fields.Char("CLABE", tracking=True)
-    filtered_banks = fields.One2many(comodel_name='res.bank', compute='_filter_banks')
+    bank_id = fields.Many2one('res.bank', string='Bank', tracking=True, index=True)
+    bank_account = fields.Char(string='Bank Account Number', index=True)
+    l10n_mx_edi_clabe = fields.Char("CLABE", tracking=True, index=True)
+    # filtered_banks = fields.One2many(comodel_name='res.bank', compute='_filter_banks')
+
+    contact_ids = fields.One2many('res.partner', related='address_home_id.child_ids',
+                                  readonly=False, compute_sudo=True)
+
+    @api.constrains('ssnid')
+    def _check_ssnid(self):
+        for rec in self:
+            if rec.ssnid and not rec.ssnid.isalnum():
+                raise ValidationError(_('The Social Security Number field must only contain alphanumeric characters (letters and numbers, but no special characters).'))
 
     @api.depends('birthday')
     def _compute_age(self):
         for record in self:
             record.age = relativedelta(fields.Date.today(), record.birthday).years
 
-    @api.depends('address_home_id')
-    def _filter_banks(self):
-        for bank in self:
-            bank.filtered_banks = bank.address_home_id.bank_ids.mapped('bank_id')
+    # @api.depends('address_home_id')
+    # def _filter_banks(self):
+    #     for bank in self:
+    #         bank.filtered_banks = bank.address_home_id.bank_ids.mapped('bank_id')
+
+    @api.onchange('l10n_mx_edi_employer_registration_id')
+    def _onchange_l10n_mx_edi_employer_registration_id(self):
+        if self.l10n_mx_edi_employer_registration_id:
+            self.l10n_mx_edi_risk_rank = self.l10n_mx_edi_employer_registration_id.job_risk_id.id
 
     @api.onchange('bank_id', 'address_home_id', 'bank_account_id')
     def _onchange_bank_id(self):
@@ -302,15 +333,20 @@ class HrEmployee(models.Model):
         word = normalize('NFC', word)
         return word
 
-    @api.model
-    def create(self, vals):
-        if vals.get('firstname'):
-            vals.update({'firstname': self._get_return_without_accent(vals.get('firstname')).upper()})
-        if vals.get('lastname'):
-            vals.update({'lastname': self._get_return_without_accent(vals.get('lastname')).upper()})
-        if vals.get('lastname2'):
-            vals.update({'lastname2': self._get_return_without_accent(vals.get('lastname2')).upper()})
-        return super(HrEmployee, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('firstname'):
+                vals.update({'firstname': self._get_return_without_accent(vals.get('firstname')).upper()})
+            if vals.get('lastname'):
+                vals.update({'lastname': self._get_return_without_accent(vals.get('lastname')).upper()})
+            if vals.get('lastname2'):
+                vals.update({'lastname2': self._get_return_without_accent(vals.get('lastname2')).upper()})
+            if vals.get('l10n_mx_edi_rfc'):
+                vals.update({'l10n_mx_edi_rfc': vals.get('l10n_mx_edi_rfc').upper()})
+            if vals.get('l10n_mx_edi_curp'):
+                vals.update({'l10n_mx_edi_curp': vals.get('l10n_mx_edi_curp').upper()})
+        return super(HrEmployee, self).create(vals_list)
 
     def write(self, vals):
         if vals.get('firstname'):
@@ -319,6 +355,10 @@ class HrEmployee(models.Model):
             vals.update({'lastname': self._get_return_without_accent(vals.get('lastname')).upper()})
         if vals.get('lastname2'):
             vals.update({'lastname2': self._get_return_without_accent(vals.get('lastname2')).upper()})
+        if vals.get('l10n_mx_edi_rfc'):
+            vals.update({'l10n_mx_edi_rfc': vals.get('l10n_mx_edi_rfc').upper()})
+        if vals.get('l10n_mx_edi_curp'):
+            vals.update({'l10n_mx_edi_curp': vals.get('l10n_mx_edi_curp').upper()})
         return super(HrEmployee, self).write(vals)
 
     def action_update_employee_name(self):
