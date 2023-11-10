@@ -14,3 +14,11 @@
 	path = server-ux
 	url = git@github.com:OCA/server-ux.git
 	branch = 16.0
+[submodule "solt-hr"]
+	path = solt-hr
+	url = git@github.com:soltein-net/solt-hr.git
+	branch = 16.0
+[submodule "solt-l10n-mx-hr"]
+	path = solt-l10n-mx-hr
+	url = git@github.com:SolteinCorp/solt-l10n-mx-hr.git
+	branch = 16.0
