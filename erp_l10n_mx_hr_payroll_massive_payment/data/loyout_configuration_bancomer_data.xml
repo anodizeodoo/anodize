@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="0">
+
+    <record id="layout_configuration_bancomer_01" model="layout.configuration">
+        <field name="column_name">Asunto del Beneficiario</field>
+        <field name="column_length">18</field>
+        <field name="show_decimal" eval="False"/>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_column_left" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="bank_id" ref="l10n_mx.acc_bank_012_BBVA_BANCOMER"/>
+        <field name="sequence">1</field>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+    </record>
+
+    <record id="layout_configuration_bancomer_02" model="layout.configuration">
+        <field name="column_name">Asunto Ordenate</field>
+        <field name="column_length">18</field>
+        <field name="show_decimal" eval="False"/>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_column_left" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="bank_id" ref="l10n_mx.acc_bank_012_BBVA_BANCOMER"/>
+        <field name="sequence">2</field>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+    </record>
+
+    <record id="layout_configuration_bancomer_03" model="layout.configuration">
+        <field name="column_name">Divisa de Operacion</field>
+        <field name="column_length">3</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">MXP</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_012_BBVA_BANCOMER"/>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="layout_configuration_bancomer_04" model="layout.configuration">
+        <field name="column_name">Importe de la Operacion</field>
+        <field name="column_length">16</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="True"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_012_BBVA_BANCOMER"/>
+        <field name="sequence">4</field>
+    </record>
+
+    <record id="layout_configuration_bancomer_05" model="layout.configuration">
+        <field name="column_name">Titular del Beneficiario</field>
+        <field name="column_length">30</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_012_BBVA_BANCOMER"/>
+        <field name="sequence">5</field>
+    </record>
+
+    <record id="layout_configuration_bancomer_06" model="layout.configuration">
+        <field name="column_name">Tipo de Cuenta (Clabe Interbancaria)</field>
+        <field name="column_length">2</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">40</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_012_BBVA_BANCOMER"/>
+        <field name="sequence">6</field>
+    </record>
+
+    <record id="layout_configuration_bancomer_07" model="layout.configuration">
+        <field name="column_name">Numero de Banco del Asunto beneficiario</field>
+        <field name="column_length">3</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="True"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_012_BBVA_BANCOMER"/>
+        <field name="sequence">7</field>
+    </record>
+
+    <record id="layout_configuration_bancomer_08" model="layout.configuration">
+        <field name="column_name">Motivo del Pago</field>
+        <field name="column_length">30</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_012_BBVA_BANCOMER"/>
+        <field name="sequence">8</field>
+    </record>
+
+    <record id="layout_configuration_bancomer_09" model="layout.configuration">
+        <field name="column_name">Referencia</field>
+        <field name="column_length">7</field>
+        <field name="fill_column" eval="True"/>
+        <field name="fill_using">0</field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char"></field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_012_BBVA_BANCOMER"/>
+        <field name="sequence">9</field>
+    </record>
+
+    <record id="layout_configuration_bancomer_10" model="layout.configuration">
+        <field name="column_name">Disponibilidad</field>
+        <field name="column_length">1</field>
+        <field name="fill_column" eval="False"/>
+        <field name="fill_using"></field>
+        <field name="fill_column_left" eval="False"/>
+        <field name="show_decimal" eval="False"/>
+        <field name="default_char">H</field>
+        <field name="use_default_char" eval="False"/>
+        <field name="bank_id" ref="l10n_mx.acc_bank_012_BBVA_BANCOMER"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id='l10n_mx.acc_bank_012_BBVA_BANCOMER' model='res.bank'>
+        <field name="has_report" eval="True"/>
+        <field name="code_bank_report" eval="'bancomer'"/>
+        <field name="layout_configuration_ids" eval="[(4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bancomer_01')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bancomer_02')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bancomer_03')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bancomer_04')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bancomer_05')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bancomer_06')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bancomer_07')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bancomer_08')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bancomer_09')),
+                                                      (4, ref('erp_l10n_mx_hr_payroll_massive_payment.layout_configuration_bancomer_10')),
+                                                       ]"/>
+    </record>
+
+</odoo>

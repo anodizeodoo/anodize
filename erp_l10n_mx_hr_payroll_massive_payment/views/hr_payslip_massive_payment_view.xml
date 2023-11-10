@@ -77,7 +77,7 @@
                         <field name="l10n_mx_payment_date" attrs="{'readonly': [('state', '!=', 'new')]}" />
                         <field name="bank_id" options="{'no_create': True, 'no_edit': True, 'no_open': True}"  attrs="{'readonly': [('state', '!=', 'new')]}"/>
                         <field name="res_partner_bank_id" options="{'no_create': True, 'no_edit': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', 'new')]}"/>
-                        <field name="account_journal_id" options="{'no_create': True, 'no_edit': True, 'no_open': True,'}" attrs="{'readonly': [('state', '!=', 'new')]}"/>
+                        <field name="account_journal_id" options="{'no_create': True, 'no_edit': True, 'no_open': True}" attrs="{'readonly': [('state', '!=', 'new')]}"/>
                         <field name="total_amount" />
                     </group> 
                 </group>   
@@ -166,7 +166,7 @@
     <menuitem
         id="menu_hr_masive_payroll_payment"
         name="Masive payroll payment"
-        parent="hr_work_entry_contract.menu_hr_payroll_root"
+        parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root"
         sequence="70"
         groups="hr_payroll.group_hr_payroll_manager"/>
         

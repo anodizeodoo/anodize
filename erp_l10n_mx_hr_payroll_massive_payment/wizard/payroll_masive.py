@@ -20,7 +20,9 @@ class MasivePayroll(models.Model):
     file_name = fields.Char(string='File Name', readonly=True, invisible=True)
     file_generate_bool = fields.Boolean('', default=False, readonly=True, invisible=True)
     masive_payroll_payment_id = fields.Many2one(comodel_name='masive.payroll.payment', string='Massive Payroll Payment',invisible=True)
-    hr_paylip_run_id = fields.Many2one(comodel_name='hr.payslip.run', string='Hr Payslip', related='masive_payroll_payment_id.hr_paylip_run_id')
+    hr_paylip_run_id = fields.Many2one(comodel_name='hr.payslip.run', string='Hr Payslip',
+                                       compute_sudo=True,
+                                       related='masive_payroll_payment_id.hr_paylip_run_id')
 
     type_file = fields.Selection([("txt","txt"),("xls","xls")], string='File Output')
     

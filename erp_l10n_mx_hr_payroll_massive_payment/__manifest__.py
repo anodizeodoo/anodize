@@ -1,39 +1,31 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "erp_l10n_mx_hr_payroll_massive_payment",
-
+    'name': "Generate Massive Payment Por Payroll",
     'summary': """
         Allow generate massive payment for payroll""",
-
     'description': """
         Allow generate massive payment for payroll in txt format
     """,
-
     "author": "Soltein SA de CV",
     "website": "https://www.soltein.net",
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
+    'version': '16.0.1.0.0',
+    "category": "Human Resources/Payroll",
+    "license": "AGPL-3",
     'depends': [
-        'base',
-        'hr',   
-        'hr_payroll',
-        'hr_work_entry_contract',
-        'erp_l10n_mx_hr_base',
-        "erp_l10n_mx_payslip_data",
-        "l10n_mx_edi_extended",
         'erp_l10n_mx_hr_payroll_e8e_vauxo',
         ],
-
-    # always loaded
     'data': [
         'data/seq_hr_payslips_masive_payment.xml',
+        'data/loyout_configuration_bancomer_data.xml',
+        'data/loyout_configuration_banorte_data.xml',
+        'data/loyout_configuration_santander_data.xml',
+        'data/loyout_configuration_bajio_data.xml',
         'security/ir.model.access.csv',
-        'wizard/payroll_masive.xml',
-        'views/hr_payslip_massive_payment_view.xml',
+        # 'wizard/payroll_masive.xml',
+        # 'views/hr_payslip_massive_payment_view.xml',
+        # 'views/res_bank_views.xml',
         
     ],
-    # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
