@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_l10n_mx_payroll_job_risk,access_l10n_mx_payroll_job_risk,model_l10n_mx_edi_job_risk,,1,1,1,1
+l10n_mx_payroll_employer_registration,access_l10n_mx_payroll_employer_registration,model_l10n_mx_payroll_employer_registration,,1,1,1,1
+access_l10n_mx_payroll_contract_type_manager,l10n.mx.payroll.contract.type.manager,model_l10n_mx_payroll_contract_type,hr_contract.group_hr_contract_manager,1,1,1,1
+access_contract_regime_type,access.contract.regime.type group_hr_manager,model_l10n_mx_edi_contract_regime_type,hr.group_hr_manager,1,1,1,1
+access_type_benefit,access.type.benefit group_hr_manager,model_l10n_mx_type_benefit,hr.group_hr_manager,1,1,1,1
+access_type_benefit_line,access.type.benefit.line group_hr_manager,model_l10n_mx_type_benefit_line,hr.group_hr_manager,1,1,1,1
+access_schedule_pay,access.schedule.pay group_hr_manager,model_l10n_mx_payroll_schedule_pay,hr_payroll.group_hr_payroll_manager,1,1,1,1
+access_l10n_mx_hr_employee_type_user,l10n.mx.hr.employee.type,model_l10n_mx_hr_employee_type,,1,1,1,0
+access_l10n_mx_hr_employee_type_manager,l10n.mx.hr.employee.type,model_l10n_mx_hr_employee_type,hr_payroll.group_hr_payroll_manager,1,1,1,1
+

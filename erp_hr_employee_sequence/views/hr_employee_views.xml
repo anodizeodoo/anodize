@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_view_employee_tree" model="ir.ui.view">
+            <field name="name">seq.hr.employee.tree</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="number"/>
+                </field>
+            </field>
+        </record>
+        <record id="seq_view_employee_filter" model="ir.ui.view">
+            <field name="name">seq.hr.employee.search</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                    <field name="number"/>
+                </field>
+             </field>
+        </record>
+        <record id="seq_view_employee_form" model="ir.ui.view">
+            <field name="name">seq.hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="category_ids" position="before">
+                     <div class="o_row">
+                        <label for="number"/>
+                        <field name="number" readonly="1"/>
+                    </div>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
